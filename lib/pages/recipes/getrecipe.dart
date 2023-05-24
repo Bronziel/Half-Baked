@@ -18,7 +18,7 @@ Future<List<Recipe>> fetchRecipes() async {
 List<Recipe> getInitialRecipes() {
   List<Recipe> initialRecipes = [
     Recipe(
-      title: 'Recipe 1',
+      title: 'intial 1',
       description: 'This is a description of Recipe 1',
       portionSize: 4,
       steps: [
@@ -31,11 +31,10 @@ List<Recipe> getInitialRecipes() {
       ],
       imageUrls: [
         'Images/watermelon.jpg',
-        'https://e0.pxfuel.com/wallpapers/748/615/desktop-wallpaper-awesome-pineapple-high-resolution-new-pineapple-tumblr.jpg',
       ],
     ),
     Recipe(
-      title: 'Recipe 2',
+      title: 'initial 2',
       description: 'This is a description of Recipe 2',
       portionSize: 2,
       steps: [
