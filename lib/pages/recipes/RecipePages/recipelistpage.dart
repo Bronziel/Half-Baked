@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../recipeLayout.dart';
 import 'RecipeViewPage.dart';
 import '../getrecipe.dart' show fetchRecipes, getInitialRecipes;
+import 'formwidget/recipe_form.dart';
 
 class RecipelistPage extends StatefulWidget {
   const RecipelistPage({Key? key}) : super(key: key);
@@ -74,6 +75,14 @@ class _RecipelistPageState extends State<RecipelistPage> {
               child: CircularProgressIndicator(),
             );
           }
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const RecipeForm()),
+          );
         },
       ),
     );

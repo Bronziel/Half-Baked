@@ -58,50 +58,58 @@ class _RecipeFormState extends State<RecipeForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          TextFormField(
-            decoration: const InputDecoration(hintText: 'Enter recipe title'),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a title';
-              }
-              return null;
-            },
-            onSaved: (value) => _newRecipe.title = value!,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Add New Recipe'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: <Widget>[
+              TextFormField(
+                decoration:
+                    const InputDecoration(hintText: 'Enter recipe title'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a title';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _newRecipe.title = value!,
+              ),
+              // Continue with other fields in similar way: description, portionSize, steps, etc.
+              // ...
+
+              // Image picker button
+              ElevatedButton(
+                onPressed: _pickImage,
+                child: Text('Select Image'),
+              ),
+              // Submit button
+              ElevatedButton(
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+
+                    // Upload image to Firebase Cloud Storage
+                    final imageUrl =
+                        await _uploadImageToFirebase(_newRecipe.image!);
+
+                    // Upload recipe to Firestore
+                    await _uploadRecipeToFirestore(_newRecipe, imageUrl);
+
+                    // Show a success message or navigate away
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('Successfully submitted recipe')));
+                  }
+                },
+                child: Text('Submit Recipe'),
+              ),
+            ],
           ),
-          // Continue with other fields in similar way: description, portionSize, steps, etc.
-          // ...
-
-          // Image picker button
-          ElevatedButton(
-            onPressed: _pickImage,
-            child: Text('Select Image'),
-          ),
-          // Submit button
-          ElevatedButton(
-            onPressed: () async {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-
-                // Upload image to Firebase Cloud Storage
-                final imageUrl =
-                    await _uploadImageToFirebase(_newRecipe.image!);
-
-                // Upload recipe to Firestore
-                await _uploadRecipeToFirestore(_newRecipe, imageUrl);
-
-                // Show a success message or navigate away
-                ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Successfully submitted recipe')));
-              }
-            },
-            child: Text('Submit Recipe'),
-          ),
-        ],
+        ),
       ),
     );
   }
