@@ -10,7 +10,7 @@ class NewRecipe {
   String description = '';
   int portionSize = 1;
   List<String> steps = [];
-  List<Map<String, String>> ingredients = [];
+  List<Map<String, dynamic>> ingredients = [];
   File? image;
 }
 
