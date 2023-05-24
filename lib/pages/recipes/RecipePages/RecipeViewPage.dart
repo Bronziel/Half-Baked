@@ -52,9 +52,7 @@ class RecipeDetailsPage extends StatelessWidget {
               for (final imageUrl in recipe.imageUrls)
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: _isNetworkUrl(imageUrl)
-                      ? Image.network(imageUrl)
-                      : Image.file(File(imageUrl)),
+                  child: Image.network(imageUrl),
                 ),
             ],
           ),
