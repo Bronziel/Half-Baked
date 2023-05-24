@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "647910129693",
+    "project_id": "half-baked-24565",
+    "storage_bucket": "half-baked-24565.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647910129693:android:8af7b7b8044cd3955e46f4",
+        "android_client_info": {
+          "package_name": "com.example.fb2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "647910129693-tj29tc0d7gqo3lchsouhldhrmmju8fpb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsfcz8gY9rHHmE4Fbhh0OcD3U-6kFUmao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647910129693-tj29tc0d7gqo3lchsouhldhrmmju8fpb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "647910129693-m7mgm6s71cp98n7k483rgfr0vf5ggsmk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fb2.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

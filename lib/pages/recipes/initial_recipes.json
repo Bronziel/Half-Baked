@@ -1,0 +1,52 @@
+[
+    {
+      "title": "Recipe 1",
+      "description": "This is a description of Recipe 1",
+      "portionSize": 4,
+      "steps": [
+        "Step 1: Do this",
+        "Step 2: Do that"
+      ],
+      "ingredients": [
+        { "name": "Rosemary", "amount": "100g" },
+        { "name": "Thyme", "amount": "50g" }
+      ],
+      "imageUrls": [
+        "Images/watermelon.jpg",
+        "https://e0.pxfuel.com/wallpapers/748/615/desktop-wallpaper-awesome-pineapple-high-resolution-new-pineapple-tumblr.jpg"
+      ]
+    },
+    {
+      "title": "Recipe 2",
+      "description": "This is a description of Recipe 2",
+      "portionSize": 2,
+      "steps": [
+        "Step 1: Do this",
+        "Step 2: Do that",
+        "Step 3: Do something else"
+      ],
+      "ingredients": [
+        { "name": "Basil", "amount": "50g" },
+        { "name": "Garlic", "amount": "3 cloves" },
+        { "name": "Tomatoes", "amount": "2" }
+      ],
+      "imageUrls": []
+    },
+    {
+      "title": "Watermelon frozen slushie",
+      "description": "Great snack for a warm summer day",
+      "portionSize": 2,
+      "steps": [
+        "Step 1: Do this",
+        "Step 2: Do that",
+        "Step 3: Do something else"
+      ],
+      "ingredients": [
+        { "name": "Watermelon", "amount": "50g" },
+        { "name": "Lemonade", "amount": "3 cloves" },
+        { "name": "Tart cherry juice", "amount": "2" }
+      ],
+      "imageUrls": []
+    }
+  ]
+  
