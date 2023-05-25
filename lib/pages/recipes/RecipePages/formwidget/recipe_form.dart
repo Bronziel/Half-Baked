@@ -23,6 +23,7 @@ class RecipeForm extends StatefulWidget {
 
 class _RecipeFormState extends State<RecipeForm> {
   final _formKey = GlobalKey<FormState>();
+  final _ingredientsFormKey = GlobalKey<FormState>();
   final NewRecipe _newRecipe = NewRecipe();
 
   // For selecting an image from the user's device
@@ -76,7 +77,10 @@ class _RecipeFormState extends State<RecipeForm> {
               const SizedBox(height: 16.0),
               StepsBox(newRecipe: _newRecipe),
               const SizedBox(height: 16.0),
-              IngredientsBox(newRecipe: _newRecipe),
+              IngredientsBox(
+                newRecipe: _newRecipe,
+                formKey: _ingredientsFormKey,
+              ),
 
               // Continue with other fields in similar way: description, portionSize, steps, etc.
               // ...
@@ -89,9 +93,10 @@ class _RecipeFormState extends State<RecipeForm> {
               // Submit button
               ElevatedButton(
                 onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
+                  if (_formKey.currentState!.validate() &&
+                      _ingredientsFormKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-
+                    _ingredientsFormKey.currentState!.save();
                     // Only upload image if one is selected
                     String imageUrl = '';
                     if (_newRecipe.image != null) {
@@ -215,20 +220,25 @@ class TitelBox extends StatelessWidget {
 class IngredientsBox extends StatefulWidget {
   const IngredientsBox({
     Key? key,
-    required NewRecipe newRecipe,
-  })  : _newRecipe = newRecipe,
-        super(key: key);
+    required this.newRecipe,
+    required this.formKey,
+  }) : super(key: key);
 
-  final NewRecipe _newRecipe;
+  final NewRecipe newRecipe;
+  final GlobalKey<FormState> formKey;
 
   @override
   _IngredientsBoxState createState() => _IngredientsBoxState();
 }
 
 class _IngredientsBoxState extends State<IngredientsBox> {
+  List<Map<String, String>> _ingredients = [];
   List<Widget> _ingredientWidgets = [];
 
   void _addIngredient() {
+    Map<String, String> newIngredient = {'name': '', 'amount': ''};
+    _ingredients.add(newIngredient);
+
     setState(() {
       _ingredientWidgets.add(
         Row(
@@ -243,7 +253,9 @@ class _IngredientsBoxState extends State<IngredientsBox> {
                   return null;
                 },
                 onSaved: (value) {
-                  // Save ingredient name here...
+                  newIngredient['name'] = value!;
+                  // Update the NewRecipe object here
+                  widget.newRecipe.ingredients = _ingredients;
                 },
               ),
             ),
@@ -259,7 +271,9 @@ class _IngredientsBoxState extends State<IngredientsBox> {
                   return null;
                 },
                 onSaved: (value) {
-                  // Save ingredient amount here...
+                  newIngredient['amount'] = value!;
+                  // Update the NewRecipe object here
+                  widget.newRecipe.ingredients = _ingredients;
                 },
               ),
             ),
@@ -281,12 +295,22 @@ class _IngredientsBoxState extends State<IngredientsBox> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ..._ingredientWidgets,
+        Form(
+          key: widget.formKey,
+          child: Column(children: _ingredientWidgets),
+        ),
         ElevatedButton(
           onPressed: _addIngredient,
           child: Text('Add another ingredient'),
         ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    // Save the ingredients to the recipe before disposing
+    widget.newRecipe.ingredients = _ingredients;
+    super.dispose();
   }
 }
