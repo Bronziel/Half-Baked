@@ -68,17 +68,16 @@ class _RecipeFormState extends State<RecipeForm> {
           key: _formKey,
           child: ListView(
             children: <Widget>[
-              TextFormField(
-                decoration:
-                    const InputDecoration(hintText: 'Enter recipe title'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a title';
-                  }
-                  return null;
-                },
-                onSaved: (value) => _newRecipe.title = value!,
-              ),
+              TitelBox(newRecipe: _newRecipe),
+              const SizedBox(height: 16.0),
+              DescriptionBox(newRecipe: _newRecipe),
+              const SizedBox(height: 16.0),
+              PortionsizeBox(newRecipe: _newRecipe),
+              const SizedBox(height: 16.0),
+              StepsBox(newRecipe: _newRecipe),
+              const SizedBox(height: 16.0),
+              IngredientsBox(newRecipe: _newRecipe),
+
               // Continue with other fields in similar way: description, portionSize, steps, etc.
               // ...
 
@@ -93,16 +92,17 @@ class _RecipeFormState extends State<RecipeForm> {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
 
-                    // Upload image to Firebase Cloud Storage
-                    final imageUrl =
-                        await _uploadImageToFirebase(_newRecipe.image!);
+                    // Only upload image if one is selected
+                    String imageUrl = '';
+                    if (_newRecipe.image != null) {
+                      imageUrl =
+                          await _uploadImageToFirebase(_newRecipe.image!);
+                    }
 
                     // Upload recipe to Firestore
                     await _uploadRecipeToFirestore(_newRecipe, imageUrl);
 
-                    // Show a success message or navigate away
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('Successfully submitted recipe')));
+                    // ...
                   }
                 },
                 child: Text('Submit Recipe'),
@@ -111,6 +111,182 @@ class _RecipeFormState extends State<RecipeForm> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class StepsBox extends StatelessWidget {
+  const StepsBox({
+    Key? key,
+    required NewRecipe newRecipe,
+  })  : _newRecipe = newRecipe,
+        super(key: key);
+
+  final NewRecipe _newRecipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: InputDecoration(hintText: 'Enter steps (one per line)'),
+      maxLines: null,
+      keyboardType: TextInputType.multiline,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter at least one step';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        _newRecipe.steps = value!.split('\n');
+      },
+    );
+  }
+}
+
+class PortionsizeBox extends StatelessWidget {
+  const PortionsizeBox({
+    super.key,
+    required NewRecipe newRecipe,
+  }) : _newRecipe = newRecipe;
+
+  final NewRecipe _newRecipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: const InputDecoration(hintText: 'Enter portion size'),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter a portion size';
+        }
+        return null;
+      },
+      onSaved: (value) => _newRecipe.portionSize = int.parse(value!),
+    );
+  }
+}
+
+class DescriptionBox extends StatelessWidget {
+  const DescriptionBox({
+    super.key,
+    required NewRecipe newRecipe,
+  }) : _newRecipe = newRecipe;
+
+  final NewRecipe _newRecipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: const InputDecoration(hintText: 'Enter description'),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter a desciption';
+        }
+        return null;
+      },
+      onSaved: (value) => _newRecipe.description = value!,
+    );
+  }
+}
+
+class TitelBox extends StatelessWidget {
+  const TitelBox({
+    super.key,
+    required NewRecipe newRecipe,
+  }) : _newRecipe = newRecipe;
+
+  final NewRecipe _newRecipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: const InputDecoration(hintText: 'Enter recipe title'),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter a title';
+        }
+        return null;
+      },
+      onSaved: (value) => _newRecipe.title = value!,
+    );
+  }
+}
+
+class IngredientsBox extends StatefulWidget {
+  const IngredientsBox({
+    Key? key,
+    required NewRecipe newRecipe,
+  })  : _newRecipe = newRecipe,
+        super(key: key);
+
+  final NewRecipe _newRecipe;
+
+  @override
+  _IngredientsBoxState createState() => _IngredientsBoxState();
+}
+
+class _IngredientsBoxState extends State<IngredientsBox> {
+  List<Widget> _ingredientWidgets = [];
+
+  void _addIngredient() {
+    setState(() {
+      _ingredientWidgets.add(
+        Row(
+          children: [
+            Flexible(
+              child: TextFormField(
+                decoration: InputDecoration(hintText: 'Enter ingredient name'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter an ingredient name';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  // Save ingredient name here...
+                },
+              ),
+            ),
+            SizedBox(width: 8.0),
+            Flexible(
+              child: TextFormField(
+                decoration:
+                    InputDecoration(hintText: 'Enter ingredient amount'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter an ingredient amount';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  // Save ingredient amount here...
+                },
+              ),
+            ),
+          ],
+        ),
+      );
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Start with one ingredient
+    _addIngredient();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ..._ingredientWidgets,
+        ElevatedButton(
+          onPressed: _addIngredient,
+          child: Text('Add another ingredient'),
+        ),
+      ],
     );
   }
 }
