@@ -21,9 +21,3 @@ Future<List<Recipe>> fetchRecipes() async {
 Future<void> deleteRecipe(String id) async {
   await FirebaseFirestore.instance.collection('recipes').doc(id).delete();
 }
-
-List<Recipe> getInitialRecipes() {
-  List<Recipe> initialRecipes = [];
-
-  return initialRecipes;
-}
