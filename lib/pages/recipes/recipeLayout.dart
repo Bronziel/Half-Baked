@@ -5,6 +5,7 @@ class Recipe {
   final List<String> steps;
   final List<Map<String, dynamic>> ingredients;
   final List<String> imageUrls;
+  final String id;
 
   Recipe({
     required this.title,
@@ -13,6 +14,7 @@ class Recipe {
     required this.steps,
     required this.ingredients,
     required this.imageUrls,
+    required this.id,
   });
 
   factory Recipe.fromJson(Map<String, dynamic> json) {
@@ -25,6 +27,7 @@ class Recipe {
           (ingredient) =>
               {'name': ingredient['name'], 'amount': ingredient['amount']})),
       imageUrls: List<String>.from(json['imageUrls']),
+      id: json['id'] as String,
     );
   }
 }
