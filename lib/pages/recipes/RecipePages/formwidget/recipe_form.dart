@@ -291,9 +291,11 @@ class _IngredientsBoxState extends State<IngredientsBox> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Form(
-          key: widget.formKey,
-          child: Column(children: _ingredientWidgets),
+        SingleChildScrollView(
+          child: Form(
+            key: widget.formKey,
+            child: Column(children: _ingredientWidgets),
+          ),
         ),
         ElevatedButton(
           onPressed: _addIngredient,
