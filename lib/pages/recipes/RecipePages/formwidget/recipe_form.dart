@@ -4,6 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path/path.dart' as Path;
+import 'package:flutter/services.dart';
 
 class NewRecipe {
   String title = '';
@@ -146,15 +147,19 @@ class StepsBox extends StatelessWidget {
 
 class PortionsizeBox extends StatelessWidget {
   const PortionsizeBox({
-    super.key,
-    required NewRecipe newRecipe,
-  }) : _newRecipe = newRecipe;
+    Key? key,
+    required this.newRecipe,
+  }) : super(key: key);
 
-  final NewRecipe _newRecipe;
+  final NewRecipe newRecipe;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
       decoration: const InputDecoration(hintText: 'Enter portion size'),
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -162,7 +167,7 @@ class PortionsizeBox extends StatelessWidget {
         }
         return null;
       },
-      onSaved: (value) => _newRecipe.portionSize = int.parse(value!),
+      onSaved: (value) => newRecipe.portionSize = int.parse(value ?? '0'),
     );
   }
 }
