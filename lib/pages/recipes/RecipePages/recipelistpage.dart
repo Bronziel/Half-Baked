@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../visualview/appbar/customappbar.dart';
 import '../recipeLayout.dart';
 import 'RecipeViewPage.dart';
-import '../getrecipe.dart' show fetchRecipes, getInitialRecipes;
+import '../getrecipe.dart' show fetchRecipes, getInitialRecipes, deleteRecipe;
 import 'formwidget/recipe_form.dart';
 
 class RecipelistPage extends StatefulWidget {
@@ -55,6 +55,16 @@ class _RecipelistPageState extends State<RecipelistPage> {
                   Recipe recipe = snapshot.data![index - initialRecipes.length];
                   return ListTile(
                     title: Text(recipe.title),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      onPressed: () async {
+                        await deleteRecipe(recipe.id);
+                        setState(() {
+                          _futureRecipes =
+                              fetchRecipes(); // refresh the list after deletion
+                        });
+                      },
+                    ),
                     onTap: () {
                       Navigator.push(
                         context,
