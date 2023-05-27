@@ -15,7 +15,9 @@ class NewRecipe {
 }
 
 class RecipeForm extends StatefulWidget {
-  const RecipeForm({Key? key}) : super(key: key);
+  final VoidCallback onRecipeSaved;
+
+  const RecipeForm({Key? key, required this.onRecipeSaved}) : super(key: key);
 
   @override
   _RecipeFormState createState() => _RecipeFormState();
@@ -59,15 +61,12 @@ class _RecipeFormState extends State<RecipeForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Add New Recipe'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(8.0),
+    return Container(
+      padding: EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
         child: Form(
           key: _formKey,
-          child: ListView(
+          child: Column(
             children: <Widget>[
               TitelBox(newRecipe: _newRecipe),
               const SizedBox(height: 16.0),
@@ -97,17 +96,14 @@ class _RecipeFormState extends State<RecipeForm> {
                       _ingredientsFormKey.currentState!.validate()) {
                     _formKey.currentState!.save();
                     _ingredientsFormKey.currentState!.save();
-                    // Only upload image if one is selected
                     String imageUrl = '';
                     if (_newRecipe.image != null) {
                       imageUrl =
                           await _uploadImageToFirebase(_newRecipe.image!);
                     }
-
-                    // Upload recipe to Firestore
                     await _uploadRecipeToFirestore(_newRecipe, imageUrl);
-
-                    // ...
+                    Navigator.pop(context); // close the form
+                    widget.onRecipeSaved(); // notify that recipe has been saved
                   }
                 },
                 child: Text('Submit Recipe'),

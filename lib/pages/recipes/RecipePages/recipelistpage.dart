@@ -72,8 +72,26 @@ class _RecipelistPageState extends State<RecipelistPage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const RecipeForm()),
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            builder: (BuildContext context) {
+              return Container(
+                height: MediaQuery.of(context).size.height *
+                    0.75, // Adjust the multiplier as needed
+                child: SingleChildScrollView(
+                  child: Container(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom),
+                    child: RecipeForm(onRecipeSaved: () {
+                      setState(() {
+                        _futureRecipes = fetchRecipes();
+                      });
+                    }),
+                  ),
+                ),
+              );
+            },
           );
         },
       ),
