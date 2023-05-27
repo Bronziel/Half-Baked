@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../visualview/appbar/customappbar.dart';
 import '../recipeLayout.dart';
 import 'RecipeViewPage.dart';
-import '../getrecipe.dart' show fetchRecipes, getInitialRecipes, deleteRecipe;
+import '../getrecipe.dart' show fetchRecipes, deleteRecipe;
 import 'formwidget/recipe_form.dart';
 
 class RecipelistPage extends StatefulWidget {
@@ -14,12 +14,10 @@ class RecipelistPage extends StatefulWidget {
 
 class _RecipelistPageState extends State<RecipelistPage> {
   late Future<List<Recipe>> _futureRecipes;
-  List<Recipe> initialRecipes = [];
 
   @override
   void initState() {
     super.initState();
-    initialRecipes = getInitialRecipes();
     _futureRecipes = fetchRecipes();
   }
 
@@ -33,49 +31,30 @@ class _RecipelistPageState extends State<RecipelistPage> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
-              itemCount: snapshot.data!.length + initialRecipes.length,
+              itemCount: snapshot.data!.length,
               itemBuilder: (BuildContext context, int index) {
-                if (index < initialRecipes.length) {
-                  // display initial recipe
-                  Recipe recipe = initialRecipes[index];
-                  return ListTile(
-                    title: Text(recipe.title),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              RecipeDetailsPage(recipe: recipe),
-                        ),
-                      );
+                Recipe recipe = snapshot.data![index];
+                return ListTile(
+                  title: Text(recipe.title),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () async {
+                      await deleteRecipe(recipe.id);
+                      setState(() {
+                        _futureRecipes =
+                            fetchRecipes(); // refresh the list after deletion
+                      });
                     },
-                  );
-                } else {
-                  // display fetched recipe
-                  Recipe recipe = snapshot.data![index - initialRecipes.length];
-                  return ListTile(
-                    title: Text(recipe.title),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete),
-                      onPressed: () async {
-                        await deleteRecipe(recipe.id);
-                        setState(() {
-                          _futureRecipes =
-                              fetchRecipes(); // refresh the list after deletion
-                        });
-                      },
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              RecipeDetailsPage(recipe: recipe),
-                        ),
-                      );
-                    },
-                  );
-                }
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RecipeDetailsPage(recipe: recipe),
+                      ),
+                    );
+                  },
+                );
               },
             );
           } else if (snapshot.hasError) {
