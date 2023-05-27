@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../visualview/appbar/customappbar.dart';
 import '../recipeLayout.dart';
 import 'RecipeViewPage.dart';
 import '../getrecipe.dart' show fetchRecipes, getInitialRecipes;
@@ -25,7 +26,8 @@ class _RecipelistPageState extends State<RecipelistPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Gym - Digital Cookbook')),
+      appBar: const CustomAppBar(
+          title: 'Recipe List Page', color: Color.fromARGB(255, 97, 89, 100)),
       body: FutureBuilder<List<Recipe>>(
         future: _futureRecipes,
         builder: (context, snapshot) {

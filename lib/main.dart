@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'pages/screens/glist.dart';
 import 'pages/recipes/RecipePages/recipelistpage.dart';
+import 'visualview/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Gym and Food App',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: AppThemes.defaultTheme,
       home: const LandingPage(),
     );
   }

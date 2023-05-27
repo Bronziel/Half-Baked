@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 199.14684556362948 120.05637398983299" xmlns="http://www.w3.org/2000/svg">
+    <style>
+      @font-face {
+        font-family: "Bourton Inline";
+        src: url("https://assets-service.s3.ca-central-1.amazonaws.com/621_font.otf");
+      }
+      text {
+        fill: #9896f1;
+        font-family: "Bourton Inline";
+        font-size: 1.7em;
+        text-anchor: middle;
+      }
+    </style>
+    <text x="100" y="60" textLength="204.2323760986328" lengthAdjust="spacingAndGlyphs">
+      WebsiteFoodie
+    </text>
+  </svg>
+  

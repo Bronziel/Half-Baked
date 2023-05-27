@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="434.4" height="261.87956286016185" viewBox="0 0 199.14684556362948 120.05637398983299">
+      <defs id="SvgjsDefs1012"></defs>
+      <g id="SvgjsG1014" featurekey="JZW510-0" transform="matrix(1.0935113559675969,0,0,1.0935113559675969,99.7901110939527,99.28961640587399)" fill="#9896f1">
+        <defs>
+          <path d="M-65,0 A65,65,0,1,1,65,0" fill="none" id="d0_0"></path>
+          
+          <style>
+            @font-face {
+              font-family: "Bourton Inline";
+              src: url("https://assets-service.s3.ca-central-1.amazonaws.com/621_font.otf");
+            }
+          </style>
+        </defs>
+        <text x="0" y="0" dy="0" font-size="1.7em" style="fill: var(--text-color);" font-family="Bourton Inline" text-anchor="middle">
+          <textPath xlink:href="#d0_0" textLength="204.2323760986328" startOffset="102.1">
+            <tspan dy="0">WebsiteFoodie</tspan>
+          </textPath>
+        </text>
+      </g>
+     
+    </svg>
