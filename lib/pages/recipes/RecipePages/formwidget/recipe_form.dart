@@ -399,6 +399,10 @@ class _IngredientsBoxState extends State<IngredientsBox> {
                 },
               ),
             ),
+            ElevatedButton(
+              onPressed: _addIngredient,
+              child: Text('Add another ingredient'),
+            ),
           ],
         ),
       );
@@ -422,10 +426,6 @@ class _IngredientsBoxState extends State<IngredientsBox> {
             key: widget.formKey,
             child: Column(children: _ingredientWidgets),
           ),
-        ),
-        ElevatedButton(
-          onPressed: _addIngredient,
-          child: Text('Add another ingredient'),
         ),
       ],
     );
