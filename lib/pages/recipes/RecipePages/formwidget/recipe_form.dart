@@ -274,23 +274,25 @@ class PortionsizeBox extends StatelessWidget {
 
 class DescriptionBox extends StatelessWidget {
   const DescriptionBox({
-    super.key,
-    required NewRecipe newRecipe,
-  }) : _newRecipe = newRecipe;
+    Key? key,
+    required this.newRecipe,
+  }) : super(key: key);
 
-  final NewRecipe _newRecipe;
+  final NewRecipe newRecipe;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: const InputDecoration(hintText: 'Enter description'),
+      maxLines: null, // Allow multiple lines
+      keyboardType: TextInputType.multiline, // Enable multiline input
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Please enter a desciption';
+          return 'Please enter a description';
         }
         return null;
       },
-      onSaved: (value) => _newRecipe.description = value!,
+      onSaved: (value) => newRecipe.description = value!,
     );
   }
 }
