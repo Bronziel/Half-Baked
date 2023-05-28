@@ -10,8 +10,12 @@ class NewRecipe {
   String title = '';
   String description = '';
   int portionSize = 1;
+  int prepTime = 0; // new field
+  int totalTime = 0; // new field
   List<String> steps = [];
-  List<Map<String, dynamic>> ingredients = [];
+  List<String> equipment = []; // new field
+  List<Map<String, dynamic>> ingredients =
+      []; // updated to dynamic to include units
   File? image;
 }
 
@@ -57,6 +61,9 @@ class _RecipeFormState extends State<RecipeForm> {
       'steps': recipe.steps,
       'ingredients': recipe.ingredients,
       'imageUrls': [imageUrl],
+      'prepTime': recipe.prepTime,
+      'totalTime': recipe.totalTime,
+      'equipment': recipe.equipment,
     });
   }
 
@@ -69,11 +76,19 @@ class _RecipeFormState extends State<RecipeForm> {
           key: _formKey,
           child: Column(
             children: <Widget>[
-              TitelBox(newRecipe: _newRecipe),
+              Row(
+                children: [
+                  Flexible(child: TitelBox(newRecipe: _newRecipe)),
+                  const SizedBox(width: 16.0),
+                  Flexible(child: PortionsizeBox(newRecipe: _newRecipe)),
+                ],
+              ),
+              const SizedBox(height: 16.0),
+              CookTimeBox(newRecipe: _newRecipe),
               const SizedBox(height: 16.0),
               DescriptionBox(newRecipe: _newRecipe),
               const SizedBox(height: 16.0),
-              PortionsizeBox(newRecipe: _newRecipe),
+              EquipmentBox(newRecipe: _newRecipe),
               const SizedBox(height: 16.0),
               StepsBox(newRecipe: _newRecipe),
               const SizedBox(height: 16.0),
@@ -113,6 +128,91 @@ class _RecipeFormState extends State<RecipeForm> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class CookTimeBox extends StatelessWidget {
+  const CookTimeBox({
+    Key? key,
+    required this.newRecipe,
+  }) : super(key: key);
+
+  final NewRecipe newRecipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Flexible(
+          child: TextFormField(
+            keyboardType: TextInputType.number,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ],
+            decoration: const InputDecoration(hintText: 'Prep Time (min)'),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter a prep time';
+              }
+              return null;
+            },
+            onSaved: (value) {
+              if (value != null && value.isNotEmpty) {
+                newRecipe.prepTime = int.parse(value);
+              }
+            },
+          ),
+        ),
+        const SizedBox(width: 8.0),
+        Flexible(
+          child: TextFormField(
+            keyboardType: TextInputType.number,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ],
+            decoration: const InputDecoration(hintText: 'Total Time (min)'),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter a total time';
+              }
+              return null;
+            },
+            onSaved: (value) {
+              if (value != null && value.isNotEmpty) {
+                newRecipe.totalTime = int.parse(value);
+              }
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class EquipmentBox extends StatelessWidget {
+  const EquipmentBox({
+    Key? key,
+    required this.newRecipe,
+  }) : super(key: key);
+
+  final NewRecipe newRecipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: InputDecoration(hintText: 'Enter equipment (one per line)'),
+      maxLines: null,
+      keyboardType: TextInputType.multiline,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter at least one equipment';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        newRecipe.equipment = value!.split('\n');
+      },
     );
   }
 }
@@ -237,7 +337,7 @@ class _IngredientsBoxState extends State<IngredientsBox> {
   List<Widget> _ingredientWidgets = [];
 
   void _addIngredient() {
-    Map<String, String> newIngredient = {'name': '', 'amount': ''};
+    Map<String, String> newIngredient = {'name': '', 'amount': '', 'unit': ''};
     _ingredients.add(newIngredient);
 
     setState(() {
@@ -246,34 +346,35 @@ class _IngredientsBoxState extends State<IngredientsBox> {
           children: [
             Flexible(
               child: TextFormField(
-                decoration: InputDecoration(hintText: 'Enter ingredient name'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter an ingredient name';
-                  }
-                  return null;
-                },
+                // ... (same as before)
                 onSaved: (value) {
                   newIngredient['name'] = value!;
-                  // Update the NewRecipe object here
                   widget.newRecipe.ingredients = _ingredients;
                 },
               ),
             ),
-            SizedBox(width: 8.0),
+            const SizedBox(width: 8.0),
             Flexible(
               child: TextFormField(
-                decoration:
-                    InputDecoration(hintText: 'Enter ingredient amount'),
+                // ... (same as before)
+                onSaved: (value) {
+                  newIngredient['amount'] = value!;
+                  widget.newRecipe.ingredients = _ingredients;
+                },
+              ),
+            ),
+            const SizedBox(width: 8.0),
+            Flexible(
+              child: TextFormField(
+                decoration: InputDecoration(hintText: 'Enter ingredient unit'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter an ingredient amount';
+                    return 'Please enter an ingredient unit';
                   }
                   return null;
                 },
                 onSaved: (value) {
-                  newIngredient['amount'] = value!;
-                  // Update the NewRecipe object here
+                  newIngredient['unit'] = value!;
                   widget.newRecipe.ingredients = _ingredients;
                 },
               ),

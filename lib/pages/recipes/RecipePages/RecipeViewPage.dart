@@ -19,33 +19,34 @@ class RecipeDetailsPage extends StatelessWidget {
             children: [
               Text(
                 recipe.title,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Text(
                 'Description: ${recipe.description}',
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Text(
                 'Portion Size: ${recipe.portionSize}',
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 'Ingredients:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               for (final ingredient in recipe.ingredients)
                 Text('${ingredient['name']} - ${ingredient['amount']}'),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 'Steps:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               for (final step in recipe.steps) Text(step),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 'Images:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
@@ -54,6 +55,25 @@ class RecipeDetailsPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Image.network(imageUrl),
                 ),
+              const SizedBox(height: 16),
+              const Text(
+                'CookingTime:',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                'Preparation Time: ${recipe.prepTime} minutes',
+                style: const TextStyle(fontSize: 16),
+              ),
+              Text(
+                'Total Time: ${recipe.totalTime} minutes',
+                style: const TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Equipment:',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              for (final equipmentItem in recipe.equipment) Text(equipmentItem),
             ],
           ),
         ),
