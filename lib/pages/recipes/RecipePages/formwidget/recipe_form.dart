@@ -103,7 +103,7 @@ class _RecipeFormState extends State<RecipeForm> {
               // Image picker button
               ElevatedButton(
                 onPressed: _pickImage,
-                child: Text('Select Image'),
+                child: const Text('Select Image'),
               ),
               // Submit button
               ElevatedButton(
@@ -122,7 +122,7 @@ class _RecipeFormState extends State<RecipeForm> {
                     widget.onRecipeSaved(); // notify that recipe has been saved
                   }
                 },
-                child: Text('Submit Recipe'),
+                child: const Text('Submit Recipe'),
               ),
             ],
           ),
