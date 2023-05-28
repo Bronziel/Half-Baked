@@ -403,6 +403,15 @@ class _IngredientsBoxState extends State<IngredientsBox> {
               onPressed: _addIngredient,
               child: Text('Add another ingredient'),
             ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  _ingredients.remove(newIngredient);
+                  _ingredientWidgets.removeLast();
+                });
+              },
+              icon: Icon(Icons.delete),
+            ),
           ],
         ),
       );
