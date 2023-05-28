@@ -38,7 +38,8 @@ class RecipeDetailsPage extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               for (final ingredient in recipe.ingredients)
-                Text('${ingredient['name']} - ${ingredient['amount']}'),
+                Text(
+                    '${ingredient['name']} - ${ingredient['amount']}${ingredient['unit']}'),
               const SizedBox(height: 16),
               const Text(
                 'Steps:',
