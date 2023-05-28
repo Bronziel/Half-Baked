@@ -333,11 +333,11 @@ class IngredientsBox extends StatefulWidget {
 }
 
 class _IngredientsBoxState extends State<IngredientsBox> {
-  List<Map<String, String>> _ingredients = [];
+  List<Map<String, dynamic>> _ingredients = [];
   List<Widget> _ingredientWidgets = [];
 
   void _addIngredient() {
-    Map<String, String> newIngredient = {'name': '', 'amount': '', 'unit': ''};
+    Map<String, dynamic> newIngredient = {'name': '', 'amount': '', 'unit': ''};
     _ingredients.add(newIngredient);
 
     setState(() {
@@ -346,24 +346,42 @@ class _IngredientsBoxState extends State<IngredientsBox> {
           children: [
             Flexible(
               child: TextFormField(
-                // ... (same as before)
+                decoration: InputDecoration(hintText: 'Enter ingredient name'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter an ingredient name';
+                  }
+                  return null;
+                },
                 onSaved: (value) {
                   newIngredient['name'] = value!;
                   widget.newRecipe.ingredients = _ingredients;
                 },
               ),
             ),
-            const SizedBox(width: 8.0),
+            SizedBox(width: 8.0),
             Flexible(
               child: TextFormField(
-                // ... (same as before)
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                decoration:
+                    InputDecoration(hintText: 'Enter ingredient amount'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter an ingredient amount';
+                  }
+                  return null;
+                },
                 onSaved: (value) {
-                  newIngredient['amount'] = value!;
-                  widget.newRecipe.ingredients = _ingredients;
+                  if (value != null && value.isNotEmpty) {
+                    newIngredient['amount'] = int.parse(value);
+                  }
                 },
               ),
             ),
-            const SizedBox(width: 8.0),
+            SizedBox(width: 8.0),
             Flexible(
               child: TextFormField(
                 decoration: InputDecoration(hintText: 'Enter ingredient unit'),
