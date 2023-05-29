@@ -26,9 +26,12 @@ class _GlistPageState extends State<GlistPage> {
     // Upload image to Firebase Storage
     try {
       Uint8List data = await _image!.readAsBytes();
+      final metadata = firebase_storage.SettableMetadata(
+        contentType: 'image/jpeg', // Set content type explicitly as image/jpeg
+      );
       await firebase_storage.FirebaseStorage.instance
           .ref('uploads/${Path.basename(_image!.path)}')
-          .putData(data);
+          .putData(data, metadata);
 
       print('Image uploaded to Firebase Storage successfully');
     } catch (e) {
