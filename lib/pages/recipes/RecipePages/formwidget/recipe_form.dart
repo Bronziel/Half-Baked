@@ -16,7 +16,7 @@ class NewRecipe {
   List<String> equipment = []; // new field
   List<Map<String, dynamic>> ingredients =
       []; // updated to dynamic to include units
-  File? image;
+  XFile? image;
 }
 
 class RecipeForm extends StatefulWidget {
@@ -33,22 +33,30 @@ class _RecipeFormState extends State<RecipeForm> {
   final _ingredientsFormKey = GlobalKey<FormState>();
   final NewRecipe _newRecipe = NewRecipe();
 
-  // For selecting an image from the user's device
+// For selecting an image from the user's device
   Future<void> _pickImage() async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
 
     setState(() {
-      _newRecipe.image = File(image!.path);
+      _newRecipe.image = image;
     });
   }
 
-  Future<String> _uploadImageToFirebase(File imageFile) async {
+  Future<String> _uploadImageToFirebase(XFile imageFile) async {
     String fileName = Path.basename(imageFile.path);
+    Uint8List data = await imageFile.readAsBytes();
+
+    final metadata = firebase_storage.SettableMetadata(
+      contentType: 'image/jpeg', // Set content type explicitly as image/jpeg
+    );
+
     firebase_storage.Reference ref =
         firebase_storage.FirebaseStorage.instance.ref('/images/$fileName');
-    firebase_storage.UploadTask uploadTask = ref.putFile(imageFile);
+
+    firebase_storage.UploadTask uploadTask = ref.putData(data, metadata);
     await uploadTask;
+
     return await ref.getDownloadURL();
   }
 
