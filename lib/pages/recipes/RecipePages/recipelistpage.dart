@@ -40,7 +40,7 @@ class _RecipelistPageState extends State<RecipelistPage> {
                   trailing: IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () async {
-                      await deleteRecipe(recipe.id);
+                      await deleteRecipe(recipe);
                       setState(() {
                         _futureRecipes =
                             fetchRecipes(); // refresh the list after deletion

@@ -12,31 +12,100 @@ class GlistPage extends StatefulWidget {
 }
 
 class _GlistPageState extends State<GlistPage> {
-  XFile? _image;
+  List<XFile> _images = [];
+  bool _displayImages = false;
+  List<String> _firebaseStoragePaths = [];
 
-  // Function to pick image
-  Future<void> _pickImage() async {
+  Future<void> _pickImages() async {
     final ImagePicker _picker = ImagePicker();
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    final List<XFile>? images = await _picker.pickMultiImage();
 
     setState(() {
-      _image = image;
+      _images = images ?? [];
+      _displayImages = false;
+      _firebaseStoragePaths = [];
     });
+  }
 
-    // Upload image to Firebase Storage
+  Future<void> _displayAndUploadImages() async {
+    for (XFile image in _images) {
+      String firebasePath = await _uploadImageToFirebase(image);
+      _firebaseStoragePaths.add(firebasePath);
+    }
+
+    setState(() {
+      _displayImages = true;
+    });
+  }
+
+  Future<String> _uploadImageToFirebase(XFile image) async {
     try {
-      Uint8List data = await _image!.readAsBytes();
+      Uint8List data = await image.readAsBytes();
       final metadata = firebase_storage.SettableMetadata(
-        contentType: 'image/jpeg', // Set content type explicitly as image/jpeg
+        contentType: 'image/jpeg',
       );
+      String firebasePath = 'uploads/${Path.basename(image.path)}';
       await firebase_storage.FirebaseStorage.instance
-          .ref('uploads/${Path.basename(_image!.path)}')
+          .ref(firebasePath)
           .putData(data, metadata);
 
       print('Image uploaded to Firebase Storage successfully');
+      return firebasePath;
     } catch (e) {
       print('Image upload failed with error: $e');
+      return '';
     }
+  }
+
+  Future<void> _discardImages() async {
+    if (_displayImages) {
+      for (String path in _firebaseStoragePaths) {
+        await firebase_storage.FirebaseStorage.instance.ref(path).delete();
+      }
+    }
+
+    setState(() {
+      _images = [];
+      _displayImages = false;
+      _firebaseStoragePaths = [];
+    });
+  }
+
+  void _discardSingleImage(int index) {
+    setState(() {
+      _images.removeAt(index);
+    });
+  }
+
+  void _showImageDialog(String imagePath) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            contentPadding: EdgeInsets.all(0),
+            content: Stack(
+              children: <Widget>[
+                kIsWeb ? Image.network(imagePath) : Image.file(File(imagePath)),
+                Positioned(
+                  right: 0,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: CircleAvatar(
+                        radius: 14,
+                        backgroundColor: Colors.white,
+                        child: Icon(Icons.close, color: Colors.red),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 
   @override
@@ -54,15 +123,65 @@ class _GlistPageState extends State<GlistPage> {
               style: TextStyle(fontSize: 20),
             ),
             ElevatedButton(
-              onPressed: _pickImage,
-              child: Text('Select Image'),
+              onPressed: _pickImages,
+              child: Text('Select Images'),
             ),
-            if (_image != null)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: kIsWeb
-                    ? Image.network(_image!.path)
-                    : Image.file(File(_image!.path)),
+            ElevatedButton(
+              onPressed: _displayAndUploadImages,
+              child: Text('Display'),
+            ),
+            if (_displayImages)
+              ElevatedButton(
+                onPressed: _discardImages,
+                child: Text('Discard'),
+              ),
+            if (!_displayImages)
+              Container(
+                height: 150, // adjust as needed
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _images.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: 120, // adjust as needed
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () =>
+                                  _showImageDialog(_images[index].path),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: kIsWeb
+                                    ? Image.network(_images[index].path,
+                                        width: 100.0)
+                                    : Image.file(File(_images[index].path),
+                                        width: 100.0),
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () => _discardSingleImage(index),
+                            icon: Icon(Icons.delete, color: Colors.red),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            if (_displayImages)
+              Expanded(
+                child: ListView.builder(
+                    itemCount: _images.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: kIsWeb
+                            ? Image.network(_images[index].path)
+                            : Image.file(File(_images[index].path)),
+                      );
+                    }),
               ),
           ],
         ),

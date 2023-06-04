@@ -32,6 +32,12 @@ class _RecipeFormState extends State<RecipeForm> {
   final _formKey = GlobalKey<FormState>();
   final _ingredientsFormKey = GlobalKey<FormState>();
   final NewRecipe _newRecipe = NewRecipe();
+  // Dispose of the selected image
+  void _deleteImage() {
+    setState(() {
+      _newRecipe.image = null;
+    });
+  }
 
 // For selecting an image from the user's device
   Future<void> _pickImage() async {
@@ -108,11 +114,21 @@ class _RecipeFormState extends State<RecipeForm> {
               // Continue with other fields in similar way: description, portionSize, steps, etc.
               // ...
 
-              // Image picker button
-              ElevatedButton(
-                onPressed: _pickImage,
-                child: const Text('Select Image'),
+              // Image picker and delete image buttons
+              Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: _pickImage,
+                    child: const Text('Select Image'),
+                  ),
+                  const SizedBox(width: 8.0),
+                  ElevatedButton(
+                    onPressed: _deleteImage,
+                    child: Icon(Icons.delete),
+                  ),
+                ],
               ),
+
               // Submit button
               ElevatedButton(
                 onPressed: () async {

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'recipeLayout.dart';
 
 Future<List<Recipe>> fetchRecipes() async {
@@ -18,6 +19,27 @@ Future<List<Recipe>> fetchRecipes() async {
   }).toList();
 }
 
-Future<void> deleteRecipe(String id) async {
-  await FirebaseFirestore.instance.collection('recipes').doc(id).delete();
+Future<void> deleteImage(String imageUrl) async {
+  final Reference firebaseStorageRef =
+      FirebaseStorage.instance.refFromURL(imageUrl);
+
+  try {
+    await firebaseStorageRef.delete();
+  } catch (e) {
+    // e.g, e might be that the file didn't exist, wasn't reachable, etc.
+    print(e);
+  }
+}
+
+Future<void> deleteRecipe(Recipe recipe) async {
+  // Delete the images from Firebase Storage
+  for (var url in recipe.imageUrls) {
+    await deleteImage(url);
+  }
+
+  // Delete the recipe document from Firestore
+  await FirebaseFirestore.instance
+      .collection('recipes')
+      .doc(recipe.id)
+      .delete();
 }
