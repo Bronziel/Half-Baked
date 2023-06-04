@@ -71,6 +71,12 @@ class _GlistPageState extends State<GlistPage> {
     });
   }
 
+  void _discardSingleImage(int index) {
+    setState(() {
+      _images.removeAt(index);
+    });
+  }
+
   void _showImageDialog(String imagePath) {
     showDialog(
         context: context,
@@ -124,23 +130,45 @@ class _GlistPageState extends State<GlistPage> {
               onPressed: _displayAndUploadImages,
               child: Text('Display'),
             ),
-            ElevatedButton(
-              onPressed: _discardImages,
-              child: Text('Discard'),
-            ),
+            if (_displayImages)
+              ElevatedButton(
+                onPressed: _discardImages,
+                child: Text('Discard'),
+              ),
             if (!_displayImages)
-              Row(
-                children: _images
-                    .map((image) => GestureDetector(
-                          onTap: () => _showImageDialog(image.path),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: kIsWeb
-                                ? Image.network(image.path, width: 100.0)
-                                : Image.file(File(image.path), width: 100.0),
+              Container(
+                height: 150, // adjust as needed
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _images.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: 120, // adjust as needed
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () =>
+                                  _showImageDialog(_images[index].path),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: kIsWeb
+                                    ? Image.network(_images[index].path,
+                                        width: 100.0)
+                                    : Image.file(File(_images[index].path),
+                                        width: 100.0),
+                              ),
+                            ),
                           ),
-                        ))
-                    .toList(),
+                          IconButton(
+                            onPressed: () => _discardSingleImage(index),
+                            icon: Icon(Icons.delete, color: Colors.red),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
             if (_displayImages)
               Expanded(
