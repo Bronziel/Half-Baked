@@ -5,6 +5,9 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path/path.dart' as Path;
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
+
+import 'CookTimeBox.dart';
 
 class NewRecipe {
   String title = '';
@@ -16,7 +19,7 @@ class NewRecipe {
   List<String> equipment = []; // new field
   List<Map<String, dynamic>> ingredients =
       []; // updated to dynamic to include units
-  XFile? image;
+  List<XFile>? images; // updated to support multiple images
 }
 
 class RecipeForm extends StatefulWidget {
@@ -35,46 +38,51 @@ class _RecipeFormState extends State<RecipeForm> {
   // Dispose of the selected image
   void _deleteImage() {
     setState(() {
-      _newRecipe.image = null;
+      _newRecipe.images = null;
     });
   }
 
-// For selecting an image from the user's device
-  Future<void> _pickImage() async {
+// For selecting multiple images from the user's device
+  Future<void> _pickImages() async {
     final ImagePicker _picker = ImagePicker();
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    final List<XFile>? images = await _picker.pickMultiImage();
 
     setState(() {
-      _newRecipe.image = image;
+      _newRecipe.images = images;
     });
   }
 
-  Future<String> _uploadImageToFirebase(XFile imageFile) async {
-    String fileName = Path.basename(imageFile.path);
-    Uint8List data = await imageFile.readAsBytes();
+  Future<List<String>> _uploadImagesToFirebase(List<XFile> images) async {
+    List<String> imageUrls = [];
+    for (var imageFile in images) {
+      String fileName = Path.basename(imageFile.path);
+      Uint8List data = await imageFile.readAsBytes();
 
-    final metadata = firebase_storage.SettableMetadata(
-      contentType: 'image/jpeg', // Set content type explicitly as image/jpeg
-    );
+      final metadata = firebase_storage.SettableMetadata(
+        contentType: 'image/jpeg', // Set content type explicitly as image/jpeg
+      );
 
-    firebase_storage.Reference ref =
-        firebase_storage.FirebaseStorage.instance.ref('/images/$fileName');
+      firebase_storage.Reference ref =
+          firebase_storage.FirebaseStorage.instance.ref('/images/$fileName');
 
-    firebase_storage.UploadTask uploadTask = ref.putData(data, metadata);
-    await uploadTask;
+      firebase_storage.UploadTask uploadTask = ref.putData(data, metadata);
+      await uploadTask;
 
-    return await ref.getDownloadURL();
+      String imageUrl = await ref.getDownloadURL();
+      imageUrls.add(imageUrl);
+    }
+    return imageUrls;
   }
 
   Future<void> _uploadRecipeToFirestore(
-      NewRecipe recipe, String imageUrl) async {
+      NewRecipe recipe, List<String> imageUrls) async {
     await FirebaseFirestore.instance.collection('recipes').add({
       'title': recipe.title,
       'description': recipe.description,
       'portionSize': recipe.portionSize,
       'steps': recipe.steps,
       'ingredients': recipe.ingredients,
-      'imageUrls': [imageUrl],
+      'imageUrls': imageUrls, // updated to pass a list of URLs
       'prepTime': recipe.prepTime,
       'totalTime': recipe.totalTime,
       'equipment': recipe.equipment,
@@ -115,18 +123,13 @@ class _RecipeFormState extends State<RecipeForm> {
               // ...
 
               // Image picker and delete image buttons
-              Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: _pickImage,
-                    child: const Text('Select Image'),
-                  ),
-                  const SizedBox(width: 8.0),
-                  ElevatedButton(
-                    onPressed: _deleteImage,
-                    child: Icon(Icons.delete),
-                  ),
-                ],
+              ImagePickerWidget(
+                onImagesPicked: (images) {
+                  setState(() {
+                    _newRecipe.images = images;
+                  });
+                },
+                initialImages: _newRecipe.images,
               ),
 
               // Submit button
@@ -136,17 +139,26 @@ class _RecipeFormState extends State<RecipeForm> {
                       _ingredientsFormKey.currentState!.validate()) {
                     _formKey.currentState!.save();
                     _ingredientsFormKey.currentState!.save();
-                    String imageUrl = '';
-                    if (_newRecipe.image != null) {
-                      imageUrl =
-                          await _uploadImageToFirebase(_newRecipe.image!);
+                    List<String> imageUrls = [];
+                    if (_newRecipe.images != null &&
+                        _newRecipe.images!.isNotEmpty) {
+                      imageUrls =
+                          await _uploadImagesToFirebase(_newRecipe.images!);
                     }
-                    await _uploadRecipeToFirestore(_newRecipe, imageUrl);
+                    await _uploadRecipeToFirestore(_newRecipe, imageUrls);
                     Navigator.pop(context); // close the form
                     widget.onRecipeSaved(); // notify that recipe has been saved
                   }
                 },
                 child: const Text('Submit Recipe'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    _newRecipe.images = [];
+                  });
+                },
+                child: Icon(Icons.delete),
               ),
             ],
           ),
@@ -156,318 +168,139 @@ class _RecipeFormState extends State<RecipeForm> {
   }
 }
 
-class CookTimeBox extends StatelessWidget {
-  const CookTimeBox({
+class ImagePickerWidget extends StatefulWidget {
+  final ValueChanged<List<XFile>?> onImagesPicked;
+  final List<XFile>? initialImages;
+
+  const ImagePickerWidget({
     Key? key,
-    required this.newRecipe,
+    required this.onImagesPicked,
+    this.initialImages,
   }) : super(key: key);
 
-  final NewRecipe newRecipe;
-
   @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Flexible(
-          child: TextFormField(
-            keyboardType: TextInputType.number,
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly
-            ],
-            decoration: const InputDecoration(hintText: 'Prep Time (min)'),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a prep time';
-              }
-              return null;
-            },
-            onSaved: (value) {
-              if (value != null && value.isNotEmpty) {
-                newRecipe.prepTime = int.parse(value);
-              }
-            },
-          ),
-        ),
-        const SizedBox(width: 8.0),
-        Flexible(
-          child: TextFormField(
-            keyboardType: TextInputType.number,
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly
-            ],
-            decoration: const InputDecoration(hintText: 'Total Time (min)'),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a total time';
-              }
-              return null;
-            },
-            onSaved: (value) {
-              if (value != null && value.isNotEmpty) {
-                newRecipe.totalTime = int.parse(value);
-              }
-            },
-          ),
-        ),
-      ],
-    );
-  }
+  _ImagePickerWidgetState createState() => _ImagePickerWidgetState();
 }
 
-class EquipmentBox extends StatelessWidget {
-  const EquipmentBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
-  final NewRecipe newRecipe;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(hintText: 'Enter equipment (one per line)'),
-      maxLines: null,
-      keyboardType: TextInputType.multiline,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter at least one equipment';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        newRecipe.equipment = value!.split('\n');
-      },
-    );
-  }
-}
-
-class StepsBox extends StatelessWidget {
-  const StepsBox({
-    Key? key,
-    required NewRecipe newRecipe,
-  })  : _newRecipe = newRecipe,
-        super(key: key);
-
-  final NewRecipe _newRecipe;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(hintText: 'Enter steps (one per line)'),
-      maxLines: null,
-      keyboardType: TextInputType.multiline,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter at least one step';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        _newRecipe.steps = value!.split('\n');
-      },
-    );
-  }
-}
-
-class PortionsizeBox extends StatelessWidget {
-  const PortionsizeBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
-  final NewRecipe newRecipe;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-      decoration: const InputDecoration(hintText: 'Enter portion size'),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter a portion size';
-        }
-        return null;
-      },
-      onSaved: (value) => newRecipe.portionSize = int.parse(value ?? '0'),
-    );
-  }
-}
-
-class DescriptionBox extends StatelessWidget {
-  const DescriptionBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
-  final NewRecipe newRecipe;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: const InputDecoration(hintText: 'Enter description'),
-      maxLines: null, // Allow multiple lines
-      keyboardType: TextInputType.multiline, // Enable multiline input
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter a description';
-        }
-        return null;
-      },
-      onSaved: (value) => newRecipe.description = value!,
-    );
-  }
-}
-
-class TitelBox extends StatelessWidget {
-  const TitelBox({
-    super.key,
-    required NewRecipe newRecipe,
-  }) : _newRecipe = newRecipe;
-
-  final NewRecipe _newRecipe;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: const InputDecoration(hintText: 'Enter recipe title'),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter a title';
-        }
-        return null;
-      },
-      onSaved: (value) => _newRecipe.title = value!,
-    );
-  }
-}
-
-class IngredientsBox extends StatefulWidget {
-  const IngredientsBox({
-    Key? key,
-    required this.newRecipe,
-    required this.formKey,
-  }) : super(key: key);
-
-  final NewRecipe newRecipe;
-  final GlobalKey<FormState> formKey;
-
-  @override
-  _IngredientsBoxState createState() => _IngredientsBoxState();
-}
-
-class _IngredientsBoxState extends State<IngredientsBox> {
-  List<Map<String, dynamic>> _ingredients = [];
-  List<Widget> _ingredientWidgets = [];
-
-  void _addIngredient() {
-    Map<String, dynamic> newIngredient = {'name': '', 'amount': '', 'unit': ''};
-    _ingredients.add(newIngredient);
-
-    setState(() {
-      _ingredientWidgets.add(
-        Row(
-          children: [
-            Flexible(
-              child: TextFormField(
-                decoration: InputDecoration(hintText: 'Enter ingredient name'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter an ingredient name';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  newIngredient['name'] = value!;
-                  widget.newRecipe.ingredients = _ingredients;
-                },
-              ),
-            ),
-            SizedBox(width: 8.0),
-            Flexible(
-              child: TextFormField(
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly
-                ],
-                decoration:
-                    InputDecoration(hintText: 'Enter ingredient amount'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter an ingredient amount';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  if (value != null && value.isNotEmpty) {
-                    newIngredient['amount'] = int.parse(value);
-                  }
-                },
-              ),
-            ),
-            SizedBox(width: 8.0),
-            Flexible(
-              child: TextFormField(
-                decoration: InputDecoration(hintText: 'Enter ingredient unit'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter an ingredient unit';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  newIngredient['unit'] = value!;
-                  widget.newRecipe.ingredients = _ingredients;
-                },
-              ),
-            ),
-            ElevatedButton(
-              onPressed: _addIngredient,
-              child: Text('Add another ingredient'),
-            ),
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  _ingredients.remove(newIngredient);
-                  _ingredientWidgets.removeLast();
-                });
-              },
-              icon: Icon(Icons.delete),
-            ),
-          ],
-        ),
-      );
-    });
-  }
+class _ImagePickerWidgetState extends State<ImagePickerWidget> {
+  List<XFile>? _images;
 
   @override
   void initState() {
     super.initState();
+    _images = widget.initialImages;
+  }
 
-    // Start with one ingredient
-    _addIngredient();
+  Future<void> _pickImages() async {
+    final ImagePicker _picker = ImagePicker();
+    final List<XFile>? images = await _picker.pickMultiImage();
+
+    setState(() {
+      _images = images;
+    });
+
+    widget.onImagesPicked(_images);
+  }
+
+  void _deleteImages() {
+    setState(() {
+      _images = null;
+    });
+
+    widget.onImagesPicked(_images);
+  }
+
+  void _discardSingleImage(int index) {
+    setState(() {
+      _images!.removeAt(index);
+    });
+    widget.onImagesPicked(_images);
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SingleChildScrollView(
-          child: Form(
-            key: widget.formKey,
-            child: Column(children: _ingredientWidgets),
+        Row(
+          children: [
+            ElevatedButton(
+              onPressed: _pickImages,
+              child: const Text('Select Image'),
+            ),
+            const SizedBox(width: 8.0),
+            ElevatedButton(
+              onPressed: _deleteImages,
+              child: const Icon(Icons.delete),
+            ),
+          ],
+        ),
+        Container(
+          height: 150, // adjust as needed
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: _images?.length ?? 0,
+            itemBuilder: (context, index) {
+              return Container(
+                width: 120, // adjust as needed
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () => showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                contentPadding: EdgeInsets.all(0),
+                                content: Stack(
+                                  children: <Widget>[
+                                    kIsWeb
+                                        ? Image.network(_images![index].path)
+                                        : Image.file(
+                                            File(_images![index].path),
+                                          ),
+                                    Positioned(
+                                      right: 0,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Align(
+                                          alignment: Alignment.topRight,
+                                          child: CircleAvatar(
+                                            radius: 14,
+                                            backgroundColor: Colors.white,
+                                            child: Icon(Icons.close,
+                                                color: Colors.red),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                          child: kIsWeb
+                              ? Image.network(_images![index].path,
+                                  width: 100.0)
+                              : Image.file(File(_images![index].path),
+                                  width: 100.0),
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => _discardSingleImage(index),
+                      icon: Icon(Icons.delete, color: Colors.red),
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
         ),
       ],
     );
-  }
-
-  @override
-  void dispose() {
-    // Save the ingredients to the recipe before disposing
-    widget.newRecipe.ingredients = _ingredients;
-    super.dispose();
   }
 }
