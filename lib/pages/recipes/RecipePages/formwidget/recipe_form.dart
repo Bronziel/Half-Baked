@@ -16,7 +16,7 @@ class NewRecipe {
   List<String> equipment = []; // new field
   List<Map<String, dynamic>> ingredients =
       []; // updated to dynamic to include units
-  XFile? image;
+  List<XFile>? images; // updated to support multiple images
 }
 
 class RecipeForm extends StatefulWidget {
@@ -35,46 +35,51 @@ class _RecipeFormState extends State<RecipeForm> {
   // Dispose of the selected image
   void _deleteImage() {
     setState(() {
-      _newRecipe.image = null;
+      _newRecipe.images = null;
     });
   }
 
-// For selecting an image from the user's device
-  Future<void> _pickImage() async {
+// For selecting multiple images from the user's device
+  Future<void> _pickImages() async {
     final ImagePicker _picker = ImagePicker();
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    final List<XFile>? images = await _picker.pickMultiImage();
 
     setState(() {
-      _newRecipe.image = image;
+      _newRecipe.images = images;
     });
   }
 
-  Future<String> _uploadImageToFirebase(XFile imageFile) async {
-    String fileName = Path.basename(imageFile.path);
-    Uint8List data = await imageFile.readAsBytes();
+  Future<List<String>> _uploadImagesToFirebase(List<XFile> images) async {
+    List<String> imageUrls = [];
+    for (var imageFile in images) {
+      String fileName = Path.basename(imageFile.path);
+      Uint8List data = await imageFile.readAsBytes();
 
-    final metadata = firebase_storage.SettableMetadata(
-      contentType: 'image/jpeg', // Set content type explicitly as image/jpeg
-    );
+      final metadata = firebase_storage.SettableMetadata(
+        contentType: 'image/jpeg', // Set content type explicitly as image/jpeg
+      );
 
-    firebase_storage.Reference ref =
-        firebase_storage.FirebaseStorage.instance.ref('/images/$fileName');
+      firebase_storage.Reference ref =
+          firebase_storage.FirebaseStorage.instance.ref('/images/$fileName');
 
-    firebase_storage.UploadTask uploadTask = ref.putData(data, metadata);
-    await uploadTask;
+      firebase_storage.UploadTask uploadTask = ref.putData(data, metadata);
+      await uploadTask;
 
-    return await ref.getDownloadURL();
+      String imageUrl = await ref.getDownloadURL();
+      imageUrls.add(imageUrl);
+    }
+    return imageUrls;
   }
 
   Future<void> _uploadRecipeToFirestore(
-      NewRecipe recipe, String imageUrl) async {
+      NewRecipe recipe, List<String> imageUrls) async {
     await FirebaseFirestore.instance.collection('recipes').add({
       'title': recipe.title,
       'description': recipe.description,
       'portionSize': recipe.portionSize,
       'steps': recipe.steps,
       'ingredients': recipe.ingredients,
-      'imageUrls': [imageUrl],
+      'imageUrls': imageUrls, // updated to pass a list of URLs
       'prepTime': recipe.prepTime,
       'totalTime': recipe.totalTime,
       'equipment': recipe.equipment,
@@ -118,7 +123,7 @@ class _RecipeFormState extends State<RecipeForm> {
               Row(
                 children: [
                   ElevatedButton(
-                    onPressed: _pickImage,
+                    onPressed: _pickImages,
                     child: const Text('Select Image'),
                   ),
                   const SizedBox(width: 8.0),
@@ -136,17 +141,26 @@ class _RecipeFormState extends State<RecipeForm> {
                       _ingredientsFormKey.currentState!.validate()) {
                     _formKey.currentState!.save();
                     _ingredientsFormKey.currentState!.save();
-                    String imageUrl = '';
-                    if (_newRecipe.image != null) {
-                      imageUrl =
-                          await _uploadImageToFirebase(_newRecipe.image!);
+                    List<String> imageUrls = [];
+                    if (_newRecipe.images != null &&
+                        _newRecipe.images!.isNotEmpty) {
+                      imageUrls =
+                          await _uploadImagesToFirebase(_newRecipe.images!);
                     }
-                    await _uploadRecipeToFirestore(_newRecipe, imageUrl);
+                    await _uploadRecipeToFirestore(_newRecipe, imageUrls);
                     Navigator.pop(context); // close the form
                     widget.onRecipeSaved(); // notify that recipe has been saved
                   }
                 },
                 child: const Text('Submit Recipe'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    _newRecipe.images = [];
+                  });
+                },
+                child: Icon(Icons.delete),
               ),
             ],
           ),
