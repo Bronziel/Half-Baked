@@ -73,7 +73,13 @@ flutter:
     - images/
     - images/icons/bestick.png
     - images/SvgMainLogo/
+  fonts:
+    - family: CustomFont
+      fonts:
+        - asset: fonts/BakedFont.otf
+
   #   - images/a_dot_ham.jpeg
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
