@@ -151,6 +151,13 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
               ),
               const SizedBox(height: 16),
               const Text(
+                'Equipment:',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              for (final equipmentItem in widget.recipe.equipment)
+                Text(equipmentItem),
+              const SizedBox(height: 16),
+              const Text(
                 'Ingredients:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
@@ -158,13 +165,6 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                 Text(
                   '${ingredient['name']} - ${ingredient['amount']}${ingredient['unit']}',
                 ),
-              const SizedBox(height: 16),
-              const Text(
-                'Equipment:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              for (final equipmentItem in widget.recipe.equipment)
-                Text(equipmentItem),
               const SizedBox(height: 16),
               const Text(
                 'Steps:',
