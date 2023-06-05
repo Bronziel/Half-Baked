@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../recipeLayout.dart';
+import '../../../visualview/appbar/customappbar.dart';
 
 class RecipeDetailsPage extends StatefulWidget {
   final Recipe recipe;
@@ -49,7 +50,8 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text(widget.recipe.title))),
+      appBar: const CustomAppBar(
+          title: 'Half Baked', color: Color.fromARGB(255, 97, 89, 100)),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
