@@ -137,11 +137,6 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                 style:
                     const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 16),
-              const Text(
-                'Description:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
               const SizedBox(height: 8),
               Text(
                 widget.recipe.description,
