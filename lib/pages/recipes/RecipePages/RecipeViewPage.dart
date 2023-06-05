@@ -56,6 +56,24 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                widget.recipe.title,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Description:',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                widget.recipe.description,
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(height: 16),
               CarouselSlider.builder(
                 itemCount: widget.recipe.imageUrls.length,
                 itemBuilder: (context, index, realIdx) {
@@ -100,24 +118,6 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                   );
                 }).toList(),
               ),
-              Text(
-                widget.recipe.title,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 16),
-              const Text(
-                'Description:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                widget.recipe.description,
-                style: const TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-              const SizedBox(height: 16),
               Text(
                 'Portion Size: ${widget.recipe.portionSize}',
                 style: const TextStyle(fontSize: 16),
