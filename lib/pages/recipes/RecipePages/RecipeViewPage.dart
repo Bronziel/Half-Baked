@@ -103,7 +103,7 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                 }).toList(),
               ),
               Card(
-                color: Colors.pink,
+                color: Color(0xFF9896F1),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
