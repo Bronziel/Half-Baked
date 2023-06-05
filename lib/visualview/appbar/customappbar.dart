@@ -14,7 +14,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         icon: Image.asset('images/icons/bestick.png'),
         onPressed: () => Navigator.of(context).pop(),
       ),
-      title: Text(title),
+      title: Text(
+        title,
+        style: TextStyle(
+          fontFamily: 'CustomFont', // Specify the custom font here
+          color: Color(0xFF9896F1), // And the color here
+        ),
+      ),
       backgroundColor: color ?? Theme.of(context).primaryColor,
     );
   }
