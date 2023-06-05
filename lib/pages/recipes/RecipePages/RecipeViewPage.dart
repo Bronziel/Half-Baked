@@ -118,9 +118,33 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                   );
                 }).toList(),
               ),
-              Text(
-                'Portion Size: ${widget.recipe.portionSize}',
-                style: const TextStyle(fontSize: 16),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          const Text('Portions'),
+                          Text('${widget.recipe.portionSize}'),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          const Text('Prep Time'),
+                          Text('${widget.recipe.prepTime} minutes'),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          const Text('Total Time'),
+                          Text('${widget.recipe.totalTime} minutes'),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
               const SizedBox(height: 16),
               const Text(
@@ -137,19 +161,6 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               for (final step in widget.recipe.steps) Text(step),
-              const SizedBox(height: 16),
-              const Text(
-                'CookingTime:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                'Preparation Time: ${widget.recipe.prepTime} minutes',
-                style: const TextStyle(fontSize: 16),
-              ),
-              Text(
-                'Total Time: ${widget.recipe.totalTime} minutes',
-                style: const TextStyle(fontSize: 16),
-              ),
               const SizedBox(height: 16),
               const Text(
                 'Equipment:',
