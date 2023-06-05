@@ -49,31 +49,13 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.recipe.title)),
+      appBar: AppBar(title: Center(child: Text(widget.recipe.title))),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                widget.recipe.title,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 16),
-              const Text(
-                'Description:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                widget.recipe.description,
-                style: const TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-              const SizedBox(height: 16),
               CarouselSlider.builder(
                 itemCount: widget.recipe.imageUrls.length,
                 itemBuilder: (context, index, realIdx) {
@@ -119,6 +101,7 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                 }).toList(),
               ),
               Card(
+                color: Colors.pink,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -147,6 +130,24 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                 ),
               ),
               const SizedBox(height: 16),
+              Text(
+                widget.recipe.title,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Description:',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                widget.recipe.description,
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(height: 16),
               const Text(
                 'Ingredients:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -157,17 +158,17 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                 ),
               const SizedBox(height: 16),
               const Text(
-                'Steps:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              for (final step in widget.recipe.steps) Text(step),
-              const SizedBox(height: 16),
-              const Text(
                 'Equipment:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               for (final equipmentItem in widget.recipe.equipment)
                 Text(equipmentItem),
+              const SizedBox(height: 16),
+              const Text(
+                'Steps:',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              for (final step in widget.recipe.steps) Text(step),
             ],
           ),
         ),
