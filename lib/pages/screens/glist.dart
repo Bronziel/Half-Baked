@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:path/path.dart' as Path;
+import 'package:carousel_slider/carousel_slider.dart';
 
 class GlistPage extends StatefulWidget {
   @override
@@ -15,6 +16,8 @@ class _GlistPageState extends State<GlistPage> {
   List<XFile> _images = [];
   bool _displayImages = false;
   List<String> _firebaseStoragePaths = [];
+  int _current = 0;
+  final CarouselController _controller = CarouselController();
 
   Future<void> _pickImages() async {
     final ImagePicker _picker = ImagePicker();
@@ -29,8 +32,8 @@ class _GlistPageState extends State<GlistPage> {
 
   Future<void> _displayAndUploadImages() async {
     for (XFile image in _images) {
-      String firebasePath = await _uploadImageToFirebase(image);
-      _firebaseStoragePaths.add(firebasePath);
+      String firebaseUrl = await _uploadImageToFirebase(image);
+      _firebaseStoragePaths.add(firebaseUrl);
     }
 
     setState(() {
@@ -49,8 +52,13 @@ class _GlistPageState extends State<GlistPage> {
           .ref(firebasePath)
           .putData(data, metadata);
 
+      // Fetch the download URL of the uploaded image
+      String downloadURL = await firebase_storage.FirebaseStorage.instance
+          .ref(firebasePath)
+          .getDownloadURL();
+
       print('Image uploaded to Firebase Storage successfully');
-      return firebasePath;
+      return downloadURL;
     } catch (e) {
       print('Image upload failed with error: $e');
       return '';
@@ -59,8 +67,10 @@ class _GlistPageState extends State<GlistPage> {
 
   Future<void> _discardImages() async {
     if (_displayImages) {
-      for (String path in _firebaseStoragePaths) {
-        await firebase_storage.FirebaseStorage.instance.ref(path).delete();
+      for (String url in _firebaseStoragePaths) {
+        await firebase_storage.FirebaseStorage.instance
+            .refFromURL(url)
+            .delete();
       }
     }
 
@@ -171,17 +181,50 @@ class _GlistPageState extends State<GlistPage> {
                 ),
               ),
             if (_displayImages)
-              Expanded(
-                child: ListView.builder(
-                    itemCount: _images.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: kIsWeb
-                            ? Image.network(_images[index].path)
-                            : Image.file(File(_images[index].path)),
+              Column(
+                children: [
+                  CarouselSlider.builder(
+                    itemCount: _firebaseStoragePaths.length,
+                    itemBuilder: (context, index, realIdx) {
+                      return Image.network(_firebaseStoragePaths[index]);
+                    },
+                    options: CarouselOptions(
+                      height: 400,
+                      viewportFraction: 1.0,
+                      enlargeCenterPage: false,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          _current = index;
+                        });
+                      },
+                    ),
+                    carouselController: _controller,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:
+                        _firebaseStoragePaths.asMap().entries.map((entry) {
+                      return GestureDetector(
+                        onTap: () => _controller.animateToPage(entry.key),
+                        child: Container(
+                          width: 50.0,
+                          height: 50.0,
+                          margin: EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 4.0),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: _current == entry.key
+                                  ? Colors.purple
+                                  : Colors.transparent,
+                              width: 2.0,
+                            ),
+                          ),
+                          child: Image.network(entry.value, fit: BoxFit.cover),
+                        ),
                       );
-                    }),
+                    }).toList(),
+                  ),
+                ],
               ),
           ],
         ),
