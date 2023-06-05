@@ -95,7 +95,7 @@ class _GlistPageState extends State<GlistPage> {
             contentPadding: EdgeInsets.all(0),
             content: Stack(
               children: <Widget>[
-                kIsWeb ? Image.network(imagePath) : Image.file(File(imagePath)),
+                Image.network(imagePath),
                 Positioned(
                   right: 0,
                   child: GestureDetector(
@@ -186,7 +186,11 @@ class _GlistPageState extends State<GlistPage> {
                   CarouselSlider.builder(
                     itemCount: _firebaseStoragePaths.length,
                     itemBuilder: (context, index, realIdx) {
-                      return Image.network(_firebaseStoragePaths[index]);
+                      return GestureDetector(
+                        onTap: () =>
+                            _showImageDialog(_firebaseStoragePaths[index]),
+                        child: Image.network(_firebaseStoragePaths[index]),
+                      );
                     },
                     options: CarouselOptions(
                       height: 400,
