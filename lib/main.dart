@@ -6,6 +6,8 @@ import 'pages/screens/glist.dart';
 import 'pages/recipes/RecipePages/recipelistpage.dart';
 import 'visualview/themes.dart';
 
+import 'pages/screens/loading.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -39,6 +41,11 @@ class LandingPage extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: LoadingPageButton(),
+          ),
+          SizedBox(height: 16.0),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: GlistButton(),
           ),
           SizedBox(height: 16.0),
@@ -48,6 +55,38 @@ class LandingPage extends StatelessWidget {
           ),
           SizedBox(height: 16.0),
         ],
+      ),
+    );
+  }
+}
+
+class LoadingPageButton extends StatelessWidget {
+  final String buttonText;
+  final Color buttonColor;
+
+  const LoadingPageButton({
+    Key? key,
+    this.buttonText = 'Loading',
+    this.buttonColor = const Color.fromARGB(255, 189, 12, 225),
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => LoadingPage()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(16.0),
+        minimumSize: const Size(double.infinity, 64.0),
+        backgroundColor: buttonColor,
+      ),
+      child: Text(
+        buttonText,
+        style: const TextStyle(fontSize: 36, color: Colors.white),
       ),
     );
   }
