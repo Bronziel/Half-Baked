@@ -11,18 +11,18 @@ import '../../recipes/getrecipe.dart';
 import '../../recipes/recipeLayout.dart';
 import 'EditClass.dart';
 import 'EditImage.dart';
+import '../../../visualview/appbar/customappbar.dart';
 
 class NewRecipe {
   String title = '';
   String description = '';
   int portionSize = 1;
-  int prepTime = 0; // new field
-  int totalTime = 0; // new field
+  int prepTime = 0;
+  int totalTime = 0;
   List<String> steps = [];
-  List<String> equipment = []; // new field
-  List<Map<String, dynamic>> ingredients =
-      []; // updated to dynamic to include units
-  List<XFile>? images; // updated to support multiple images
+  List<String> equipment = [];
+  List<Map<String, dynamic>> ingredients = [];
+  List<XFile>? images;
 }
 
 class EditRecipeForm extends StatefulWidget {
@@ -40,14 +40,31 @@ class _EditRecipeFormState extends State<EditRecipeForm> {
   final _formKey = GlobalKey<FormState>();
   final _ingredientsFormKey = GlobalKey<FormState>();
   final NewRecipe _newRecipe = NewRecipe();
-  // Dispose of the selected image
+  final firebase_storage.FirebaseStorage storage =
+      firebase_storage.FirebaseStorage.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.recipe != null) {
+      _newRecipe.title = widget.recipe!.title;
+      _newRecipe.description = widget.recipe!.description;
+      _newRecipe.portionSize = widget.recipe!.portionSize;
+      _newRecipe.prepTime = widget.recipe!.prepTime;
+      _newRecipe.totalTime = widget.recipe!.totalTime;
+      _newRecipe.steps = List<String>.from(widget.recipe!.steps);
+      _newRecipe.equipment = List<String>.from(widget.recipe!.equipment);
+      _newRecipe.ingredients =
+          List<Map<String, dynamic>>.from(widget.recipe!.ingredients);
+    }
+  }
+
   void _deleteImage() {
     setState(() {
       _newRecipe.images = null;
     });
   }
 
-// For selecting multiple images from the user's device
   Future<void> _pickImages() async {
     final ImagePicker _picker = ImagePicker();
     final List<XFile>? images = await _picker.pickMultiImage();
@@ -64,12 +81,10 @@ class _EditRecipeFormState extends State<EditRecipeForm> {
       Uint8List data = await imageFile.readAsBytes();
 
       final metadata = firebase_storage.SettableMetadata(
-        contentType: 'image/jpeg', // Set content type explicitly as image/jpeg
+        contentType: 'image/jpeg',
       );
 
-      firebase_storage.Reference ref =
-          firebase_storage.FirebaseStorage.instance.ref('/images/$fileName');
-
+      firebase_storage.Reference ref = storage.ref('/images/$fileName');
       firebase_storage.UploadTask uploadTask = ref.putData(data, metadata);
       await uploadTask;
 
@@ -81,91 +96,102 @@ class _EditRecipeFormState extends State<EditRecipeForm> {
 
   Future<void> _uploadRecipeToFirestore(
       NewRecipe recipe, List<String> imageUrls) async {
-    await FirebaseFirestore.instance.collection('recipes').add({
-      'title': recipe.title,
-      'description': recipe.description,
-      'portionSize': recipe.portionSize,
-      'steps': recipe.steps,
-      'ingredients': recipe.ingredients,
-      'imageUrls': imageUrls, // updated to pass a list of URLs
-      'prepTime': recipe.prepTime,
-      'totalTime': recipe.totalTime,
-      'equipment': recipe.equipment,
-    });
+    CollectionReference recipes =
+        FirebaseFirestore.instance.collection('recipes');
+    if (widget.recipe == null) {
+      // creating new recipe
+      await recipes.add({
+        'title': recipe.title,
+        'description': recipe.description,
+        'portionSize': recipe.portionSize,
+        'steps': recipe.steps,
+        'ingredients': recipe.ingredients,
+        'imageUrls': imageUrls,
+        'prepTime': recipe.prepTime,
+        'totalTime': recipe.totalTime,
+        'equipment': recipe.equipment,
+      });
+    } else {
+      // updating existing recipe
+      await recipes.doc(widget.recipe!.id).update({
+        'title': recipe.title,
+        'description': recipe.description,
+        'portionSize': recipe.portionSize,
+        'steps': recipe.steps,
+        'ingredients': recipe.ingredients,
+        'imageUrls': imageUrls,
+        'prepTime': recipe.prepTime,
+        'totalTime': recipe.totalTime,
+        'equipment': recipe.equipment,
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(8.0),
-      child: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: [
-                  Flexible(child: EditTitelBox(newRecipe: _newRecipe)),
-                  const SizedBox(width: 16.0),
-                  Flexible(child: EditPortionsizeBox(newRecipe: _newRecipe)),
-                ],
-              ),
-              const SizedBox(height: 16.0),
-              CookTimeBox(newRecipe: _newRecipe),
-              const SizedBox(height: 16.0),
-              EditDescriptionBox(newRecipe: _newRecipe),
-              const SizedBox(height: 16.0),
-              EditEquipmentBox(newRecipe: _newRecipe),
-              const SizedBox(height: 16.0),
-              EditStepsBox(newRecipe: _newRecipe),
-              const SizedBox(height: 16.0),
-              EditIngredientsBox(
-                newRecipe: _newRecipe,
-                formKey: _ingredientsFormKey,
-              ),
-
-              // Continue with other fields in similar way: description, portionSize, steps, etc.
-              // ...
-
-              // Image picker and delete image buttons
-              ImagePickerWidget(
-                onImagesPicked: (images) {
-                  setState(() {
-                    _newRecipe.images = images;
-                  });
-                },
-                initialImages: _newRecipe.images,
-              ),
-
-              // Submit button
-              ElevatedButton(
-                onPressed: () async {
-                  if (_formKey.currentState!.validate() &&
-                      _ingredientsFormKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    _ingredientsFormKey.currentState!.save();
-                    List<String> imageUrls = [];
-                    if (_newRecipe.images != null &&
-                        _newRecipe.images!.isNotEmpty) {
-                      imageUrls =
-                          await _uploadImagesToFirebase(_newRecipe.images!);
+    return Scaffold(
+      appBar: const CustomAppBar(
+          title: 'Edit Recipe', color: Color.fromARGB(255, 97, 89, 100)),
+      body: Container(
+        padding: EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: [
+                    Flexible(child: EditTitelBox(newRecipe: _newRecipe)),
+                    const SizedBox(width: 16.0),
+                    Flexible(child: EditPortionsizeBox(newRecipe: _newRecipe)),
+                  ],
+                ),
+                const SizedBox(height: 16.0),
+                CookTimeBox(newRecipe: _newRecipe),
+                const SizedBox(height: 16.0),
+                EditDescriptionBox(newRecipe: _newRecipe),
+                const SizedBox(height: 16.0),
+                EditEquipmentBox(newRecipe: _newRecipe),
+                const SizedBox(height: 16.0),
+                EditStepsBox(newRecipe: _newRecipe),
+                const SizedBox(height: 16.0),
+                EditIngredientsBox(
+                  newRecipe: _newRecipe,
+                  formKey: _ingredientsFormKey,
+                ),
+                ImagePickerWidget(
+                  onImagesPicked: (images) {
+                    setState(() {
+                      _newRecipe.images = images;
+                    });
+                  },
+                  initialImages: _newRecipe.images,
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate() &&
+                        _ingredientsFormKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                      _ingredientsFormKey.currentState!.save();
+                      List<String> imageUrls = [];
+                      if (_newRecipe.images != null &&
+                          _newRecipe.images!.isNotEmpty) {
+                        imageUrls =
+                            await _uploadImagesToFirebase(_newRecipe.images!);
+                      }
+                      await _uploadRecipeToFirestore(_newRecipe, imageUrls);
+                      Navigator.pop(context);
+                      widget.onRecipeSaved();
                     }
-                    await _uploadRecipeToFirestore(_newRecipe, imageUrls);
-                    Navigator.pop(context); // close the form
-                    widget.onRecipeSaved(); // notify that recipe has been saved
-                  }
-                },
-                child: const Text('Submit Recipe'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    _newRecipe.images = [];
-                  });
-                },
-                child: Icon(Icons.delete),
-              ),
-            ],
+                  },
+                  child: const Text('Submit Recipe'),
+                ),
+                ElevatedButton(
+                  onPressed: _deleteImage,
+                  child: Icon(Icons.delete),
+                ),
+              ],
+            ),
           ),
         ),
       ),
