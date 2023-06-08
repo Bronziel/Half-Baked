@@ -1,0 +1,53 @@
+  // Dispose of the selected image
+  void _deleteImage() {
+    setState(() {
+      _newRecipe.images = null;
+    });
+  }
+
+// For selecting multiple images from the user's device
+  Future<void> _pickImages() async {
+    final ImagePicker _picker = ImagePicker();
+    final List<XFile>? images = await _picker.pickMultiImage();
+
+    setState(() {
+      _newRecipe.images = images;
+    });
+  }
+
+  Future<List<String>> _uploadImagesToFirebase(List<XFile> images) async {
+    List<String> imageUrls = [];
+    for (var imageFile in images) {
+      String fileName = Path.basename(imageFile.path);
+      Uint8List data = await imageFile.readAsBytes();
+
+      final metadata = firebase_storage.SettableMetadata(
+        contentType: 'image/jpeg', // Set content type explicitly as image/jpeg
+      );
+
+      firebase_storage.Reference ref =
+          firebase_storage.FirebaseStorage.instance.ref('/images/$fileName');
+
+      firebase_storage.UploadTask uploadTask = ref.putData(data, metadata);
+      await uploadTask;
+
+      String imageUrl = await ref.getDownloadURL();
+      imageUrls.add(imageUrl);
+    }
+    return imageUrls;
+  }
+
+  Future<void> _uploadRecipeToFirestore(
+      NewRecipe recipe, List<String> imageUrls) async {
+    await FirebaseFirestore.instance.collection('recipes').add({
+      'title': recipe.title,
+      'description': recipe.description,
+      'portionSize': recipe.portionSize,
+      'steps': recipe.steps,
+      'ingredients': recipe.ingredients,
+      'imageUrls': imageUrls, // updated to pass a list of URLs
+      'prepTime': recipe.prepTime,
+      'totalTime': recipe.totalTime,
+      'equipment': recipe.equipment,
+    });
+  }
