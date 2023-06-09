@@ -245,15 +245,16 @@ class EditDescriptionBox extends StatelessWidget {
 
 class EditTitelBox extends StatelessWidget {
   const EditTitelBox({
-    super.key,
-    required NewRecipe newRecipe,
-  }) : _newRecipe = newRecipe;
+    Key? key,
+    required this.newRecipe,
+  }) : super(key: key);
 
-  final NewRecipe _newRecipe;
+  final NewRecipe newRecipe;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: newRecipe.title, // here we set the initial value
       decoration: const InputDecoration(hintText: 'Enter recipe title'),
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -261,7 +262,7 @@ class EditTitelBox extends StatelessWidget {
         }
         return null;
       },
-      onSaved: (value) => _newRecipe.title = value!,
+      onSaved: (value) => newRecipe.title = value!,
     );
   }
 }
