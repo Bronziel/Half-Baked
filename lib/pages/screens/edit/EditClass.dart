@@ -229,6 +229,7 @@ class EditDescriptionBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: newRecipe.description, // pre-filled description
       decoration: const InputDecoration(hintText: 'Enter description'),
       maxLines: null, // Allow multiple lines
       keyboardType: TextInputType.multiline, // Enable multiline input
@@ -281,6 +282,7 @@ class CookTimeBox extends StatelessWidget {
       children: [
         Flexible(
           child: TextFormField(
+            initialValue: newRecipe.prepTime.toString(), // pre-filled prep time
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly
@@ -302,6 +304,8 @@ class CookTimeBox extends StatelessWidget {
         const SizedBox(width: 8.0),
         Flexible(
           child: TextFormField(
+            initialValue:
+                newRecipe.totalTime.toString(), // pre-filled total time
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly
