@@ -26,9 +26,30 @@ class _EditIngredientsBoxState extends State<EditIngredientsBox> {
   List<Map<String, dynamic>> _ingredients = [];
   List<Widget> _ingredientWidgets = [];
 
-  void _addIngredient() {
-    Map<String, dynamic> newIngredient = {'name': '', 'amount': '', 'unit': ''};
-    _ingredients.add(newIngredient);
+  @override
+  void initState() {
+    super.initState();
+
+    // Pre-populate the _ingredients list with existing ingredients
+    _ingredients = List.from(widget.newRecipe.ingredients);
+
+    // Create a form field for each existing ingredient
+    if (_ingredients.isNotEmpty) {
+      _ingredients.forEach((ingredient) {
+        _addIngredient(ingredient);
+      });
+    } else {
+      // Start with one ingredient if there are no existing ingredients
+      _addIngredient();
+    }
+  }
+
+  void _addIngredient([Map<String, dynamic>? ingredient]) {
+    final Map<String, dynamic> newIngredient =
+        ingredient ?? {'name': '', 'amount': '', 'unit': ''};
+    if (ingredient == null) {
+      _ingredients.add(newIngredient);
+    }
 
     setState(() {
       _ingredientWidgets.add(
@@ -36,6 +57,8 @@ class _EditIngredientsBoxState extends State<EditIngredientsBox> {
           children: [
             Flexible(
               child: TextFormField(
+                initialValue:
+                    newIngredient['name'], // pre-filled ingredient name
                 decoration: InputDecoration(hintText: 'Enter ingredient name'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -52,6 +75,8 @@ class _EditIngredientsBoxState extends State<EditIngredientsBox> {
             SizedBox(width: 8.0),
             Flexible(
               child: TextFormField(
+                initialValue: newIngredient['amount']
+                    .toString(), // pre-filled ingredient amount
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly
@@ -74,6 +99,8 @@ class _EditIngredientsBoxState extends State<EditIngredientsBox> {
             const SizedBox(width: 8.0),
             Flexible(
               child: TextFormField(
+                initialValue:
+                    newIngredient['unit'], // pre-filled ingredient unit
                 decoration: InputDecoration(hintText: 'Enter ingredient unit'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -88,7 +115,7 @@ class _EditIngredientsBoxState extends State<EditIngredientsBox> {
               ),
             ),
             ElevatedButton(
-              onPressed: _addIngredient,
+              onPressed: () => _addIngredient(),
               child: const Text('Add another ingredient'),
             ),
             IconButton(
@@ -104,14 +131,6 @@ class _EditIngredientsBoxState extends State<EditIngredientsBox> {
         ),
       );
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Start with one ingredient
-    _addIngredient();
   }
 
   @override
