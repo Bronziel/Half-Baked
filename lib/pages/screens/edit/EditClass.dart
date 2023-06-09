@@ -202,6 +202,7 @@ class EditPortionsizeBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: newRecipe.portionSize.toString(), // pre-filled portion size
       keyboardType: TextInputType.number,
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.digitsOnly
