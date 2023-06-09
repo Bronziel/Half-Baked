@@ -147,6 +147,7 @@ class EditEquipmentBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: newRecipe.equipment.join('\n'), // pre-filled equipment
       decoration: InputDecoration(hintText: 'Enter equipment (one per line)'),
       maxLines: null,
       keyboardType: TextInputType.multiline,
@@ -166,15 +167,15 @@ class EditEquipmentBox extends StatelessWidget {
 class EditStepsBox extends StatelessWidget {
   const EditStepsBox({
     Key? key,
-    required NewRecipe newRecipe,
-  })  : _newRecipe = newRecipe,
-        super(key: key);
+    required this.newRecipe,
+  }) : super(key: key);
 
-  final NewRecipe _newRecipe;
+  final NewRecipe newRecipe;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: newRecipe.steps.join('\n'), // pre-filled steps
       decoration: InputDecoration(hintText: 'Enter steps (one per line)'),
       maxLines: null,
       keyboardType: TextInputType.multiline,
@@ -185,7 +186,7 @@ class EditStepsBox extends StatelessWidget {
         return null;
       },
       onSaved: (value) {
-        _newRecipe.steps = value!.split('\n');
+        newRecipe.steps = value!.split('\n');
       },
     );
   }
