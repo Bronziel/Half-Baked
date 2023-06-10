@@ -230,19 +230,63 @@ class ExistingImagesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: existingImages.map((url) {
-        return Row(
-          children: [
-            Image.network(url), // display the image
-            IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () =>
-                  onDelete(url), // delete the image when the button is pressed
+    return Container(
+      height: 150,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: existingImages.length,
+        itemBuilder: (context, index) {
+          return Container(
+            width: 120,
+            child: Column(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: () => showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            contentPadding: EdgeInsets.all(0),
+                            content: Stack(
+                              children: <Widget>[
+                                Image.network(existingImages[index]),
+                                Positioned(
+                                  right: 0,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Align(
+                                      alignment: Alignment.topRight,
+                                      child: CircleAvatar(
+                                        radius: 14,
+                                        backgroundColor: Colors.white,
+                                        child: Icon(Icons.close,
+                                            color: Colors.red),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                      child: Image.network(existingImages[index], width: 100.0),
+                    ),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () => onDelete(existingImages[index]),
+                  icon: Icon(Icons.delete, color: Colors.red),
+                ),
+              ],
             ),
-          ],
-        );
-      }).toList(),
+          );
+        },
+      ),
     );
   }
 }
