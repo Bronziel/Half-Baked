@@ -23,6 +23,7 @@ class NewRecipe {
   List<String> equipment = [];
   List<Map<String, dynamic>> ingredients = [];
   List<XFile>? images;
+  List<String>? existingImages; // new variable to hold existing images
 }
 
 class EditRecipeForm extends StatefulWidget {
@@ -56,12 +57,23 @@ class _EditRecipeFormState extends State<EditRecipeForm> {
       _newRecipe.equipment = List<String>.from(widget.recipe!.equipment);
       _newRecipe.ingredients =
           List<Map<String, dynamic>>.from(widget.recipe!.ingredients);
+      _newRecipe.existingImages = List<String>.from(widget
+          .recipe!.imageUrls); // fill existingImages with the existing urls
     }
   }
 
   void _deleteImage() {
     setState(() {
       _newRecipe.images = null;
+    });
+  }
+
+  void _deleteExistingImage(String url) async {
+    await deleteImage(
+        url); // delete image from Firebase using the function from getrecipe.dart
+    setState(() {
+      _newRecipe.existingImages!
+          .remove(url); // remove the url from existingImages list
     });
   }
 
@@ -159,6 +171,11 @@ class _EditRecipeFormState extends State<EditRecipeForm> {
                   newRecipe: _newRecipe,
                   formKey: _ingredientsFormKey,
                 ),
+                ExistingImagesWidget(
+                  existingImages: _newRecipe.existingImages!,
+                  onDelete: (url) => _deleteExistingImage(url),
+                ),
+                const SizedBox(height: 16.0),
                 ImagePickerWidget(
                   onImagesPicked: (images) {
                     setState(() {
@@ -195,6 +212,31 @@ class _EditRecipeFormState extends State<EditRecipeForm> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ExistingImagesWidget extends StatelessWidget {
+  final List<String> existingImages;
+  final Function(String) onDelete;
+
+  ExistingImagesWidget({required this.existingImages, required this.onDelete});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: existingImages.map((url) {
+        return Row(
+          children: [
+            Image.network(url), // display the image
+            IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () =>
+                  onDelete(url), // delete the image when the button is pressed
+            ),
+          ],
+        );
+      }).toList(),
     );
   }
 }
