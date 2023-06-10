@@ -230,62 +230,86 @@ class ExistingImagesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: existingImages.length,
-        itemBuilder: (context, index) {
-          return Container(
-            width: 120,
-            child: Column(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () => showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            contentPadding: EdgeInsets.all(0),
-                            content: Stack(
-                              children: <Widget>[
-                                Image.network(existingImages[index]),
-                                Positioned(
-                                  right: 0,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Align(
-                                      alignment: Alignment.topRight,
-                                      child: CircleAvatar(
-                                        radius: 14,
-                                        backgroundColor: Colors.white,
-                                        child: Icon(Icons.close,
-                                            color: Colors.red),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-                      child: Image.network(existingImages[index], width: 100.0),
-                    ),
+    return Card(
+      color: Color(0xFF9896F1),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Current Images',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
-                ),
-                IconButton(
-                  onPressed: () => onDelete(existingImages[index]),
-                  icon: Icon(Icons.delete, color: Colors.red),
                 ),
               ],
             ),
-          );
-        },
+          ),
+          Container(
+            height: 150,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: existingImages.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  width: 120,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onTap: () => showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  contentPadding: EdgeInsets.all(0),
+                                  content: Stack(
+                                    children: <Widget>[
+                                      Image.network(existingImages[index]),
+                                      Positioned(
+                                        right: 0,
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Align(
+                                            alignment: Alignment.topRight,
+                                            child: CircleAvatar(
+                                              radius: 14,
+                                              backgroundColor: Colors.white,
+                                              child: Icon(Icons.close,
+                                                  color: Colors.red),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                            child: Image.network(existingImages[index],
+                                width: 100.0),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () => onDelete(existingImages[index]),
+                        icon: Icon(Icons.delete, color: Colors.red),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
