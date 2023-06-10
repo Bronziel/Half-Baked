@@ -196,7 +196,13 @@ class _EditRecipeFormState extends State<EditRecipeForm> {
                         imageUrls =
                             await _uploadImagesToFirebase(_newRecipe.images!);
                       }
+// add existing images to imageUrls
+                      if (_newRecipe.existingImages != null &&
+                          _newRecipe.existingImages!.isNotEmpty) {
+                        imageUrls.addAll(_newRecipe.existingImages!);
+                      }
                       await _uploadRecipeToFirestore(_newRecipe, imageUrls);
+
                       Navigator.pop(context);
                       widget.onRecipeSaved();
                     }
