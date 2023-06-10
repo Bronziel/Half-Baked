@@ -176,7 +176,7 @@ class _EditRecipeFormState extends State<EditRecipeForm> {
                   onDelete: (url) => _deleteExistingImage(url),
                 ),
                 const SizedBox(height: 16.0),
-                ImagePickerWidget(
+                EditImagePickerWidget(
                   onImagesPicked: (images) {
                     setState(() {
                       _newRecipe.images = images;
@@ -231,11 +231,11 @@ class ExistingImagesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color(0xFF9896F1),
+      color: const Color(0xFF9896F1),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -278,7 +278,7 @@ class ExistingImagesWidget extends StatelessWidget {
                                           onTap: () {
                                             Navigator.of(context).pop();
                                           },
-                                          child: Align(
+                                          child: const Align(
                                             alignment: Alignment.topRight,
                                             child: CircleAvatar(
                                               radius: 14,

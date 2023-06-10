@@ -5,21 +5,21 @@ import 'dart:io';
 import 'EditClass.dart';
 import 'EditRecipe.dart';
 
-class ImagePickerWidget extends StatefulWidget {
+class EditImagePickerWidget extends StatefulWidget {
   final ValueChanged<List<XFile>?> onImagesPicked;
   final List<XFile>? initialImages;
 
-  const ImagePickerWidget({
+  const EditImagePickerWidget({
     Key? key,
     required this.onImagesPicked,
     this.initialImages,
   }) : super(key: key);
 
   @override
-  _ImagePickerWidgetState createState() => _ImagePickerWidgetState();
+  _EditImagePickerWidgetState createState() => _EditImagePickerWidgetState();
 }
 
-class _ImagePickerWidgetState extends State<ImagePickerWidget> {
+class _EditImagePickerWidgetState extends State<EditImagePickerWidget> {
   List<XFile>? _images;
 
   @override
@@ -56,88 +56,108 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            ElevatedButton(
-              onPressed: _pickImages,
-              child: const Text('Select Image'),
+    return Card(
+      color: Color(0xFF9896F1),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Add New Images',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(width: 8.0),
-            ElevatedButton(
-              onPressed: _deleteImages,
-              child: const Icon(Icons.delete),
-            ),
-          ],
-        ),
-        Container(
-          height: 150, // adjust as needed
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: _images?.length ?? 0,
-            itemBuilder: (context, index) {
-              return Container(
-                width: 120, // adjust as needed
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                          onTap: () => showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                contentPadding: EdgeInsets.all(0),
-                                content: Stack(
-                                  children: <Widget>[
-                                    kIsWeb
-                                        ? Image.network(_images![index].path)
-                                        : Image.file(
-                                            File(_images![index].path),
-                                          ),
-                                    Positioned(
-                                      right: 0,
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: Align(
-                                          alignment: Alignment.topRight,
-                                          child: CircleAvatar(
-                                            radius: 14,
-                                            backgroundColor: Colors.white,
-                                            child: Icon(Icons.close,
-                                                color: Colors.red),
+          ),
+          Row(
+            children: [
+              const SizedBox(width: 8.0),
+              ElevatedButton(
+                onPressed: _pickImages,
+                child: const Text('Select Image'),
+              ),
+              const SizedBox(width: 8.0),
+              ElevatedButton(
+                onPressed: _deleteImages,
+                child: const Icon(Icons.delete),
+              ),
+            ],
+          ),
+          Container(
+            height: 150, // adjust as needed
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: _images?.length ?? 0,
+              itemBuilder: (context, index) {
+                return Container(
+                  width: 120, // adjust as needed
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onTap: () => showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  contentPadding: EdgeInsets.all(0),
+                                  content: Stack(
+                                    children: <Widget>[
+                                      kIsWeb
+                                          ? Image.network(_images![index].path)
+                                          : Image.file(
+                                              File(_images![index].path),
+                                            ),
+                                      Positioned(
+                                        right: 0,
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Align(
+                                            alignment: Alignment.topRight,
+                                            child: CircleAvatar(
+                                              radius: 14,
+                                              backgroundColor: Colors.white,
+                                              child: Icon(Icons.close,
+                                                  color: Colors.red),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                            child: kIsWeb
+                                ? Image.network(_images![index].path,
+                                    width: 100.0)
+                                : Image.file(File(_images![index].path),
+                                    width: 100.0),
                           ),
-                          child: kIsWeb
-                              ? Image.network(_images![index].path,
-                                  width: 100.0)
-                              : Image.file(File(_images![index].path),
-                                  width: 100.0),
                         ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () => _discardSingleImage(index),
-                      icon: Icon(Icons.delete, color: Colors.red),
-                    ),
-                  ],
-                ),
-              );
-            },
+                      IconButton(
+                        onPressed: () => _discardSingleImage(index),
+                        icon: Icon(Icons.delete, color: Colors.red),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
