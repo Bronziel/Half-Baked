@@ -268,7 +268,7 @@ class TitelBox extends StatelessWidget {
   }
 }
 
-class CookTimeBox extends StatelessWidget {
+class CookTimeBox extends StatefulWidget {
   const CookTimeBox({
     Key? key,
     required this.newRecipe,
@@ -277,48 +277,116 @@ class CookTimeBox extends StatelessWidget {
   final NewRecipe newRecipe;
 
   @override
+  _CookTimeBoxState createState() => _CookTimeBoxState();
+}
+
+class _CookTimeBoxState extends State<CookTimeBox> {
+  final TextEditingController _prepTimeController = TextEditingController();
+  final TextEditingController _totalTimeController = TextEditingController();
+  double _prepTime = 0.0;
+  double _totalTime = 0.0;
+  final double _maxSliderValue = 600.0; // max value for the sliders
+
+  @override
+  void initState() {
+    super.initState();
+    _prepTimeController.text = _prepTime.round().toString();
+    _totalTimeController.text = _totalTime.round().toString();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Flexible(
-          child: TextFormField(
-            keyboardType: TextInputType.number,
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly
+          child: Column(
+            children: [
+              TextFormField(
+                controller: _prepTimeController,
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                decoration: const InputDecoration(hintText: 'Prep Time (min)'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a prep time';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  setState(() {
+                    _prepTime = double.parse(value);
+                    if (_prepTime > _maxSliderValue) {
+                      _prepTime = _maxSliderValue;
+                      _prepTimeController.text = _prepTime.round().toString();
+                    }
+                  });
+                },
+              ),
+              Slider(
+                min: 0,
+                max: _maxSliderValue,
+                value: _prepTime,
+                onChanged: (double value) {
+                  setState(() {
+                    _prepTime = value;
+                    widget.newRecipe.prepTime = _prepTime.round();
+                    _prepTimeController.value = TextEditingValue(
+                      text: _prepTime.round().toString(),
+                      selection: TextSelection.collapsed(
+                          offset: _prepTimeController.text.length),
+                    );
+                  });
+                },
+              ),
             ],
-            decoration: const InputDecoration(hintText: 'Prep Time (min)'),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a prep time';
-              }
-              return null;
-            },
-            onSaved: (value) {
-              if (value != null && value.isNotEmpty) {
-                newRecipe.prepTime = int.parse(value);
-              }
-            },
           ),
         ),
         const SizedBox(width: 8.0),
         Flexible(
-          child: TextFormField(
-            keyboardType: TextInputType.number,
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly
+          child: Column(
+            children: [
+              TextFormField(
+                controller: _totalTimeController,
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                decoration: const InputDecoration(hintText: 'Total Time (min)'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a total time';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  setState(() {
+                    _totalTime = double.parse(value);
+                    if (_totalTime > _maxSliderValue) {
+                      _totalTime = _maxSliderValue;
+                      _totalTimeController.text = _totalTime.round().toString();
+                    }
+                  });
+                },
+              ),
+              Slider(
+                min: 0,
+                max: _maxSliderValue,
+                value: _totalTime,
+                onChanged: (double value) {
+                  setState(() {
+                    _totalTime = value;
+                    widget.newRecipe.totalTime = _totalTime.round();
+                    _totalTimeController.value = TextEditingValue(
+                      text: _totalTime.round().toString(),
+                      selection: TextSelection.collapsed(
+                          offset: _totalTimeController.text.length),
+                    );
+                  });
+                },
+              ),
             ],
-            decoration: const InputDecoration(hintText: 'Total Time (min)'),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a total time';
-              }
-              return null;
-            },
-            onSaved: (value) {
-              if (value != null && value.isNotEmpty) {
-                newRecipe.totalTime = int.parse(value);
-              }
-            },
           ),
         ),
       ],

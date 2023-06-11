@@ -77,7 +77,7 @@ class LoadingPageButton extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => LoadingPage()),
+          MaterialPageRoute(builder: (context) => SlidersPage()),
         );
       },
       style: ElevatedButton.styleFrom(
