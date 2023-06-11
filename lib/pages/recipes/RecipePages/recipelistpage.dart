@@ -5,6 +5,8 @@ import 'RecipeViewPage.dart';
 import '../getrecipe.dart' show fetchRecipes, deleteRecipe;
 import 'formwidget/recipe_form.dart';
 
+import '../../screens/edit/EditRecipe.dart';
+
 class RecipelistPage extends StatefulWidget {
   const RecipelistPage({Key? key}) : super(key: key);
 
@@ -37,15 +39,37 @@ class _RecipelistPageState extends State<RecipelistPage> {
                 Recipe recipe = snapshot.data![index];
                 return ListTile(
                   title: Text(recipe.title),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () async {
-                      await deleteRecipe(recipe);
-                      setState(() {
-                        _futureRecipes =
-                            fetchRecipes(); // refresh the list after deletion
-                      });
-                    },
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => EditRecipeForm(
+                                  recipe: recipe,
+                                  onRecipeSaved: () {
+                                    setState(() {
+                                      _futureRecipes = fetchRecipes();
+                                    });
+                                  },
+                                ),
+                              ));
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () async {
+                          await deleteRecipe(recipe);
+                          setState(() {
+                            _futureRecipes =
+                                fetchRecipes(); // refresh the list after deletion
+                          });
+                        },
+                      ),
+                    ],
                   ),
                   onTap: () {
                     Navigator.push(
