@@ -24,6 +24,8 @@ class NewRecipe {
   List<Map<String, dynamic>> ingredients = [];
   List<XFile>? images;
   List<String>? existingImages; // new variable to hold existing images
+  List<String>? stagedToDelete =
+      []; // new variable to hold images staged to be deleted
 }
 
 class EditRecipeForm extends StatefulWidget {
@@ -68,12 +70,11 @@ class _EditRecipeFormState extends State<EditRecipeForm> {
     });
   }
 
-  void _deleteExistingImage(String url) async {
-    await deleteImage(
-        url); // delete image from Firebase using the function from getrecipe.dart
+  void _deleteExistingImage(String url) {
     setState(() {
       _newRecipe.existingImages!
           .remove(url); // remove the url from existingImages list
+      _newRecipe.stagedToDelete!.add(url); // stage the image to be deleted
     });
   }
 
@@ -196,12 +197,16 @@ class _EditRecipeFormState extends State<EditRecipeForm> {
                         imageUrls =
                             await _uploadImagesToFirebase(_newRecipe.images!);
                       }
-// add existing images to imageUrls
                       if (_newRecipe.existingImages != null &&
                           _newRecipe.existingImages!.isNotEmpty) {
                         imageUrls.addAll(_newRecipe.existingImages!);
                       }
                       await _uploadRecipeToFirestore(_newRecipe, imageUrls);
+
+                      // now delete all images that are staged to be deleted
+                      for (var url in _newRecipe.stagedToDelete!) {
+                        await deleteImage(url);
+                      }
 
                       Navigator.pop(context);
                       widget.onRecipeSaved();
