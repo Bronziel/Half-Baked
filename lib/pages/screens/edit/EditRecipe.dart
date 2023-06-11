@@ -146,7 +146,7 @@ class _EditRecipeFormState extends State<EditRecipeForm> {
       appBar: const CustomAppBar(
           title: 'Edit Recipe', color: Color.fromARGB(255, 97, 89, 100)),
       body: Container(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -216,7 +216,7 @@ class _EditRecipeFormState extends State<EditRecipeForm> {
                 ),
                 ElevatedButton(
                   onPressed: _deleteImage,
-                  child: Icon(Icons.delete),
+                  child: const Icon(Icons.delete),
                 ),
               ],
             ),
@@ -273,7 +273,7 @@ class ExistingImagesWidget extends StatelessWidget {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  contentPadding: EdgeInsets.all(0),
+                                  contentPadding: const EdgeInsets.all(0),
                                   content: Stack(
                                     children: <Widget>[
                                       Image.network(existingImages[index]),
@@ -306,7 +306,7 @@ class ExistingImagesWidget extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () => onDelete(existingImages[index]),
-                        icon: Icon(Icons.delete, color: Colors.red),
+                        icon: const Icon(Icons.delete, color: Colors.red),
                       ),
                     ],
                   ),

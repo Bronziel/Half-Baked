@@ -70,7 +70,7 @@ class _RecipelistPageState extends State<RecipelistPage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
           showModalBottomSheet(
             context: context,

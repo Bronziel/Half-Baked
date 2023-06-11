@@ -59,7 +59,8 @@ class _EditIngredientsBoxState extends State<EditIngredientsBox> {
               child: TextFormField(
                 initialValue:
                     newIngredient['name'], // pre-filled ingredient name
-                decoration: InputDecoration(hintText: 'Enter ingredient name'),
+                decoration:
+                    const InputDecoration(hintText: 'Enter ingredient name'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an ingredient name';
@@ -72,7 +73,7 @@ class _EditIngredientsBoxState extends State<EditIngredientsBox> {
                 },
               ),
             ),
-            SizedBox(width: 8.0),
+            const SizedBox(width: 8.0),
             Flexible(
               child: TextFormField(
                 initialValue: newIngredient['amount']
@@ -82,7 +83,7 @@ class _EditIngredientsBoxState extends State<EditIngredientsBox> {
                   FilteringTextInputFormatter.digitsOnly
                 ],
                 decoration:
-                    InputDecoration(hintText: 'Enter ingredient amount'),
+                    const InputDecoration(hintText: 'Enter ingredient amount'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an ingredient amount';
@@ -101,7 +102,8 @@ class _EditIngredientsBoxState extends State<EditIngredientsBox> {
               child: TextFormField(
                 initialValue:
                     newIngredient['unit'], // pre-filled ingredient unit
-                decoration: InputDecoration(hintText: 'Enter ingredient unit'),
+                decoration:
+                    const InputDecoration(hintText: 'Enter ingredient unit'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an ingredient unit';
@@ -125,7 +127,7 @@ class _EditIngredientsBoxState extends State<EditIngredientsBox> {
                   _ingredientWidgets.removeLast();
                 });
               },
-              icon: Icon(Icons.delete),
+              icon: const Icon(Icons.delete),
             ),
           ],
         ),
@@ -167,7 +169,8 @@ class EditEquipmentBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       initialValue: newRecipe.equipment.join('\n'), // pre-filled equipment
-      decoration: InputDecoration(hintText: 'Enter equipment (one per line)'),
+      decoration:
+          const InputDecoration(hintText: 'Enter equipment (one per line)'),
       maxLines: null,
       keyboardType: TextInputType.multiline,
       validator: (value) {
@@ -195,7 +198,7 @@ class EditStepsBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       initialValue: newRecipe.steps.join('\n'), // pre-filled steps
-      decoration: InputDecoration(hintText: 'Enter steps (one per line)'),
+      decoration: const InputDecoration(hintText: 'Enter steps (one per line)'),
       maxLines: null,
       keyboardType: TextInputType.multiline,
       validator: (value) {

@@ -49,7 +49,7 @@ class _IngredientsBoxState extends State<IngredientsBox> {
                 },
               ),
             ),
-            SizedBox(width: 8.0),
+            const SizedBox(width: 8.0),
             Flexible(
               child: TextFormField(
                 keyboardType: TextInputType.number,
@@ -57,7 +57,7 @@ class _IngredientsBoxState extends State<IngredientsBox> {
                   FilteringTextInputFormatter.digitsOnly
                 ],
                 decoration:
-                    InputDecoration(hintText: 'Enter ingredient amount'),
+                    const InputDecoration(hintText: 'Enter ingredient amount'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an ingredient amount';
@@ -71,10 +71,11 @@ class _IngredientsBoxState extends State<IngredientsBox> {
                 },
               ),
             ),
-            SizedBox(width: 8.0),
+            const SizedBox(width: 8.0),
             Flexible(
               child: TextFormField(
-                decoration: InputDecoration(hintText: 'Enter ingredient unit'),
+                decoration:
+                    const InputDecoration(hintText: 'Enter ingredient unit'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an ingredient unit';
@@ -89,7 +90,7 @@ class _IngredientsBoxState extends State<IngredientsBox> {
             ),
             ElevatedButton(
               onPressed: _addIngredient,
-              child: Text('Add another ingredient'),
+              child: const Text('Add another ingredient'),
             ),
             IconButton(
               onPressed: () {
@@ -98,7 +99,7 @@ class _IngredientsBoxState extends State<IngredientsBox> {
                   _ingredientWidgets.removeLast();
                 });
               },
-              icon: Icon(Icons.delete),
+              icon: const Icon(Icons.delete),
             ),
           ],
         ),
@@ -147,7 +148,8 @@ class EquipmentBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: InputDecoration(hintText: 'Enter equipment (one per line)'),
+      decoration:
+          const InputDecoration(hintText: 'Enter equipment (one per line)'),
       maxLines: null,
       keyboardType: TextInputType.multiline,
       validator: (value) {
@@ -175,7 +177,7 @@ class StepsBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: InputDecoration(hintText: 'Enter steps (one per line)'),
+      decoration: const InputDecoration(hintText: 'Enter steps (one per line)'),
       maxLines: null,
       keyboardType: TextInputType.multiline,
       validator: (value) {

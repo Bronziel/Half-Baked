@@ -92,7 +92,7 @@ class _GlistPageState extends State<GlistPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            contentPadding: EdgeInsets.all(0),
+            contentPadding: const EdgeInsets.all(0),
             content: Stack(
               children: <Widget>[
                 Image.network(imagePath),
@@ -102,7 +102,7 @@ class _GlistPageState extends State<GlistPage> {
                     onTap: () {
                       Navigator.of(context).pop();
                     },
-                    child: Align(
+                    child: const Align(
                       alignment: Alignment.topRight,
                       child: CircleAvatar(
                         radius: 14,
@@ -122,28 +122,28 @@ class _GlistPageState extends State<GlistPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Empty Page'),
+        title: const Text('Empty Page'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'This is an empty page.',
               style: TextStyle(fontSize: 20),
             ),
             ElevatedButton(
               onPressed: _pickImages,
-              child: Text('Select Images'),
+              child: const Text('Select Images'),
             ),
             ElevatedButton(
               onPressed: _displayAndUploadImages,
-              child: Text('Display'),
+              child: const Text('Display'),
             ),
             if (_displayImages)
               ElevatedButton(
                 onPressed: _discardImages,
-                child: Text('Discard'),
+                child: const Text('Discard'),
               ),
             if (!_displayImages)
               Container(
@@ -172,7 +172,7 @@ class _GlistPageState extends State<GlistPage> {
                           ),
                           IconButton(
                             onPressed: () => _discardSingleImage(index),
-                            icon: Icon(Icons.delete, color: Colors.red),
+                            icon: const Icon(Icons.delete, color: Colors.red),
                           ),
                         ],
                       ),
@@ -213,7 +213,7 @@ class _GlistPageState extends State<GlistPage> {
                         child: Container(
                           width: 50.0,
                           height: 50.0,
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               vertical: 8.0, horizontal: 4.0),
                           decoration: BoxDecoration(
                             border: Border.all(

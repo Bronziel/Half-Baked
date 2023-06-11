@@ -57,11 +57,11 @@ class _EditImagePickerWidgetState extends State<EditImagePickerWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color(0xFF9896F1),
+      color: const Color(0xFF9896F1),
       child: Column(
         children: [
           const Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -108,7 +108,7 @@ class _EditImagePickerWidgetState extends State<EditImagePickerWidget> {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  contentPadding: EdgeInsets.all(0),
+                                  contentPadding: const EdgeInsets.all(0),
                                   content: Stack(
                                     children: <Widget>[
                                       kIsWeb
@@ -148,7 +148,7 @@ class _EditImagePickerWidgetState extends State<EditImagePickerWidget> {
                       ),
                       IconButton(
                         onPressed: () => _discardSingleImage(index),
-                        icon: Icon(Icons.delete, color: Colors.red),
+                        icon: const Icon(Icons.delete, color: Colors.red),
                       ),
                     ],
                   ),

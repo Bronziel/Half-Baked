@@ -93,7 +93,7 @@ class _RecipeFormState extends State<RecipeForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -102,7 +102,7 @@ class _RecipeFormState extends State<RecipeForm> {
               const Card(
                 color: Color(0xFF9896F1),
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -178,7 +178,7 @@ class _RecipeFormState extends State<RecipeForm> {
                     _newRecipe.images = [];
                   });
                 },
-                child: Icon(Icons.delete),
+                child: const Icon(Icons.delete),
               ),
             ],
           ),

@@ -12,7 +12,7 @@ class _LoadingPageState extends State<LoadingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Loading Page'),
+        title: const Text('Loading Page'),
       ),
       body: Stack(
         children: [
@@ -29,7 +29,7 @@ class _LoadingPageState extends State<LoadingPage> {
                   });
                 });
               },
-              child: Text('Simulate Loading'),
+              child: const Text('Simulate Loading'),
             ),
           ),
 
@@ -46,7 +46,7 @@ class LoadingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black.withOpacity(0.5),
-      child: Center(
+      child: const Center(
         child: CircularProgressIndicator(),
       ),
     );
