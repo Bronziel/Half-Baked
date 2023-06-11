@@ -99,6 +99,25 @@ class _RecipeFormState extends State<RecipeForm> {
           key: _formKey,
           child: Column(
             children: <Widget>[
+              const Card(
+                color: Color(0xFF9896F1),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Create a New Recipe',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               Row(
                 children: [
                   Flexible(child: TitelBox(newRecipe: _newRecipe)),

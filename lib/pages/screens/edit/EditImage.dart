@@ -60,7 +60,7 @@ class _EditImagePickerWidgetState extends State<EditImagePickerWidget> {
       color: Color(0xFF9896F1),
       child: Column(
         children: [
-          Padding(
+          const Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -122,7 +122,7 @@ class _EditImagePickerWidgetState extends State<EditImagePickerWidget> {
                                           onTap: () {
                                             Navigator.of(context).pop();
                                           },
-                                          child: Align(
+                                          child: const Align(
                                             alignment: Alignment.topRight,
                                             child: CircleAvatar(
                                               radius: 14,
