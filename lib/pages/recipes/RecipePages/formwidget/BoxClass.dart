@@ -203,19 +203,35 @@ class PortionsizeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-      decoration: const InputDecoration(hintText: 'Enter portion size'),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter a portion size';
-        }
-        return null;
-      },
-      onSaved: (value) => newRecipe.portionSize = int.parse(value ?? '0'),
+    return Container(
+      width: 100.0, // Adjust the width as needed
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(4.0),
+      ),
+      child: DropdownButtonFormField<int>(
+        value: newRecipe.portionSize,
+        onChanged: (value) {
+          if (value != null) {
+            newRecipe.portionSize = value;
+          }
+        },
+        decoration: InputDecoration(
+          hintText: 'Portion Size', // Changed from 'Size' to 'Portion Size'
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.symmetric(horizontal: 8.0),
+        ),
+        items: List.generate(16, (index) {
+          return DropdownMenuItem<int>(
+            value: index + 1,
+            child: Text(
+              (index + 1).toString(),
+              style:
+                  TextStyle(fontSize: 16.0), // Adjust the font size as needed
+            ),
+          );
+        }),
+      ),
     );
   }
 }
