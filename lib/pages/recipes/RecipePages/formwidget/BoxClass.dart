@@ -228,7 +228,7 @@ class PortionsizeBox extends StatelessWidget {
           return null;
         },
         items: [
-          DropdownMenuItem<int>(
+          const DropdownMenuItem<int>(
             value: null,
             child: Text(
               'Portion Size',
@@ -240,7 +240,7 @@ class PortionsizeBox extends StatelessWidget {
               value: index + 1,
               child: Text(
                 (index + 1).toString(),
-                style: TextStyle(fontSize: 16.0),
+                style: const TextStyle(fontSize: 16.0),
               ),
             );
           }),
@@ -277,23 +277,27 @@ class DescriptionBox extends StatelessWidget {
 
 class TitelBox extends StatelessWidget {
   const TitelBox({
-    super.key,
-    required NewRecipe newRecipe,
-  }) : _newRecipe = newRecipe;
+    Key? key,
+    required this.newRecipe,
+  }) : super(key: key);
 
-  final NewRecipe _newRecipe;
+  final NewRecipe newRecipe;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: const InputDecoration(hintText: 'Enter recipe title'),
+      decoration: const InputDecoration(
+        hintText: 'Enter recipe title',
+        border: OutlineInputBorder(), // This gives the border
+      ),
+      style: TextStyle(fontWeight: FontWeight.bold), // This makes the text bold
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter a title';
         }
         return null;
       },
-      onSaved: (value) => _newRecipe.title = value!,
+      onSaved: (value) => newRecipe.title = value!,
     );
   }
 }
