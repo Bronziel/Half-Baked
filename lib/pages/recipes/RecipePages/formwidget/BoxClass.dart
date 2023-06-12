@@ -204,33 +204,47 @@ class PortionsizeBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100.0, // Adjust the width as needed
+      width: 130.0,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(4.0),
       ),
-      child: DropdownButtonFormField<int>(
-        value: newRecipe.portionSize,
+      child: DropdownButtonFormField<int?>(
+        value: newRecipe.portionSize == 1 ? null : newRecipe.portionSize,
         onChanged: (value) {
           if (value != null) {
             newRecipe.portionSize = value;
           }
         },
-        decoration: InputDecoration(
-          hintText: 'Portion Size', // Changed from 'Size' to 'Portion Size'
+        decoration: const InputDecoration(
+          hintText: 'Portion Size',
           border: InputBorder.none,
           contentPadding: EdgeInsets.symmetric(horizontal: 8.0),
         ),
-        items: List.generate(16, (index) {
-          return DropdownMenuItem<int>(
-            value: index + 1,
+        validator: (value) {
+          if (value == null) {
+            return 'Please select a portion size';
+          }
+          return null;
+        },
+        items: [
+          DropdownMenuItem<int>(
+            value: null,
             child: Text(
-              (index + 1).toString(),
-              style:
-                  TextStyle(fontSize: 16.0), // Adjust the font size as needed
+              'Portion Size',
+              style: TextStyle(fontSize: 16.0),
             ),
-          );
-        }),
+          ),
+          ...List.generate(16, (index) {
+            return DropdownMenuItem<int>(
+              value: index + 1,
+              child: Text(
+                (index + 1).toString(),
+                style: TextStyle(fontSize: 16.0),
+              ),
+            );
+          }),
+        ],
       ),
     );
   }

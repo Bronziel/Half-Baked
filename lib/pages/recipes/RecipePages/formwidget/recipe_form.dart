@@ -13,7 +13,7 @@ import 'ImageClass.dart';
 class NewRecipe {
   String title = '';
   String description = '';
-  int portionSize = 1;
+  int? portionSize = null;
   int prepTime = 0; // new field
   int totalTime = 0; // new field
   List<String> steps = [];
