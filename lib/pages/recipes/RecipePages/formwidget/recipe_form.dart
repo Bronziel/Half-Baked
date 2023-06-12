@@ -138,6 +138,7 @@ class _RecipeFormState extends State<RecipeForm> {
                 newRecipe: _newRecipe,
                 formKey: _ingredientsFormKey,
               ),
+              const SizedBox(height: 16.0),
 
               // Continue with other fields in similar way: description, portionSize, steps, etc.
               // ...
