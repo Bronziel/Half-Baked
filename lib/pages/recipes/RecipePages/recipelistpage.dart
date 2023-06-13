@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../visualview/appbar/customappbar.dart';
-import '../recipeLayout.dart';
+import '../../../visualview/recipestuff/RecipeLook/recipeLayout.dart';
 import 'RecipeViewPage.dart';
 import '../getrecipe.dart' show fetchRecipes, deleteRecipe;
-import 'formwidget/recipe_form.dart';
+import '../../../visualview/recipestuff/formwidget/recipe_form.dart';
 
-import '../../screens/edit/EditRecipe.dart';
+import '../../../visualview/recipestuff/edit/EditRecipe.dart';
 
 class RecipelistPage extends StatefulWidget {
   const RecipelistPage({Key? key}) : super(key: key);

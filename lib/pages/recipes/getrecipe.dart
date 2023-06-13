@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'recipeLayout.dart';
+import '../../visualview/recipestuff/RecipeLook/recipeLayout.dart';
 
 Future<List<Recipe>> fetchRecipes() async {
   final QuerySnapshot querySnapshot =

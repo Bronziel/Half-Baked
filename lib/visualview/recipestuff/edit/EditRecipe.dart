@@ -7,11 +7,11 @@ import 'package:path/path.dart' as Path;
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../recipes/getrecipe.dart';
-import '../../recipes/recipeLayout.dart';
+import '../../../pages/recipes/getrecipe.dart';
+import '../RecipeLook/recipeLayout.dart';
 import 'EditClass.dart';
 import 'EditImage.dart';
-import '../../../visualview/appbar/customappbar.dart';
+import '../../appbar/customappbar.dart';
 
 class NewRecipe {
   String title = '';

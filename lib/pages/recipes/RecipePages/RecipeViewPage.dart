@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../recipeLayout.dart';
+import '../../../visualview/recipestuff/RecipeLook/recipeLayout.dart';
 import '../../../visualview/appbar/customappbar.dart';
-import '../../screens/edit/EditRecipe.dart'; // Import EditRecipeForm
+import '../../../visualview/recipestuff/edit/EditRecipe.dart'; // Import EditRecipeForm
 import '../getrecipe.dart' show deleteRecipe;
 import 'RecipeListPage.dart'; // Import RecipeActionsPopup// Import deleteRecipe
 
