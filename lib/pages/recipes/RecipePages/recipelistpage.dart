@@ -3,8 +3,8 @@ import '../../../visualview/appbar/customappbar.dart';
 import '../../../visualview/recipestuff/RecipeLook/recipeLayout.dart';
 import 'RecipeViewPage.dart';
 import '../getrecipe.dart' show fetchRecipes, deleteRecipe;
-import '../../../visualview/recipestuff/formwidget/recipe_form.dart';
 import 'recipemenubutton.dart';
+import 'floatingformbutton.dart';
 
 class RecipelistPage extends StatefulWidget {
   const RecipelistPage({Key? key}) : super(key: key);
@@ -73,38 +73,6 @@ class _RecipelistPageState extends State<RecipelistPage> {
           _futureRecipes = fetchRecipes();
         });
       }),
-    );
-  }
-}
-
-class CustomFloatingActionButton extends StatelessWidget {
-  final VoidCallback onPressed;
-  const CustomFloatingActionButton({Key? key, required this.onPressed})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return FloatingActionButton(
-      child: const Icon(Icons.add),
-      onPressed: () {
-        showModalBottomSheet(
-          context: context,
-          isScrollControlled: true,
-          builder: (BuildContext context) {
-            return Container(
-              height: MediaQuery.of(context).size.height *
-                  0.75, // Adjust the multiplier as needed
-              child: SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom),
-                  child: RecipeForm(onRecipeSaved: onPressed),
-                ),
-              ),
-            );
-          },
-        );
-      },
     );
   }
 }
