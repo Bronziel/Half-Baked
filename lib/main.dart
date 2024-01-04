@@ -5,6 +5,7 @@ import 'firebase_options.dart';
 import 'pages/screens/glist.dart';
 import 'pages/recipes/RecipePages/recipelistpage.dart';
 import 'visualview/themes.dart';
+import 'package:fb2/Redesign/FakeRecipe.dart';
 
 import 'pages/screens/loading.dart';
 
@@ -189,25 +190,6 @@ class NewDesignButton extends StatelessWidget {
       child: Text(
         buttonText,
         style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class NewDesignPage extends StatelessWidget {
-  const NewDesignPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Landing Page'),
-      ),
-      body: Center(
-        child: Text(
-          'Welcome to the Landing Page!',
-          style: TextStyle(fontSize: 24),
-        ),
       ),
     );
   }
