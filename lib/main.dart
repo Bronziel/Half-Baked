@@ -55,6 +55,11 @@ class LandingPage extends StatelessWidget {
             child: RecipeListButton(),
           ),
           SizedBox(height: 16.0),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: NewDesignButton(), // Add this line
+          ),
+          SizedBox(height: 16.0),
         ],
       ),
     );
@@ -152,6 +157,57 @@ class RecipeListButton extends StatelessWidget {
       child: Text(
         buttonText,
         style: const TextStyle(fontSize: 36, color: Colors.white),
+      ),
+    );
+  }
+}
+
+class NewDesignButton extends StatelessWidget {
+  final String buttonText;
+  final Color buttonColor;
+
+  const NewDesignButton({
+    Key? key,
+    this.buttonText = 'NewDesign',
+    this.buttonColor = const Color.fromARGB(255, 72, 255, 0),
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const NewDesignPage()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(16.0),
+        minimumSize: const Size(double.infinity, 64.0),
+        backgroundColor: buttonColor,
+      ),
+      child: Text(
+        buttonText,
+        style: const TextStyle(fontSize: 36, color: Colors.white),
+      ),
+    );
+  }
+}
+
+class NewDesignPage extends StatelessWidget {
+  const NewDesignPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Landing Page'),
+      ),
+      body: Center(
+        child: Text(
+          'Welcome to the Landing Page!',
+          style: TextStyle(fontSize: 24),
+        ),
       ),
     );
   }
