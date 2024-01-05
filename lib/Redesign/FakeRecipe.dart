@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class NewDesignPage extends StatelessWidget {
   const NewDesignPage({Key? key}) : super(key: key);
@@ -7,22 +8,26 @@ class NewDesignPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100.0), // Adjust the height as needed
+        preferredSize: Size.fromHeight(100.0),
         child: AppBar(
-          // Custom AppBar layout
-          flexibleSpace: const SafeArea(
-            // SafeArea widget to avoid status bar overlap
-            child: Column(
-              mainAxisAlignment:
-                  MainAxisAlignment.center, // Center content vertically
+          flexibleSpace: SafeArea(
+            child: Stack(
+              alignment: Alignment.center,
               children: <Widget>[
-                Text(
+                Positioned(
+                  left: 400, // Adjust the position as needed
+                  child: SvgPicture.asset(
+                    'images/bestickvit.svg',
+                    width: 62, // Set the width of the SVG
+                    height: 54.63, // Set the height of the SVG
+                  ),
+                ),
+                const Text(
                   'HalfBaked',
                   style: TextStyle(
                       fontFamily: 'Pacifico',
                       fontSize: 40,
-                      color: Color(0xFFFFFFff) // Your desired font size
-                      ),
+                      color: Color(0xFFFFFFff)),
                 ),
               ],
             ),
