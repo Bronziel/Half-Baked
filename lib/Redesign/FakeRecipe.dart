@@ -7,12 +7,26 @@ class NewDesignPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(90.0),
+        preferredSize: Size.fromHeight(100.0), // Adjust the height as needed
         child: AppBar(
-          title: const Text(
-            'HalfBaked',
+          // Custom AppBar layout
+          flexibleSpace: const SafeArea(
+            // SafeArea widget to avoid status bar overlap
+            child: Column(
+              mainAxisAlignment:
+                  MainAxisAlignment.center, // Center content vertically
+              children: <Widget>[
+                Text(
+                  'HalfBaked',
+                  style: TextStyle(
+                      fontFamily: 'Pacifico',
+                      fontSize: 40,
+                      color: Color(0xFFFFFFff) // Your desired font size
+                      ),
+                ),
+              ],
+            ),
           ),
-          centerTitle: true,
         ),
       ),
       body: const Center(
