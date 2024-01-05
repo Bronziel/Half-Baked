@@ -77,6 +77,9 @@ flutter:
     - family: CustomFont
       fonts:
         - asset: fonts/BakedFont.otf
+    - family: Pacifico
+      fonts:
+        - asset: fonts/Pacifico-Regular.ttf
 
   #   - images/a_dot_ham.jpeg
   
