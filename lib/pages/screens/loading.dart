@@ -11,9 +11,9 @@ class _TabbedPageState extends State<TabbedPage>
   late TabController _tabController;
 
   final List<Widget> _tabs = [
-    RecipelistPage(),
-    Center(child: Text('Tab 1')), //Tab 1
-    Center(child: Text('Tab 2')), //Tab 2
+    const RecipelistPage(),
+    const Center(child: Text('Tab 1')), //Tab 1
+    const Center(child: Text('Tab 2')), //Tab 2
   ];
 
   @override
@@ -37,7 +37,7 @@ class _TabbedPageState extends State<TabbedPage>
             color: Theme.of(context).primaryColor,
             child: TabBar(
               controller: _tabController,
-              tabs: [
+              tabs: const [
                 Tab(
                   icon: Icon(Icons.one_k),
                 ), //Tab 1
