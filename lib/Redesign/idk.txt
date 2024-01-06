@@ -1,0 +1,2 @@
+color: Color(0xFFFFFFff) hex add 0xFF then hex
+exmp orange hex FFA500 Color(0xFFFFA500) 

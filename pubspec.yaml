@@ -76,6 +76,7 @@ flutter:
     - images/SvgMainLogo/
     - images/bestickvit.svg
     - images/new/
+    - images/new/icons/
   fonts:
     - family: CustomFont
       fonts:

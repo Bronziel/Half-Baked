@@ -11,13 +11,7 @@ class FirstRowWidget extends StatelessWidget {
     return Row(
       children: [
         const Widht40wallWidget(),
-        SizedBox(
-          height: 400,
-          width: 410,
-          child: Card(
-              // Add other properties of Card if needed
-              ),
-        ),
+        const IntroductionWidget(),
         const Width20StandardWidget(),
         SizedBox(
           height: 400,
@@ -117,6 +111,92 @@ class FirstRowWidget extends StatelessWidget {
             ),
           ],
         ),
+      ],
+    );
+  }
+}
+
+class IntroductionWidget extends StatelessWidget {
+  const IntroductionWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 400,
+      width: 410,
+      child: Card(
+        color: const Color(0xFFFFA500),
+        child: Column(
+          children: [
+            PortionsizedWidget(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PortionsizedWidget extends StatelessWidget {
+  const PortionsizedWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          width: 290,
+          height: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0xffd9d9d9),
+          ),
+        ),
+        Positioned(
+          top: 10,
+          left: 7.2,
+          child: Image.asset(
+            'images/new/icons/portion.png',
+            width: 44,
+            height: 30,
+          ),
+        ),
+        const Positioned(
+          top: 10,
+          left: 56, // Position your text or add alignment as needed
+          child: Text(
+            "Portionsize:",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+        const Positioned(
+          top: 10,
+          left: 206,
+          child: Text(
+            "12",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+        Positioned(
+          top: 10,
+          left: 243,
+          child: Image.asset(
+            'images/new/icons/man.png',
+            width: 11.75,
+            height: 30,
+          ),
+        ),
+        // Include your other Containers within the Stack
+        // Make sure to position them or size them as needed
       ],
     );
   }
