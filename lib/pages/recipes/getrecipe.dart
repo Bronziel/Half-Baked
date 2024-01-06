@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'recipeLayout.dart';
+import '../../visualview/recipestuff/RecipeLook/recipeLayout.dart';
 
 Future<List<Recipe>> fetchRecipes() async {
   final QuerySnapshot querySnapshot =
@@ -42,4 +42,28 @@ Future<void> deleteRecipe(Recipe recipe) async {
       .collection('recipes')
       .doc(recipe.id)
       .delete();
+}
+
+Future<List<Recipe>> fetchRecipesSearch({String? searchTerm}) async {
+  Query query =
+      FirebaseFirestore.instance.collection('recipes').orderBy('title');
+
+  // If there is a search term, add a where clause
+  if (searchTerm != null && searchTerm.isNotEmpty) {
+    query = query.where('title', isEqualTo: searchTerm);
+  }
+
+  final QuerySnapshot querySnapshot = await query.get();
+
+  return querySnapshot.docs.map((doc) {
+    final data = doc.data() as Map<String, dynamic>?;
+    if (data != null) {
+      return Recipe.fromJson({
+        'id': doc.id,
+        ...data,
+      });
+    } else {
+      throw StateError('Missing data for document ${doc.id}');
+    }
+  }).toList();
 }

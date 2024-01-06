@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../recipeLayout.dart';
-import '../../../visualview/appbar/customappbar.dart';
+import '../../../visualview/recipestuff/RecipeLook/recipeLayout.dart';
+import '../../../visualview/appbar/customappbar.dart'; // Import EditRecipeForm
+import 'recipemenubutton.dart'; // Import RecipeActionsPopup// Import deleteRecipe
 
 class RecipeDetailsPage extends StatefulWidget {
   final Recipe recipe;
@@ -21,7 +22,7 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            contentPadding: EdgeInsets.all(0),
+            contentPadding: const EdgeInsets.all(0),
             content: Stack(
               children: <Widget>[
                 Image.network(imagePath),
@@ -31,7 +32,7 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                     onTap: () {
                       Navigator.of(context).pop();
                     },
-                    child: Align(
+                    child: const Align(
                       alignment: Alignment.topRight,
                       child: CircleAvatar(
                         radius: 14,
@@ -50,8 +51,18 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-          title: 'Half Baked', color: Color.fromARGB(255, 97, 89, 100)),
+      appBar: CustomAppBar(
+        title: 'Half Baked',
+        color: const Color.fromARGB(255, 97, 89, 100),
+        actions: [
+          RecipeActionsPopup(
+            recipe: widget.recipe,
+            onRecipeAction: () {
+              setState(() {}); // Forcing a rebuild to reflect any changes.
+            },
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -87,8 +98,8 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                     child: Container(
                       width: 50.0,
                       height: 50.0,
-                      margin:
-                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 4.0),
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: _current == entry.key
@@ -103,7 +114,7 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
                 }).toList(),
               ),
               Card(
-                color: Color(0xFF9896F1),
+                color: const Color(0xFF9896F1),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(

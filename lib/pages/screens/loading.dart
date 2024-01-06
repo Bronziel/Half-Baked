@@ -1,53 +1,62 @@
 import 'package:flutter/material.dart';
+import '../recipes/RecipePages/allrecipes.dart';
 
-class LoadingPage extends StatefulWidget {
+class TabbedPage extends StatefulWidget {
   @override
-  _LoadingPageState createState() => _LoadingPageState();
+  _TabbedPageState createState() => _TabbedPageState();
 }
 
-class _LoadingPageState extends State<LoadingPage> {
-  bool isLoading = false;
+class _TabbedPageState extends State<TabbedPage>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  final List<Widget> _tabs = [
+    const RecipelistPage(),
+    const Center(child: Text('Tab 1')), //Tab 1
+    const Center(child: Text('Tab 2')), //Tab 2
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Loading Page'),
-      ),
-      body: Stack(
-        children: [
-          // Your main content widgets go here
-          Center(
-            child: ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  isLoading = true;
-                });
-                Future.delayed(Duration(seconds: 2), () {
-                  setState(() {
-                    isLoading = false;
-                  });
-                });
-              },
-              child: Text('Simulate Loading'),
+      body: Column(
+        children: <Widget>[
+          Material(
+            color: Theme.of(context).primaryColor,
+            child: TabBar(
+              controller: _tabController,
+              tabs: const [
+                Tab(
+                  icon: Icon(Icons.one_k),
+                ), //Tab 1
+                Tab(
+                  icon: Icon(Icons.two_k),
+                ), //Tab 2
+                Tab(
+                    icon: Icon(Icons.restaurant),
+                    text: 'Recipes'), //Tab 3 - Recipe list
+              ],
             ),
           ),
-
-          // Loading screen widget
-          if (isLoading) LoadingScreen(),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: _tabs,
+            ),
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class LoadingScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black.withOpacity(0.5),
-      child: Center(
-        child: CircularProgressIndicator(),
       ),
     );
   }

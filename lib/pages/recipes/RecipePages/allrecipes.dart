@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../visualview/appbar/customappbar.dart';
 import '../../../visualview/recipestuff/RecipeLook/recipeLayout.dart';
 import 'RecipeViewPage.dart';
-import '../getrecipe.dart' show fetchRecipes, deleteRecipe;
+import '../getrecipe.dart' show fetchRecipes, deleteRecipe, fetchRecipesSearch;
 import 'recipemenubutton.dart';
 import 'floatingformbutton.dart';
 
@@ -15,6 +15,7 @@ class RecipelistPage extends StatefulWidget {
 
 class _RecipelistPageState extends State<RecipelistPage> {
   late Future<List<Recipe>> _futureRecipes;
+  final _searchController = TextEditingController();
 
   @override
   void initState() {
@@ -22,11 +23,27 @@ class _RecipelistPageState extends State<RecipelistPage> {
     _futureRecipes = fetchRecipes();
   }
 
+  void _searchRecipes() {
+    setState(() {
+      _futureRecipes = fetchRecipesSearch(searchTerm: _searchController.text);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-          title: 'Recipe List Page', color: Color.fromARGB(255, 97, 89, 100)),
+      appBar: AppBar(
+        title: TextField(
+          controller: _searchController,
+          decoration: InputDecoration(
+            labelText: "Search recipes...",
+            suffixIcon: IconButton(
+              icon: Icon(Icons.search),
+              onPressed: _searchRecipes,
+            ),
+          ),
+        ),
+      ),
       body: FutureBuilder<List<Recipe>>(
         future: _futureRecipes,
         builder: (context, snapshot) {

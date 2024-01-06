@@ -89,7 +89,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                contentPadding: EdgeInsets.all(0),
+                                contentPadding: const EdgeInsets.all(0),
                                 content: Stack(
                                   children: <Widget>[
                                     kIsWeb
@@ -103,7 +103,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
                                         onTap: () {
                                           Navigator.of(context).pop();
                                         },
-                                        child: Align(
+                                        child: const Align(
                                           alignment: Alignment.topRight,
                                           child: CircleAvatar(
                                             radius: 14,
@@ -129,7 +129,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
                     ),
                     IconButton(
                       onPressed: () => _discardSingleImage(index),
-                      icon: Icon(Icons.delete, color: Colors.red),
+                      icon: const Icon(Icons.delete, color: Colors.red),
                     ),
                   ],
                 ),

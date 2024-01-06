@@ -6,10 +6,10 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path/path.dart' as Path;
 import 'package:flutter/services.dart';
-import 'recipe_form.dart';
+import 'EditRecipe.dart';
 
-class IngredientsBox extends StatefulWidget {
-  const IngredientsBox({
+class EditIngredientsBox extends StatefulWidget {
+  const EditIngredientsBox({
     Key? key,
     required this.newRecipe,
     required this.formKey,
@@ -19,16 +19,37 @@ class IngredientsBox extends StatefulWidget {
   final GlobalKey<FormState> formKey;
 
   @override
-  _IngredientsBoxState createState() => _IngredientsBoxState();
+  _EditIngredientsBoxState createState() => _EditIngredientsBoxState();
 }
 
-class _IngredientsBoxState extends State<IngredientsBox> {
+class _EditIngredientsBoxState extends State<EditIngredientsBox> {
   List<Map<String, dynamic>> _ingredients = [];
   List<Widget> _ingredientWidgets = [];
 
-  void _addIngredient() {
-    Map<String, dynamic> newIngredient = {'name': '', 'amount': '', 'unit': ''};
-    _ingredients.add(newIngredient);
+  @override
+  void initState() {
+    super.initState();
+
+    // Pre-populate the _ingredients list with existing ingredients
+    _ingredients = List.from(widget.newRecipe.ingredients);
+
+    // Create a form field for each existing ingredient
+    if (_ingredients.isNotEmpty) {
+      _ingredients.forEach((ingredient) {
+        _addIngredient(ingredient);
+      });
+    } else {
+      // Start with one ingredient if there are no existing ingredients
+      _addIngredient();
+    }
+  }
+
+  void _addIngredient([Map<String, dynamic>? ingredient]) {
+    final Map<String, dynamic> newIngredient =
+        ingredient ?? {'name': '', 'amount': '', 'unit': ''};
+    if (ingredient == null) {
+      _ingredients.add(newIngredient);
+    }
 
     setState(() {
       _ingredientWidgets.add(
@@ -36,7 +57,10 @@ class _IngredientsBoxState extends State<IngredientsBox> {
           children: [
             Flexible(
               child: TextFormField(
-                decoration: InputDecoration(hintText: 'Enter ingredient name'),
+                initialValue:
+                    newIngredient['name'], // pre-filled ingredient name
+                decoration:
+                    const InputDecoration(hintText: 'Enter ingredient name'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an ingredient name';
@@ -49,15 +73,17 @@ class _IngredientsBoxState extends State<IngredientsBox> {
                 },
               ),
             ),
-            SizedBox(width: 8.0),
+            const SizedBox(width: 8.0),
             Flexible(
               child: TextFormField(
+                initialValue: newIngredient['amount']
+                    .toString(), // pre-filled ingredient amount
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly
                 ],
                 decoration:
-                    InputDecoration(hintText: 'Enter ingredient amount'),
+                    const InputDecoration(hintText: 'Enter ingredient amount'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an ingredient amount';
@@ -71,10 +97,13 @@ class _IngredientsBoxState extends State<IngredientsBox> {
                 },
               ),
             ),
-            SizedBox(width: 8.0),
+            const SizedBox(width: 8.0),
             Flexible(
               child: TextFormField(
-                decoration: InputDecoration(hintText: 'Enter ingredient unit'),
+                initialValue:
+                    newIngredient['unit'], // pre-filled ingredient unit
+                decoration:
+                    const InputDecoration(hintText: 'Enter ingredient unit'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an ingredient unit';
@@ -88,8 +117,8 @@ class _IngredientsBoxState extends State<IngredientsBox> {
               ),
             ),
             ElevatedButton(
-              onPressed: _addIngredient,
-              child: Text('Add another ingredient'),
+              onPressed: () => _addIngredient(),
+              child: const Text('Add another ingredient'),
             ),
             IconButton(
               onPressed: () {
@@ -98,20 +127,12 @@ class _IngredientsBoxState extends State<IngredientsBox> {
                   _ingredientWidgets.removeLast();
                 });
               },
-              icon: Icon(Icons.delete),
+              icon: const Icon(Icons.delete),
             ),
           ],
         ),
       );
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Start with one ingredient
-    _addIngredient();
   }
 
   @override
@@ -136,8 +157,8 @@ class _IngredientsBoxState extends State<IngredientsBox> {
   }
 }
 
-class EquipmentBox extends StatelessWidget {
-  const EquipmentBox({
+class EditEquipmentBox extends StatelessWidget {
+  const EditEquipmentBox({
     Key? key,
     required this.newRecipe,
   }) : super(key: key);
@@ -147,7 +168,9 @@ class EquipmentBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: InputDecoration(hintText: 'Enter equipment (one per line)'),
+      initialValue: newRecipe.equipment.join('\n'), // pre-filled equipment
+      decoration:
+          const InputDecoration(hintText: 'Enter equipment (one per line)'),
       maxLines: null,
       keyboardType: TextInputType.multiline,
       validator: (value) {
@@ -163,36 +186,8 @@ class EquipmentBox extends StatelessWidget {
   }
 }
 
-class StepsBox extends StatelessWidget {
-  const StepsBox({
-    Key? key,
-    required NewRecipe newRecipe,
-  })  : _newRecipe = newRecipe,
-        super(key: key);
-
-  final NewRecipe _newRecipe;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(hintText: 'Enter steps (one per line)'),
-      maxLines: null,
-      keyboardType: TextInputType.multiline,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter at least one step';
-        }
-        return null;
-      },
-      onSaved: (value) {
-        _newRecipe.steps = value!.split('\n');
-      },
-    );
-  }
-}
-
-class PortionsizeBox extends StatelessWidget {
-  const PortionsizeBox({
+class EditStepsBox extends StatelessWidget {
+  const EditStepsBox({
     Key? key,
     required this.newRecipe,
   }) : super(key: key);
@@ -202,6 +197,35 @@ class PortionsizeBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: newRecipe.steps.join('\n'), // pre-filled steps
+      decoration: const InputDecoration(hintText: 'Enter steps (one per line)'),
+      maxLines: null,
+      keyboardType: TextInputType.multiline,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter at least one step';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        newRecipe.steps = value!.split('\n');
+      },
+    );
+  }
+}
+
+class EditPortionsizeBox extends StatelessWidget {
+  const EditPortionsizeBox({
+    Key? key,
+    required this.newRecipe,
+  }) : super(key: key);
+
+  final NewRecipe newRecipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      initialValue: newRecipe.portionSize.toString(), // pre-filled portion size
       keyboardType: TextInputType.number,
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.digitsOnly
@@ -218,8 +242,8 @@ class PortionsizeBox extends StatelessWidget {
   }
 }
 
-class DescriptionBox extends StatelessWidget {
-  const DescriptionBox({
+class EditDescriptionBox extends StatelessWidget {
+  const EditDescriptionBox({
     Key? key,
     required this.newRecipe,
   }) : super(key: key);
@@ -229,6 +253,7 @@ class DescriptionBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: newRecipe.description, // pre-filled description
       decoration: const InputDecoration(hintText: 'Enter description'),
       maxLines: null, // Allow multiple lines
       keyboardType: TextInputType.multiline, // Enable multiline input
@@ -243,17 +268,18 @@ class DescriptionBox extends StatelessWidget {
   }
 }
 
-class TitelBox extends StatelessWidget {
-  const TitelBox({
-    super.key,
-    required NewRecipe newRecipe,
-  }) : _newRecipe = newRecipe;
+class EditTitelBox extends StatelessWidget {
+  const EditTitelBox({
+    Key? key,
+    required this.newRecipe,
+  }) : super(key: key);
 
-  final NewRecipe _newRecipe;
+  final NewRecipe newRecipe;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: newRecipe.title, // here we set the initial value
       decoration: const InputDecoration(hintText: 'Enter recipe title'),
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -261,7 +287,7 @@ class TitelBox extends StatelessWidget {
         }
         return null;
       },
-      onSaved: (value) => _newRecipe.title = value!,
+      onSaved: (value) => newRecipe.title = value!,
     );
   }
 }
@@ -280,6 +306,7 @@ class CookTimeBox extends StatelessWidget {
       children: [
         Flexible(
           child: TextFormField(
+            initialValue: newRecipe.prepTime.toString(), // pre-filled prep time
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly
@@ -301,6 +328,8 @@ class CookTimeBox extends StatelessWidget {
         const SizedBox(width: 8.0),
         Flexible(
           child: TextFormField(
+            initialValue:
+                newRecipe.totalTime.toString(), // pre-filled total time
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly

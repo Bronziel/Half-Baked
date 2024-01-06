@@ -5,6 +5,7 @@ import 'firebase_options.dart';
 import 'pages/screens/glist.dart';
 import 'pages/recipes/RecipePages/recipelistpage.dart';
 import 'visualview/themes.dart';
+import 'package:fb2/Redesign/RecipePages/FakeRecipe.dart';
 
 import 'pages/screens/loading.dart';
 
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Gym and Food App',
       theme: AppThemes.defaultTheme,
       home: const LandingPage(),
@@ -54,6 +56,11 @@ class LandingPage extends StatelessWidget {
             child: RecipeListButton(),
           ),
           SizedBox(height: 16.0),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: NewDesignButton(), // Add this line
+          ),
+          SizedBox(height: 16.0),
         ],
       ),
     );
@@ -76,7 +83,7 @@ class LoadingPageButton extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => LoadingPage()),
+          MaterialPageRoute(builder: (context) => TabbedPage()),
         );
       },
       style: ElevatedButton.styleFrom(
@@ -141,6 +148,38 @@ class RecipeListButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const RecipelistPage()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(16.0),
+        minimumSize: const Size(double.infinity, 64.0),
+        backgroundColor: buttonColor,
+      ),
+      child: Text(
+        buttonText,
+        style: const TextStyle(fontSize: 36, color: Colors.white),
+      ),
+    );
+  }
+}
+
+class NewDesignButton extends StatelessWidget {
+  final String buttonText;
+  final Color buttonColor;
+
+  const NewDesignButton({
+    Key? key,
+    this.buttonText = 'NewDesign',
+    this.buttonColor = const Color.fromARGB(255, 72, 255, 0),
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const NewDesignPage()),
         );
       },
       style: ElevatedButton.styleFrom(

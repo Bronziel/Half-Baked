@@ -13,7 +13,7 @@ import 'ImageClass.dart';
 class NewRecipe {
   String title = '';
   String description = '';
-  int portionSize = 1;
+  int? portionSize = null;
   int prepTime = 0; // new field
   int totalTime = 0; // new field
   List<String> steps = [];
@@ -93,7 +93,7 @@ class _RecipeFormState extends State<RecipeForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -102,7 +102,7 @@ class _RecipeFormState extends State<RecipeForm> {
               const Card(
                 color: Color(0xFF9896F1),
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -138,6 +138,7 @@ class _RecipeFormState extends State<RecipeForm> {
                 newRecipe: _newRecipe,
                 formKey: _ingredientsFormKey,
               ),
+              const SizedBox(height: 16.0),
 
               // Continue with other fields in similar way: description, portionSize, steps, etc.
               // ...
@@ -178,7 +179,7 @@ class _RecipeFormState extends State<RecipeForm> {
                     _newRecipe.images = [];
                   });
                 },
-                child: Icon(Icons.delete),
+                child: const Icon(Icons.delete),
               ),
             ],
           ),
