@@ -130,7 +130,8 @@ class IntroductionWidget extends StatelessWidget {
         color: const Color(0xFFFFA500),
         child: Column(
           children: [
-            PortionsizedWidget(),
+            PortionsizedStackWidget(),
+            PortionsizeCardWidget(),
           ],
         ),
       ),
@@ -138,8 +139,49 @@ class IntroductionWidget extends StatelessWidget {
   }
 }
 
-class PortionsizedWidget extends StatelessWidget {
-  const PortionsizedWidget({
+class PortionsizeCardWidget extends StatelessWidget {
+  const PortionsizeCardWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 290,
+      height: 50,
+      child: Card(
+        color: const Color(0xffd9d9d9),
+        child: Row(
+          children: [
+            const SizedBox(width: 7.2),
+            Image.asset('images/new/icons/portion.png'),
+            const SizedBox(width: 4.99),
+            const Text(
+              "Portionsize:",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(width: 9),
+            const Text(
+              "12",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(width: 6),
+            Image.asset('images/new/icons/man.png'),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PortionsizedStackWidget extends StatelessWidget {
+  const PortionsizedStackWidget({
     super.key,
   });
 
@@ -158,11 +200,7 @@ class PortionsizedWidget extends StatelessWidget {
         Positioned(
           top: 10,
           left: 7.2,
-          child: Image.asset(
-            'images/new/icons/portion.png',
-            width: 44,
-            height: 30,
-          ),
+          child: PortionsizeIconTile(),
         ),
         const Positioned(
           top: 10,
@@ -189,15 +227,41 @@ class PortionsizedWidget extends StatelessWidget {
         Positioned(
           top: 10,
           left: 243,
-          child: Image.asset(
-            'images/new/icons/man.png',
-            width: 11.75,
-            height: 30,
-          ),
+          child: ManIconTile(),
         ),
         // Include your other Containers within the Stack
         // Make sure to position them or size them as needed
       ],
+    );
+  }
+}
+
+class PortionsizeIconTile extends StatelessWidget {
+  const PortionsizeIconTile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      'images/new/icons/portion.png',
+      width: 44,
+      height: 30,
+    );
+  }
+}
+
+class ManIconTile extends StatelessWidget {
+  const ManIconTile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      'images/new/icons/man.png',
+      width: 11.75,
+      height: 30,
     );
   }
 }
