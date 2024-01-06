@@ -131,9 +131,9 @@ class IntroductionWidget extends StatelessWidget {
         child: Column(
           children: [
             PortionsizedStackWidget(),
+            PrepTimeStack(),
             PortionsizeCardWidget(),
             PrepTimeCard(),
-            PrepTimeStack(),
           ],
         ),
       ),
