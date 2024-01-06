@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'ComponentsRedesign.dart';
 
 class FirstRowWidget extends StatelessWidget {
   const FirstRowWidget({
@@ -9,9 +10,7 @@ class FirstRowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const SizedBox(
-          width: 40,
-        ),
+        const Widht40wallWidget(),
         SizedBox(
           height: 400,
           width: 410,
@@ -19,9 +18,7 @@ class FirstRowWidget extends StatelessWidget {
               // Add other properties of Card if needed
               ),
         ),
-        SizedBox(
-          width: 20,
-        ),
+        const Width20StandardWidget(),
         SizedBox(
           height: 400,
           width: 1085,
@@ -40,9 +37,7 @@ class FirstRowWidget extends StatelessWidget {
             // Add other properties of Card if needed
           ),
         ),
-        SizedBox(
-          width: 20,
-        ),
+        const Width20StandardWidget(),
         Column(
           children: [
             SizedBox(
@@ -63,9 +58,7 @@ class FirstRowWidget extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 40,
-            ),
+            const Height40StandardWidget(),
             SizedBox(
               height: 70,
               width: 70,
@@ -84,9 +77,7 @@ class FirstRowWidget extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 40,
-            ),
+            const Height40StandardWidget(),
             SizedBox(
               height: 70,
               width: 70,
@@ -105,9 +96,7 @@ class FirstRowWidget extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 40,
-            ),
+            const Height40StandardWidget(),
             SizedBox(
               height: 70,
               width: 70,

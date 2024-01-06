@@ -9,17 +9,15 @@ class SecondRowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       children: [
-        Standard40wallWidget(),
+        Widht40wallWidget(),
         SizedBox(
           width: 410,
           height: 463,
           child: Card(),
         ),
-        SizedBox(
-          width: 20,
-        ),
+        Width20StandardWidget(),
         SizedBox(
           width: 1175,
           height: 474,

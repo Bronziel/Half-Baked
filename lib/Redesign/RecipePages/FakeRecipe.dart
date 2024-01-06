@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'first_row_widget.dart';
 import 'second_row_widget.dart';
+import 'ComponentsRedesign.dart';
 
 class NewDesignPage extends StatelessWidget {
   const NewDesignPage({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class NewDesignPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(90.0),
+        preferredSize: const Size.fromHeight(90.0),
         child: AppBar(
           flexibleSpace: SafeArea(
             child: Stack(
@@ -41,13 +42,9 @@ class NewDesignPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              SizedBox(
-                height: 20,
-              ),
+              Height20StandardWidget(),
               FirstRowWidget(),
-              SizedBox(
-                height: 20,
-              ),
+              Height20StandardWidget(),
               SecondRowWidget()
             ],
           ),
