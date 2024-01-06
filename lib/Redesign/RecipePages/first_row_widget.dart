@@ -133,7 +133,14 @@ class IntroductionWidget extends StatelessWidget {
             PortionsizedStackWidget(),
             PrepTimeStack(),
             PortionsizeCardWidget(),
-            PrepTimeCard(),
+            TimeCard(
+              title: "Prep Time:",
+              time: "300",
+            ),
+            TimeCard(
+              title: "Total Time:",
+              time: "450",
+            ),
           ],
         ),
       ),
@@ -141,9 +148,14 @@ class IntroductionWidget extends StatelessWidget {
   }
 }
 
-class PrepTimeCard extends StatelessWidget {
-  const PrepTimeCard({
+class TimeCard extends StatelessWidget {
+  final String title;
+  final String time;
+
+  const TimeCard({
     super.key,
+    required this.title,
+    required this.time,
   });
 
   @override
@@ -158,17 +170,17 @@ class PrepTimeCard extends StatelessWidget {
             const SizedBox(width: 9),
             Image.asset('images/new/icons/clock.png'),
             const SizedBox(width: 5),
-            const Text(
-              "PrepTime:",
-              style: TextStyle(
+            Text(
+              title,
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
               ),
             ),
             const SizedBox(width: 8),
-            const Text(
-              "300",
-              style: TextStyle(
+            Text(
+              time,
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
               ),
