@@ -123,15 +123,24 @@ class IntroductionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       height: 400,
       width: 410,
       child: Card(
-        color: const Color(0xFFFFA500),
+        color: Color(0xFFFFA500),
         child: Column(
           children: [
             PortionsizedStackWidget(),
-            PrepTimeStack(),
+            TimeStack(
+              title: "Prep Time:",
+              time: "300",
+            ),
+            TimeStack(
+              title: "Total Time:",
+              time: "450",
+              titleLeftPosition: 50, // Custom position if needed
+              timeLeftPosition: 184, // Custom position if needed
+            ),
             PortionsizeCardWidget(),
             TimeCard(
               title: "Prep Time:",
@@ -297,9 +306,18 @@ class PortionsizedStackWidget extends StatelessWidget {
   }
 }
 
-class PrepTimeStack extends StatelessWidget {
-  const PrepTimeStack({
+class TimeStack extends StatelessWidget {
+  final String title;
+  final String time;
+  final double titleLeftPosition;
+  final double timeLeftPosition;
+
+  const TimeStack({
     super.key,
+    required this.title,
+    required this.time,
+    this.titleLeftPosition = 44, // Default value if not provided
+    this.timeLeftPosition = 178, // Default value if not provided
   });
 
   @override
@@ -317,25 +335,26 @@ class PrepTimeStack extends StatelessWidget {
         const Positioned(
           top: 10,
           left: 9,
-          child: ClockIconTile(),
+          child:
+              ClockIconTile(), // Assuming this is a custom widget for the clock icon
         ),
-        const Positioned(
+        Positioned(
           top: 10,
-          left: 44, // Position your text or add alignment as needed
+          left: titleLeftPosition,
           child: Text(
-            "Prep Time:",
-            style: TextStyle(
+            title,
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w700,
             ),
           ),
         ),
-        const Positioned(
+        Positioned(
           top: 10,
-          left: 178,
+          left: timeLeftPosition,
           child: Text(
-            "300",
-            style: TextStyle(
+            time,
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w700,
             ),
@@ -352,8 +371,6 @@ class PrepTimeStack extends StatelessWidget {
             ),
           ),
         ),
-        // Include your other Containers within the Stack
-        // Make sure to position them or size them as needed
       ],
     );
   }
