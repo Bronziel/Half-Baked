@@ -132,6 +132,55 @@ class IntroductionWidget extends StatelessWidget {
           children: [
             PortionsizedStackWidget(),
             PortionsizeCardWidget(),
+            PrepTimeCard(),
+            PrepTimeStack(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PrepTimeCard extends StatelessWidget {
+  const PrepTimeCard({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 290,
+      height: 50,
+      child: Card(
+        color: const Color(0xffd9d9d9),
+        child: Row(
+          children: [
+            const SizedBox(width: 9),
+            Image.asset('images/new/icons/clock.png'),
+            const SizedBox(width: 5),
+            const Text(
+              "PrepTime:",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(width: 8),
+            const Text(
+              "300",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(width: 1),
+            const Text(
+              "min",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
           ],
         ),
       ),
@@ -197,7 +246,7 @@ class PortionsizedStackWidget extends StatelessWidget {
             color: const Color(0xffd9d9d9),
           ),
         ),
-        Positioned(
+        const Positioned(
           top: 10,
           left: 7.2,
           child: PortionsizeIconTile(),
@@ -236,6 +285,68 @@ class PortionsizedStackWidget extends StatelessWidget {
   }
 }
 
+class PrepTimeStack extends StatelessWidget {
+  const PrepTimeStack({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          width: 290,
+          height: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0xffd9d9d9),
+          ),
+        ),
+        const Positioned(
+          top: 10,
+          left: 9,
+          child: ClockIconTile(),
+        ),
+        const Positioned(
+          top: 10,
+          left: 44, // Position your text or add alignment as needed
+          child: Text(
+            "Prep Time:",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+        const Positioned(
+          top: 10,
+          left: 178,
+          child: Text(
+            "300",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+        const Positioned(
+          top: 10,
+          left: 230,
+          child: Text(
+            "min",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+        // Include your other Containers within the Stack
+        // Make sure to position them or size them as needed
+      ],
+    );
+  }
+}
+
 class PortionsizeIconTile extends StatelessWidget {
   const PortionsizeIconTile({
     super.key,
@@ -261,6 +372,21 @@ class ManIconTile extends StatelessWidget {
     return Image.asset(
       'images/new/icons/man.png',
       width: 11.75,
+      height: 30,
+    );
+  }
+}
+
+class ClockIconTile extends StatelessWidget {
+  const ClockIconTile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      'images/new/icons/clock.png',
+      width: 30,
       height: 30,
     );
   }
