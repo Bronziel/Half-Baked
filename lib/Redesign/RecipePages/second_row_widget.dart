@@ -40,6 +40,7 @@ class RecipeListCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           child: ListView(
             children: <Widget>[
+              IngMainTile(),
               IngridientTile(),
               IngridientTile(),
               IngridientTile(),
@@ -85,6 +86,39 @@ class IngridientTile extends StatelessWidget {
           Text("500", style: textStyle),
           SizedBox(width: 3),
           Text("ml", style: textStyle),
+        ],
+      ),
+    );
+  }
+}
+
+class IngMainTile extends StatelessWidget {
+  const IngMainTile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    const textStyle = TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w700,
+      color: Colors.white, // Set your desired color here
+    );
+
+    return Container(
+      height: 50,
+      width: 410,
+      color: Color(0xFFD9D9D9),
+      child: Row(
+        children: [
+          Image.asset('images/new/icons/cart.png'),
+          const SizedBox(width: 16),
+          Text("Kebabkött:", style: textStyle),
+          const SizedBox(width: 20),
+          Text("500", style: textStyle),
+          const SizedBox(width: 3),
+          Text("ml", style: textStyle),
+          Image.asset('images/new/icons/cart.png'),
         ],
       ),
     );
