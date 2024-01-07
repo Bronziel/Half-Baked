@@ -26,3 +26,11 @@ Card(
 postion postion postio
 postion postion
 postiotion)
+
+const Text(
+                  'HalfBaked',
+                  style: TextStyle(
+                      fontFamily: 'Pacifico',
+                      fontSize: 40,
+                      color: Color(0xFFFFFFff)),
+                ),

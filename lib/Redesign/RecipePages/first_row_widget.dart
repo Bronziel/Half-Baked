@@ -124,23 +124,48 @@ class IntroductionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 400,
       width: 410,
       child: Card(
         color: Color(0xFFFFA500),
         child: Column(
           children: [
-            PortionsizedStackWidget(),
-            TimeStack(
-              title: "Prep Time:",
-              time: "300",
+            Container(
+              width: 410,
+              height: 75,
+              alignment: Alignment.center,
+              child: const Text(
+                'Kebabrulle',
+                style: TextStyle(
+                  fontFamily: 'Pacifico',
+                  fontSize: 40,
+                  color: Color(0xFFFFFFff),
+                ),
+              ),
             ),
-            TimeStack(
-              title: "Total Time:",
-              time: "450",
-              titleLeftPosition: 50, // Custom position if needed
-              timeLeftPosition: 184, // Custom position if needed
+            Container(
+              width: 410,
+              height: 130,
+              child: const Row(children: [
+                SizedBox(
+                  width: 65,
+                ),
+                Expanded(
+                  child: Text(
+                    'En god Kebab rulle som aldrig gör en Besviken.',
+                    softWrap: true,
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFFFFFff),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 65,
+                ),
+              ]),
             ),
             PortionsizeCardWidget(),
             TimeCard(
