@@ -128,30 +128,53 @@ class IntroductionWidget extends StatelessWidget {
       height: 400,
       width: 410,
       child: Card(
-        color: Color(0xFFFFA500),
+        color: Color(0xFF161414),
         child: Column(
           children: [
             Container(
               width: 410,
               height: 75,
-              alignment: Alignment.center,
-              child: const Text(
-                'Kebabrulle',
-                style: TextStyle(
-                  fontFamily: 'Pacifico',
-                  fontSize: 40,
-                  color: Color(0xFFFFFFff),
-                ),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                color: Color(0xff234234),
+                width: 1,
+              )),
+              child: const Stack(
+                children: <Widget>[
+                  Positioned(
+                    top: 11, // Your specified distance from the top
+                    left: 0,
+                    right: 0,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Kebabrulle',
+                        style: TextStyle(
+                          fontFamily: 'Pacifico',
+                          fontSize: 40,
+                          color: Color(0xFFFFFFFF), // Corrected color format
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Container(
               width: 410,
               height: 130,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                color: Color(0xff234234),
+                width: 1,
+              )),
               child: const Row(children: [
                 SizedBox(
-                  width: 65,
+                  width: 60,
                 ),
-                Expanded(
+                SizedBox(
+                  width: 280,
+                  height: 130,
                   child: Text(
                     'En god Kebab rulle som aldrig gör en Besviken.',
                     softWrap: true,
@@ -163,19 +186,60 @@ class IntroductionWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 65,
+                  width: 60,
                 ),
               ]),
             ),
-            PortionsizeCardWidget(),
-            TimeCard(
-              title: "Prep Time:",
-              time: "300",
-            ),
-            TimeCard(
-              title: "Total Time:",
-              time: "450",
-            ),
+            Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                  color: Color(0xff234234),
+                  width: 1,
+                )),
+                child: const Row(
+                  children: [
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Column(
+                      children: [
+                        PortionsizeCardWidget(),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TimeCard(
+                          title: "Prep Time:",
+                          time: "300",
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TimeCard(
+                          title: "Total Time:",
+                          time: "450",
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: 80,
+                          width: 80,
+                          child: Card(
+                            color: Color(0xffD9D9D9),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 80,
+                          width: 80,
+                          child: Card(
+                            color: Color(0xffD9D9D9),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )),
           ],
         ),
       ),
