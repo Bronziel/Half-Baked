@@ -17,7 +17,9 @@ class SecondRowWidget extends StatelessWidget {
         SizedBox(
           width: 1175,
           height: 474,
-          child: Card(),
+          child: Card(
+            color: Color(0xffd9d9d9),
+          ),
         )
       ],
     );
