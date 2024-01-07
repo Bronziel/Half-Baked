@@ -4,3 +4,25 @@ exmp orange hex FFA500 Color(0xFFFFA500)
 D9D9D9
 
 color: Color(0xFFD9D9D9)
+
+sizedbox
+widht. 585,
+height 255,
+Card(
+    color: Color(0xffF13030)
+    colum(
+        sizedbox(height)
+        Row(sized box,logo,text,sizedbox, logo)
+        sizedbox (height)
+        Row(sizedbox, number, sizedbox, text)
+        sizedbox (height)
+        progress incidicat/row(sizedbox progressiundicnaor)
+        sizedbox(height)
+    )
+)
+
+or stack
+Card(
+postion postion postio
+postion postion
+postiotion)
