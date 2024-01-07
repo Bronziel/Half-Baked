@@ -45,7 +45,8 @@ class NewDesignPage extends StatelessWidget {
               Height20StandardWidget(),
               FirstRowWidget(),
               Height20StandardWidget(),
-              SecondRowWidget()
+              SecondRowWidget(),
+              SizedBox(),
             ],
           ),
         ),
