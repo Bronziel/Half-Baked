@@ -102,22 +102,20 @@ class IngMainTile extends StatelessWidget {
     const textStyle = TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.w700,
-      color: Colors.white, // Set your desired color here
+      color: Color(0xFF000000), // Set your desired color here
     );
 
     return Container(
       height: 50,
       width: 410,
-      color: Color(0xFFD9D9D9),
+      color: const Color(0xFFD9D9D9),
       child: Row(
         children: [
-          Image.asset('images/new/icons/cart.png'),
-          const SizedBox(width: 16),
-          Text("Kebabkött:", style: textStyle),
           const SizedBox(width: 20),
-          Text("500", style: textStyle),
-          const SizedBox(width: 3),
-          Text("ml", style: textStyle),
+          Image.asset('images/new/icons/cart.png'),
+          const SizedBox(width: 82),
+          const Text("Ingridients", style: textStyle),
+          const SizedBox(width: 82),
           Image.asset('images/new/icons/cart.png'),
         ],
       ),
