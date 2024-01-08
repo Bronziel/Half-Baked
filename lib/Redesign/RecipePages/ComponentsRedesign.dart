@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'imagesclass.dart';
 
 class Widht40wallWidget extends StatelessWidget {
   const Widht40wallWidget({

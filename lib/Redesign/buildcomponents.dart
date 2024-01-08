@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'RecipePages/ComponentsRedesign.dart';
+import 'RecipePages/imagesclass.dart';
 
 class BuildComponentPage extends StatelessWidget {
   const BuildComponentPage({Key? key}) : super(key: key);
@@ -47,6 +48,14 @@ class BuildComponentPage extends StatelessWidget {
               TimeCard(
                 title: "Prep Time:",
                 time: "300",
+              ),
+              SizedBox(
+                height: 80,
+                width: 80,
+                child: Card(
+                  child: IconTile(iconName: 'Pig100'),
+                  color: Color(0xffD9D9D9),
+                ),
               ),
             ],
           ),
