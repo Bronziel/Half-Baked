@@ -22,20 +22,20 @@ class IconTile extends StatelessWidget {
   }
 }
 
-Map<String, String> iconTextPairs = {
+const Map<String, String> iconTextPairs = {
   'Bread100': 'Bread',
   'Chicken100': 'Chicken',
   'Cow100': 'Cow',
-  'Desert100': 'Desert',
+  'Dessert100': 'Dessert',
   'Drinks100': 'Drinks',
   'Fish100': 'Fish',
   'Fruit100': 'Fruit',
   'Lamb100': 'Lamb',
   'Pig100': 'Pig',
-  'SeaaFood100': 'SeaFood',
-  'soup100': 'Soup',
+  'SeaFood100': 'SeaFood',
+  'Soup100': 'Soup',
   'Spicy100': 'Spicy',
-  'turkey100': 'Turkey',
+  'Turkey100': 'Turkey',
   'Vegetable100': 'Vegetable',
 
   // Add more pairs as needed
@@ -49,7 +49,7 @@ class IconTileText extends StatelessWidget {
   const IconTileText({
     super.key,
     required this.iconName,
-    this.iconSize = 57.16, // Default size set to 66.67
+    this.iconSize = 55, // Default size
     required this.iconTextPairs,
   });
 
@@ -57,25 +57,39 @@ class IconTileText extends StatelessWidget {
   Widget build(BuildContext context) {
     String text = iconTextPairs[iconName] ?? 'Unknown';
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Center(
-          // Center the image
-          child: Image.asset(
-            'images/new/icons/icon100/$iconName.png',
-            width: iconSize,
-            height: iconSize,
-          ),
+    return SizedBox(
+      // Add container properties if needed, like padding, margin, etc.
+      width: 80,
+      height: 80,
+      child: Card(
+        color: const Color(0xffD9D9D9),
+        child: Stack(
+          alignment:
+              Alignment.center, // Align the icon and text within the stack
+          children: <Widget>[
+            Positioned(
+              top: 1,
+              child: SizedBox(
+                width: 55,
+                height: 55,
+                child: Image.asset(
+                  'images/new/icons/icon100/$iconName.png',
+                  width: iconSize,
+                  height: iconSize,
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 0, // Position the text at the bottom of the stack
+              child: Text(
+                text,
+                style: const TextStyle(
+                    fontSize: 13.5, fontWeight: FontWeight.w700),
+              ),
+            ),
+          ],
         ),
-        Text(
-          text,
-          style: const TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
-          ),
-        ), // Display the associated text
-      ],
+      ),
     );
   }
 }

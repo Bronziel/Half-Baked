@@ -49,16 +49,63 @@ class BuildComponentPage extends StatelessWidget {
                 title: "Prep Time:",
                 time: "300",
               ),
-              Icon80Widget(),
-              SizedBox(
-                height: 80,
-                width: 80,
-                child: Card(
-                  child: IconTile(iconName: 'Pig100', iconSize: 40.0),
-                  color: Color(0xffD9D9D9),
-                ),
+              Row(
+                children: [
+                  Icon80Widget(),
+                  IconTileText(
+                    iconName: 'Pig100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                  IconTileText(
+                    iconName: 'Soup100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                  IconTileText(
+                    iconName: 'SeaFood100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                  IconTileText(
+                    iconName: 'Fruit100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                  IconTileText(
+                    iconName: 'Drinks100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                  IconTileText(
+                    iconName: 'Bread100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                  IconTileText(
+                    iconName: 'Lamb100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                  IconTileText(
+                    iconName: 'Cow100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                  IconTileText(
+                    iconName: 'Turkey100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                  IconTileText(
+                    iconName: 'Dessert100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                  IconTileText(
+                    iconName: 'Chicken100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                  IconTileText(
+                    iconName: 'Fish100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                  IconTileText(
+                    iconName: 'Vegetable100',
+                    iconTextPairs: iconTextPairs,
+                  ),
+                ],
               ),
-              Icon80textWidget(),
             ],
           ),
         ),
