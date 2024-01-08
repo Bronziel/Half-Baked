@@ -58,6 +58,7 @@ class BuildComponentPage extends StatelessWidget {
                   color: Color(0xffD9D9D9),
                 ),
               ),
+              Icon80textWidget(),
             ],
           ),
         ),

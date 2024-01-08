@@ -165,3 +165,23 @@ class Icon80Widget extends StatelessWidget {
     );
   }
 }
+
+class Icon80textWidget extends StatelessWidget {
+  const Icon80textWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 80,
+      width: 80,
+      child: Card(
+          color: const Color(0xffD9D9D9),
+          child: IconTileText(
+            iconName: 'Pig100',
+            iconTextPairs: iconTextPairs,
+          )),
+    );
+  }
+}
