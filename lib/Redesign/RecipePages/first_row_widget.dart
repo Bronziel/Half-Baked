@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ComponentsRedesign.dart';
 import 'StackedTiles.dart';
+import 'imagesclass.dart';
 
 class FirstRowWidget extends StatelessWidget {
   const FirstRowWidget({
@@ -222,20 +223,8 @@ class IntroductionWidget extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        SizedBox(
-                          height: 80,
-                          width: 80,
-                          child: Card(
-                            color: Color(0xffD9D9D9),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 80,
-                          width: 80,
-                          child: Card(
-                            color: Color(0xffD9D9D9),
-                          ),
-                        ),
+                        IconTile(iconName: 'Cow100'),
+                        IconTile(iconName: 'Bread100'),
                       ],
                     ),
                   ],

@@ -43,8 +43,49 @@ class BuildComponentPage extends StatelessWidget {
             children: [
               TimeTIlesshowcase(),
               RowOfIcons80(),
+              CalorieCardWidget(),
+              CaloriecardStackedWidget(),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class CaloriecardStackedWidget extends StatelessWidget {
+  const CaloriecardStackedWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 255,
+      width: 585,
+      child: Card(),
+    );
+  }
+}
+
+class CalorieCardWidget extends StatelessWidget {
+  const CalorieCardWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 585,
+      height: 255,
+      child: Card(
+        color: Color(0xFFF13030),
+        child: Column(
+          children: [
+            Row(),
+            Row(),
+            Row(),
+          ],
         ),
       ),
     );
