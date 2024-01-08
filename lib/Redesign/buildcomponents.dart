@@ -63,7 +63,9 @@ class CaloriecardStackedWidget extends StatelessWidget {
     return SizedBox(
       height: 255,
       width: 585,
-      child: Card(),
+      child: Card(
+        color: Color(0xFFF13030),
+      ),
     );
   }
 }
@@ -82,7 +84,9 @@ class CalorieCardWidget extends StatelessWidget {
         color: Color(0xFFF13030),
         child: Column(
           children: [
-            Row(),
+            Row(
+              children: [Image.asset('images/kals/fire.png')],
+            ),
             Row(),
             Row(),
           ],

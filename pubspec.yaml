@@ -78,6 +78,7 @@ flutter:
     - images/new/
     - images/new/icons/
     - images/new/icons/icon100/
+    - images/kals/
   fonts:
     - family: CustomFont
       fonts:
