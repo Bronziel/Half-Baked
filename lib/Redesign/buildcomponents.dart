@@ -88,21 +88,21 @@ class containerkals extends StatelessWidget {
             const SizedBox(
               width: 45,
             ),
-            Image.asset(
-              'images/kals/fire.png',
+            Container(
+              width: 40,
+              height: 45,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                color: Color(0xff234234),
+                width: 1,
+              )),
+              child: Image.asset(
+                'images/kals/fire.png',
+              ),
             ),
             const SizedBox(
               width: 10,
             ),
-            const Text(
-              'Calories',
-              style: TextStyle(
-                fontFamily: 'Inter',
-                fontSize: 45,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xFFFFFFFF),
-              ),
-            )
           ],
         ),
       ]),

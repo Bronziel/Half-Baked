@@ -34,3 +34,20 @@ const Text(
                       fontSize: 40,
                       color: Color(0xFFFFFFff)),
                 ),
+
+                Container(
+              decoration: BoxDecoration(
+                  border: Border.all(
+                color: Color(0xff234234),
+                width: 1,
+              )),
+              child: const Text(
+                'Calories',
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: 45,
+                  fontWeight: FontWeight.bold,
+                  color: const Color(0xFFFFFFFF),
+                ),
+              ),
+            )
