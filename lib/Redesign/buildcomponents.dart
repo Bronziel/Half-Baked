@@ -84,8 +84,16 @@ class CalorieCardWidget extends StatelessWidget {
         color: Color(0xFFF13030),
         child: Column(
           children: [
+            SizedBox(
+              height: 10,
+            ),
             Row(
-              children: [Image.asset('images/kals/fire.png')],
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Image.asset('images/kals/fire.png')
+              ],
             ),
             Row(),
             Row(),
