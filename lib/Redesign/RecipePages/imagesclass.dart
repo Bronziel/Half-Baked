@@ -7,7 +7,7 @@ class IconTile extends StatelessWidget {
   const IconTile({
     super.key,
     required this.iconName,
-    this.iconSize = 66.67, // Default size set to 30
+    this.iconSize = 60, // Default size set to 30
   });
 
   @override
@@ -18,13 +18,16 @@ class IconTile extends StatelessWidget {
       child: Card(
         color: Color(0xffD9D9D9),
         child: Center(
-          child: SizedBox(
-            width: 66.67,
-            height: 66.67,
-            child: Image.asset(
-              'images/new/icons/icon100/$iconName.png',
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: SizedBox(
               width: iconSize,
               height: iconSize,
+              child: Image.asset(
+                'images/new/icons/icon100/$iconName.png',
+                width: iconSize,
+                height: iconSize,
+              ),
             ),
           ),
         ),
