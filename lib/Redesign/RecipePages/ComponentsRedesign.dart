@@ -147,3 +147,21 @@ class PortionsizeCardWidget extends StatelessWidget {
     );
   }
 }
+
+class Icon80Widget extends StatelessWidget {
+  const Icon80Widget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 80,
+      width: 80,
+      child: Card(
+        child: IconTile(iconName: 'Pig100'),
+        color: Color(0xffD9D9D9),
+      ),
+    );
+  }
+}

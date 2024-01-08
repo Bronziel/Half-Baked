@@ -12,10 +12,12 @@ class IconTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      'images/new/icons/icon100/$iconName.png',
-      width: iconSize,
-      height: iconSize,
+    return Center(
+      child: Image.asset(
+        'images/new/icons/icon100/$iconName.png',
+        width: iconSize,
+        height: iconSize,
+      ),
     );
   }
 }

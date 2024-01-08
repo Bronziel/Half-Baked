@@ -49,11 +49,12 @@ class BuildComponentPage extends StatelessWidget {
                 title: "Prep Time:",
                 time: "300",
               ),
+              Icon80Widget(),
               SizedBox(
                 height: 80,
                 width: 80,
                 child: Card(
-                  child: IconTile(iconName: 'Pig100'),
+                  child: IconTile(iconName: 'Pig100', iconSize: 40.0),
                   color: Color(0xffD9D9D9),
                 ),
               ),
