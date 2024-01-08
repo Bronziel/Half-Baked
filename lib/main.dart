@@ -144,7 +144,7 @@ class RecipeListButton extends StatelessWidget {
   const RecipeListButton({
     Key? key,
     this.buttonText = 'RecipeList',
-    this.buttonColor = const Color.fromARGB(255, 72, 255, 0),
+    this.buttonColor = const Color.fromARGB(255, 224, 17, 131),
   }) : super(key: key);
 
   @override
@@ -208,7 +208,7 @@ class ComponentButton extends StatelessWidget {
   const ComponentButton({
     Key? key,
     this.buttonText = 'Component',
-    this.buttonColor = const Color.fromARGB(255, 72, 255, 0),
+    this.buttonColor = const Color.fromARGB(255, 0, 30, 255),
   }) : super(key: key);
 
   @override

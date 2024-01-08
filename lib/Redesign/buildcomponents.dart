@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'RecipePages/ComponentsRedesign.dart';
 
 class BuildComponentPage extends StatelessWidget {
   const BuildComponentPage({Key? key}) : super(key: key);
@@ -37,7 +38,17 @@ class BuildComponentPage extends StatelessWidget {
       body: const SingleChildScrollView(
         child: Center(
           child: Column(
-            children: [],
+            children: [
+              PortionsizeCardWidget(),
+              TimeCard(
+                title: "Total Time:",
+                time: "450",
+              ),
+              TimeCard(
+                title: "Prep Time:",
+                time: "300",
+              ),
+            ],
           ),
         ),
       ),
