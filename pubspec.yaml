@@ -88,7 +88,7 @@ flutter:
         - asset: fonts/Pacifico-Regular.ttf
     - family: Inter
       fonts:
-        - asset: assets/fonts/Inter.ttf
+        - asset: fonts/Inter.ttf
 
   #   - images/a_dot_ham.jpeg
   

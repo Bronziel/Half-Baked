@@ -43,12 +43,69 @@ class BuildComponentPage extends StatelessWidget {
             children: [
               TimeTIlesshowcase(),
               RowOfIcons80(),
-              CalorieCardWidget(),
-              CaloriecardStackedWidget(),
+              Row(
+                children: [
+                  CalorieCardWidget(),
+                  CaloriecardStackedWidget(),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 4,
+                  ),
+                  containerkals(),
+                ],
+              )
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class containerkals extends StatelessWidget {
+  const containerkals({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 585,
+      height: 255,
+      decoration: BoxDecoration(
+        color: Color(0xFFF13030),
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+      ),
+      child: Column(children: [
+        const SizedBox(
+          height: 45,
+        ),
+        Row(
+          children: [
+            const SizedBox(
+              width: 45,
+            ),
+            Image.asset(
+              'images/kals/fire.png',
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            const Text(
+              'Calories',
+              style: TextStyle(
+                fontFamily: 'Inter',
+                fontSize: 45,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xFFFFFFFF),
+              ),
+            )
+          ],
+        ),
+      ]),
     );
   }
 }
@@ -82,22 +139,42 @@ class CalorieCardWidget extends StatelessWidget {
       height: 255,
       child: Card(
         color: Color(0xFFF13030),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 10,
+        child: Container(
+          decoration: BoxDecoration(border: Border.all(color: Colors.green)),
+          child: Column(
+            children: [
+              Container(
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.green)),
+                child: Row(
+                  children: [
+                    const SizedBox(
+                      width: 45,
+                    ),
+                    Image.asset('images/kals/fire.png'),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Text(
+                      'Calories',
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 45,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFFFFFFF),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 211,
+                    ),
+                    Image.asset('images/kals/cheked.png'),
+                  ],
                 ),
-                Image.asset('images/kals/fire.png')
-              ],
-            ),
-            Row(),
-            Row(),
-          ],
+              ),
+              Row(),
+              Row(),
+            ],
+          ),
         ),
       ),
     );
