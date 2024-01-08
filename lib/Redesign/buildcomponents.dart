@@ -41,15 +41,7 @@ class BuildComponentPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              PortionsizeCardWidget(),
-              TimeCard(
-                title: "Total Time:",
-                time: "450",
-              ),
-              TimeCard(
-                title: "Prep Time:",
-                time: "300",
-              ),
+              TimeTIlesshowcase(),
               RowOfIcons80(),
             ],
           ),

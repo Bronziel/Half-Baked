@@ -1,5 +1,6 @@
 import 'package:fb2/Redesign/RecipePages/imagesclass.dart';
 import 'package:flutter/material.dart';
+import 'RecipePages/ComponentsRedesign.dart';
 
 class RowOfIcons80 extends StatelessWidget {
   const RowOfIcons80({
@@ -82,6 +83,29 @@ class RowOfIcons80 extends StatelessWidget {
               iconTextPairs: iconTextPairs,
             ),
           ],
+        ),
+      ],
+    );
+  }
+}
+
+class TimeTIlesshowcase extends StatelessWidget {
+  const TimeTIlesshowcase({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        PortionsizeCardWidget(),
+        TimeCard(
+          title: "Total Time:",
+          time: "450",
+        ),
+        TimeCard(
+          title: "Prep Time:",
+          time: "300",
         ),
       ],
     );
