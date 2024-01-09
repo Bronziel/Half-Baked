@@ -89,6 +89,9 @@ flutter:
     - family: Inter
       fonts:
         - asset: fonts/Inter.ttf
+    - family: Paprika
+      fonts:
+        - asset: fonts/Paprika-Regular.ttf
 
   #   - images/a_dot_ham.jpeg
   
