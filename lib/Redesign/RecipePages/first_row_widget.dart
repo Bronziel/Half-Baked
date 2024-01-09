@@ -129,7 +129,7 @@ class IntroductionWidget extends StatelessWidget {
       height: 400,
       width: 410,
       child: Card(
-        color: Color(0xFF161414),
+        color: const Color(0xFF161414),
         child: Column(
           children: [
             Container(
@@ -137,7 +137,7 @@ class IntroductionWidget extends StatelessWidget {
               height: 75,
               decoration: BoxDecoration(
                   border: Border.all(
-                color: Color(0xff234234),
+                color: const Color(0xff234234),
                 width: 1,
               )),
               child: const Stack(
@@ -166,7 +166,7 @@ class IntroductionWidget extends StatelessWidget {
               height: 130,
               decoration: BoxDecoration(
                   border: Border.all(
-                color: Color(0xff234234),
+                color: const Color(0xff234234),
                 width: 1,
               )),
               child: const Row(children: [
@@ -194,7 +194,7 @@ class IntroductionWidget extends StatelessWidget {
             Container(
                 decoration: BoxDecoration(
                     border: Border.all(
-                  color: Color(0xff234234),
+                  color: const Color(0xff234234),
                   width: 1,
                 )),
                 child: const Row(

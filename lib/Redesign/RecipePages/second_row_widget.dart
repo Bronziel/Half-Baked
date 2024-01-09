@@ -37,7 +37,7 @@ class RecipeListCard extends StatelessWidget {
       width: 410,
       height: 463,
       child: Card(
-        color: Color(0xffd9d9d9),
+        color: const Color(0xffd9d9d9),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: ListView(

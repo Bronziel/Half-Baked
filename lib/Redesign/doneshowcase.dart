@@ -96,7 +96,7 @@ class TimeTIlesshowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
         PortionsizeCardWidget(),
         TimeCard(

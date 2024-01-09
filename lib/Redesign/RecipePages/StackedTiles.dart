@@ -45,7 +45,7 @@ class PortionsizedStackWidget extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
+        const Positioned(
           top: 10,
           left: 243,
           child: ManIconTile(),

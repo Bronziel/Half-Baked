@@ -16,7 +16,7 @@ class IconTile extends StatelessWidget {
       height: 80,
       width: 80,
       child: Card(
-        color: Color(0xffD9D9D9),
+        color: const Color(0xffD9D9D9),
         child: Center(
           child: FittedBox(
             fit: BoxFit.contain,
