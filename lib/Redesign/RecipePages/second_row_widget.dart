@@ -9,59 +9,85 @@ class SecondRowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
         Widht40wallWidget(),
         RecipeListCard(),
         Width20StandardWidget(),
-        Stepswidget()
+        StepsWidget(),
       ],
     );
   }
 }
 
-class Stepswidget extends StatelessWidget {
-  const Stepswidget({
-    super.key,
-  });
+class StepsWidget extends StatelessWidget {
+  final List<String> steps = [
+    // Populate this list with your step descriptions
+    'Step 1 Description',
+    'Step 2 Description',
+    // Add more steps as needed
+  ];
+
+  StepsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Splitting steps into two lists for left and right columns
+    final leftColumnSteps = <String>[];
+    final rightColumnSteps = <String>[];
+
+    for (var i = 0; i < steps.length; i++) {
+      if (i % 2 == 0) {
+        leftColumnSteps.add(steps[i]);
+      } else {
+        rightColumnSteps.add(steps[i]);
+      }
+    }
+
     return SizedBox(
       width: 1200,
       height: 474,
       child: Card(
-        color: Color(0xffd9d9d9),
+        color: const Color(0xffd9d9d9),
         child: Row(
           children: [
-            SizedBox(
-              height: 320,
-              width: 570,
-              child: Column(
-                children: [
-                  MyListTile(),
-                ],
-              ),
-            ),
-            VerticalDivider(
+            buildStepsColumn(leftColumnSteps),
+            const VerticalDivider(
               color: Color(0xFFFFFFFF),
               indent: 20,
               width: 40,
               endIndent: 20,
             ),
-            SizedBox(
-              height: 320,
-              width: 570,
-              child: Column(
-                children: [
-                  ListTile(
-                    leading: Text('1'),
-                  ),
-                ],
-              ),
-            ),
+            buildStepsColumn(rightColumnSteps),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget buildStepsColumn(List<String> steps) {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: steps.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Text(
+              '${index + 1}',
+              style: const TextStyle(
+                fontFamily: 'Pacifico',
+                fontSize: 40,
+              ),
+            ),
+            title: Text(
+              steps[index],
+              style: const TextStyle(
+                fontFamily: 'Paprika',
+                fontSize: 24,
+              ),
+            ),
+            // Add other styling or elements as needed
+          );
+        },
       ),
     );
   }
