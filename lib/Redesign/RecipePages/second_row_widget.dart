@@ -40,7 +40,20 @@ class Stepswidget extends StatelessWidget {
               child: Column(
                 children: [
                   ListTile(
-                    leading: Text('1'),
+                    leading: Text(
+                      '1',
+                      style: TextStyle(
+                          fontFamily: 'Pacifico',
+                          fontSize: 40,
+                          color: Color(0xFF0922FD)),
+                    ),
+                    title: Text(
+                      'Börja med att slå sönder 3 ägg. Vispa Sedan ihop äggen i en bunke',
+                      style: TextStyle(
+                          fontFamily: 'Paprika',
+                          fontSize: 24,
+                          color: Color(0xFF000000)),
+                    ),
                   ),
                 ],
               ),
