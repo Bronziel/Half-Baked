@@ -54,7 +54,7 @@ class BuildComponentPage extends StatelessWidget {
                   SizedBox(
                     width: 4,
                   ),
-                  containerkals(),
+                  Containerkals(),
                 ],
               )
             ],
@@ -65,8 +65,8 @@ class BuildComponentPage extends StatelessWidget {
   }
 }
 
-class containerkals extends StatelessWidget {
-  const containerkals({
+class Containerkals extends StatelessWidget {
+  const Containerkals({
     super.key,
   });
 
@@ -75,7 +75,7 @@ class containerkals extends StatelessWidget {
     return Container(
       width: 585,
       height: 255,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFFF13030),
         borderRadius: BorderRadius.all(Radius.circular(30)),
       ),
@@ -93,7 +93,7 @@ class containerkals extends StatelessWidget {
               height: 45,
               decoration: BoxDecoration(
                   border: Border.all(
-                color: Color(0xff234234),
+                color: const Color(0xff234234),
                 width: 1,
               )),
               child: Image.asset(
@@ -117,7 +117,7 @@ class CaloriecardStackedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       height: 255,
       width: 585,
       child: Card(
@@ -138,7 +138,7 @@ class CalorieCardWidget extends StatelessWidget {
       width: 585,
       height: 255,
       child: Card(
-        color: Color(0xFFF13030),
+        color: const Color(0xFFF13030),
         child: Container(
           decoration: BoxDecoration(border: Border.all(color: Colors.green)),
           child: Column(
@@ -171,8 +171,8 @@ class CalorieCardWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Row(),
-              Row(),
+              const Row(),
+              const Row(),
             ],
           ),
         ),
