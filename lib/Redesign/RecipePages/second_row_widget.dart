@@ -42,10 +42,10 @@ class RecipeListCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           child: Column(
             children: [
-              IngMainTile(),
+              const IngMainTile(),
               Expanded(
                 child: ListView(
-                  children: <Widget>[
+                  children: const <Widget>[
                     IngridientTile(),
                     IngridientTile(),
                     IngridientTile(),
