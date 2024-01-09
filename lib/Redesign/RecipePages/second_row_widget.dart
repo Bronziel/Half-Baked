@@ -14,14 +14,37 @@ class SecondRowWidget extends StatelessWidget {
         Widht40wallWidget(),
         RecipeListCard(),
         Width20StandardWidget(),
-        SizedBox(
-          width: 1175,
-          height: 474,
-          child: Card(
-            color: Color(0xffd9d9d9),
-          ),
-        )
+        Stepswidget()
       ],
+    );
+  }
+}
+
+class Stepswidget extends StatelessWidget {
+  const Stepswidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 1175,
+      height: 474,
+      child: Card(
+        color: Color(0xffd9d9d9),
+        child: Row(
+          children: [
+            Column(),
+            VerticalDivider(
+              color: Color(0xFFFFFFFF),
+              indent: 20,
+              width: 40,
+              endIndent: 20,
+            ),
+            Column(),
+          ],
+        ),
+      ),
     );
   }
 }
