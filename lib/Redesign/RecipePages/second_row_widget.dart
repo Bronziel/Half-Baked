@@ -27,21 +27,41 @@ class Stepswidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 1175,
+    return const SizedBox(
+      width: 1200,
       height: 474,
       child: Card(
         color: Color(0xffd9d9d9),
         child: Row(
           children: [
-            Column(),
+            SizedBox(
+              height: 320,
+              width: 570,
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Text('1'),
+                  ),
+                ],
+              ),
+            ),
             VerticalDivider(
               color: Color(0xFFFFFFFF),
               indent: 20,
               width: 40,
               endIndent: 20,
             ),
-            Column(),
+            SizedBox(
+              height: 320,
+              width: 570,
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Text('1'),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
