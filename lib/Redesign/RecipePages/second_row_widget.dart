@@ -40,21 +40,32 @@ class RecipeListCard extends StatelessWidget {
         color: const Color(0xffd9d9d9),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          child: ListView(
-            children: <Widget>[
+          child: Column(
+            children: [
               IngMainTile(),
-              IngridientTile(),
-              IngridientTile(),
-              IngridientTile(),
-              IngridientTile(),
-              IngridientTile(),
-              IngridientTile(),
-              IngridientTile(),
-              IngridientTile(),
-              IngridientTile(),
-              IngridientTile(),
-              IngridientTile(),
-              // Add more children as needed
+              Expanded(
+                child: ListView(
+                  children: <Widget>[
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    IngridientTile(),
+                    // Add more children as needed
+                  ],
+                ),
+              ),
             ],
           ),
         ),
