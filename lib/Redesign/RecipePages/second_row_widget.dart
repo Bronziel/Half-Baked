@@ -11,9 +11,9 @@ class SecondRowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Widht40wallWidget(),
+        const Widht40wallWidget(),
         RecipeListCard(),
-        Width20StandardWidget(),
+        const Width20StandardWidget(),
         StepsWidget(),
       ],
     );
