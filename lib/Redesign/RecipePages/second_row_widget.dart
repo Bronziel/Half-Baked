@@ -27,7 +27,7 @@ class Stepswidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       width: 1200,
       height: 474,
       child: Card(
@@ -39,22 +39,7 @@ class Stepswidget extends StatelessWidget {
               width: 570,
               child: Column(
                 children: [
-                  ListTile(
-                    leading: Text(
-                      '1',
-                      style: TextStyle(
-                          fontFamily: 'Pacifico',
-                          fontSize: 40,
-                          color: Color(0xFF0922FD)),
-                    ),
-                    title: Text(
-                      'Börja med att slå sönder 3 ägg. Vispa Sedan ihop äggen i en bunke',
-                      style: TextStyle(
-                          fontFamily: 'Paprika',
-                          fontSize: 24,
-                          color: Color(0xFF000000)),
-                    ),
-                  ),
+                  MyListTile(),
                 ],
               ),
             ),
@@ -77,6 +62,45 @@ class Stepswidget extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class MyListTile extends StatefulWidget {
+  @override
+  _MyListTileState createState() => _MyListTileState();
+}
+
+class _MyListTileState extends State<MyListTile> {
+  bool isChecked = false; // initial state of the checkbox
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Text(
+        '1',
+        style: TextStyle(
+          fontFamily: 'Pacifico',
+          fontSize: 40,
+          color: Color(0xFF0922FD),
+        ),
+      ),
+      title: Text(
+        'Börja med att slå sönder 3 ägg. Vispa Sedan ihop äggen i en bunke',
+        style: TextStyle(
+          fontFamily: 'Paprika',
+          fontSize: 24,
+          color: Color(0xFF000000),
+        ),
+      ),
+      trailing: Checkbox(
+        value: isChecked,
+        onChanged: (bool? newValue) {
+          setState(() {
+            isChecked = newValue ?? false;
+          });
+        },
       ),
     );
   }
