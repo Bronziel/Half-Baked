@@ -23,16 +23,16 @@ class SecondRowWidget extends StatelessWidget {
 class StepsWidget extends StatefulWidget {
   final List<String> steps = [
     // Populate this list with your step descriptions
-    'Step 1 Description',
-    'Step 2 Description',
-    'Step 3 Description',
-    'Step 4 Description',
-    'Step 5 Description',
-    'Step 6 Description',
-    'Step 7 Description',
-    'Step 8 Description',
-    'Step 9 Description',
-    'Step 10 Description',
+    '1:mix cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv, cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv',
+    '2:add sugar. mix. scrape. Lägg till socker i mixa rejält. Sen skrapa',
+    '3:add eggs one at a time. Scrape. Bland med skrapa. Försiktigt och långsamt ett ägg i taget inte mixa',
+    '4:add cream/vispgrädde  and vanill//vanila extract mix and scrape',
+    '5:Krossa kakorna/brownies. Koka up smör. Lägg  i lite smör i taget. Du vill att smulorna sticker ihop men krossa lätt när du trycket',
+    '6:pressa  mixen av botten av formen. Häll sedan i färdiga cream mixen.',
+    '7:Step 7 Description',
+    '8:Step 8 Description',
+    '9:Step 9 Description',
+    '10:Step 10 Description',
 
     // Add more steps as needed
   ];
