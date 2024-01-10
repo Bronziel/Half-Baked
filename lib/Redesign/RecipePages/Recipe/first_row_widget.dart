@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'ComponentsRedesign.dart';
-import 'StackedTiles.dart';
-import 'imagesclass.dart';
+import '../../components/ComponentsRedesign.dart';
+import '../../components/StackedTiles.dart';
+import '../../components/imagesclass.dart';
 
 class FirstRowWidget extends StatelessWidget {
   const FirstRowWidget({

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'first_row_widget.dart';
 import 'second_row_widget.dart';
-import 'ComponentsRedesign.dart';
+import '../../components/ComponentsRedesign.dart';
 
 class NewDesignPage extends StatelessWidget {
   const NewDesignPage({Key? key}) : super(key: key);
