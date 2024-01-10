@@ -108,8 +108,12 @@ class TimeCard extends StatelessWidget {
 
 //this is the portionsize tile
 class PortionsizeCardWidget extends StatelessWidget {
+  final String portion;
+
+  // The constructor now includes an optional 'portion' parameter
   const PortionsizeCardWidget({
     super.key,
+    this.portion = '', // Default is an empty string if no value is provided
   });
 
   @override
@@ -132,9 +136,9 @@ class PortionsizeCardWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 9),
-            const Text(
-              "12",
-              style: TextStyle(
+            Text(
+              portion, // Use the 'portion' parameter here
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
               ),
