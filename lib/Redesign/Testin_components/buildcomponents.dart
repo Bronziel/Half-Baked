@@ -142,16 +142,12 @@ class _SelectImageState extends State<SelectImage> {
         CropAspectRatioPreset.ratio4x3,
         CropAspectRatioPreset.ratio16x9,
       ],
-      /*androidUiSettings: AndroidUiSettings(
-        toolbarTitle: 'Crop Image',
-        toolbarColor: Colors.deepOrange,
-        toolbarWidgetColor: Colors.white,
-        initAspectRatio: CropAspectRatioPreset.original,
-        lockAspectRatio: false,
-      ),
-      iosUiSettings: IOSUiSettings(
-        title: 'Crop Image',
-      ),*/
+      uiSettings: [
+        WebUiSettings(
+          context: context,
+          // Add other necessary configurations here
+        ),
+      ],
     );
 
     if (croppedFile != null) {
