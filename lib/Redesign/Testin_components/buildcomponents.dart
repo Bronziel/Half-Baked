@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'RecipePages/ComponentsRedesign.dart';
-import 'RecipePages/imagesclass.dart';
+import '../RecipePages/ComponentsRedesign.dart';
+import '../RecipePages/imagesclass.dart';
 import 'doneshowcase.dart';
 
 class BuildComponentPage extends StatelessWidget {

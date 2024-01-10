@@ -1,6 +1,6 @@
 import 'package:fb2/Redesign/RecipePages/imagesclass.dart';
 import 'package:flutter/material.dart';
-import 'RecipePages/ComponentsRedesign.dart';
+import '../RecipePages/ComponentsRedesign.dart';
 
 class RowOfIcons80 extends StatelessWidget {
   const RowOfIcons80({
