@@ -25,6 +25,15 @@ class StepsWidget extends StatefulWidget {
     // Populate this list with your step descriptions
     'Step 1 Description',
     'Step 2 Description',
+    'Step 3 Description',
+    'Step 4 Description',
+    'Step 5 Description',
+    'Step 6 Description',
+    'Step 7 Description',
+    'Step 8 Description',
+    'Step 9 Description',
+    'Step 10 Description',
+
     // Add more steps as needed
   ];
 
