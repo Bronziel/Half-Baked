@@ -33,6 +33,10 @@ class StepsWidget extends StatefulWidget {
     '8:Step 8 Description',
     '9:Step 9 Description',
     '10:Step 10 Description',
+    '11:Step 7 Description',
+    '12:Step 8 Description',
+    '13:Step 9 Description',
+    '14:Step 10 Description',
 
     // Add more steps as needed
   ];
@@ -98,7 +102,7 @@ class _StepsWidgetState extends State<StepsWidget> {
           return ListTile(
             leading: Text(
               '${actualIndex + 1}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'Pacifico',
                 fontSize: 40,
                 color: Color(0xFF0922FD),
@@ -106,7 +110,7 @@ class _StepsWidgetState extends State<StepsWidget> {
             ),
             title: Text(
               steps[index],
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'Paprika',
                 fontSize: 24,
                 color: Color(0xFF000000),
@@ -127,7 +131,7 @@ class _StepsWidgetState extends State<StepsWidget> {
   }
 }
 
-class MyListTile extends StatefulWidget {
+/*class MyListTile extends StatefulWidget {
   @override
   _MyListTileState createState() => _MyListTileState();
 }
@@ -164,7 +168,7 @@ class _MyListTileState extends State<MyListTile> {
       ),
     );
   }
-}
+} */
 
 class RecipeListCard extends StatelessWidget {
   const RecipeListCard({
