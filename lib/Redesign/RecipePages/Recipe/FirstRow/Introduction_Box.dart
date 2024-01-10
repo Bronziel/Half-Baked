@@ -55,7 +55,9 @@ class IntroductionWidget extends StatelessWidget {
                 SizedBox(
                   width: 280,
                   height: 130,
-                  child: Description(),
+                  child: Description(
+                      description:
+                          'En god Kebab rulle som aldrig gör en Besviken.'),
                 ),
                 SizedBox(
                   width: 60,
@@ -71,14 +73,16 @@ class IntroductionWidget extends StatelessWidget {
 }
 
 class Description extends StatelessWidget {
+  final String description;
   const Description({
     super.key,
+    this.description = '',
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      'En god Kebab rulle som aldrig gör en Besviken.',
+      description,
       softWrap: true,
       style: TextStyle(
         fontSize: 24,
