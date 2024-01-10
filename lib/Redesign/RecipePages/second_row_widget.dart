@@ -20,7 +20,7 @@ class SecondRowWidget extends StatelessWidget {
   }
 }
 
-class StepsWidget extends StatelessWidget {
+class StepsWidget extends StatefulWidget {
   final List<String> steps = [
     // Populate this list with your step descriptions
     'Step 1 Description',
@@ -31,16 +31,30 @@ class StepsWidget extends StatelessWidget {
   StepsWidget({super.key});
 
   @override
+  State<StepsWidget> createState() => _StepsWidgetState();
+}
+
+class _StepsWidgetState extends State<StepsWidget> {
+  late List<bool> checkedStates;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the checked states for each step
+    checkedStates = List.generate(widget.steps.length, (_) => false);
+  }
+
+  @override
   Widget build(BuildContext context) {
     // Splitting steps into two lists for left and right columns
     final leftColumnSteps = <String>[];
     final rightColumnSteps = <String>[];
 
-    for (var i = 0; i < steps.length; i++) {
+    for (var i = 0; i < widget.steps.length; i++) {
       if (i % 2 == 0) {
-        leftColumnSteps.add(steps[i]);
+        leftColumnSteps.add(widget.steps[i]);
       } else {
-        rightColumnSteps.add(steps[i]);
+        rightColumnSteps.add(widget.steps[i]);
       }
     }
 
@@ -51,41 +65,52 @@ class StepsWidget extends StatelessWidget {
         color: const Color(0xffd9d9d9),
         child: Row(
           children: [
-            buildStepsColumn(leftColumnSteps),
+            buildStepsColumn(leftColumnSteps, context, 0),
             const VerticalDivider(
               color: Color(0xFFFFFFFF),
               indent: 20,
               width: 40,
               endIndent: 20,
             ),
-            buildStepsColumn(rightColumnSteps),
+            buildStepsColumn(rightColumnSteps, context, leftColumnSteps.length),
           ],
         ),
       ),
     );
   }
 
-  Widget buildStepsColumn(List<String> steps) {
+  Widget buildStepsColumn(
+      List<String> steps, BuildContext context, int offset) {
     return Expanded(
       child: ListView.builder(
         itemCount: steps.length,
         itemBuilder: (context, index) {
+          int actualIndex = index + offset;
           return ListTile(
             leading: Text(
-              '${index + 1}',
-              style: const TextStyle(
+              '${actualIndex + 1}',
+              style: TextStyle(
                 fontFamily: 'Pacifico',
                 fontSize: 40,
+                color: Color(0xFF0922FD),
               ),
             ),
             title: Text(
               steps[index],
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Paprika',
                 fontSize: 24,
+                color: Color(0xFF000000),
               ),
             ),
-            // Add other styling or elements as needed
+            trailing: Checkbox(
+              value: checkedStates[actualIndex],
+              onChanged: (bool? newValue) {
+                setState(() {
+                  checkedStates[actualIndex] = newValue ?? false;
+                });
+              },
+            ),
           );
         },
       ),
