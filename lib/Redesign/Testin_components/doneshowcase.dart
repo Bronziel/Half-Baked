@@ -1,6 +1,7 @@
 import 'package:fb2/Redesign/components/imagesclass.dart';
 import 'package:flutter/material.dart';
 import '../components/ComponentsRedesign.dart';
+import 'showcase.dart';
 
 class RowOfIcons80 extends StatelessWidget {
   const RowOfIcons80({
@@ -108,6 +109,38 @@ class TimeTIlesshowcase extends StatelessWidget {
           time: "300",
         ),
       ],
+    );
+  }
+}
+
+class ShowcaseButton extends StatelessWidget {
+  final String buttonText;
+  final Color buttonColor;
+
+  const ShowcaseButton({
+    Key? key,
+    this.buttonText = 'ShowCase',
+    this.buttonColor = const Color.fromARGB(255, 189, 12, 225),
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ShowcasePage()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(16.0),
+        minimumSize: const Size(double.infinity, 64.0),
+        backgroundColor: buttonColor,
+      ),
+      child: Text(
+        buttonText,
+        style: const TextStyle(fontSize: 36, color: Colors.white),
+      ),
     );
   }
 }
