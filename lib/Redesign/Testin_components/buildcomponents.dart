@@ -5,6 +5,11 @@ import '../components/ComponentsRedesign.dart';
 import '../components/imagesclass.dart';
 import 'doneshowcase.dart';
 
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
+
 class BuildComponentPage extends StatelessWidget {
   const BuildComponentPage({Key? key}) : super(key: key);
 
@@ -46,7 +51,7 @@ class BuildComponentPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: ShowcaseButton(),
               ),
-              selectimage(),
+              SelectImage(),
               SizedBox(
                 height: 400,
                 width: 1085,
@@ -74,10 +79,15 @@ class BuildComponentPage extends StatelessWidget {
   }
 }
 
-class selectimage extends StatelessWidget {
-  const selectimage({
-    super.key,
-  });
+class SelectImage extends StatefulWidget {
+  const SelectImage({Key? key}) : super(key: key);
+
+  @override
+  _SelectImageState createState() => _SelectImageState();
+}
+
+class _SelectImageState extends State<SelectImage> {
+  File? _selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -86,18 +96,68 @@ class selectimage extends StatelessWidget {
       width: 1085,
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius:
-              BorderRadius.circular(10), // Define the border radius here
+          borderRadius: BorderRadius.circular(10),
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10), // Same radius as Card
-          child: Image.asset(
-            'images/new/kebabrulle.jpg',
-            fit: BoxFit.cover, // Adjust the fit as needed
-          ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: _selectedImage == null
+                  ? Image.asset(
+                      'images/new/kebabrulle.jpg',
+                      fit: BoxFit.cover,
+                    )
+                  : Image.file(
+                      _selectedImage!,
+                      fit: BoxFit.cover,
+                    ),
+            ),
+            FloatingActionButton(
+              onPressed: pickImage,
+              child: const Icon(Icons.add),
+            ),
+          ],
         ),
-        // Add other properties of Card if needed
       ),
     );
+  }
+
+  Future<void> pickImage() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      cropImage(image.path);
+    }
+  }
+
+  Future<void> cropImage(String path) async {
+    final croppedFile = await ImageCropper().cropImage(
+      sourcePath: path,
+      aspectRatioPresets: [
+        CropAspectRatioPreset.square,
+        CropAspectRatioPreset.ratio3x2,
+        CropAspectRatioPreset.original,
+        CropAspectRatioPreset.ratio4x3,
+        CropAspectRatioPreset.ratio16x9,
+      ],
+      /*androidUiSettings: AndroidUiSettings(
+        toolbarTitle: 'Crop Image',
+        toolbarColor: Colors.deepOrange,
+        toolbarWidgetColor: Colors.white,
+        initAspectRatio: CropAspectRatioPreset.original,
+        lockAspectRatio: false,
+      ),
+      iosUiSettings: IOSUiSettings(
+        title: 'Crop Image',
+      ),*/
+    );
+
+    if (croppedFile != null) {
+      setState(() {
+        _selectedImage = File(croppedFile.path);
+      });
+    }
   }
 }
