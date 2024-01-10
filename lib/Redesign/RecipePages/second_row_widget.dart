@@ -206,22 +206,18 @@ class RecipeListCard extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: const <Widget>[
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
-                    IngridientTile(),
+                    IngredientTile(
+                      label: "Kebabkött",
+                      quantity: "500",
+                      unit: "ml",
+                    ),
+
+                    IngredientTile(
+                      label: "Kebabkött",
+                      quantity: "500",
+                      unit: "ml",
+                    ),
+
                     // Add more children as needed
                   ],
                 ),
@@ -234,9 +230,17 @@ class RecipeListCard extends StatelessWidget {
   }
 }
 
-class IngridientTile extends StatelessWidget {
-  const IngridientTile({
+class IngredientTile extends StatelessWidget {
+  final String label; // First parameter
+  final String quantity; // Second parameter
+  final String unit; // Third parameter
+
+  // Update the constructor to accept three parameters
+  const IngredientTile({
     super.key,
+    required this.label,
+    required this.quantity,
+    required this.unit,
   });
 
   @override
@@ -251,14 +255,16 @@ class IngridientTile extends StatelessWidget {
       height: 50,
       width: 410,
       color: const Color(0xff161414),
-      child: const Row(
+      child: Row(
+        // Removed const since we are using dynamic values now
         children: [
-          SizedBox(width: 16),
-          Text("Kebabkött:", style: textStyle),
-          SizedBox(width: 20),
-          Text("500", style: textStyle),
-          SizedBox(width: 3),
-          Text("ml", style: textStyle),
+          const SizedBox(width: 16),
+          Text(label, style: textStyle), // Use the label parameter
+          Text(':', style: textStyle),
+          const SizedBox(width: 20),
+          Text(quantity, style: textStyle), // Use the quantity parameter
+          const SizedBox(width: 3),
+          Text(unit, style: textStyle), // Use the unit parameter
         ],
       ),
     );
