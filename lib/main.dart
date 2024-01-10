@@ -6,7 +6,7 @@ import 'firebase_options.dart';
 import 'pages/screens/glist.dart';
 import 'pages/recipes/RecipePages/recipelistpage.dart';
 import 'visualview/themes.dart';
-import 'package:fb2/Redesign/RecipePages/Recipe/FakeRecipe.dart';
+import 'package:fb2/Redesign/RecipePages/Recipe/BaseRecipe.dart';
 
 import 'pages/screens/loading.dart';
 
