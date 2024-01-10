@@ -9,6 +9,7 @@ import 'visualview/themes.dart';
 import 'package:fb2/Redesign/RecipePages/Recipe/BaseRecipe.dart';
 
 import 'pages/screens/loading.dart';
+import 'Redesign/glistredone.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,6 +68,10 @@ class LandingPage extends StatelessWidget {
             child: ComponentButton(), // Add this line
           ),
           SizedBox(height: 16.0),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: RedoneButton(), // Add this line
+          ),
         ],
       ),
     );
@@ -218,6 +223,38 @@ class ComponentButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const BuildComponentPage()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(16.0),
+        minimumSize: const Size(double.infinity, 64.0),
+        backgroundColor: buttonColor,
+      ),
+      child: Text(
+        buttonText,
+        style: const TextStyle(fontSize: 36, color: Colors.white),
+      ),
+    );
+  }
+}
+
+class RedoneButton extends StatelessWidget {
+  final String buttonText;
+  final Color buttonColor;
+
+  const RedoneButton({
+    Key? key,
+    this.buttonText = 'Redone',
+    this.buttonColor = const Color.fromARGB(255, 255, 0, 119),
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => RedonePage()),
         );
       },
       style: ElevatedButton.styleFrom(
