@@ -84,7 +84,7 @@ class Description extends StatelessWidget {
     return Text(
       description,
       softWrap: true,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.bold,
         color: Color(0xFFFFFFff),
