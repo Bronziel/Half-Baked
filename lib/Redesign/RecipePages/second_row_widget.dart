@@ -99,30 +99,46 @@ class _StepsWidgetState extends State<StepsWidget> {
         itemCount: steps.length,
         itemBuilder: (context, index) {
           int actualIndex = index + offset;
-          return ListTile(
-            leading: Text(
-              '${actualIndex + 1}',
-              style: const TextStyle(
-                fontFamily: 'Pacifico',
-                fontSize: 40,
-                color: Color(0xFF0922FD),
+          return Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black, // Set your desired border color
+                width: 1, // Set your desired border width
               ),
             ),
-            title: Text(
-              steps[index],
-              style: const TextStyle(
-                fontFamily: 'Paprika',
-                fontSize: 24,
-                color: Color(0xFF000000),
+            child: ListTile(
+              leading: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black, // Set your desired border color
+                    width: 1, // Set your desired border width
+                  ),
+                ),
+                child: Text(
+                  '${actualIndex + 1}',
+                  style: const TextStyle(
+                    fontFamily: 'Pacifico',
+                    fontSize: 40,
+                    color: Color(0xFF0922FD),
+                  ),
+                ),
               ),
-            ),
-            trailing: Checkbox(
-              value: checkedStates[actualIndex],
-              onChanged: (bool? newValue) {
-                setState(() {
-                  checkedStates[actualIndex] = newValue ?? false;
-                });
-              },
+              title: Text(
+                steps[index],
+                style: const TextStyle(
+                  fontFamily: 'Paprika',
+                  fontSize: 24,
+                  color: Color(0xFF000000),
+                ),
+              ),
+              trailing: Checkbox(
+                value: checkedStates[actualIndex],
+                onChanged: (bool? newValue) {
+                  setState(() {
+                    checkedStates[actualIndex] = newValue ?? false;
+                  });
+                },
+              ),
             ),
           );
         },
