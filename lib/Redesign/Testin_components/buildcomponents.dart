@@ -38,13 +38,32 @@ class BuildComponentPage extends StatelessWidget {
           ),
         ),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: ShowcaseButton(),
+              ),
+              SizedBox(
+                height: 400,
+                width: 1085,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                        10), // Define the border radius here
+                  ),
+                  child: ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(10), // Same radius as Card
+                    child: Image.asset(
+                      'images/new/kebabrulle.jpg',
+                      fit: BoxFit.cover, // Adjust the fit as needed
+                    ),
+                  ),
+                  // Add other properties of Card if needed
+                ),
               ),
             ],
           ),
