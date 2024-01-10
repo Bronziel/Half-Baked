@@ -32,13 +32,8 @@ class IntroductionWidget extends StatelessWidget {
                     right: 0,
                     child: Align(
                       alignment: Alignment.center,
-                      child: Text(
-                        'Kebabrulle',
-                        style: TextStyle(
-                          fontFamily: 'Pacifico',
-                          fontSize: 40,
-                          color: Color(0xFFFFFFFF), // Corrected color format
-                        ),
+                      child: Title(
+                        title: 'KebabRulle',
                       ),
                     ),
                   ),
@@ -60,15 +55,7 @@ class IntroductionWidget extends StatelessWidget {
                 SizedBox(
                   width: 280,
                   height: 130,
-                  child: Text(
-                    'En god Kebab rulle som aldrig gör en Besviken.',
-                    softWrap: true,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFFFFFFff),
-                    ),
-                  ),
+                  child: Description(),
                 ),
                 SizedBox(
                   width: 60,
@@ -78,6 +65,45 @@ class IntroductionWidget extends StatelessWidget {
             IcontilesBox(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Description extends StatelessWidget {
+  const Description({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'En god Kebab rulle som aldrig gör en Besviken.',
+      softWrap: true,
+      style: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: Color(0xFFFFFFff),
+      ),
+    );
+  }
+}
+
+class Title extends StatelessWidget {
+  final String title;
+  const Title({
+    super.key,
+    this.title = '',
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontFamily: 'Pacifico',
+        fontSize: 40,
+        color: Color(0xFFFFFFFF), // Corrected color format
       ),
     );
   }
