@@ -1,3 +1,4 @@
+import 'package:fb2/Redesign/Testin_components/showcase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../components/ComponentsRedesign.dart';
@@ -41,22 +42,10 @@ class BuildComponentPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              TimeTIlesshowcase(),
-              RowOfIcons80(),
-              Row(
-                children: [
-                  CalorieCardWidget(),
-                  CaloriecardStackedWidget(),
-                ],
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: ShowcaseButton(),
               ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 4,
-                  ),
-                  Containerkals(),
-                ],
-              )
             ],
           ),
         ),
@@ -65,117 +54,33 @@ class BuildComponentPage extends StatelessWidget {
   }
 }
 
-class Containerkals extends StatelessWidget {
-  const Containerkals({
-    super.key,
-  });
+class ShowcaseButton extends StatelessWidget {
+  final String buttonText;
+  final Color buttonColor;
+
+  const ShowcaseButton({
+    Key? key,
+    this.buttonText = 'ShowCase',
+    this.buttonColor = const Color.fromARGB(255, 189, 12, 225),
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 585,
-      height: 255,
-      decoration: const BoxDecoration(
-        color: Color(0xFFF13030),
-        borderRadius: BorderRadius.all(Radius.circular(30)),
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ShowcasePage()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(16.0),
+        minimumSize: const Size(double.infinity, 64.0),
+        backgroundColor: buttonColor,
       ),
-      child: Column(children: [
-        const SizedBox(
-          height: 45,
-        ),
-        Row(
-          children: [
-            const SizedBox(
-              width: 45,
-            ),
-            Container(
-              width: 40,
-              height: 45,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                color: const Color(0xff234234),
-                width: 1,
-              )),
-              child: Image.asset(
-                'images/kals/fire.png',
-              ),
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-          ],
-        ),
-      ]),
-    );
-  }
-}
-
-class CaloriecardStackedWidget extends StatelessWidget {
-  const CaloriecardStackedWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 255,
-      width: 585,
-      child: Card(
-        color: Color(0xFFF13030),
-      ),
-    );
-  }
-}
-
-class CalorieCardWidget extends StatelessWidget {
-  const CalorieCardWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 585,
-      height: 255,
-      child: Card(
-        color: const Color(0xFFF13030),
-        child: Container(
-          decoration: BoxDecoration(border: Border.all(color: Colors.green)),
-          child: Column(
-            children: [
-              Container(
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.green)),
-                child: Row(
-                  children: [
-                    const SizedBox(
-                      width: 45,
-                    ),
-                    Image.asset('images/kals/fire.png'),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const Text(
-                      'Calories',
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 45,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFFFFFFFF),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 211,
-                    ),
-                    Image.asset('images/kals/cheked.png'),
-                  ],
-                ),
-              ),
-              const Row(),
-              const Row(),
-            ],
-          ),
-        ),
+      child: Text(
+        buttonText,
+        style: const TextStyle(fontSize: 36, color: Colors.white),
       ),
     );
   }
