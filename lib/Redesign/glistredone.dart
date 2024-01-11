@@ -133,7 +133,6 @@ class _RedonePageState extends State<RedonePage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            contentPadding: const EdgeInsets.all(0),
             content: Stack(
               children: <Widget>[
                 Container(
@@ -141,24 +140,11 @@ class _RedonePageState extends State<RedonePage> {
                   height: 400,
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color(0xff234234),
+                      color: const Color.fromARGB(255, 64, 35, 66),
                       width: 1,
                     ),
                   ),
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xff234234),
-                          width: 1,
-                        ),
-                      ),
-                      width: 1085,
-                      height: 400,
-                      child: Image.network(imagePath),
-                    ),
-                  ),
+                  child: Card(child: Image.network(imagePath)),
                 ),
                 Positioned(
                   right: 0,
