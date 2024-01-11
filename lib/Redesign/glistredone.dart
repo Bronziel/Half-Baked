@@ -42,27 +42,27 @@ class _RedonePageState extends State<RedonePage> {
   }
 
   Future<CroppedFile?> _cropImage(String path) async {
+    // Calculate the aspect ratio
+    final double targetAspectRatio = 1085 / 400;
+
     return await ImageCropper().cropImage(
       sourcePath: path,
-      aspectRatioPresets: [
-        CropAspectRatioPreset.square,
-        CropAspectRatioPreset.ratio3x2,
-        CropAspectRatioPreset.original,
-        CropAspectRatioPreset.ratio4x3,
-        CropAspectRatioPreset.ratio16x9,
-      ],
+      aspectRatio: CropAspectRatio(ratioX: 1085, ratioY: 400),
       uiSettings: [
         WebUiSettings(
           context: context,
           enableZoom: true,
           enableResize: true,
-
           boundary: CroppieBoundary(
-            height: 800,
-            width: 1200,
+            height: 400,
+            width: 1085,
           ),
-          viewPort: CroppieViewPort(height: 400, width: 1085),
-
+          viewPort: CroppieViewPort(
+            height: 200, // Half of your desired height
+            width: (200 * targetAspectRatio)
+                .round(), // Width calculated based on the aspect ratio
+            type: 'square',
+          ),
           // Add other necessary configurations here
         ),
       ],
