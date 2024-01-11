@@ -136,7 +136,10 @@ class _RedonePageState extends State<RedonePage> {
             contentPadding: const EdgeInsets.all(0),
             content: Stack(
               children: <Widget>[
-                Image.network(imagePath),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Image.network(imagePath),
+                ),
                 Positioned(
                   right: 0,
                   child: GestureDetector(
