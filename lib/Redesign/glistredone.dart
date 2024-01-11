@@ -54,6 +54,15 @@ class _RedonePageState extends State<RedonePage> {
       uiSettings: [
         WebUiSettings(
           context: context,
+          enableZoom: true,
+          enableResize: true,
+
+          boundary: CroppieBoundary(
+            height: 800,
+            width: 1200,
+          ),
+          viewPort: CroppieViewPort(height: 400, width: 1085),
+
           // Add other necessary configurations here
         ),
       ],
@@ -154,113 +163,116 @@ class _RedonePageState extends State<RedonePage> {
       appBar: AppBar(
         title: const Text('Empty Page'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'This is an empty page.',
-              style: TextStyle(fontSize: 20),
-            ),
-            ElevatedButton(
-              onPressed: _pickImages,
-              child: const Text('Select Images'),
-            ),
-            ElevatedButton(
-              onPressed: _displayAndUploadImages,
-              child: const Text('Display'),
-            ),
-            if (_displayImages)
-              ElevatedButton(
-                onPressed: _discardImages,
-                child: const Text('Discard'),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'This is an empty page.',
+                style: TextStyle(fontSize: 20),
               ),
-            if (!_displayImages)
-              Container(
-                height: 150, // adjust as needed
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: _images.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      width: 120, // adjust as needed
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () =>
-                                  _showImageDialog(_images[index].path),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: kIsWeb
-                                    ? Image.network(_images[index].path,
-                                        width: 100.0)
-                                    : Image.file(File(_images[index].path),
-                                        width: 100.0),
+              ElevatedButton(
+                onPressed: _pickImages,
+                child: const Text('Select Images'),
+              ),
+              ElevatedButton(
+                onPressed: _displayAndUploadImages,
+                child: const Text('Display'),
+              ),
+              if (_displayImages)
+                ElevatedButton(
+                  onPressed: _discardImages,
+                  child: const Text('Discard'),
+                ),
+              if (!_displayImages)
+                Container(
+                  height: 150, // adjust as needed
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: _images.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 120, // adjust as needed
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () =>
+                                    _showImageDialog(_images[index].path),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: kIsWeb
+                                      ? Image.network(_images[index].path,
+                                          width: 100.0)
+                                      : Image.file(File(_images[index].path),
+                                          width: 100.0),
+                                ),
                               ),
                             ),
-                          ),
-                          IconButton(
-                            onPressed: () => _discardSingleImage(index),
-                            icon: const Icon(Icons.delete, color: Colors.red),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-            if (_displayImages)
-              Column(
-                children: [
-                  CarouselSlider.builder(
-                    itemCount: _firebaseStoragePaths.length,
-                    itemBuilder: (context, index, realIdx) {
-                      return GestureDetector(
-                        onTap: () =>
-                            _showImageDialog(_firebaseStoragePaths[index]),
-                        child: Image.network(_firebaseStoragePaths[index]),
-                      );
-                    },
-                    options: CarouselOptions(
-                      height: 400,
-                      viewportFraction: 1.0,
-                      enlargeCenterPage: false,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          _current = index;
-                        });
-                      },
-                    ),
-                    carouselController: _controller,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children:
-                        _firebaseStoragePaths.asMap().entries.map((entry) {
-                      return GestureDetector(
-                        onTap: () => _controller.animateToPage(entry.key),
-                        child: Container(
-                          width: 50.0,
-                          height: 50.0,
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 8.0, horizontal: 4.0),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: _current == entry.key
-                                  ? Colors.purple
-                                  : Colors.transparent,
-                              width: 2.0,
+                            IconButton(
+                              onPressed: () => _discardSingleImage(index),
+                              icon: const Icon(Icons.delete, color: Colors.red),
                             ),
-                          ),
-                          child: Image.network(entry.value, fit: BoxFit.cover),
+                          ],
                         ),
                       );
-                    }).toList(),
+                    },
                   ),
-                ],
-              ),
-          ],
+                ),
+              if (_displayImages)
+                Column(
+                  children: [
+                    CarouselSlider.builder(
+                      itemCount: _firebaseStoragePaths.length,
+                      itemBuilder: (context, index, realIdx) {
+                        return GestureDetector(
+                          onTap: () =>
+                              _showImageDialog(_firebaseStoragePaths[index]),
+                          child: Image.network(_firebaseStoragePaths[index]),
+                        );
+                      },
+                      options: CarouselOptions(
+                        height: 400,
+                        viewportFraction: 1.0,
+                        enlargeCenterPage: false,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            _current = index;
+                          });
+                        },
+                      ),
+                      carouselController: _controller,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children:
+                          _firebaseStoragePaths.asMap().entries.map((entry) {
+                        return GestureDetector(
+                          onTap: () => _controller.animateToPage(entry.key),
+                          child: Container(
+                            width: 50.0,
+                            height: 50.0,
+                            margin: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 4.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: _current == entry.key
+                                    ? Colors.purple
+                                    : Colors.transparent,
+                                width: 2.0,
+                              ),
+                            ),
+                            child:
+                                Image.network(entry.value, fit: BoxFit.cover),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
+            ],
+          ),
         ),
       ),
     );
