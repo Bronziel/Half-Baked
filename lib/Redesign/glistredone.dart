@@ -298,22 +298,40 @@ class _RedonePageState extends State<RedonePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children:
                             _firebaseStoragePaths.asMap().entries.map((entry) {
+                          bool isCurrent = _current == entry.key;
                           return GestureDetector(
                             onTap: () => _controller.animateToPage(entry.key),
                             child: Container(
                               width: 70.0,
                               height: 70.0,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: _current == entry.key
-                                      ? Colors.purple
-                                      : Colors.transparent,
-                                  width: 2.0,
-                                ),
-                              ),
+                              margin: const EdgeInsets.all(
+                                  4.0), // Space between cards
+                              decoration: isCurrent
+                                  ? BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.purple, width: 2.0),
+                                      borderRadius: BorderRadius.circular(
+                                          12), // Slightly larger than the card's border radius
+                                    )
+                                  : null,
                               child: Card(
-                                  child: Image.network(entry.value,
-                                      fit: BoxFit.cover)),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      10), // Border radius of the card
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      10), // Same radius as Card
+                                  child: Image.network(
+                                    entry.value,
+                                    fit: BoxFit
+                                        .cover, // Adjust the fit as needed
+                                  ),
+                                ),
+                                elevation: isCurrent
+                                    ? 5
+                                    : 0, // Elevated if it's the current item
+                              ),
                             ),
                           );
                         }).toList(),
