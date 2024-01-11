@@ -255,6 +255,7 @@ class _RedonePageState extends State<RedonePage> {
                   ),
                   child: Column(
                     children: [
+                      //carousel ui
                       CarouselSlider.builder(
                         itemCount: _firebaseStoragePaths.length,
                         itemBuilder: (context, index, realIdx) {
@@ -292,6 +293,7 @@ class _RedonePageState extends State<RedonePage> {
                         ),
                         carouselController: _controller,
                       ),
+                      //small boxes
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children:
@@ -299,10 +301,8 @@ class _RedonePageState extends State<RedonePage> {
                           return GestureDetector(
                             onTap: () => _controller.animateToPage(entry.key),
                             child: Container(
-                              width: 50.0,
-                              height: 50.0,
-                              margin: const EdgeInsets.symmetric(
-                                  vertical: 8.0, horizontal: 4.0),
+                              width: 70.0,
+                              height: 70.0,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: _current == entry.key
@@ -311,8 +311,9 @@ class _RedonePageState extends State<RedonePage> {
                                   width: 2.0,
                                 ),
                               ),
-                              child:
-                                  Image.network(entry.value, fit: BoxFit.cover),
+                              child: Card(
+                                  child: Image.network(entry.value,
+                                      fit: BoxFit.cover)),
                             ),
                           );
                         }).toList(),
