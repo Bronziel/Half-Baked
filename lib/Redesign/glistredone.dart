@@ -259,7 +259,23 @@ class _RedonePageState extends State<RedonePage> {
                           return GestureDetector(
                             onTap: () =>
                                 _showImageDialog(_firebaseStoragePaths[index]),
-                            child: Image.network(_firebaseStoragePaths[index]),
+                            child: SizedBox(
+                              width: 1085,
+                              height: 400,
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      10), // Define the border radius here
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.network(
+                                    _firebaseStoragePaths[index],
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
                           );
                         },
                         options: CarouselOptions(
