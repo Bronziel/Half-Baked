@@ -141,7 +141,9 @@ class _RedonePageState extends State<RedonePage> {
                 Container(
                   width: 1085,
                   height: 400,
-                  child: Image.network(imagePath),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.network(imagePath)),
                 ),
                 Positioned(
                   right: 0,
