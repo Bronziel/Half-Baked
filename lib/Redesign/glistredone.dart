@@ -48,12 +48,14 @@ class _RedonePageState extends State<RedonePage> {
     return await ImageCropper().cropImage(
       sourcePath: path,
       aspectRatio: CropAspectRatio(ratioX: 1085, ratioY: 400),
+      compressQuality: 100,
       uiSettings: [
         WebUiSettings(
           context: context,
           enableZoom: true,
-          enableResize: true,
-          boundary: CroppieBoundary(
+          enableResize: false,
+
+          boundary: const CroppieBoundary(
             height: 400,
             width: 1085,
           ),
