@@ -56,12 +56,12 @@ class _RedonePageState extends State<RedonePage> {
           enableResize: false,
 
           boundary: const CroppieBoundary(
-            height: 400,
+            height: 600,
             width: 1085,
           ),
           viewPort: CroppieViewPort(
-            height: 200, // Half of your desired height
-            width: (200 * targetAspectRatio)
+            height: 400, // Half of your desired height
+            width: (400 * targetAspectRatio)
                 .round(), // Width calculated based on the aspect ratio
             type: 'square',
           ),
