@@ -136,9 +136,29 @@ class _RedonePageState extends State<RedonePage> {
             contentPadding: const EdgeInsets.all(0),
             content: Stack(
               children: <Widget>[
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Image.network(imagePath),
+                Container(
+                  width: 1085,
+                  height: 400,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: const Color(0xff234234),
+                      width: 1,
+                    ),
+                  ),
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: const Color(0xff234234),
+                          width: 1,
+                        ),
+                      ),
+                      width: 1085,
+                      height: 400,
+                      child: Image.network(imagePath),
+                    ),
+                  ),
                 ),
                 Positioned(
                   right: 0,
@@ -191,13 +211,27 @@ class _RedonePageState extends State<RedonePage> {
                   child: const Text('Discard'),
                 ),
               if (!_displayImages)
+                //rowbox where the display small preview
                 Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: const Color(0xff234234),
+                      width: 1,
+                    ),
+                  ),
                   height: 150, // adjust as needed
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: _images.length,
                     itemBuilder: (context, index) {
+                      //small preview boxes before display
                       return Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color(0xff234234),
+                            width: 1,
+                          ),
+                        ),
                         width: 120, // adjust as needed
                         child: Column(
                           children: [
@@ -226,55 +260,64 @@ class _RedonePageState extends State<RedonePage> {
                   ),
                 ),
               if (_displayImages)
-                Column(
-                  children: [
-                    CarouselSlider.builder(
-                      itemCount: _firebaseStoragePaths.length,
-                      itemBuilder: (context, index, realIdx) {
-                        return GestureDetector(
-                          onTap: () =>
-                              _showImageDialog(_firebaseStoragePaths[index]),
-                          child: Image.network(_firebaseStoragePaths[index]),
-                        );
-                      },
-                      options: CarouselOptions(
-                        height: 400,
-                        viewportFraction: 1.0,
-                        enlargeCenterPage: false,
-                        onPageChanged: (index, reason) {
-                          setState(() {
-                            _current = index;
-                          });
+                //continaer with carousell
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: const Color(0xff234234),
+                      width: 1,
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      CarouselSlider.builder(
+                        itemCount: _firebaseStoragePaths.length,
+                        itemBuilder: (context, index, realIdx) {
+                          return GestureDetector(
+                            onTap: () =>
+                                _showImageDialog(_firebaseStoragePaths[index]),
+                            child: Image.network(_firebaseStoragePaths[index]),
+                          );
                         },
+                        options: CarouselOptions(
+                          height: 400,
+                          viewportFraction: 1.0,
+                          enlargeCenterPage: false,
+                          onPageChanged: (index, reason) {
+                            setState(() {
+                              _current = index;
+                            });
+                          },
+                        ),
+                        carouselController: _controller,
                       ),
-                      carouselController: _controller,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children:
-                          _firebaseStoragePaths.asMap().entries.map((entry) {
-                        return GestureDetector(
-                          onTap: () => _controller.animateToPage(entry.key),
-                          child: Container(
-                            width: 50.0,
-                            height: 50.0,
-                            margin: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 4.0),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: _current == entry.key
-                                    ? Colors.purple
-                                    : Colors.transparent,
-                                width: 2.0,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children:
+                            _firebaseStoragePaths.asMap().entries.map((entry) {
+                          return GestureDetector(
+                            onTap: () => _controller.animateToPage(entry.key),
+                            child: Container(
+                              width: 50.0,
+                              height: 50.0,
+                              margin: const EdgeInsets.symmetric(
+                                  vertical: 8.0, horizontal: 4.0),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: _current == entry.key
+                                      ? Colors.purple
+                                      : Colors.transparent,
+                                  width: 2.0,
+                                ),
                               ),
+                              child:
+                                  Image.network(entry.value, fit: BoxFit.cover),
                             ),
-                            child:
-                                Image.network(entry.value, fit: BoxFit.cover),
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                  ],
+                          );
+                        }).toList(),
+                      ),
+                    ],
+                  ),
                 ),
             ],
           ),

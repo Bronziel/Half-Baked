@@ -20,10 +20,11 @@ class IntroductionWidget extends StatelessWidget {
               width: 410,
               height: 75,
               decoration: BoxDecoration(
-                  border: Border.all(
-                color: const Color(0xff234234),
-                width: 1,
-              )),
+                border: Border.all(
+                  color: const Color(0xff234234),
+                  width: 1,
+                ),
+              ),
               child: const Stack(
                 children: <Widget>[
                   Positioned(
