@@ -11,6 +11,8 @@ import 'package:fb2/Redesign/RecipePages/Recipe/BaseRecipe.dart';
 import 'pages/screens/loading.dart';
 import 'Redesign/glistredone.dart';
 
+import 'Redesign/CreateRecipes/Recipe/CreateRecipes.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -71,6 +73,11 @@ class LandingPage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: RedoneButton(), // Add this line
+          ),
+          SizedBox(height: 16.0),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: CreateButton(), // Add this line
           ),
         ],
       ),
@@ -255,6 +262,38 @@ class RedoneButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => RedonePage()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(16.0),
+        minimumSize: const Size(double.infinity, 64.0),
+        backgroundColor: buttonColor,
+      ),
+      child: Text(
+        buttonText,
+        style: const TextStyle(fontSize: 36, color: Colors.white),
+      ),
+    );
+  }
+}
+
+class CreateButton extends StatelessWidget {
+  final String buttonText;
+  final Color buttonColor;
+
+  const CreateButton({
+    Key? key,
+    this.buttonText = 'Create',
+    this.buttonColor = const Color.fromARGB(255, 248, 208, 10),
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CreateRecipesPage()),
         );
       },
       style: ElevatedButton.styleFrom(
