@@ -198,7 +198,7 @@ class _RedonePageState extends State<RedonePage> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color(0xff234234),
+                      color: const Color.fromARGB(255, 5, 239, 133),
                       width: 1,
                     ),
                   ),
@@ -211,7 +211,7 @@ class _RedonePageState extends State<RedonePage> {
                       return Container(
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: const Color(0xff234234),
+                            color: const Color.fromARGB(255, 211, 12, 12),
                             width: 1,
                           ),
                         ),
