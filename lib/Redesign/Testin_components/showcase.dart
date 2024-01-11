@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'RecipePages/ComponentsRedesign.dart';
-import 'RecipePages/imagesclass.dart';
+import '../components/ComponentsRedesign.dart';
+import '../components/imagesclass.dart';
 import 'doneshowcase.dart';
 
-class BuildComponentPage extends StatelessWidget {
-  const BuildComponentPage({Key? key}) : super(key: key);
+class ShowcasePage extends StatelessWidget {
+  const ShowcasePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

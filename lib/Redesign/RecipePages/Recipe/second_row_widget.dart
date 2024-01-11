@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'ComponentsRedesign.dart';
+import '../../components/ComponentsRedesign.dart';
 
 class SecondRowWidget extends StatelessWidget {
   const SecondRowWidget({
