@@ -22,7 +22,7 @@ class MainImagePlusBoxes extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10), // Same radius as Card
                 child: Image.asset(
-                  'images/new/kebabrulle.jpg',
+                  'images/new/webb.jpg',
                   fit: BoxFit.cover, // Adjust the fit as needed
                 ),
               ),

@@ -41,6 +41,7 @@ class _RedonePageState extends State<RedonePage> {
     });
   }
 
+//cropper
   Future<CroppedFile?> _cropImage(String path) async {
     // Calculate the aspect ratio
     final double targetAspectRatio = 1085 / 400;
@@ -128,23 +129,19 @@ class _RedonePageState extends State<RedonePage> {
     });
   }
 
+//dialog when pressing images
   void _showImageDialog(String imagePath) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
+          //dialog when pressing images
           return AlertDialog(
             content: Stack(
               children: <Widget>[
                 Container(
                   width: 1085,
                   height: 400,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color.fromARGB(255, 64, 35, 66),
-                      width: 1,
-                    ),
-                  ),
-                  child: Card(child: Image.network(imagePath)),
+                  child: Image.network(imagePath),
                 ),
                 Positioned(
                   right: 0,
