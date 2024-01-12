@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../components/ComponentsRedesign.dart';
+import '../../../components/sizedboxes.dart';
+import '../../../components/sizedboxes.dart';
 import 'Introduction_Box.dart';
 import 'Image_Boxes.dart';
 

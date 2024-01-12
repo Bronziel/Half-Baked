@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../components/ComponentsRedesign.dart';
+import '../../../components/sizedboxes.dart';
 
 class CreateMainImagePlusBoxes extends StatelessWidget {
   const CreateMainImagePlusBoxes({
