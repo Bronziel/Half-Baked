@@ -20,7 +20,7 @@ class CreateIntroductionWidget extends StatelessWidget {
               height: 75,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: const Color(0xff234234),
+                  color: const Color.fromARGB(255, 70, 115, 231),
                   width: 1,
                 ),
               ),
@@ -40,6 +40,7 @@ class CreateIntroductionWidget extends StatelessWidget {
                 ],
               ),
             ),
+            //description big box
             Container(
               width: 410,
               height: 130,
@@ -48,16 +49,35 @@ class CreateIntroductionWidget extends StatelessWidget {
                 color: const Color(0xff234234),
                 width: 1,
               )),
-              child: const Row(children: [
+              child: Row(children: [
                 SizedBox(
                   width: 60,
                 ),
+                //actualbox with description in it
                 SizedBox(
                   width: 280,
                   height: 130,
-                  child: CreateDescription(
-                      Createdescription:
-                          'En god Kebab rulle som aldrig gör en Besviken.'),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                      color: Color.fromARGB(255, 213, 6, 164),
+                      width: 2,
+                    )),
+                    child: Column(
+                      children: [
+                        CreateDescription(
+                            Createdescription: 'Add a description'),
+                        const SizedBox(height: 8),
+                        IconButton(
+                          color: const Color(0xFFCECCCC),
+                          icon: const Icon(Icons.add), // Plus icon
+                          onPressed: () {
+                            // Add your action for this button
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 SizedBox(
                   width: 60,
