@@ -88,15 +88,7 @@ class CreateRecipeListCard extends StatelessWidget {
                 child: ListView(
                   children: const <Widget>[
                     CreateIngredientTile(
-                      label: "Kebabkött",
-                      quantity: "500",
-                      unit: "ml",
-                    ),
-
-                    CreateIngredientTile(
-                      label: "Kebabkött",
-                      quantity: "500",
-                      unit: "ml",
+                      label: "Add ingridient tile",
                     ),
 
                     // Add more children as needed
@@ -113,15 +105,12 @@ class CreateRecipeListCard extends StatelessWidget {
 
 class CreateIngredientTile extends StatelessWidget {
   final String label; // First parameter
-  final String quantity; // Second parameter
-  final String unit; // Third parameter
+  // Third parameter
 
   // Update the constructor to accept three parameters
   const CreateIngredientTile({
     super.key,
     required this.label,
-    required this.quantity,
-    required this.unit,
   });
 
   @override
@@ -136,17 +125,34 @@ class CreateIngredientTile extends StatelessWidget {
       height: 50,
       width: 410,
       color: const Color(0xff161414),
-      child: Row(
-        // Removed const since we are using dynamic values now
-        children: [
-          const SizedBox(width: 16),
-          Text(label, style: textStyle), // Use the label parameter
-          Text(':', style: textStyle),
-          const SizedBox(width: 20),
-          Text(quantity, style: textStyle), // Use the quantity parameter
-          const SizedBox(width: 3),
-          Text(unit, style: textStyle), // Use the unit parameter
-        ],
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Color.fromARGB(255, 240, 13, 229),
+            width: 2,
+          ),
+        ),
+        child: Row(
+          // Removed const since we are using dynamic values now
+          children: [
+            const SizedBox(width: 16),
+            Text(label, style: textStyle), // Use the label parameter
+            //Text(':', style: textStyle),
+            const SizedBox(width: 20),
+            //Text(), // Use the quantity parameter
+            const SizedBox(width: 3),
+            //Text(unit, style: textStyle), // Use the unit parameter
+            IconButton(
+              constraints: BoxConstraints(maxHeight: 100, maxWidth: 100),
+              icon: Icon(Icons.add, size: 24),
+              color: Color.fromARGB(255, 233, 228, 228),
+              // Plus icon
+              onPressed: () {
+                // Add your action for this button
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
