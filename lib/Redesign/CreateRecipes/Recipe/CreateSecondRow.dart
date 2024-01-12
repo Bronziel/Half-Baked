@@ -88,7 +88,7 @@ class CreateRecipeListCard extends StatelessWidget {
                 child: ListView(
                   children: const <Widget>[
                     CreateIngredientTile(
-                      label: "Add ingridient tile",
+                      label: "Add ingridient",
                     ),
 
                     // Add more children as needed
