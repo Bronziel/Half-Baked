@@ -24,16 +24,34 @@ class CreateIntroductionWidget extends StatelessWidget {
                   width: 1,
                 ),
               ),
-              child: const Stack(
-                children: <Widget>[
-                  Positioned(
-                    top: 11, // Your specified distance from the top
-                    left: 0,
-                    right: 0,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: CreateTitle(
-                        Createtitle: 'KebabRulle',
+              //title row
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 60,
+                  ),
+                  SizedBox(
+                    width: 280,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color.fromARGB(255, 213, 6, 164),
+                          width: 1,
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          CreateTitle(
+                            Createtitle: 'Add title',
+                          ),
+                          IconButton(
+                            color: const Color(0xFFCECCCC),
+                            icon: const Icon(Icons.add), // Plus icon
+                            onPressed: () {
+                              // Add your action for this button
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   ),
