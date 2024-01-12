@@ -16,11 +16,44 @@ class CreateSecondRowWidget extends StatelessWidget {
         const Widht40wallWidget(),
         CreateRecipeListCard(),
         const Width20StandardWidget(),
+        steps(),
+      ],
+    );
+  }
+}
+
+class steps extends StatelessWidget {
+  const steps({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 1200,
+      height: 474,
+      child: Card(
+        color: const Color(0xffd9d9d9),
+        child: saveingridient(),
+      ),
+    );
+  }
+}
+
+class saveingridient extends StatelessWidget {
+  const saveingridient({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
         SizedBox(
-          width: 1200,
-          height: 474,
+          width: 500,
+          height: 280,
           child: Card(
-            color: const Color(0xffd9d9d9),
+            color: Color(0xFF234567),
           ),
         ),
       ],
