@@ -133,9 +133,7 @@ class CreateIcontilesBox extends StatelessWidget {
             ),
             Column(
               children: [
-                PortionsizeCardWidget(
-                  portion: '15',
-                ),
+                CreatePortionsizeCardWidget(),
                 SizedBox(
                   height: 5,
                 ),

@@ -155,12 +155,9 @@ class PortionsizeCardWidget extends StatelessWidget {
 
 //to add portion size number widget
 class CreatePortionsizeCardWidget extends StatelessWidget {
-  final String portion;
-
-  // The constructor now includes an optional 'portion' parameter
   const CreatePortionsizeCardWidget({
     super.key,
-    this.portion = '', // Default is an empty string if no value is provided
+    // Add any other parameters you might need
   });
 
   @override
@@ -171,6 +168,7 @@ class CreatePortionsizeCardWidget extends StatelessWidget {
       child: Card(
         color: const Color(0xffd9d9d9),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(width: 7.2),
             Image.asset('images/new/icons/portion.png'),
@@ -183,12 +181,12 @@ class CreatePortionsizeCardWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 9),
-            Text(
-              portion, // Use the 'portion' parameter here
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-              ),
+            // Replace this Text widget with IconButton
+            IconButton(
+              icon: const Icon(Icons.add), // Plus icon
+              onPressed: () {
+                // Add your action for this button
+              },
             ),
             const SizedBox(width: 6),
             Image.asset('images/new/icons/man.png'),
