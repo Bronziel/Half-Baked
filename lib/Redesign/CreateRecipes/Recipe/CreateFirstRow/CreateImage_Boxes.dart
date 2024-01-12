@@ -20,21 +20,32 @@ class CreateMainImagePlusBoxes extends StatelessWidget {
                 borderRadius:
                     BorderRadius.circular(10), // Define the border radius here
               ),
-              child: Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                  color: Color.fromARGB(255, 213, 6, 164),
-                  width: 2,
-                )),
-                child: IconButton(
-                  color: Color.fromARGB(255, 12, 11, 11),
-                  icon: const Icon(Icons.add), // Plus icon
-                  onPressed: () {
-                    // Add your action for this button
-                  },
-                ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 200,
+                  ),
+                  Container(
+                    width: 50,
+                    height: 50,
+                    child: IconButton(
+                      constraints:
+                          BoxConstraints(maxHeight: 100, maxWidth: 100),
+                      icon: Icon(Icons.add, size: 24),
+                      color: Color.fromARGB(255, 12, 11, 11),
+                      // Plus icon
+                      onPressed: () {
+                        // Add your action for this button
+                      },
+                    ),
+                  ),
+                  const Text(
+                    'Add Images',
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
+                  ),
+                ],
               ),
               // Add other properties of Card if needed
             ),
@@ -50,10 +61,14 @@ class CreateMainImagePlusBoxes extends StatelessWidget {
                     borderRadius: BorderRadius.circular(
                         10), // Define the border radius here
                   ),
-                  child: const Icon(
-                    Icons.audiotrack,
-                    color: Colors.green,
-                    size: 30.0,
+                  child: IconButton(
+                    constraints: BoxConstraints(maxHeight: 100, maxWidth: 100),
+                    icon: Icon(Icons.add, size: 24),
+                    color: Color.fromARGB(255, 12, 11, 11),
+                    // Plus icon
+                    onPressed: () {
+                      // Add your action for this button
+                    },
                   ),
                 ),
               ),
