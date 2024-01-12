@@ -27,7 +27,7 @@ class CreateIntroductionWidget extends StatelessWidget {
               //title row
               child: Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 60,
                   ),
                   SizedBox(
@@ -36,13 +36,16 @@ class CreateIntroductionWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: Color.fromARGB(255, 213, 6, 164),
-                          width: 1,
+                          width: 2,
                         ),
                       ),
                       child: Row(
                         children: [
-                          CreateTitle(
+                          const CreateTitle(
                             Createtitle: 'Add title',
+                          ),
+                          SizedBox(
+                            width: 10,
                           ),
                           IconButton(
                             color: const Color(0xFFCECCCC),
@@ -97,12 +100,23 @@ class CreateIntroductionWidget extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 SizedBox(
                   width: 60,
                 ),
               ]),
             ),
-            CreateIcontilesBox(),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 55,
+                ),
+                CreateIcontilesBox(),
+              ],
+            ),
           ],
         ),
       ),
@@ -161,8 +175,8 @@ class CreateIcontilesBox extends StatelessWidget {
     return Container(
         decoration: BoxDecoration(
             border: Border.all(
-          color: const Color(0xff234234),
-          width: 1,
+          color: Color.fromARGB(255, 213, 6, 164),
+          width: 2,
         )),
         child: const Row(
           children: [
