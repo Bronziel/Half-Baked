@@ -57,12 +57,10 @@ class TimeCard extends StatelessWidget {
 //time card to enter total and prep time
 class CreateTimeCard extends StatelessWidget {
   final String title;
-  final String time;
 
   const CreateTimeCard({
     super.key,
     required this.title,
-    required this.time,
   });
 
   @override
@@ -85,12 +83,11 @@ class CreateTimeCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            Text(
-              time,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-              ),
+            IconButton(
+              icon: const Icon(Icons.add), // Plus icon
+              onPressed: () {
+                // Add your action for this button
+              },
             ),
             const SizedBox(width: 1),
             const Text(

@@ -137,16 +137,14 @@ class CreateIcontilesBox extends StatelessWidget {
                 SizedBox(
                   height: 5,
                 ),
-                TimeCard(
+                CreateTimeCard(
                   title: "Prep Time:",
-                  time: "300",
                 ),
                 SizedBox(
                   height: 5,
                 ),
-                TimeCard(
+                CreateTimeCard(
                   title: "Total Time:",
-                  time: "450",
                 ),
               ],
             ),
