@@ -11,11 +11,11 @@ class CreateSecondRowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       children: [
-        const Widht40wallWidget(),
+        Widht40wallWidget(),
         CreateRecipeListCard(),
-        const Width20StandardWidget(),
+        Width20StandardWidget(),
         steps(),
       ],
     );
@@ -29,7 +29,7 @@ class steps extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       width: 1200,
       height: 474,
       child: Card(
@@ -89,20 +89,20 @@ class Createmessbox extends StatelessWidget {
           width: 490,
           height: 200,
           child: Card(
-            color: Color.fromARGB(255, 218, 143, 222),
+            color: const Color.fromARGB(255, 218, 143, 222),
             child: Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
-                Text(
+                const Text(
                   'Messurment:',
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 MySegmentedControl(),
@@ -205,7 +205,7 @@ class Createambox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       children: [
         SizedBox(
           width: 490,
@@ -260,7 +260,7 @@ class Createingbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       children: [
         SizedBox(
           width: 490,
@@ -408,7 +408,7 @@ class CreateIngredientTile extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(
-            color: Color.fromARGB(255, 240, 13, 229),
+            color: const Color.fromARGB(255, 240, 13, 229),
             width: 2,
           ),
         ),
@@ -423,9 +423,9 @@ class CreateIngredientTile extends StatelessWidget {
             const SizedBox(width: 3),
             //Text(unit, style: textStyle), // Use the unit parameter
             IconButton(
-              constraints: BoxConstraints(maxHeight: 100, maxWidth: 100),
-              icon: Icon(Icons.add, size: 24),
-              color: Color.fromARGB(255, 233, 228, 228),
+              constraints: const BoxConstraints(maxHeight: 100, maxWidth: 100),
+              icon: const Icon(Icons.add, size: 24),
+              color: const Color.fromARGB(255, 233, 228, 228),
               // Plus icon
               onPressed: () {
                 // Add your action for this button

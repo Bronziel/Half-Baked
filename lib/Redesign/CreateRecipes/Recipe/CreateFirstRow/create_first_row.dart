@@ -12,11 +12,11 @@ class CreateFirstRowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       children: [
-        const Widht40wallWidget(),
-        const CreateIntroductionWidget(),
-        const Width20StandardWidget(),
+        Widht40wallWidget(),
+        CreateIntroductionWidget(),
+        Width20StandardWidget(),
         CreateMainImagePlusBoxes(),
       ],
     );

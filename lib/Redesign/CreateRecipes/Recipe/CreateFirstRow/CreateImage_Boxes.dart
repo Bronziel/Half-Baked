@@ -22,7 +22,7 @@ class CreateMainImagePlusBoxes extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 200,
                   ),
                   Container(
@@ -30,9 +30,9 @@ class CreateMainImagePlusBoxes extends StatelessWidget {
                     height: 50,
                     child: IconButton(
                       constraints:
-                          BoxConstraints(maxHeight: 100, maxWidth: 100),
-                      icon: Icon(Icons.add, size: 24),
-                      color: Color.fromARGB(255, 12, 11, 11),
+                          const BoxConstraints(maxHeight: 100, maxWidth: 100),
+                      icon: const Icon(Icons.add, size: 24),
+                      color: const Color.fromARGB(255, 12, 11, 11),
                       // Plus icon
                       onPressed: () {
                         // Add your action for this button
@@ -62,9 +62,10 @@ class CreateMainImagePlusBoxes extends StatelessWidget {
                         10), // Define the border radius here
                   ),
                   child: IconButton(
-                    constraints: BoxConstraints(maxHeight: 100, maxWidth: 100),
-                    icon: Icon(Icons.add, size: 24),
-                    color: Color.fromARGB(255, 12, 11, 11),
+                    constraints:
+                        const BoxConstraints(maxHeight: 100, maxWidth: 100),
+                    icon: const Icon(Icons.add, size: 24),
+                    color: const Color.fromARGB(255, 12, 11, 11),
                     // Plus icon
                     onPressed: () {
                       // Add your action for this button

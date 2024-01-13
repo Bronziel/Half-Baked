@@ -35,7 +35,7 @@ class CreateIntroductionWidget extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color.fromARGB(255, 213, 6, 164),
+                          color: const Color.fromARGB(255, 213, 6, 164),
                           width: 2,
                         ),
                       ),
@@ -44,7 +44,7 @@ class CreateIntroductionWidget extends StatelessWidget {
                           const CreateTitle(
                             Createtitle: 'Add title',
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           IconButton(
@@ -71,7 +71,7 @@ class CreateIntroductionWidget extends StatelessWidget {
                 width: 1,
               )),
               child: Row(children: [
-                SizedBox(
+                const SizedBox(
                   width: 60,
                 ),
                 //actualbox with description in it
@@ -81,12 +81,12 @@ class CreateIntroductionWidget extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(
-                      color: Color.fromARGB(255, 213, 6, 164),
+                      color: const Color.fromARGB(255, 213, 6, 164),
                       width: 2,
                     )),
                     child: Column(
                       children: [
-                        CreateDescription(
+                        const CreateDescription(
                             Createdescription: 'Add a description'),
                         const SizedBox(height: 8),
                         IconButton(
@@ -101,15 +101,15 @@ class CreateIntroductionWidget extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   width: 60,
                 ),
               ]),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Row(
+            const Row(
               children: [
                 SizedBox(
                   width: 55,
@@ -175,7 +175,7 @@ class CreateIcontilesBox extends StatelessWidget {
     return Container(
         decoration: BoxDecoration(
             border: Border.all(
-          color: Color.fromARGB(255, 213, 6, 164),
+          color: const Color.fromARGB(255, 213, 6, 164),
           width: 2,
         )),
         child: const Row(
