@@ -58,9 +58,7 @@ class saveingridient extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Createingbox(),
-                    Createambox(),
-                    Createmessbox(),
+                    Popups(),
                   ],
                 ),
                 Column(
@@ -76,8 +74,8 @@ class saveingridient extends StatelessWidget {
   }
 }
 
-class Createmessbox extends StatelessWidget {
-  const Createmessbox({
+class Popups extends StatelessWidget {
+  const Popups({
     super.key,
   });
 
@@ -86,219 +84,40 @@ class Createmessbox extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 490,
-          height: 200,
-          child: Card(
-            color: const Color.fromARGB(255, 218, 143, 222),
-            child: Row(
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                const Text(
-                  'Messurment:',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                MySegmentedControl(),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class MySegmentedControl extends StatefulWidget {
-  @override
-  _MySegmentedControlState createState() => _MySegmentedControlState();
-}
-
-class _MySegmentedControlState extends State<MySegmentedControl> {
-  List<bool> isSelectedRow1 = [false, false, false];
-  List<bool> isSelectedRow2 = [false, false, false, false];
-  List<bool> isSelectedRow3 = [false, false, false];
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        ToggleButtons(
-          children: <Widget>[
-            Text('msk'),
-            Text('tsk'),
-            Text('krm'),
-          ],
-          isSelected: isSelectedRow1,
-          onPressed: (int index) {
-            setState(() {
-              for (int buttonIndex = 0;
-                  buttonIndex < isSelectedRow1.length;
-                  buttonIndex++) {
-                if (buttonIndex == index) {
-                  isSelectedRow1[buttonIndex] = true;
-                } else {
-                  isSelectedRow1[buttonIndex] = false;
-                }
-              }
-            });
-          },
-        ),
-        ToggleButtons(
-          children: <Widget>[
-            Text('ml'),
-            Text('cl'),
-            Text('dl'),
-            Text('l'),
-          ],
-          isSelected: isSelectedRow2,
-          onPressed: (int index) {
-            setState(() {
-              for (int buttonIndex = 0;
-                  buttonIndex < isSelectedRow2.length;
-                  buttonIndex++) {
-                if (buttonIndex == index) {
-                  isSelectedRow2[buttonIndex] = true;
-                } else {
-                  isSelectedRow2[buttonIndex] = false;
-                }
-              }
-            });
-          },
-        ),
-        ToggleButtons(
-          children: <Widget>[
-            Text('g'),
-            Text('kg'),
-            Text('hg'),
-          ],
-          isSelected: isSelectedRow3,
-          onPressed: (int index) {
-            setState(() {
-              for (int buttonIndex = 0;
-                  buttonIndex < isSelectedRow3.length;
-                  buttonIndex++) {
-                if (buttonIndex == index) {
-                  isSelectedRow3[buttonIndex] = true;
-                } else {
-                  isSelectedRow3[buttonIndex] = false;
-                }
-              }
-            });
-          },
-        ),
-      ],
-    );
-  }
-}
-
-class Createambox extends StatelessWidget {
-  const Createambox({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        SizedBox(
-          width: 490,
-          height: 60,
-          child: Card(
-            color: Color.fromARGB(255, 218, 143, 222),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Amount:',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                SizedBox(
-                  width: 200,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      isDense: true, // Reduces the default vertical padding
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 5), // Further adjust padding
-                      border: OutlineInputBorder(), // Adds an outline border
-                      // You can add more decoration properties as needed
-                    ),
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w700,
-                    ), // Adjust text size as needed
-                    // Add other TextField properties as needed
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class Createingbox extends StatelessWidget {
-  const Createingbox({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        SizedBox(
-          width: 490,
-          height: 60,
+          width: 360,
+          height: 125,
           child: Card(
             color: Color(0xFFDE8F8F),
-            child: Row(
+            child: Stack(
               children: [
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Ingridient name:',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                SizedBox(
-                  width: 200,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      isDense: true, // Reduces the default vertical padding
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 5), // Further adjust padding
-                      border: OutlineInputBorder(), // Adds an outline border
-                      // You can add more decoration properties as needed
-                    ),
+                const Positioned(
+                  left: 10,
+                  child: Text(
+                    'Titel',
                     style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w700,
-                    ), // Adjust text size as needed
-                    // Add other TextField properties as needed
+                      fontFamily: 'inter',
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
+                Positioned(
+                  left: 310,
+                  child: IconButton(
+                    iconSize: 24,
+                    color: const Color(0xFF000000),
+                    icon: const Icon(Icons.close), // Plus icon
+                    onPressed: () {
+                      // Add your action for this button
+                    },
+                  ),
+                ),
+                Positioned(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('wow'),
+                  ),
+                )
               ],
             ),
           ),

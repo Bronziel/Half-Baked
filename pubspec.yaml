@@ -87,9 +87,9 @@ flutter:
     - family: Pacifico
       fonts:
         - asset: fonts/Pacifico-Regular.ttf
-    - family: Inter
+    - family: inter
       fonts:
-        - asset: fonts/Inter.ttf
+        - asset: fonts/inter.ttf
     - family: Paprika
       fonts:
         - asset: fonts/Paprika-Regular.ttf
