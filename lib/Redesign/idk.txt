@@ -51,3 +51,28 @@ const Text(
                 ),
               ),
             )
+
+
+const RecipelistPage({super.key});
+const RecipelistPage({Key? key}) : super(key: key);
+
+class RecipeListButton extends StatelessWidget {
+  final String buttonText;
+  final Color buttonColor;
+
+  const RecipeListButton({
+    Key? key,
+    this.buttonText = 'RecipeList',
+    this.buttonColor = const Color.fromARGB(255, 224, 17, 131),
+  }) : super(key: key);
+
+should be 
+class RecipeListButton extends StatelessWidget {
+  final String buttonText;
+  final Color buttonColor;
+
+  const RecipeListButton({
+    super.key,
+    this.buttonText = 'RecipeList',
+    this.buttonColor = const Color.fromARGB(255, 224, 17, 131),
+  }) ;

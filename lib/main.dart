@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'pages/screens/glist.dart';
-import 'pages/recipes/RecipePages/recipelistpage.dart';
+
 import 'visualview/themes.dart';
-import 'package:fb2/Redesign/RecipePages/Recipe/BaseRecipe.dart';
+import 'package:fb2/Redesign/RecipePages/Recipe/base_recipe.dart';
 
 import 'pages/screens/loading.dart';
 import 'Redesign/glistredone.dart';
+
+import 'Redesign/CreateRecipes/Recipe/create_recipes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +22,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
 }
 
 class LandingPage extends StatelessWidget {
-  const LandingPage({Key? key}) : super(key: key);
+  const LandingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +74,11 @@ class LandingPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: RedoneButton(), // Add this line
           ),
+          SizedBox(height: 16.0),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: CreateButton(), // Add this line
+          ),
         ],
       ),
     );
@@ -83,10 +90,10 @@ class LoadingPageButton extends StatelessWidget {
   final Color buttonColor;
 
   const LoadingPageButton({
-    Key? key,
+    super.key,
     this.buttonText = 'Loading',
     this.buttonColor = const Color.fromARGB(255, 189, 12, 225),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -115,10 +122,10 @@ class GlistButton extends StatelessWidget {
   final Color buttonColor;
 
   const GlistButton({
-    Key? key,
+    super.key,
     this.buttonText = 'Food',
     this.buttonColor = Colors.orange,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -147,10 +154,10 @@ class RecipeListButton extends StatelessWidget {
   final Color buttonColor;
 
   const RecipeListButton({
-    Key? key,
+    super.key,
     this.buttonText = 'RecipeList',
     this.buttonColor = const Color.fromARGB(255, 224, 17, 131),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -179,10 +186,10 @@ class NewDesignButton extends StatelessWidget {
   final Color buttonColor;
 
   const NewDesignButton({
-    Key? key,
+    super.key,
     this.buttonText = 'NewDesign',
     this.buttonColor = const Color.fromARGB(255, 72, 255, 0),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -211,10 +218,10 @@ class ComponentButton extends StatelessWidget {
   final Color buttonColor;
 
   const ComponentButton({
-    Key? key,
+    super.key,
     this.buttonText = 'Component',
     this.buttonColor = const Color.fromARGB(255, 0, 30, 255),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -243,10 +250,10 @@ class RedoneButton extends StatelessWidget {
   final Color buttonColor;
 
   const RedoneButton({
-    Key? key,
+    super.key,
     this.buttonText = 'Redone',
     this.buttonColor = const Color.fromARGB(255, 255, 0, 119),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -255,6 +262,38 @@ class RedoneButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => RedonePage()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(16.0),
+        minimumSize: const Size(double.infinity, 64.0),
+        backgroundColor: buttonColor,
+      ),
+      child: Text(
+        buttonText,
+        style: const TextStyle(fontSize: 36, color: Colors.white),
+      ),
+    );
+  }
+}
+
+class CreateButton extends StatelessWidget {
+  final String buttonText;
+  final Color buttonColor;
+
+  const CreateButton({
+    super.key,
+    this.buttonText = 'Create',
+    this.buttonColor = const Color.fromARGB(255, 248, 208, 10),
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const CreateRecipesPage()),
         );
       },
       style: ElevatedButton.styleFrom(

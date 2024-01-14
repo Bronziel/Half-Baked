@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../components/sizedboxes.dart';
-import 'introduction_box.dart';
-import 'image_boxes.dart';
+import 'create_introduction_box.dart';
+import 'create_image_boxes.dart';
 
-class FirstRowWidget extends StatelessWidget {
-  const FirstRowWidget({
+class CreateFirstRowWidget extends StatelessWidget {
+  const CreateFirstRowWidget({
     super.key,
   });
 
@@ -13,9 +13,9 @@ class FirstRowWidget extends StatelessWidget {
     return const Row(
       children: [
         Widht40wallWidget(),
-        IntroductionWidget(),
+        CreateIntroductionWidget(),
         Width20StandardWidget(),
-        MainImagePlusBoxes(),
+        CreateMainImagePlusBoxes(),
       ],
     );
   }

@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path/path.dart' as Path;
 import 'package:flutter/services.dart';
-import 'EditRecipe.dart';
+import 'edit_recipe.dart';
 
 class EditIngredientsBox extends StatefulWidget {
-  const EditIngredientsBox({
-    Key? key,
-    required this.newRecipe,
-    required this.formKey,
-  }) : super(key: key);
-
   final NewRecipe newRecipe;
   final GlobalKey<FormState> formKey;
+
+  const EditIngredientsBox({
+    super.key,
+    required this.newRecipe,
+    required this.formKey,
+  });
 
   @override
   _EditIngredientsBoxState createState() => _EditIngredientsBoxState();
@@ -158,12 +157,12 @@ class _EditIngredientsBoxState extends State<EditIngredientsBox> {
 }
 
 class EditEquipmentBox extends StatelessWidget {
-  const EditEquipmentBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
   final NewRecipe newRecipe;
+
+  const EditEquipmentBox({
+    super.key,
+    required this.newRecipe,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -187,12 +186,12 @@ class EditEquipmentBox extends StatelessWidget {
 }
 
 class EditStepsBox extends StatelessWidget {
-  const EditStepsBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
   final NewRecipe newRecipe;
+
+  const EditStepsBox({
+    super.key,
+    required this.newRecipe,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -215,12 +214,12 @@ class EditStepsBox extends StatelessWidget {
 }
 
 class EditPortionsizeBox extends StatelessWidget {
-  const EditPortionsizeBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
   final NewRecipe newRecipe;
+
+  const EditPortionsizeBox({
+    super.key,
+    required this.newRecipe,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -243,12 +242,12 @@ class EditPortionsizeBox extends StatelessWidget {
 }
 
 class EditDescriptionBox extends StatelessWidget {
-  const EditDescriptionBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
   final NewRecipe newRecipe;
+
+  const EditDescriptionBox({
+    super.key,
+    required this.newRecipe,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -269,12 +268,12 @@ class EditDescriptionBox extends StatelessWidget {
 }
 
 class EditTitelBox extends StatelessWidget {
-  const EditTitelBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
   final NewRecipe newRecipe;
+
+  const EditTitelBox({
+    super.key,
+    required this.newRecipe,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -293,12 +292,12 @@ class EditTitelBox extends StatelessWidget {
 }
 
 class CookTimeBox extends StatelessWidget {
-  const CookTimeBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
   final NewRecipe newRecipe;
+
+  const CookTimeBox({
+    super.key,
+    required this.newRecipe,
+  });
 
   @override
   Widget build(BuildContext context) {

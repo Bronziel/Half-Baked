@@ -48,7 +48,7 @@ class _RedonePageState extends State<RedonePage> {
 
     return await ImageCropper().cropImage(
       sourcePath: path,
-      aspectRatio: CropAspectRatio(ratioX: 1085, ratioY: 400),
+      aspectRatio: const CropAspectRatio(ratioX: 1085, ratioY: 400),
       compressQuality: 100,
       uiSettings: [
         WebUiSettings(
@@ -250,48 +250,57 @@ class _RedonePageState extends State<RedonePage> {
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: const Color(0xff234234),
-                      width: 1,
+                      width: 2,
                     ),
                   ),
-                  child: Column(
+                  child: Row(
                     children: [
                       //carousel ui
-                      CarouselSlider.builder(
-                        itemCount: _firebaseStoragePaths.length,
-                        itemBuilder: (context, index, realIdx) {
-                          return GestureDetector(
-                            onTap: () =>
-                                _showImageDialog(_firebaseStoragePaths[index]),
-                            child: SizedBox(
-                              width: 1085,
-                              height: 400,
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      10), // Define the border radius here
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.network(
-                                    _firebaseStoragePaths[index],
-                                    fit: BoxFit.cover,
+                      Container(
+                        width: 1085,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color.fromARGB(255, 71, 13, 219),
+                            width: 2,
+                          ),
+                        ),
+                        child: CarouselSlider.builder(
+                          itemCount: _firebaseStoragePaths.length,
+                          itemBuilder: (context, index, realIdx) {
+                            return GestureDetector(
+                              onTap: () => _showImageDialog(
+                                  _firebaseStoragePaths[index]),
+                              child: SizedBox(
+                                width: 1085,
+                                height: 400,
+                                child: Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                        10), // Define the border radius here
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.network(
+                                      _firebaseStoragePaths[index],
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
-                        options: CarouselOptions(
-                          height: 400,
-                          viewportFraction: 1.0,
-                          enlargeCenterPage: false,
-                          onPageChanged: (index, reason) {
-                            setState(() {
-                              _current = index;
-                            });
+                            );
                           },
+                          options: CarouselOptions(
+                            height: 400,
+                            viewportFraction: 1.0,
+                            enlargeCenterPage: false,
+                            onPageChanged: (index, reason) {
+                              setState(() {
+                                _current = index;
+                              });
+                            },
+                          ),
+                          carouselController: _controller,
                         ),
-                        carouselController: _controller,
                       ),
                       //small boxes
                       Row(

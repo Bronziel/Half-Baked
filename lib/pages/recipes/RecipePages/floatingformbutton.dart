@@ -3,8 +3,7 @@ import '../../../visualview/recipestuff/formwidget/recipe_form.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
   final VoidCallback onPressed;
-  const CustomFloatingActionButton({Key? key, required this.onPressed})
-      : super(key: key);
+  const CustomFloatingActionButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class CustomFloatingActionButton extends StatelessWidget {
           context: context,
           isScrollControlled: true,
           builder: (BuildContext context) {
-            return Container(
+            return SizedBox(
               height: MediaQuery.of(context).size.height *
                   0.75, // Adjust the multiplier as needed
               child: SingleChildScrollView(

@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'EditClass.dart';
-import 'EditRecipe.dart';
+import 'edit_class.dart';
+import 'edit_recipe.dart';
 
 class EditImagePickerWidget extends StatefulWidget {
   final ValueChanged<List<XFile>?> onImagesPicked;
   final List<XFile>? initialImages;
 
   const EditImagePickerWidget({
-    Key? key,
+    super.key,
     required this.onImagesPicked,
     this.initialImages,
-  }) : super(key: key);
+  });
 
   @override
   _EditImagePickerWidgetState createState() => _EditImagePickerWidgetState();
@@ -90,13 +90,13 @@ class _EditImagePickerWidgetState extends State<EditImagePickerWidget> {
               ),
             ],
           ),
-          Container(
+          SizedBox(
             height: 150, // adjust as needed
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: _images?.length ?? 0,
               itemBuilder: (context, index) {
-                return Container(
+                return SizedBox(
                   width: 120, // adjust as needed
                   child: Column(
                     children: [

@@ -1,4 +1,3 @@
-import 'package:fb2/Redesign/RecipePages/Recipe/FirstRow/first_row_widget.dart';
 import 'package:flutter/material.dart';
 
 class PortionsizedStackWidget extends StatelessWidget {

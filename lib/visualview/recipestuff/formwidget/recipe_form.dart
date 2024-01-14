@@ -7,8 +7,8 @@ import 'package:path/path.dart' as Path;
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 
-import 'BoxClass.dart';
-import 'ImageClass.dart';
+import 'box_class.dart';
+import 'image_class.dart';
 
 class NewRecipe {
   String title = '';

@@ -7,7 +7,7 @@ import 'recipemenubutton.dart'; // Import RecipeActionsPopup// Import deleteReci
 class RecipeDetailsPage extends StatefulWidget {
   final Recipe recipe;
 
-  const RecipeDetailsPage({Key? key, required this.recipe}) : super(key: key);
+  const RecipeDetailsPage({super.key, required this.recipe});
 
   @override
   _RecipeDetailsPageState createState() => _RecipeDetailsPageState();

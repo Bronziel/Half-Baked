@@ -5,9 +5,9 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
   const MainAppBar({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
