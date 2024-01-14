@@ -6,7 +6,7 @@ import 'FirstRow/first_row_widget.dart';
 import 'second_row_widget.dart';
 
 class NewDesignPage extends StatelessWidget {
-  const NewDesignPage({Key? key}) : super(key: key);
+  const NewDesignPage({super.key});
 
   @override
   Widget build(BuildContext context) {
