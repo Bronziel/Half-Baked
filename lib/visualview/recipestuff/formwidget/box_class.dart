@@ -9,14 +9,14 @@ import 'package:flutter/services.dart';
 import 'recipe_form.dart';
 
 class IngredientsBox extends StatefulWidget {
-  const IngredientsBox({
-    Key? key,
-    required this.newRecipe,
-    required this.formKey,
-  }) : super(key: key);
-
   final NewRecipe newRecipe;
   final GlobalKey<FormState> formKey;
+
+  const IngredientsBox({
+    super.key,
+    required this.newRecipe,
+    required this.formKey,
+  });
 
   @override
   _IngredientsBoxState createState() => _IngredientsBoxState();
@@ -167,13 +167,12 @@ class EquipmentBox extends StatelessWidget {
 }
 
 class StepsBox extends StatelessWidget {
-  const StepsBox({
-    Key? key,
-    required NewRecipe newRecipe,
-  })  : _newRecipe = newRecipe,
-        super(key: key);
-
   final NewRecipe _newRecipe;
+
+  const StepsBox({
+    super.key,
+    required NewRecipe newRecipe,
+  }) : _newRecipe = newRecipe;
 
   @override
   Widget build(BuildContext context) {
@@ -195,12 +194,12 @@ class StepsBox extends StatelessWidget {
 }
 
 class PortionsizeBox extends StatelessWidget {
-  const PortionsizeBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
   final NewRecipe newRecipe;
+
+  const PortionsizeBox({
+    super.key,
+    required this.newRecipe,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -252,12 +251,12 @@ class PortionsizeBox extends StatelessWidget {
 }
 
 class DescriptionBox extends StatelessWidget {
-  const DescriptionBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
   final NewRecipe newRecipe;
+
+  const DescriptionBox({
+    super.key,
+    required this.newRecipe,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -277,12 +276,12 @@ class DescriptionBox extends StatelessWidget {
 }
 
 class TitelBox extends StatelessWidget {
-  const TitelBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
   final NewRecipe newRecipe;
+
+  const TitelBox({
+    super.key,
+    required this.newRecipe,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -305,12 +304,12 @@ class TitelBox extends StatelessWidget {
 }
 
 class CookTimeBox extends StatefulWidget {
-  const CookTimeBox({
-    Key? key,
-    required this.newRecipe,
-  }) : super(key: key);
-
   final NewRecipe newRecipe;
+
+  const CookTimeBox({
+    super.key,
+    required this.newRecipe,
+  });
 
   @override
   _CookTimeBoxState createState() => _CookTimeBoxState();

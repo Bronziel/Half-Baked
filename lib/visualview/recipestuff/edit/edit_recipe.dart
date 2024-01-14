@@ -32,8 +32,11 @@ class EditRecipeForm extends StatefulWidget {
   final VoidCallback onRecipeSaved;
   final Recipe? recipe;
 
-  const EditRecipeForm({Key? key, required this.onRecipeSaved, this.recipe})
-      : super(key: key);
+  const EditRecipeForm({
+    super.key,
+    required this.onRecipeSaved,
+    this.recipe,
+  });
 
   @override
   _EditRecipeFormState createState() => _EditRecipeFormState();
@@ -255,13 +258,13 @@ class ExistingImagesWidget extends StatelessWidget {
               ],
             ),
           ),
-          Container(
+          SizedBox(
             height: 150,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: existingImages.length,
               itemBuilder: (context, index) {
-                return Container(
+                return SizedBox(
                   width: 120,
                   child: Column(
                     children: [

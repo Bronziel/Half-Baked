@@ -10,10 +10,10 @@ class EditImagePickerWidget extends StatefulWidget {
   final List<XFile>? initialImages;
 
   const EditImagePickerWidget({
-    Key? key,
+    super.key,
     required this.onImagesPicked,
     this.initialImages,
-  }) : super(key: key);
+  });
 
   @override
   _EditImagePickerWidgetState createState() => _EditImagePickerWidgetState();
