@@ -9,8 +9,8 @@ import 'package:flutter/foundation.dart';
 
 import '../../../pages/recipes/getrecipe.dart';
 import '../RecipeLook/recipe_layout.dart';
-import 'EditClass.dart';
-import 'EditImage.dart';
+import 'edit_class.dart';
+import 'edit_image.dart';
 import '../../appbar/customappbar.dart';
 
 class NewRecipe {

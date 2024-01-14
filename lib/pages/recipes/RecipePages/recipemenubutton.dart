@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../getrecipe.dart' show fetchRecipes, deleteRecipe;
 import '../../../visualview/recipestuff/RecipeLook/recipe_layout.dart';
-import '../../../visualview/recipestuff/edit/EditRecipe.dart';
+import '../../../visualview/recipestuff/edit/edit_recipe.dart';
 
 class RecipeActionsPopup extends StatelessWidget {
   final Recipe recipe;

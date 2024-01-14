@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'EditClass.dart';
-import 'EditRecipe.dart';
+import 'edit_class.dart';
+import 'edit_recipe.dart';
 
 class EditImagePickerWidget extends StatefulWidget {
   final ValueChanged<List<XFile>?> onImagesPicked;

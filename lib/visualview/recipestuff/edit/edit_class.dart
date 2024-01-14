@@ -6,7 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path/path.dart' as Path;
 import 'package:flutter/services.dart';
-import 'EditRecipe.dart';
+import 'edit_recipe.dart';
 
 class EditIngredientsBox extends StatefulWidget {
   const EditIngredientsBox({
