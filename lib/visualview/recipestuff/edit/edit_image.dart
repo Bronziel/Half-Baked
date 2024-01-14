@@ -90,13 +90,13 @@ class _EditImagePickerWidgetState extends State<EditImagePickerWidget> {
               ),
             ],
           ),
-          Container(
+          SizedBox(
             height: 150, // adjust as needed
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: _images?.length ?? 0,
               itemBuilder: (context, index) {
-                return Container(
+                return SizedBox(
                   width: 120, // adjust as needed
                   child: Column(
                     children: [

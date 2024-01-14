@@ -36,7 +36,8 @@ class _IngredientsBoxState extends State<IngredientsBox> {
           children: [
             Flexible(
               child: TextFormField(
-                decoration: InputDecoration(hintText: 'Enter ingredient name'),
+                decoration:
+                    const InputDecoration(hintText: 'Enter ingredient name'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an ingredient name';
@@ -139,9 +140,9 @@ class _IngredientsBoxState extends State<IngredientsBox> {
 
 class EquipmentBox extends StatelessWidget {
   const EquipmentBox({
-    Key? key,
+    super.key,
     required this.newRecipe,
-  }) : super(key: key);
+  });
 
   final NewRecipe newRecipe;
 
@@ -290,7 +291,8 @@ class TitelBox extends StatelessWidget {
         hintText: 'Enter recipe title',
         border: OutlineInputBorder(), // This gives the border
       ),
-      style: TextStyle(fontWeight: FontWeight.bold), // This makes the text bold
+      style: const TextStyle(
+          fontWeight: FontWeight.bold), // This makes the text bold
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter a title';
@@ -335,7 +337,7 @@ class _CookTimeBoxState extends State<CookTimeBox> {
       key: _formKey,
       autovalidateMode: AutovalidateMode.always,
       child: Card(
-        color: Color(0xFF9896F1),
+        color: const Color(0xFF9896F1),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -387,7 +389,7 @@ class _CookTimeBoxState extends State<CookTimeBox> {
         Text(
           title,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white, // makes the text color white
             fontWeight: FontWeight.bold, // makes the text bold
           ),
@@ -395,9 +397,10 @@ class _CookTimeBoxState extends State<CookTimeBox> {
         const SizedBox(height: 8.0),
         Row(
           children: [
-            Icon(Icons.access_time, color: Color.fromARGB(255, 97, 89, 100)),
+            const Icon(Icons.access_time,
+                color: Color.fromARGB(255, 97, 89, 100)),
             const SizedBox(width: 8.0),
-            Container(
+            SizedBox(
               width: 60,
               child: TextFormField(
                 controller: controller,
@@ -405,7 +408,7 @@ class _CookTimeBoxState extends State<CookTimeBox> {
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.digitsOnly
                 ],
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
                 ),
@@ -434,8 +437,8 @@ class _CookTimeBoxState extends State<CookTimeBox> {
                 min: 0,
                 max: maxSliderValue,
                 value: time <= maxSliderValue ? time : maxSliderValue,
-                activeColor: Color.fromARGB(255, 97, 89, 100),
-                inactiveColor: Color.fromARGB(255, 97, 89, 100),
+                activeColor: const Color.fromARGB(255, 97, 89, 100),
+                inactiveColor: const Color.fromARGB(255, 97, 89, 100),
                 onChanged: (double value) {
                   setState(() {
                     setTime(value);

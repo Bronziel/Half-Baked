@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'BoxClass.dart';
+import 'box_class.dart';
 import 'recipe_form.dart';
 
 class ImagePickerWidget extends StatefulWidget {
@@ -10,10 +10,10 @@ class ImagePickerWidget extends StatefulWidget {
   final List<XFile>? initialImages;
 
   const ImagePickerWidget({
-    Key? key,
+    super.key,
     required this.onImagesPicked,
     this.initialImages,
-  }) : super(key: key);
+  });
 
   @override
   _ImagePickerWidgetState createState() => _ImagePickerWidgetState();
@@ -71,13 +71,13 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
             ),
           ],
         ),
-        Container(
+        SizedBox(
           height: 150, // adjust as needed
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: _images?.length ?? 0,
             itemBuilder: (context, index) {
-              return Container(
+              return SizedBox(
                 width: 120, // adjust as needed
                 child: Column(
                   children: [

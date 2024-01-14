@@ -14,7 +14,7 @@ class CustomFloatingActionButton extends StatelessWidget {
           context: context,
           isScrollControlled: true,
           builder: (BuildContext context) {
-            return Container(
+            return SizedBox(
               height: MediaQuery.of(context).size.height *
                   0.75, // Adjust the multiplier as needed
               child: SingleChildScrollView(
