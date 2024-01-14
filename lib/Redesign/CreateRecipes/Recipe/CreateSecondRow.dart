@@ -85,23 +85,44 @@ class Popups extends StatelessWidget {
       children: [
         SizedBox(
           width: 360,
-          height: 125,
+          height: 105,
           child: Card(
             color: Color(0xFFDE8F8F),
             child: Stack(
               children: [
-                Positioned(child: TextField()),
+                Positioned(
+                  // Set the position for the TextField
+                  bottom: 10, // Adjust these values as needed
+                  left: 10, // Adjust these values as needed
+
+                  child: SizedBox(
+                    width: 240,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "Add a title", // Placeholder text
+                        border:
+                            OutlineInputBorder(), // Adds border to the TextField
+                        // You can add more decoration properties as needed
+                      ),
+                      style: TextStyle(
+                        fontFamily: 'Pacifico',
+                        fontSize: 30,
+                        color: Color(0xFFFFFFFF), // Corrected color format
+                      ),
+                    ),
+                  ),
+                ),
                 Positioned(
                   left: 10,
                   child: Titleaddtext(),
                 ),
                 Positioned(
-                  left: 310,
+                  right: 10,
                   child: CloseButton(),
                 ),
                 Positioned(
-                  top: 80,
-                  left: 260,
+                  bottom: 10,
+                  right: 10,
                   child: SaveButton(),
                 ),
               ],
@@ -121,7 +142,7 @@ class Titleaddtext extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Text(
-      'Titel',
+      '',
       style: TextStyle(
         fontFamily: 'inter',
         fontSize: 24,
