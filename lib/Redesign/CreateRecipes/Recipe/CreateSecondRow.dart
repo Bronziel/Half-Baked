@@ -81,7 +81,7 @@ class Popups extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       children: [
         SizedBox(
           width: 360,
@@ -90,39 +90,88 @@ class Popups extends StatelessWidget {
             color: Color(0xFFDE8F8F),
             child: Stack(
               children: [
-                const Positioned(
+                Positioned(child: TextField()),
+                Positioned(
                   left: 10,
-                  child: Text(
-                    'Titel',
-                    style: TextStyle(
-                      fontFamily: 'inter',
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  child: Titleaddtext(),
                 ),
                 Positioned(
                   left: 310,
-                  child: IconButton(
-                    iconSize: 24,
-                    color: const Color(0xFF000000),
-                    icon: const Icon(Icons.close), // Plus icon
-                    onPressed: () {
-                      // Add your action for this button
-                    },
-                  ),
+                  child: CloseButton(),
                 ),
                 Positioned(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text('wow'),
-                  ),
-                )
+                  top: 80,
+                  left: 260,
+                  child: SaveButton(),
+                ),
               ],
             ),
           ),
         ),
       ],
+    );
+  }
+}
+
+class Titleaddtext extends StatelessWidget {
+  const Titleaddtext({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text(
+      'Titel',
+      style: TextStyle(
+        fontFamily: 'inter',
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+}
+
+class CloseButton extends StatelessWidget {
+  const CloseButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      iconSize: 24,
+      color: const Color(0xFF000000),
+      icon: const Icon(Icons.close), // Plus icon
+      onPressed: () {
+        // Add your action for this button
+      },
+    );
+  }
+}
+
+class SaveButton extends StatelessWidget {
+  const SaveButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(
+            horizontal: 12, vertical: 12), // Padding inside the button
+        // Other style properties
+      ),
+      child: const Row(
+        mainAxisSize:
+            MainAxisSize.min, // Use min to wrap content inside the button
+        children: <Widget>[
+          Icon(Icons.add), // Your icon
+          SizedBox(width: 8), // Space between icon and text
+          Text('Save'), // Your text
+        ],
+      ),
     );
   }
 }
