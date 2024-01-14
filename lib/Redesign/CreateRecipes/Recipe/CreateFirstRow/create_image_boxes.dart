@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../components/ComponentsRedesign.dart';
+
 import '../../../components/sizedboxes.dart';
 
 class CreateMainImagePlusBoxes extends StatelessWidget {
@@ -9,7 +9,7 @@ class CreateMainImagePlusBoxes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       child: Row(
         children: [
           SizedBox(
@@ -25,7 +25,7 @@ class CreateMainImagePlusBoxes extends StatelessWidget {
                   const SizedBox(
                     height: 200,
                   ),
-                  Container(
+                  SizedBox(
                     width: 50,
                     height: 50,
                     child: IconButton(

@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'pages/screens/glist.dart';
-import 'pages/recipes/RecipePages/recipelistpage.dart';
+
 import 'visualview/themes.dart';
-import 'package:fb2/Redesign/RecipePages/Recipe/BaseRecipe.dart';
+import 'package:fb2/Redesign/RecipePages/Recipe/base_recipe.dart';
 
 import 'pages/screens/loading.dart';
 import 'Redesign/glistredone.dart';
 
-import 'Redesign/CreateRecipes/Recipe/CreateRecipes.dart';
+import 'Redesign/CreateRecipes/Recipe/create_recipes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

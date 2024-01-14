@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'imagesclass.dart';
 
 //this is the widget that show prep and total time tile
 class TimeCard extends StatelessWidget {

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../components/ComponentsRedesign.dart';
-import '../../components/sizedboxes.dart';
 import '../../components/sizedboxes.dart';
 
 class CreateSecondRowWidget extends StatelessWidget {

@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../components/sizedboxes.dart';
-import 'CreateFirstRow/create_first_row.dart';
-import 'CreateSecondRow.dart';
-import '../../components/ComponentsRedesign.dart';
+import 'FirstRow/first_row_widget.dart';
+import 'second_row_widget.dart';
 
-class CreateRecipesPage extends StatelessWidget {
-  const CreateRecipesPage({Key? key}) : super(key: key);
+class NewDesignPage extends StatelessWidget {
+  const NewDesignPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +43,9 @@ class CreateRecipesPage extends StatelessWidget {
           child: Column(
             children: [
               Height20StandardWidget(),
-              CreateFirstRowWidget(),
+              FirstRowWidget(),
               Height20StandardWidget(),
-              CreateSecondRowWidget(),
+              SecondRowWidget(),
             ],
           ),
         ),
