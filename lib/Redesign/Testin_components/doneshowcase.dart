@@ -1,6 +1,6 @@
 import 'package:fb2/Redesign/components/imagesclass.dart';
 import 'package:flutter/material.dart';
-import '../components/ComponentsRedesign.dart';
+import '../components/components_redesign.dart';
 import 'showcase.dart';
 
 class RowOfIcons80 extends StatelessWidget {

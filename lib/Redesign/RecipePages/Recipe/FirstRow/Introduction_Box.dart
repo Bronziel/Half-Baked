@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../components/ComponentsRedesign.dart';
+import '../../../components/components_redesign.dart';
 import '../../../components/imagesclass.dart';
 
 class IntroductionWidget extends StatelessWidget {

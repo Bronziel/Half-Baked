@@ -1,17 +1,12 @@
-import 'package:fb2/Redesign/Testin_components/showcase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../components/ComponentsRedesign.dart';
-import '../components/imagesclass.dart';
 import 'doneshowcase.dart';
-
 import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image_cropper/image_cropper.dart';
 
 class BuildComponentPage extends StatelessWidget {
-  const BuildComponentPage({Key? key}) : super(key: key);
+  const BuildComponentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +42,11 @@ class BuildComponentPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: ShowcaseButton(),
               ),
-              SelectImage(),
+              const SelectImage(),
               SizedBox(
                 height: 400,
                 width: 1085,
@@ -80,7 +75,7 @@ class BuildComponentPage extends StatelessWidget {
 }
 
 class SelectImage extends StatefulWidget {
-  const SelectImage({Key? key}) : super(key: key);
+  const SelectImage({super.key});
 
   @override
   _SelectImageState createState() => _SelectImageState();

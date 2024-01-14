@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../components/ComponentsRedesign.dart';
-import '../../components/sizedboxes.dart';
 import '../../components/sizedboxes.dart';
 
 class SecondRowWidget extends StatelessWidget {
@@ -14,7 +11,7 @@ class SecondRowWidget extends StatelessWidget {
     return Row(
       children: [
         const Widht40wallWidget(),
-        RecipeListCard(),
+        const RecipeListCard(),
         const Width20StandardWidget(),
         StepsWidget(),
       ],
@@ -262,7 +259,7 @@ class IngredientTile extends StatelessWidget {
         children: [
           const SizedBox(width: 16),
           Text(label, style: textStyle), // Use the label parameter
-          Text(':', style: textStyle),
+          const Text(':', style: textStyle),
           const SizedBox(width: 20),
           Text(quantity, style: textStyle), // Use the quantity parameter
           const SizedBox(width: 3),
