@@ -16,14 +16,14 @@ class CreateSecondRowWidget extends StatelessWidget {
         Widht40wallWidget(),
         CreateRecipeListCard(),
         Width20StandardWidget(),
-        steps(),
+        Steps(),
       ],
     );
   }
 }
 
-class steps extends StatelessWidget {
-  const steps({
+class Steps extends StatelessWidget {
+  const Steps({
     super.key,
   });
 
@@ -33,15 +33,15 @@ class steps extends StatelessWidget {
       width: 1200,
       height: 474,
       child: Card(
-        color: const Color(0xffd9d9d9),
-        child: saveingridient(),
+        color: Color(0xffd9d9d9),
+        child: Saveingridient(),
       ),
     );
   }
 }
 
-class saveingridient extends StatelessWidget {
-  const saveingridient({
+class Saveingridient extends StatelessWidget {
+  const Saveingridient({
     super.key,
   });
 

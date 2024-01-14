@@ -118,10 +118,10 @@ class ShowcaseButton extends StatelessWidget {
   final Color buttonColor;
 
   const ShowcaseButton({
-    Key? key,
+    super.key,
     this.buttonText = 'ShowCase',
     this.buttonColor = const Color.fromARGB(255, 189, 12, 225),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +129,7 @@ class ShowcaseButton extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ShowcasePage()),
+          MaterialPageRoute(builder: (context) => const ShowcasePage()),
         );
       },
       style: ElevatedButton.styleFrom(

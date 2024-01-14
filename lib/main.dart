@@ -22,7 +22,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
 }
 
 class LandingPage extends StatelessWidget {
-  const LandingPage({Key? key}) : super(key: key);
+  const LandingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -90,10 +90,10 @@ class LoadingPageButton extends StatelessWidget {
   final Color buttonColor;
 
   const LoadingPageButton({
-    Key? key,
+    super.key,
     this.buttonText = 'Loading',
     this.buttonColor = const Color.fromARGB(255, 189, 12, 225),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -122,10 +122,10 @@ class GlistButton extends StatelessWidget {
   final Color buttonColor;
 
   const GlistButton({
-    Key? key,
+    super.key,
     this.buttonText = 'Food',
     this.buttonColor = Colors.orange,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -154,10 +154,10 @@ class RecipeListButton extends StatelessWidget {
   final Color buttonColor;
 
   const RecipeListButton({
-    Key? key,
+    super.key,
     this.buttonText = 'RecipeList',
     this.buttonColor = const Color.fromARGB(255, 224, 17, 131),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -186,10 +186,10 @@ class NewDesignButton extends StatelessWidget {
   final Color buttonColor;
 
   const NewDesignButton({
-    Key? key,
+    super.key,
     this.buttonText = 'NewDesign',
     this.buttonColor = const Color.fromARGB(255, 72, 255, 0),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -218,10 +218,10 @@ class ComponentButton extends StatelessWidget {
   final Color buttonColor;
 
   const ComponentButton({
-    Key? key,
+    super.key,
     this.buttonText = 'Component',
     this.buttonColor = const Color.fromARGB(255, 0, 30, 255),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -250,10 +250,10 @@ class RedoneButton extends StatelessWidget {
   final Color buttonColor;
 
   const RedoneButton({
-    Key? key,
+    super.key,
     this.buttonText = 'Redone',
     this.buttonColor = const Color.fromARGB(255, 255, 0, 119),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -282,10 +282,10 @@ class CreateButton extends StatelessWidget {
   final Color buttonColor;
 
   const CreateButton({
-    Key? key,
+    super.key,
     this.buttonText = 'Create',
     this.buttonColor = const Color.fromARGB(255, 248, 208, 10),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -293,7 +293,7 @@ class CreateButton extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CreateRecipesPage()),
+          MaterialPageRoute(builder: (context) => const CreateRecipesPage()),
         );
       },
       style: ElevatedButton.styleFrom(

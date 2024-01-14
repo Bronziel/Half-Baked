@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../../visualview/appbar/customappbar.dart';
 import '../../../visualview/recipestuff/RecipeLook/recipe_layout.dart';
-import 'RecipeViewPage.dart';
+import 'recipe_view_page.dart';
 import '../getrecipe.dart' show fetchRecipes, deleteRecipe;
 import 'recipemenubutton.dart';
 import 'floatingformbutton.dart';
 
 class RecipelistPage extends StatefulWidget {
-  const RecipelistPage({Key? key}) : super(key: key);
+  const RecipelistPage({super.key});
 
   @override
   _RecipelistPageState createState() => _RecipelistPageState();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../components/ComponentsRedesign.dart';
 import '../../../components/sizedboxes.dart';
 import '../../../components/sizedboxes.dart';
-import 'CreateIntroduction_Box.dart';
+import 'create_introduction_Box.dart';
 import 'CreateImage_Boxes.dart';
 
 class CreateFirstRowWidget extends StatelessWidget {

@@ -42,7 +42,7 @@ class CreateIntroductionWidget extends StatelessWidget {
                       child: Row(
                         children: [
                           const CreateTitle(
-                            Createtitle: 'Add title',
+                            createtitle: 'Add title',
                           ),
                           const SizedBox(
                             width: 10,
@@ -87,7 +87,7 @@ class CreateIntroductionWidget extends StatelessWidget {
                     child: Column(
                       children: [
                         const CreateDescription(
-                            Createdescription: 'Add a description'),
+                            createdescription: 'Add a description'),
                         const SizedBox(height: 8),
                         IconButton(
                           color: const Color(0xFFCECCCC),
@@ -125,16 +125,16 @@ class CreateIntroductionWidget extends StatelessWidget {
 }
 
 class CreateDescription extends StatelessWidget {
-  final String Createdescription;
+  final String createdescription;
   const CreateDescription({
     super.key,
-    this.Createdescription = '',
+    this.createdescription = '',
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      Createdescription,
+      createdescription,
       softWrap: true,
       style: const TextStyle(
         fontSize: 24,
@@ -146,16 +146,16 @@ class CreateDescription extends StatelessWidget {
 }
 
 class CreateTitle extends StatelessWidget {
-  final String Createtitle;
+  final String createtitle;
   const CreateTitle({
     super.key,
-    this.Createtitle = '',
+    this.createtitle = '',
   });
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      Createtitle,
+      createtitle,
       style: const TextStyle(
         fontFamily: 'Pacifico',
         fontSize: 40,

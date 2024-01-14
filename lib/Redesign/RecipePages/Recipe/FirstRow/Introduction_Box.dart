@@ -65,7 +65,7 @@ class IntroductionWidget extends StatelessWidget {
                 ),
               ]),
             ),
-            IcontilesBox(),
+            const IcontilesBox(),
           ],
         ),
       ),

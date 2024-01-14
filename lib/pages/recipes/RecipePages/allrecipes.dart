@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../../visualview/appbar/customappbar.dart';
 import '../../../visualview/recipestuff/RecipeLook/recipe_layout.dart';
-import 'RecipeViewPage.dart';
+import 'recipe_view_page.dart';
 import '../getrecipe.dart' show fetchRecipes, deleteRecipe, fetchRecipesSearch;
 import 'recipemenubutton.dart';
 import 'floatingformbutton.dart';
 
 class RecipelistPage extends StatefulWidget {
-  const RecipelistPage({Key? key}) : super(key: key);
+  const RecipelistPage({super.key});
 
   @override
   _RecipelistPageState createState() => _RecipelistPageState();
@@ -38,7 +38,7 @@ class _RecipelistPageState extends State<RecipelistPage> {
           decoration: InputDecoration(
             labelText: "Search recipes...",
             suffixIcon: IconButton(
-              icon: Icon(Icons.search),
+              icon: const Icon(Icons.search),
               onPressed: _searchRecipes,
             ),
           ),
