@@ -1,1 +1,15 @@
 Main color.
+APP font fontFamily: 'Pacifico', fontSize: 40,
+
+
+current appbar color: Color(0xFFCD7CDA)
+old appbar color color: Color(0xFF9896F1)
+
+Main purple color: Color(0xFF9896F1)
+Main grey   color: Color(0xFFD9D9D9)
+Main Black  color: Color(0xFF161414)
+Main white  color: Color(0xFFFFFFFF)
+
+
+Title fontSize: 40
+title header: 24

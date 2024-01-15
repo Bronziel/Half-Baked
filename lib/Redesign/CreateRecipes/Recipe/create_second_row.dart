@@ -84,7 +84,7 @@ class Popups extends StatelessWidget {
           width: 360,
           height: 105,
           child: Card(
-            color: Color(0xFFDE8F8F),
+            color: Color(0xFFD9D9D9),
             child: Stack(
               children: [
                 Positioned(
@@ -101,17 +101,22 @@ class Popups extends StatelessWidget {
                           fontFamily: 'Paprika',
                           fontSize:
                               20, // Adjust the font size for the label as needed
-                          color: Color(0xFFFFFFFF),
+                          color: Color(0xFF161414),
                         ),
                         hintText: "Title", // Placeholder text
                         border:
                             OutlineInputBorder(), // Adds border to the TextField
                         // You can add more decoration properties as needed
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Color(
+                                  0xFF9896F1)), // Replace with desired color
+                        ),
                       ),
                       style: TextStyle(
                         fontFamily: 'Pacifico',
                         fontSize: 30,
-                        color: Color(0xFFFFFFFF), // Corrected color format
+                        color: Color(0xFF161414), // Corrected color format
                       ),
                     ),
                   ),
@@ -184,6 +189,7 @@ class SaveButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xFF9896F1),
         padding: const EdgeInsets.symmetric(
             horizontal: 12, vertical: 12), // Padding inside the button
         // Other style properties
@@ -192,9 +198,12 @@ class SaveButton extends StatelessWidget {
         mainAxisSize:
             MainAxisSize.min, // Use min to wrap content inside the button
         children: <Widget>[
-          Icon(Icons.add), // Your icon
+          Icon(Icons.add, color: Color(0xFFFFFFFF)), // Your icon
           SizedBox(width: 8), // Space between icon and text
-          Text('Save'), // Your text
+          Text(
+            'Save',
+            style: TextStyle(color: Color(0xFFFFFFFF)),
+          ), // Your text
         ],
       ),
     );
