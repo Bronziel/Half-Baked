@@ -133,7 +133,7 @@ class GlistButton extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => GlistPage()),
+          MaterialPageRoute(builder: (context) => const GlistPage()),
         );
       },
       style: ElevatedButton.styleFrom(

@@ -232,7 +232,11 @@ class ExistingImagesWidget extends StatelessWidget {
   final List<String> existingImages;
   final Function(String) onDelete;
 
-  ExistingImagesWidget({required this.existingImages, required this.onDelete});
+  // Modify the constructor to include super.key
+  const ExistingImagesWidget(
+      {super.key, // Use super key here
+      required this.existingImages,
+      required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
