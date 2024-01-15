@@ -57,6 +57,7 @@ class Saveingridient extends StatelessWidget {
                 Column(
                   children: [
                     Popups(),
+                    PopDescription(),
                   ],
                 ),
                 Column(
@@ -121,6 +122,69 @@ class PopTitle extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: 'Pacifico',
                     fontSize: 30,
+                    color: Color(0xFF161414),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 10,
+              child: Titleaddtext(),
+            ),
+            Positioned(
+              right: 10,
+              child: Stopdownbutton(),
+            ),
+            Positioned(
+              bottom: 10,
+              right: 10,
+              child: SaveButton(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PopDescription extends StatelessWidget {
+  const PopDescription({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      width: 360,
+      height: 205,
+      child: Card(
+        color: Color(0xFFD9D9D9),
+        child: Stack(
+          children: [
+            Positioned(
+              // Set the position for the TextField
+              bottom: 10, // Adjust these values as needed
+              left: 10, // Adjust these values as needed
+
+              child: SizedBox(
+                width: 240,
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Add a Description',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Paprika',
+                      fontSize: 20,
+                      color: Color(0xFF161414),
+                    ),
+                    hintText: "Description",
+                    border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF9896F1)),
+                    ),
+                  ),
+                  style: TextStyle(
+                    fontFamily: 'Paprika',
+                    fontSize: 20,
                     color: Color(0xFF161414),
                   ),
                 ),
