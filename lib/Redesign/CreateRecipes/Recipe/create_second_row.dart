@@ -78,67 +78,63 @@ class Popups extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        SizedBox(
-          width: 360,
-          height: 105,
-          child: Card(
-            color: Color(0xFFD9D9D9),
-            child: Stack(
-              children: [
-                Positioned(
-                  // Set the position for the TextField
-                  bottom: 10, // Adjust these values as needed
-                  left: 10, // Adjust these values as needed
+    return const SizedBox(
+      width: 360,
+      height: 105,
+      child: Card(
+        color: Color(0xFFD9D9D9),
+        child: Stack(
+          children: [
+            Positioned(
+              // Set the position for the TextField
+              bottom: 10, // Adjust these values as needed
+              left: 10, // Adjust these values as needed
 
-                  child: SizedBox(
-                    width: 240,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Add a title',
-                        labelStyle: TextStyle(
-                          fontFamily: 'Paprika',
-                          fontSize:
-                              20, // Adjust the font size for the label as needed
-                          color: Color(0xFF161414),
-                        ),
-                        hintText: "Title", // Placeholder text
-                        border:
-                            OutlineInputBorder(), // Adds border to the TextField
-                        // You can add more decoration properties as needed
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color(
-                                  0xFF9896F1)), // Replace with desired color
-                        ),
-                      ),
-                      style: TextStyle(
-                        fontFamily: 'Pacifico',
-                        fontSize: 30,
-                        color: Color(0xFF161414), // Corrected color format
-                      ),
+              child: SizedBox(
+                width: 240,
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Add a title',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Paprika',
+                      fontSize:
+                          20, // Adjust the font size for the label as needed
+                      color: Color(0xFF161414),
+                    ),
+                    hintText: "Title", // Placeholder text
+                    border:
+                        OutlineInputBorder(), // Adds border to the TextField
+                    // You can add more decoration properties as needed
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color:
+                              Color(0xFF9896F1)), // Replace with desired color
                     ),
                   ),
+                  style: TextStyle(
+                    fontFamily: 'Pacifico',
+                    fontSize: 30,
+                    color: Color(0xFF161414), // Corrected color format
+                  ),
                 ),
-                Positioned(
-                  left: 10,
-                  child: Titleaddtext(),
-                ),
-                Positioned(
-                  right: 10,
-                  child: CloseButton(),
-                ),
-                Positioned(
-                  bottom: 10,
-                  right: 10,
-                  child: SaveButton(),
-                ),
-              ],
+              ),
             ),
-          ),
+            Positioned(
+              left: 10,
+              child: Titleaddtext(),
+            ),
+            Positioned(
+              right: 10,
+              child: CloseButton(),
+            ),
+            Positioned(
+              bottom: 10,
+              right: 10,
+              child: SaveButton(),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
