@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -8,6 +7,9 @@ import 'package:path/path.dart' as Path;
 import 'package:carousel_slider/carousel_slider.dart';
 
 class GlistPage extends StatefulWidget {
+  // Use super parameter for 'key'
+  const GlistPage({super.key});
+
   @override
   _GlistPageState createState() => _GlistPageState();
 }
@@ -146,13 +148,13 @@ class _GlistPageState extends State<GlistPage> {
                 child: const Text('Discard'),
               ),
             if (!_displayImages)
-              Container(
+              SizedBox(
                 height: 150, // adjust as needed
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: _images.length,
                   itemBuilder: (context, index) {
-                    return Container(
+                    return SizedBox(
                       width: 120, // adjust as needed
                       child: Column(
                         children: [
