@@ -96,7 +96,14 @@ class Popups extends StatelessWidget {
                     width: 240,
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: "Add a title", // Placeholder text
+                        labelText: 'Add a title',
+                        labelStyle: TextStyle(
+                          fontFamily: 'Paprika',
+                          fontSize:
+                              20, // Adjust the font size for the label as needed
+                          color: Color(0xFFFFFFFF),
+                        ),
+                        hintText: "Title", // Placeholder text
                         border:
                             OutlineInputBorder(), // Adds border to the TextField
                         // You can add more decoration properties as needed
