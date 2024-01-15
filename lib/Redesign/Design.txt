@@ -13,3 +13,10 @@ Main white  color: Color(0xFFFFFFFF)
 
 Title fontSize: 40
 title header: 24
+
+How should popups look
+they should all use the current 
+save button bottom 10, right 10
+the closebutton top 10 right 10
+a text field should be left 10 bottom 10 right 100 when save button beside it 
+a title should be black text 

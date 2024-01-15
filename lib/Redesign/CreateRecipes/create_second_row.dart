@@ -80,7 +80,7 @@ class Popups extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopTitle();
+    return const PopTitle();
   }
 }
 
@@ -155,39 +155,39 @@ class PopDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      width: 360,
+      width: 460,
       height: 205,
       child: Card(
         color: Color(0xFFD9D9D9),
         child: Stack(
           children: [
             Positioned(
-              // Set the position for the TextField
-              bottom: 10, // Adjust these values as needed
-              left: 10, // Adjust these values as needed
-
-              child: SizedBox(
-                width: 240,
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Add a Description',
-                    labelStyle: TextStyle(
-                      fontFamily: 'Paprika',
-                      fontSize: 20,
-                      color: Color(0xFF161414),
-                    ),
-                    hintText: "Description",
-                    border: OutlineInputBorder(),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF9896F1)),
-                    ),
-                  ),
-                  style: TextStyle(
+              bottom: 10,
+              left: 10,
+              top: 10,
+              right:
+                  100, // Adjusted to ensure the TextField is more square-like
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Add a Description',
+                  labelStyle: TextStyle(
                     fontFamily: 'Paprika',
                     fontSize: 20,
                     color: Color(0xFF161414),
                   ),
+                  hintText: "Description",
+                  border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF9896F1)),
+                  ),
                 ),
+                style: TextStyle(
+                  fontFamily: 'Paprika',
+                  fontSize: 20,
+                  color: Color(0xFF161414),
+                ),
+                maxLines: null, // Allows for unlimited lines
+                minLines: 5, // Set this to a desired initial size
               ),
             ),
             Positioned(
