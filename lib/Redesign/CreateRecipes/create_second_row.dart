@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/sizedboxes.dart';
+import '../components/sizedboxes.dart';
 
 class CreateSecondRowWidget extends StatelessWidget {
   const CreateSecondRowWidget({
@@ -78,6 +78,17 @@ class Popups extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return PopTitle();
+  }
+}
+
+class PopTitle extends StatelessWidget {
+  const PopTitle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return const SizedBox(
       width: 360,
       height: 105,
@@ -97,24 +108,19 @@ class Popups extends StatelessWidget {
                     labelText: 'Add a title',
                     labelStyle: TextStyle(
                       fontFamily: 'Paprika',
-                      fontSize:
-                          20, // Adjust the font size for the label as needed
+                      fontSize: 20,
                       color: Color(0xFF161414),
                     ),
-                    hintText: "Title", // Placeholder text
-                    border:
-                        OutlineInputBorder(), // Adds border to the TextField
-                    // You can add more decoration properties as needed
+                    hintText: "Title",
+                    border: OutlineInputBorder(),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color:
-                              Color(0xFF9896F1)), // Replace with desired color
+                      borderSide: BorderSide(color: Color(0xFF9896F1)),
                     ),
                   ),
                   style: TextStyle(
                     fontFamily: 'Pacifico',
                     fontSize: 30,
-                    color: Color(0xFF161414), // Corrected color format
+                    color: Color(0xFF161414),
                   ),
                 ),
               ),

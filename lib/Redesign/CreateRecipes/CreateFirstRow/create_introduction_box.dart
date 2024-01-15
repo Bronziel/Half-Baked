@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../components/components_redesign.dart';
+import '../../components/components_redesign.dart';
 
 class CreateIntroductionWidget extends StatelessWidget {
   const CreateIntroductionWidget({
