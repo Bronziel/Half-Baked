@@ -1,11 +1,9 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path/path.dart' as Path;
 import 'package:flutter/services.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../../pages/recipes/getrecipe.dart';
 import '../RecipeLook/recipe_layout.dart';

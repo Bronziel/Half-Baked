@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../visualview/recipestuff/RecipeLook/recipe_layout.dart';
 import 'recipe_view_page.dart';
-import '../getrecipe.dart' show fetchRecipes, deleteRecipe, fetchRecipesSearch;
+import '../getrecipe.dart' show fetchRecipes, fetchRecipesSearch;
 import 'recipemenubutton.dart';
 import 'floatingformbutton.dart';
 

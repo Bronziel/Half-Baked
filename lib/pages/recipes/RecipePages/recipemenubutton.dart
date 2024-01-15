@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../getrecipe.dart' show fetchRecipes, deleteRecipe;
+import '../getrecipe.dart' show deleteRecipe;
 import '../../../visualview/recipestuff/RecipeLook/recipe_layout.dart';
 import '../../../visualview/recipestuff/edit/edit_recipe.dart';
 
