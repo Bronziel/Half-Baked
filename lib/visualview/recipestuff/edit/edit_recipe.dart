@@ -1,11 +1,9 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path/path.dart' as Path;
 import 'package:flutter/services.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../../pages/recipes/getrecipe.dart';
 import '../RecipeLook/recipe_layout.dart';
@@ -234,7 +232,11 @@ class ExistingImagesWidget extends StatelessWidget {
   final List<String> existingImages;
   final Function(String) onDelete;
 
-  ExistingImagesWidget({required this.existingImages, required this.onDelete});
+  // Modify the constructor to include super.key
+  const ExistingImagesWidget(
+      {super.key, // Use super key here
+      required this.existingImages,
+      required this.onDelete});
 
   @override
   Widget build(BuildContext context) {

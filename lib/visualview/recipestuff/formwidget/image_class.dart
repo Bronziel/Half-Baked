@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'box_class.dart';
-import 'recipe_form.dart';
 
 class ImagePickerWidget extends StatefulWidget {
   final ValueChanged<List<XFile>?> onImagesPicked;

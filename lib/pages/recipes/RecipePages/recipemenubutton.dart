@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../getrecipe.dart' show fetchRecipes, deleteRecipe;
+import '../getrecipe.dart' show deleteRecipe;
 import '../../../visualview/recipestuff/RecipeLook/recipe_layout.dart';
 import '../../../visualview/recipestuff/edit/edit_recipe.dart';
 
@@ -7,8 +7,11 @@ class RecipeActionsPopup extends StatelessWidget {
   final Recipe recipe;
   final VoidCallback onRecipeAction;
 
+  // Using super parameter for 'key'
   const RecipeActionsPopup(
-      {required this.recipe, required this.onRecipeAction});
+      {super.key, // Convert 'key' to a super parameter
+      required this.recipe,
+      required this.onRecipeAction}); // Pass the key to the super class
 
   Future<void> _deleteRecipe(BuildContext context) async {
     bool? shouldDelete = await showDialog<bool>(
