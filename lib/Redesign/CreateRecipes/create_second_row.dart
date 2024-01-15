@@ -162,9 +162,15 @@ class PopDescription extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
+                left: 10,
+                top: 10,
+                child: DTwidget(
+                  title: 'Description:',
+                )),
+            Positioned(
               bottom: 10,
               left: 10,
-              top: 10,
+              top: 45,
               right:
                   100, // Adjusted to ensure the TextField is more square-like
               child: TextField(
@@ -205,6 +211,26 @@ class PopDescription extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class DTwidget extends StatelessWidget {
+  final String title;
+  const DTwidget({
+    required this.title,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Description',
+      style: TextStyle(
+        fontFamily: title,
+        fontWeight: FontWeight.w800, // ExtraBold
+        fontSize: 20,
       ),
     );
   }
