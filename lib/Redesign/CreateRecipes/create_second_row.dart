@@ -120,12 +120,15 @@ class IngPop extends StatelessWidget {
   final String labelText2;
   final String labelText3;
   final String hintText;
+  final bool isPortionSize;
+
   const IngPop({
     required this.labelText,
     required this.labelText2,
     required this.labelText3,
     this.hintText = '',
     required this.title,
+    this.isPortionSize = false,
     super.key,
   });
 
@@ -142,11 +145,13 @@ class IngPop extends StatelessWidget {
               hintText: hintText,
               bottom: 160,
             ),
-            Smalltextfield(
+            Numberonlytextfiel(
+              isPortionSize: false,
               labelText: labelText2,
               hintText: hintText,
               bottom: 85,
             ),
+            //85
             Smalltextfield(
               labelText: labelText3,
               hintText: hintText,
@@ -200,6 +205,7 @@ class Smalltextfield extends StatelessWidget {
     required this.labelText,
     this.hintText = '',
     this.bottom = 10,
+    //10
     super.key,
   });
 
@@ -248,31 +254,53 @@ class PopTimePort extends StatelessWidget {
         child: Stack(
           children: [
             Titles(title: title),
-            Positioned(
-              bottom: 10,
-              left: 10,
-              right: 100,
-              child: TextField(
-                  keyboardType:
-                      isPortionSize ? TextInputType.text : TextInputType.number,
-                  inputFormatters: isPortionSize
-                      ? []
-                      : [FilteringTextInputFormatter.digitsOnly],
-                  decoration: InputDecoration(
-                    labelText: labelText,
-                    labelStyle: StyleUtils.labelstylepop(),
-                    hintText: hintText,
-                    hintStyle: StyleUtils.hintstylepop(),
-                    border: const OutlineInputBorder(),
-                    enabledBorder: StyleUtils.enabledborderstyle(),
-                  ),
-                  style: StyleUtils.textfieldstylepop()),
-            ),
+            Numberonlytextfiel(
+                isPortionSize: isPortionSize,
+                labelText: labelText,
+                hintText: hintText),
             const PostionedStopButton(),
             const PostionedSaveButton(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class Numberonlytextfiel extends StatelessWidget {
+  const Numberonlytextfiel({
+    super.key,
+    required this.isPortionSize,
+    required this.labelText,
+    required this.hintText,
+    this.bottom = 10,
+  });
+
+  final bool isPortionSize;
+  final String labelText;
+  final String hintText;
+  final double bottom;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: bottom,
+      left: 10,
+      right: 100,
+      child: TextField(
+          keyboardType:
+              isPortionSize ? TextInputType.text : TextInputType.number,
+          inputFormatters:
+              isPortionSize ? [] : [FilteringTextInputFormatter.digitsOnly],
+          decoration: InputDecoration(
+            labelText: labelText,
+            labelStyle: StyleUtils.labelstylepop(),
+            hintText: hintText,
+            hintStyle: StyleUtils.hintstylepop(),
+            border: const OutlineInputBorder(),
+            enabledBorder: StyleUtils.enabledborderstyle(),
+          ),
+          style: StyleUtils.textfieldstylepop()),
     );
   }
 }
