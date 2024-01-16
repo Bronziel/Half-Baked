@@ -92,38 +92,41 @@ class PopTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      width: 360,
-      height: 105,
+      width: 460,
+      height: 140,
       child: Card(
         color: Color(0xFFD9D9D9),
         child: Stack(
           children: [
             Positioned(
+                left: 10,
+                top: 10,
+                child: DTwidget(
+                  title: 'Title:',
+                )),
+            Positioned(
               // Set the position for the TextField
               bottom: 10, // Adjust these values as needed
               left: 10, // Adjust these values as needed
+              right: 100,
 
-              child: SizedBox(
-                width: 240,
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Add a title',
-                    labelStyle: TextStyle(
-                      fontFamily: 'Paprika',
-                      fontSize: 20,
-                      color: Color(0xFF161414),
-                    ),
-                    hintText: "Title",
-                    border: OutlineInputBorder(),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF9896F1)),
-                    ),
-                  ),
-                  style: TextStyle(
-                    fontFamily: 'Pacifico',
-                    fontSize: 30,
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Add a title',
+                  labelStyle: TextStyle(
+                    fontFamily: 'Paprika',
+                    fontSize: 20,
                     color: Color(0xFF161414),
                   ),
+                  border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF9896F1)),
+                  ),
+                ),
+                style: TextStyle(
+                  fontFamily: 'Pacifico',
+                  fontSize: 30,
+                  color: Color(0xFF161414),
                 ),
               ),
             ),
@@ -181,14 +184,13 @@ class PopDescription extends StatelessWidget {
                     fontSize: 20,
                     color: Color(0xFF161414),
                   ),
-                  hintText: "Description",
                   border: OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Color(0xFF9896F1)),
                   ),
                 ),
                 style: TextStyle(
-                  fontFamily: 'Paprika',
+                  fontFamily: 'inter',
                   fontSize: 20,
                   color: Color(0xFF161414),
                 ),
@@ -226,9 +228,9 @@ class DTwidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Description',
-      style: TextStyle(
-        fontFamily: title,
+      title,
+      style: const TextStyle(
+        fontFamily: 'Montserrat Semibold',
         fontWeight: FontWeight.w800, // ExtraBold
         fontSize: 20,
       ),

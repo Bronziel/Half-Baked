@@ -14,6 +14,10 @@ Main white  color: Color(0xFFFFFFFF)
 Title fontSize: 40
 title header: 24
 
+labeltext textfield Paprika
+inter as normal writing text
+
+
 How should popups look
 they should all use the current 
 save button bottom 10, right 10
