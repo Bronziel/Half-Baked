@@ -93,6 +93,12 @@ flutter:
     - family: Paprika
       fonts:
         - asset: fonts/Paprika-Regular.ttf
+    - family: Montserrat
+      fonts:
+        - asset: fonts/Montserrat.ttf
+    - family: Montserrat-italic
+      fonts:
+        - asset: fonts/Montserrat-Italic.ttf
 
   #   - images/a_dot_ham.jpeg
   
