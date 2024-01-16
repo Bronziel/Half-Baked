@@ -48,58 +48,114 @@ class Saveingridient extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        SizedBox(
-          width: 1000,
-          height: 450,
-          child: Card(
-            color: Color(0xFF234567),
-            child: Row(
-              children: [
-                Column(
-                  children: [
-                    //Popups(),
+    return const SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(
+            child: Card(
+              color: Color(0xFF234567),
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      //Popups(),
 
-                    /* SmallTextfieldPop(
-                      title: 'Steps Title:',
-                      labelText: 'Add a steps title',
-                      hintText: 'Ex Sidesallad, Prepping meat',
-                    ),
-                    SmallTextfieldPop(
-                      title: 'Steps Title:',
-                      labelText: 'Add a title',
-                    ),*/
-                    PopDescription(
-                      title: 'Description',
-                    )
-                  ],
-                ),
-                /*Column(
-                  children: [
-                    PopTimePort(
-                      title: 'PrepTime:',
-                      labelText: 'Add Preperation time',
-                      hintText: 'preparation time in minutes',
-                    ),
-                    PopTimePort(
-                      title: 'TotalTime:',
-                      labelText: 'Add Total cooking time',
-                      hintText: 'Total cooking time in minutes',
-                    ),
-                    PopTimePort(
-                      title: 'Portionsize:',
-                      labelText: 'Add Portion size',
-                      isPortionSize:
-                          true, // Used to set the keyboard type to text
-                    ),
-                  ],
-                ),*/
-              ],
+                      SmallTextfieldPop(
+                        title: 'Steps Title:',
+                        labelText: 'Add a steps title',
+                        hintText: 'Ex Sidesallad, Prepping meat',
+                      ),
+                      SmallTextfieldPop(
+                        title: 'Steps Title:',
+                        labelText: 'Add a title',
+                      ),
+                      PopDescription(
+                        title: 'Description',
+                      ),
+                      /* Popsteps(
+                        title: 'Step 1:',
+                      )*/
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      PopTimePort(
+                        title: 'PrepTime:',
+                        labelText: 'Add Preperation time',
+                        hintText: 'preparation time in minutes',
+                      ),
+                      PopTimePort(
+                        title: 'TotalTime:',
+                        labelText: 'Add Total cooking time',
+                        hintText: 'Total cooking time in minutes',
+                      ),
+                      /*PopTimePort(
+                        title: 'Portionsize:',
+                        labelText: 'Add Portion size',
+                        isPortionSize:
+                            true, // Used to set the keyboard type to text
+                      ),*/
+                      IngPop(
+                        labelText: 'Add a Ingridient',
+                        labelText2: 'Add an amount',
+                        labelText3: 'Add a unit',
+                        title: 'Ingridient',
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class IngPop extends StatelessWidget {
+  final String title;
+
+  final String labelText;
+  final String labelText2;
+  final String labelText3;
+  final String hintText;
+  const IngPop({
+    required this.labelText,
+    required this.labelText2,
+    required this.labelText3,
+    this.hintText = '',
+    required this.title,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Utils.ingpop(
+      Card(
+        color: StyleUtils.cardcolorgrey(),
+        child: Stack(
+          children: [
+            Titles(title: title),
+            Smalltextfield(
+              labelText: labelText,
+              hintText: hintText,
+              bottom: 160,
+            ),
+            Smalltextfield(
+              labelText: labelText2,
+              hintText: hintText,
+              bottom: 85,
+            ),
+            Smalltextfield(
+              labelText: labelText3,
+              hintText: hintText,
+            ),
+            const PostionedStopButton(),
+            const PostionedSaveButton(),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
@@ -139,9 +195,11 @@ class SmallTextfieldPop extends StatelessWidget {
 class Smalltextfield extends StatelessWidget {
   final String labelText;
   final String hintText;
+  final double bottom;
   const Smalltextfield({
     required this.labelText,
     this.hintText = '',
+    this.bottom = 10,
     super.key,
   });
 
@@ -149,7 +207,7 @@ class Smalltextfield extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       // Set the position for the TextField
-      bottom: 10, // Adjust these values as needed
+      bottom: bottom, // Adjust these values as needed
       left: 10, // Adjust these values as needed
       right: 100,
 
@@ -254,6 +312,48 @@ class PopDescription extends StatelessWidget {
                 style: StyleUtils.textfieldstylepop(),
                 maxLines: null, // Allows for unlimited lines
                 minLines: 5, // Set this to a desired initial size
+              ),
+            ),
+            const PostionedStopButton(),
+            const PostionedSaveButton(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Popsteps extends StatelessWidget {
+  final String title;
+  const Popsteps({
+    required this.title,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Utils.stepspopbox(
+      Card(
+        color: const Color(0xFFD9D9D9),
+        child: Stack(
+          children: [
+            Titles(title: title),
+            Positioned(
+              bottom: 10,
+              left: 10,
+              top: 45,
+              right:
+                  100, // Adjusted to ensure the TextField is more square-like
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Add a step',
+                  labelStyle: StyleUtils.labelstylepop(),
+                  border: const OutlineInputBorder(),
+                  enabledBorder: StyleUtils.enabledborderstyle(),
+                ),
+                style: StyleUtils.textfieldstylepop(),
+                maxLines: null, // Allows for unlimited lines
+                minLines: 7, // Set this to a desired initial size
               ),
             ),
             const PostionedStopButton(),
