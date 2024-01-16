@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../components/sizedboxes.dart';
 import 'popups.dart';
 import 'package:flutter/services.dart';
+import 'style.dart';
 
 class CreateSecondRowWidget extends StatelessWidget {
   const CreateSecondRowWidget({
@@ -61,9 +62,12 @@ class Saveingridient extends StatelessWidget {
                     PopTitle(
                       title: 'Title:',
                     ),
-                    PopStepstitel(
+                    /*PopStepstitel(
                       title: 'Steps Title:',
-                    ),
+                    ),*/
+                    PopDescription(
+                      title: 'Description',
+                    )
                   ],
                 ),
                 Column(
@@ -304,8 +308,14 @@ class PopTimePort extends StatelessWidget {
   }
 }
 
+//'Description:'
+//required this.title,
+//final String title;
+//Titles(title: title),
 class PopDescription extends StatelessWidget {
+  final String title;
   const PopDescription({
+    required this.title,
     super.key,
   });
 
@@ -318,12 +328,7 @@ class PopDescription extends StatelessWidget {
         color: const Color(0xFFD9D9D9),
         child: Stack(
           children: [
-            const Positioned(
-                left: 10,
-                top: 10,
-                child: DTwidget(
-                  title: 'Description:',
-                )),
+            Titles(title: title),
             Positioned(
               bottom: 10,
               left: 10,
