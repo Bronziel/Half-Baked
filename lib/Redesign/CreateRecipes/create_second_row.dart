@@ -59,11 +59,15 @@ class Saveingridient extends StatelessWidget {
                 Column(
                   children: [
                     //Popups(),
-                    PopTitle(
-                      title: 'Title:',
-                    ),
-                    PopStepstitel(
+
+                    SmallTextfieldPop(
                       title: 'Steps Title:',
+                      labelText: 'Add a steps title',
+                      hintText: 'Ex Sidesallad, Prepping meat',
+                    ),
+                    SmallTextfieldPop(
+                      title: 'Steps Title:',
+                      labelText: 'Add a title',
                     ),
                     /*PopDescription(
                       title: 'Description',
@@ -99,9 +103,14 @@ class Saveingridient extends StatelessWidget {
   }
 }
 
-class PopTitle extends StatelessWidget {
+///PopStepstitel(title: 'Steps Title:',),
+class SmallTextfieldPop extends StatelessWidget {
   final String title;
-  const PopTitle({
+  final String labelText;
+  final String hintText;
+  const SmallTextfieldPop({
+    required this.labelText,
+    this.hintText = '',
     required this.title,
     super.key,
   });
@@ -116,20 +125,9 @@ class PopTitle extends StatelessWidget {
         child: Stack(
           children: [
             Titles(title: title),
-            Positioned(
-              // Set the position for the TextField
-              bottom: 10, // Adjust these values as needed
-              left: 10, // Adjust these values as needed
-              right: 100,
-
-              child: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Add a title',
-                    labelStyle: StyleUtils.labelstylepop(),
-                    border: const OutlineInputBorder(),
-                    enabledBorder: StyleUtils.enabledborderstyle(),
-                  ),
-                  style: StyleUtils.textfieldstylepop()),
+            Smallboxtext(
+              labelText: labelText,
+              hintText: hintText,
             ),
             const PostionedStopButton(),
             const PostionedSaveButton(),
@@ -140,45 +138,33 @@ class PopTitle extends StatelessWidget {
   }
 }
 
-class PopStepstitel extends StatelessWidget {
-  final String title;
-  const PopStepstitel({
-    required this.title,
+class Smallboxtext extends StatelessWidget {
+  final String labelText;
+  final String hintText;
+  const Smallboxtext({
+    required this.labelText,
+    this.hintText = '',
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 460,
-      height: 140,
-      child: Card(
-        color: const Color(0xFFD9D9D9),
-        child: Stack(
-          children: [
-            Titles(title: title),
-            Positioned(
-              // Set the position for the TextField
-              bottom: 10, // Adjust these values as needed
-              left: 10, // Adjust these values as needed
-              right: 100,
+    return Positioned(
+      // Set the position for the TextField
+      bottom: 10, // Adjust these values as needed
+      left: 10, // Adjust these values as needed
+      right: 100,
 
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Add a steps title',
-                  labelStyle: StyleUtils.labelstylepop(),
-                  hintText: 'Ex Sidesallad, Prepping meat',
-                  hintStyle: StyleUtils.hintstylepop(),
-                  border: const OutlineInputBorder(),
-                  enabledBorder: StyleUtils.enabledborderstyle(),
-                ),
-                style: StyleUtils.textfieldstylepop(),
-              ),
-            ),
-            const PostionedStopButton(),
-            const PostionedSaveButton(),
-          ],
+      child: TextField(
+        decoration: InputDecoration(
+          labelText: labelText,
+          labelStyle: StyleUtils.labelstylepop(),
+          hintText: hintText,
+          hintStyle: StyleUtils.hintstylepop(),
+          border: const OutlineInputBorder(),
+          enabledBorder: StyleUtils.enabledborderstyle(),
         ),
+        style: StyleUtils.textfieldstylepop(),
       ),
     );
   }
