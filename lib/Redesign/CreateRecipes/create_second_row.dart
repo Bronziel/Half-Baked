@@ -298,14 +298,14 @@ class PopDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       width: 460,
       height: 205,
       child: Card(
-        color: Color(0xFFD9D9D9),
+        color: const Color(0xFFD9D9D9),
         child: Stack(
           children: [
-            Positioned(
+            const Positioned(
                 left: 10,
                 top: 10,
                 child: DTwidget(
@@ -320,30 +320,20 @@ class PopDescription extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   labelText: 'Add a Description',
-                  labelStyle: TextStyle(
-                    fontFamily: 'inter',
-                    fontSize: 20,
-                    color: Color(0xFF161414),
-                  ),
-                  border: OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF9896F1)),
-                  ),
+                  labelStyle: StyleUtils.labelstylepop(),
+                  border: const OutlineInputBorder(),
+                  enabledBorder: StyleUtils.enabledborderstyle(),
                 ),
-                style: TextStyle(
-                  fontFamily: 'inter',
-                  fontSize: 20,
-                  color: Color(0xFF161414),
-                ),
+                style: StyleUtils.textfieldstylepop(),
                 maxLines: null, // Allows for unlimited lines
                 minLines: 5, // Set this to a desired initial size
               ),
             ),
-            Positioned(
+            const Positioned(
               right: 10,
               child: Stopdownbutton(),
             ),
-            Positioned(
+            const Positioned(
               bottom: 10,
               right: 10,
               child: SaveButton(),
