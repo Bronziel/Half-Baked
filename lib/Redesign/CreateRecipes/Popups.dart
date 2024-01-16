@@ -50,6 +50,14 @@ class SaveButton extends StatelessWidget {
 }
 
 class StyleUtils {
+  static TextStyle titelstylepop() {
+    return const TextStyle(
+      fontFamily: 'Montserrat Semibold',
+      fontWeight: FontWeight.w800, // ExtraBold
+      fontSize: 20,
+    );
+  }
+
   static TextStyle labelstylepop() {
     return const TextStyle(
       fontFamily: 'inter',

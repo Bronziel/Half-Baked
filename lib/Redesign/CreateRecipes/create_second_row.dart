@@ -58,8 +58,12 @@ class Saveingridient extends StatelessWidget {
                 Column(
                   children: [
                     //Popups(),
-                    PopTitle(),
-                    PopStepstitel(),
+                    PopTitle(
+                      title: 'Title:',
+                    ),
+                    PopStepstitel(
+                      title: 'Steps Title:',
+                    ),
                   ],
                 ),
                 Column(
@@ -98,12 +102,16 @@ class Popups extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const PopTitle();
+    return const PopTitle(
+      title: 'title:',
+    );
   }
 }
 
 class PopTitle extends StatelessWidget {
+  final String title;
   const PopTitle({
+    required this.title,
     super.key,
   });
 
@@ -116,12 +124,7 @@ class PopTitle extends StatelessWidget {
         color: const Color(0xFFD9D9D9),
         child: Stack(
           children: [
-            const Positioned(
-                left: 10,
-                top: 10,
-                child: DTwidget(
-                  title: 'Title:',
-                )),
+            Titles(title: title),
             Positioned(
               // Set the position for the TextField
               bottom: 10, // Adjust these values as needed
@@ -153,8 +156,49 @@ class PopTitle extends StatelessWidget {
   }
 }
 
+//required this.title,
+//final String title;
+//Titles(title: title),
+class Titles extends StatelessWidget {
+  const Titles({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+        left: 10,
+        top: 10,
+        child: Text(
+          title,
+          style: StyleUtils.titelstylepop(),
+        ));
+  }
+}
+
+class DTwidget extends StatelessWidget {
+  final String title;
+  const DTwidget({
+    required this.title,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: StyleUtils.titelstylepop(),
+    );
+  }
+}
+
 class PopStepstitel extends StatelessWidget {
+  final String title;
   const PopStepstitel({
+    required this.title,
     super.key,
   });
 
@@ -167,12 +211,7 @@ class PopStepstitel extends StatelessWidget {
         color: const Color(0xFFD9D9D9),
         child: Stack(
           children: [
-            const Positioned(
-                left: 10,
-                top: 10,
-                child: DTwidget(
-                  title: 'Steps Title:',
-                )),
+            Titles(title: title),
             Positioned(
               // Set the position for the TextField
               bottom: 10, // Adjust these values as needed
@@ -228,13 +267,7 @@ class PopTimePort extends StatelessWidget {
         color: const Color(0xFFD9D9D9),
         child: Stack(
           children: [
-            Positioned(
-              left: 10,
-              top: 10,
-              child: DTwidget(
-                title: title,
-              ),
-            ),
+            Titles(title: title),
             Positioned(
               bottom: 10,
               left: 10,
@@ -266,26 +299,6 @@ class PopTimePort extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class DTwidget extends StatelessWidget {
-  final String title;
-  const DTwidget({
-    required this.title,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: const TextStyle(
-        fontFamily: 'Montserrat Semibold',
-        fontWeight: FontWeight.w800, // ExtraBold
-        fontSize: 20,
       ),
     );
   }
