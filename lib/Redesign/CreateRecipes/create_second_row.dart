@@ -165,8 +165,10 @@ class PopStepstitel extends StatelessWidget {
 
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Ex Sidesallad, Prepping meat',
+                  labelText: 'Add a steps title',
                   labelStyle: StyleUtils.labelstylepop(),
+                  hintText: 'Ex Sidesallad, Prepping meat',
+                  hintStyle: StyleUtils.hintstylepop(),
                   border: const OutlineInputBorder(),
                   enabledBorder: StyleUtils.enabledborderstyle(),
                 ),
