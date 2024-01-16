@@ -58,6 +58,12 @@ class Saveingridient extends StatelessWidget {
                 Column(
                   children: [
                     //Popups(),
+                    PopTitle(),
+                    PopStepstitel(),
+                  ],
+                ),
+                Column(
+                  children: [
                     PopTimePort(
                       title: 'PrepTime:',
                       labelText: 'Add Preperation time',
@@ -76,10 +82,6 @@ class Saveingridient extends StatelessWidget {
                     ),
                   ],
                 ),
-                Column(
-                    //icon 1
-                    //icon 2
-                    ),
               ],
             ),
           ),
@@ -162,6 +164,68 @@ class PopTitle extends StatelessWidget {
   }
 }
 
+class PopStepstitel extends StatelessWidget {
+  const PopStepstitel({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      width: 460,
+      height: 140,
+      child: Card(
+        color: Color(0xFFD9D9D9),
+        child: Stack(
+          children: [
+            Positioned(
+                left: 10,
+                top: 10,
+                child: DTwidget(
+                  title: 'Steps Title:',
+                )),
+            Positioned(
+              // Set the position for the TextField
+              bottom: 10, // Adjust these values as needed
+              left: 10, // Adjust these values as needed
+              right: 100,
+
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Ex Sidesallad, Prepping meat',
+                  labelStyle: TextStyle(
+                    fontFamily: 'inter',
+                    fontSize: 20,
+                    color: Color(0xFF161414),
+                  ),
+                  border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF9896F1)),
+                  ),
+                ),
+                style: TextStyle(
+                  fontFamily: 'Pacifico',
+                  fontSize: 30,
+                  color: Color(0xFF161414),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 10,
+              child: Stopdownbutton(),
+            ),
+            Positioned(
+              bottom: 10,
+              right: 10,
+              child: SaveButton(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class PopTimePort extends StatelessWidget {
   final String title;
   final String labelText;
@@ -202,7 +266,6 @@ class PopTimePort extends StatelessWidget {
                 inputFormatters: isPortionSize
                     ? []
                     : [FilteringTextInputFormatter.digitsOnly],
-                // Rest of your TextField code...
                 decoration: InputDecoration(
                   labelText: labelText,
                   labelStyle: const TextStyle(
@@ -487,3 +550,21 @@ class CreateIngMainTile extends StatelessWidget {
     );
   }
 }
+
+/*PopTimePort(
+                      title: 'PrepTime:',
+                      labelText: 'Add Preperation time',
+                      hintText: 'preparation time in minutes',
+                    ),
+                    PopTimePort(
+                      title: 'TotalTime:',
+                      labelText: 'Add Total cooking time',
+                      hintText: 'Total cooking time in minutes',
+                    ),
+                    PopTimePort(
+                      title: 'Portionsize:',
+                      labelText: 'Add Portion size',
+                      isPortionSize:
+                          true, // Used to set the keyboard type to text
+                    ),
+*/
