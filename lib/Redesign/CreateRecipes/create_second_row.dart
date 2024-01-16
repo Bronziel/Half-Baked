@@ -117,7 +117,7 @@ class SmallTextfieldPop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Utils.SmallPopbox(
+    return Utils.smallpopbox(
       Card(
         color: StyleUtils.cardcolorgrey(),
         child: Stack(

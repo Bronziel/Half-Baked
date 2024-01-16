@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Utils {
-  static SizedBox SmallPopbox(Widget child) {
+  static SizedBox smallpopbox(Widget child) {
     return SizedBox(
       width: 460,
       height: 140,
