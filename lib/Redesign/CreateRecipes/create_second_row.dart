@@ -133,9 +133,7 @@ class PopTitle extends StatelessWidget {
                     labelText: 'Add a title',
                     labelStyle: StyleUtils.labelstylepop(),
                     border: const OutlineInputBorder(),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF9896F1)),
-                    ),
+                    enabledBorder: StyleUtils.enabledborderstyle(),
                   ),
                   style: StyleUtils.textfieldstylepop()),
             ),
@@ -186,9 +184,7 @@ class PopStepstitel extends StatelessWidget {
                   labelText: 'Ex Sidesallad, Prepping meat',
                   labelStyle: StyleUtils.labelstylepop(),
                   border: const OutlineInputBorder(),
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF9896F1)),
-                  ),
+                  enabledBorder: StyleUtils.enabledborderstyle(),
                 ),
                 style: StyleUtils.textfieldstylepop(),
               ),
@@ -244,34 +240,20 @@ class PopTimePort extends StatelessWidget {
               left: 10,
               right: 100,
               child: TextField(
-                keyboardType:
-                    isPortionSize ? TextInputType.text : TextInputType.number,
-                inputFormatters: isPortionSize
-                    ? []
-                    : [FilteringTextInputFormatter.digitsOnly],
-                decoration: InputDecoration(
-                  labelText: labelText,
-                  labelStyle: const TextStyle(
-                    fontFamily: 'inter',
-                    fontSize: 20,
-                    color: Color(0xFF161414),
+                  keyboardType:
+                      isPortionSize ? TextInputType.text : TextInputType.number,
+                  inputFormatters: isPortionSize
+                      ? []
+                      : [FilteringTextInputFormatter.digitsOnly],
+                  decoration: InputDecoration(
+                    labelText: labelText,
+                    labelStyle: StyleUtils.labelstylepop(),
+                    hintText: hintText,
+                    hintStyle: StyleUtils.hintstylepop(),
+                    border: const OutlineInputBorder(),
+                    enabledBorder: StyleUtils.enabledborderstyle(),
                   ),
-                  hintText: hintText,
-                  hintStyle: const TextStyle(
-                    fontFamily: 'inter',
-                    fontSize: 20,
-                  ),
-                  border: const OutlineInputBorder(),
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF9896F1)),
-                  ),
-                ),
-                style: const TextStyle(
-                  fontFamily: 'inter',
-                  fontSize: 30,
-                  color: Color(0xFF161414),
-                ),
-              ),
+                  style: StyleUtils.textfieldstylepop()),
             ),
             const Positioned(
               right: 10,

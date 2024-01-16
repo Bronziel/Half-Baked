@@ -65,4 +65,17 @@ class StyleUtils {
       color: Color(0xFF161414),
     );
   }
+
+  static TextStyle hintstylepop() {
+    return const TextStyle(
+      fontFamily: 'inter',
+      fontSize: 20,
+    );
+  }
+
+  static OutlineInputBorder enabledborderstyle() {
+    return const OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFF9896F1)),
+    );
+  }
 }
