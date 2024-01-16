@@ -59,7 +59,7 @@ class SaveButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xFF9896F1),
+        backgroundColor: StyleUtils.mainncolor(),
         padding: const EdgeInsets.symmetric(
             horizontal: 12, vertical: 12), // Padding inside the button
         // Other style properties

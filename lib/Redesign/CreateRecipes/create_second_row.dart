@@ -120,7 +120,7 @@ class SmallTextfieldPop extends StatelessWidget {
       width: 460,
       height: 140,
       child: Card(
-        color: const Color(0xFFD9D9D9),
+        color: StyleUtils.cardcolorgrey(),
         child: Stack(
           children: [
             Titles(title: title),
@@ -135,6 +135,8 @@ class SmallTextfieldPop extends StatelessWidget {
       ),
     );
   }
+
+  Color cardcolorgrey() => const Color(0xFFD9D9D9);
 }
 
 class Smalltextfield extends StatelessWidget {

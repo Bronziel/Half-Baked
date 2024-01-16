@@ -37,4 +37,7 @@ class StyleUtils {
       borderSide: BorderSide(color: Color(0xFF9896F1)),
     );
   }
+
+  static Color cardcolorgrey() => const Color(0xFFD9D9D9);
+  static Color mainncolor() => const Color(0xFF9896F1);
 }
