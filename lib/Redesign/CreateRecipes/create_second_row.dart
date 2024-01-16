@@ -61,7 +61,7 @@ class Saveingridient extends StatelessWidget {
                   children: [
                     //Popups(),
 
-                    SmallTextfieldPop(
+                    /* SmallTextfieldPop(
                       title: 'Steps Title:',
                       labelText: 'Add a steps title',
                       hintText: 'Ex Sidesallad, Prepping meat',
@@ -69,13 +69,13 @@ class Saveingridient extends StatelessWidget {
                     SmallTextfieldPop(
                       title: 'Steps Title:',
                       labelText: 'Add a title',
-                    ),
-                    /*PopDescription(
+                    ),*/
+                    PopDescription(
                       title: 'Description',
-                    )*/
+                    )
                   ],
                 ),
-                Column(
+                /*Column(
                   children: [
                     PopTimePort(
                       title: 'PrepTime:',
@@ -94,7 +94,7 @@ class Saveingridient extends StatelessWidget {
                           true, // Used to set the keyboard type to text
                     ),
                   ],
-                ),
+                ),*/
               ],
             ),
           ),
@@ -232,10 +232,8 @@ class PopDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 460,
-      height: 205,
-      child: Card(
+    return Utils.bigpopbox(
+      Card(
         color: const Color(0xFFD9D9D9),
         child: Stack(
           children: [
