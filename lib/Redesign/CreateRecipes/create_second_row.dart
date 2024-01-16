@@ -109,14 +109,14 @@ class PopTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       width: 460,
       height: 140,
       child: Card(
-        color: Color(0xFFD9D9D9),
+        color: const Color(0xFFD9D9D9),
         child: Stack(
           children: [
-            Positioned(
+            const Positioned(
                 left: 10,
                 top: 10,
                 child: DTwidget(
@@ -129,30 +129,21 @@ class PopTitle extends StatelessWidget {
               right: 100,
 
               child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Add a title',
-                  labelStyle: TextStyle(
-                    fontFamily: 'inter',
-                    fontSize: 20,
-                    color: Color(0xFF161414),
+                  decoration: InputDecoration(
+                    labelText: 'Add a title',
+                    labelStyle: StyleUtils.labelstylepop(),
+                    border: const OutlineInputBorder(),
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF9896F1)),
+                    ),
                   ),
-                  border: OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF9896F1)),
-                  ),
-                ),
-                style: TextStyle(
-                  fontFamily: 'Pacifico',
-                  fontSize: 30,
-                  color: Color(0xFF161414),
-                ),
-              ),
+                  style: StyleUtils.textfieldstylepop()),
             ),
-            Positioned(
+            const Positioned(
               right: 10,
               child: Stopdownbutton(),
             ),
-            Positioned(
+            const Positioned(
               bottom: 10,
               right: 10,
               child: SaveButton(),
@@ -171,14 +162,14 @@ class PopStepstitel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       width: 460,
       height: 140,
       child: Card(
-        color: Color(0xFFD9D9D9),
+        color: const Color(0xFFD9D9D9),
         child: Stack(
           children: [
-            Positioned(
+            const Positioned(
                 left: 10,
                 top: 10,
                 child: DTwidget(
@@ -193,28 +184,20 @@ class PopStepstitel extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   labelText: 'Ex Sidesallad, Prepping meat',
-                  labelStyle: TextStyle(
-                    fontFamily: 'inter',
-                    fontSize: 20,
-                    color: Color(0xFF161414),
-                  ),
-                  border: OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(
+                  labelStyle: StyleUtils.labelstylepop(),
+                  border: const OutlineInputBorder(),
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Color(0xFF9896F1)),
                   ),
                 ),
-                style: TextStyle(
-                  fontFamily: 'Pacifico',
-                  fontSize: 30,
-                  color: Color(0xFF161414),
-                ),
+                style: StyleUtils.textfieldstylepop(),
               ),
             ),
-            Positioned(
+            const Positioned(
               right: 10,
               child: Stopdownbutton(),
             ),
-            Positioned(
+            const Positioned(
               bottom: 10,
               right: 10,
               child: SaveButton(),

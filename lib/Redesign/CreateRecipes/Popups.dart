@@ -48,3 +48,21 @@ class SaveButton extends StatelessWidget {
     );
   }
 }
+
+class StyleUtils {
+  static TextStyle labelstylepop() {
+    return const TextStyle(
+      fontFamily: 'inter',
+      fontSize: 20,
+      color: Color(0xFF161414),
+    );
+  }
+
+  static TextStyle textfieldstylepop() {
+    return const TextStyle(
+      fontFamily: 'inter',
+      fontSize: 30,
+      color: Color(0xFF161414),
+    );
+  }
+}
