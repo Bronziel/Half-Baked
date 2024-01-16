@@ -1,4 +1,20 @@
 import 'package:flutter/material.dart';
+import 'style.dart';
+
+class PostionedStopButton extends StatelessWidget {
+  const PostionedStopButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Positioned(
+      top: 10,
+      right: 10,
+      child: Stopdownbutton(),
+    );
+  }
+}
 
 class Stopdownbutton extends StatelessWidget {
   const Stopdownbutton({
@@ -14,6 +30,21 @@ class Stopdownbutton extends StatelessWidget {
       onPressed: () {
         // Add your action for this button
       },
+    );
+  }
+}
+
+class PostionedSaveButton extends StatelessWidget {
+  const PostionedSaveButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Positioned(
+      bottom: 10,
+      right: 10,
+      child: SaveButton(),
     );
   }
 }
@@ -46,5 +77,28 @@ class SaveButton extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+//required this.title,
+//final String title;
+//Titles(title: title),
+class Titles extends StatelessWidget {
+  const Titles({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+        left: 10,
+        top: 10,
+        child: Text(
+          title,
+          style: StyleUtils.titelstylepop(),
+        ));
   }
 }

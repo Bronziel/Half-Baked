@@ -62,12 +62,12 @@ class Saveingridient extends StatelessWidget {
                     PopTitle(
                       title: 'Title:',
                     ),
-                    /*PopStepstitel(
+                    PopStepstitel(
                       title: 'Steps Title:',
-                    ),*/
-                    PopDescription(
+                    ),
+                    /*PopDescription(
                       title: 'Description',
-                    )
+                    )*/
                   ],
                 ),
                 Column(
@@ -95,19 +95,6 @@ class Saveingridient extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class Popups extends StatelessWidget {
-  const Popups({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const PopTitle(
-      title: 'title:',
     );
   }
 }
@@ -144,57 +131,11 @@ class PopTitle extends StatelessWidget {
                   ),
                   style: StyleUtils.textfieldstylepop()),
             ),
-            const Positioned(
-              right: 10,
-              child: Stopdownbutton(),
-            ),
-            const Positioned(
-              bottom: 10,
-              right: 10,
-              child: SaveButton(),
-            ),
+            const PostionedStopButton(),
+            const PostionedSaveButton(),
           ],
         ),
       ),
-    );
-  }
-}
-
-//required this.title,
-//final String title;
-//Titles(title: title),
-class Titles extends StatelessWidget {
-  const Titles({
-    super.key,
-    required this.title,
-  });
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-        left: 10,
-        top: 10,
-        child: Text(
-          title,
-          style: StyleUtils.titelstylepop(),
-        ));
-  }
-}
-
-class DTwidget extends StatelessWidget {
-  final String title;
-  const DTwidget({
-    required this.title,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: StyleUtils.titelstylepop(),
     );
   }
 }
@@ -232,15 +173,8 @@ class PopStepstitel extends StatelessWidget {
                 style: StyleUtils.textfieldstylepop(),
               ),
             ),
-            const Positioned(
-              right: 10,
-              child: Stopdownbutton(),
-            ),
-            const Positioned(
-              bottom: 10,
-              right: 10,
-              child: SaveButton(),
-            ),
+            const PostionedStopButton(),
+            const PostionedSaveButton(),
           ],
         ),
       ),
@@ -292,15 +226,8 @@ class PopTimePort extends StatelessWidget {
                   ),
                   style: StyleUtils.textfieldstylepop()),
             ),
-            const Positioned(
-              right: 10,
-              child: Stopdownbutton(),
-            ),
-            const Positioned(
-              bottom: 10,
-              right: 10,
-              child: SaveButton(),
-            ),
+            const PostionedStopButton(),
+            const PostionedSaveButton(),
           ],
         ),
       ),
@@ -347,15 +274,8 @@ class PopDescription extends StatelessWidget {
                 minLines: 5, // Set this to a desired initial size
               ),
             ),
-            const Positioned(
-              right: 10,
-              child: Stopdownbutton(),
-            ),
-            const Positioned(
-              bottom: 10,
-              right: 10,
-              child: SaveButton(),
-            ),
+            const PostionedStopButton(),
+            const PostionedSaveButton(),
           ],
         ),
       ),
