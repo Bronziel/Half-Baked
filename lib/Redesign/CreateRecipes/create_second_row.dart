@@ -99,6 +99,9 @@ class Saveingridient extends StatelessWidget {
                         labelText: 'Add a Ingridient',
                         labelText2: 'Add an amount',
                         labelText3: 'Add a unit',
+                        hintText: 'ex milk, ground beef',
+                        hintText2: 'ex 500, 200,10',
+                        hintText3: 'ex ml, g , l',
                         title: 'Ingridient',
                       ),
                     ],
@@ -120,6 +123,8 @@ class IngPop extends StatelessWidget {
   final String labelText2;
   final String labelText3;
   final String hintText;
+  final String hintText2;
+  final String hintText3;
   final bool isPortionSize;
 
   const IngPop({
@@ -127,6 +132,8 @@ class IngPop extends StatelessWidget {
     required this.labelText2,
     required this.labelText3,
     this.hintText = '',
+    this.hintText2 = '',
+    this.hintText3 = '',
     required this.title,
     this.isPortionSize = false,
     super.key,
@@ -148,13 +155,13 @@ class IngPop extends StatelessWidget {
             Numberonlytextfiel(
               isPortionSize: false,
               labelText: labelText2,
-              hintText: hintText,
+              hintText: hintText2,
               bottom: 85,
             ),
             //85
             Smalltextfield(
               labelText: labelText3,
-              hintText: hintText,
+              hintText: hintText3,
             ),
             const PostionedStopButton(),
             const PostionedSaveButton(),
