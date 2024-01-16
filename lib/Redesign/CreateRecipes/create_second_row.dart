@@ -134,8 +134,6 @@ class SmallTextfieldPop extends StatelessWidget {
       ),
     );
   }
-
-  Color cardcolorgrey() => const Color(0xFFD9D9D9);
 }
 
 class Smalltextfield extends StatelessWidget {
@@ -186,10 +184,8 @@ class PopTimePort extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 460,
-      height: 140,
-      child: Card(
+    return Utils.smallpopbox(
+      Card(
         color: const Color(0xFFD9D9D9),
         child: Stack(
           children: [
