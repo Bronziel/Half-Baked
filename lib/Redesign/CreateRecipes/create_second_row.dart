@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/sizedboxes.dart';
 import 'Popups.dart';
+import 'package:flutter/services.dart';
 
 class CreateSecondRowWidget extends StatelessWidget {
   const CreateSecondRowWidget({
@@ -129,7 +130,7 @@ class PopTitle extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'Add a title',
                   labelStyle: TextStyle(
-                    fontFamily: 'Paprika',
+                    fontFamily: 'inter',
                     fontSize: 20,
                     color: Color(0xFF161414),
                   ),
@@ -198,10 +199,14 @@ class PopTimePort extends StatelessWidget {
               child: TextField(
                 keyboardType:
                     isPortionSize ? TextInputType.text : TextInputType.number,
+                inputFormatters: isPortionSize
+                    ? []
+                    : [FilteringTextInputFormatter.digitsOnly],
+                // Rest of your TextField code...
                 decoration: InputDecoration(
                   labelText: labelText,
                   labelStyle: const TextStyle(
-                    fontFamily: 'Paprika',
+                    fontFamily: 'inter',
                     fontSize: 20,
                     color: Color(0xFF161414),
                   ),
@@ -288,7 +293,7 @@ class PopDescription extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'Add a Description',
                   labelStyle: TextStyle(
-                    fontFamily: 'Paprika',
+                    fontFamily: 'inter',
                     fontSize: 20,
                     color: Color(0xFF161414),
                   ),
