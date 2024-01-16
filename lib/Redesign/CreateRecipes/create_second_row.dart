@@ -56,8 +56,23 @@ class Saveingridient extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Popups(),
-                    PopDescription(),
+                    //Popups(),
+                    PopTimePort(
+                      title: 'PrepTime:',
+                      labelText: 'Add Preperation time',
+                      hintText: 'preparation time in minutes',
+                    ),
+                    PopTimePort(
+                      title: 'TotalTime:',
+                      labelText: 'Add Total cooking time',
+                      hintText: 'Total cooking time in minutes',
+                    ),
+                    PopTimePort(
+                      title: 'Portionsize:',
+                      labelText: 'Add Portion size',
+                      isPortionSize:
+                          true, // Used to set the keyboard type to text
+                    ),
                   ],
                 ),
                 Column(
@@ -131,10 +146,6 @@ class PopTitle extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: 10,
-              child: Titleaddtext(),
-            ),
-            Positioned(
               right: 10,
               child: Stopdownbutton(),
             ),
@@ -145,6 +156,103 @@ class PopTitle extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class PopTimePort extends StatelessWidget {
+  final String title;
+  final String labelText;
+  final String hintText;
+  final bool isPortionSize;
+
+  const PopTimePort({
+    super.key,
+    required this.title,
+    required this.labelText,
+    this.hintText = '',
+    this.isPortionSize = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 460,
+      height: 140,
+      child: Card(
+        color: const Color(0xFFD9D9D9),
+        child: Stack(
+          children: [
+            Positioned(
+              left: 10,
+              top: 10,
+              child: DTwidget(
+                title: title,
+              ),
+            ),
+            Positioned(
+              bottom: 10,
+              left: 10,
+              right: 100,
+              child: TextField(
+                keyboardType:
+                    isPortionSize ? TextInputType.text : TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: labelText,
+                  labelStyle: const TextStyle(
+                    fontFamily: 'Paprika',
+                    fontSize: 20,
+                    color: Color(0xFF161414),
+                  ),
+                  hintText: hintText,
+                  hintStyle: const TextStyle(
+                    fontFamily: 'inter',
+                    fontSize: 20,
+                  ),
+                  border: const OutlineInputBorder(),
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF9896F1)),
+                  ),
+                ),
+                style: const TextStyle(
+                  fontFamily: 'inter',
+                  fontSize: 30,
+                  color: Color(0xFF161414),
+                ),
+              ),
+            ),
+            const Positioned(
+              right: 10,
+              child: Stopdownbutton(),
+            ),
+            const Positioned(
+              bottom: 10,
+              right: 10,
+              child: SaveButton(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class DTwidget extends StatelessWidget {
+  final String title;
+  const DTwidget({
+    required this.title,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontFamily: 'Montserrat Semibold',
+        fontWeight: FontWeight.w800, // ExtraBold
+        fontSize: 20,
       ),
     );
   }
@@ -199,10 +307,6 @@ class PopDescription extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: 10,
-              child: Titleaddtext(),
-            ),
-            Positioned(
               right: 10,
               child: Stopdownbutton(),
             ),
@@ -213,26 +317,6 @@ class PopDescription extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class DTwidget extends StatelessWidget {
-  final String title;
-  const DTwidget({
-    required this.title,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: const TextStyle(
-        fontFamily: 'Montserrat Semibold',
-        fontWeight: FontWeight.w800, // ExtraBold
-        fontSize: 20,
       ),
     );
   }

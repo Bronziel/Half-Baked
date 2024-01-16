@@ -1,23 +1,5 @@
 import 'package:flutter/material.dart';
 
-class Titleaddtext extends StatelessWidget {
-  const Titleaddtext({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      '',
-      style: TextStyle(
-        fontFamily: 'inter',
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-}
-
 class Stopdownbutton extends StatelessWidget {
   const Stopdownbutton({
     super.key,
