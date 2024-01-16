@@ -103,7 +103,6 @@ class Saveingridient extends StatelessWidget {
   }
 }
 
-///PopStepstitel(title: 'Steps Title:',),
 class SmallTextfieldPop extends StatelessWidget {
   final String title;
   final String labelText;
@@ -125,7 +124,7 @@ class SmallTextfieldPop extends StatelessWidget {
         child: Stack(
           children: [
             Titles(title: title),
-            Smallboxtext(
+            Smalltextfield(
               labelText: labelText,
               hintText: hintText,
             ),
@@ -138,10 +137,10 @@ class SmallTextfieldPop extends StatelessWidget {
   }
 }
 
-class Smallboxtext extends StatelessWidget {
+class Smalltextfield extends StatelessWidget {
   final String labelText;
   final String hintText;
-  const Smallboxtext({
+  const Smalltextfield({
     required this.labelText,
     this.hintText = '',
     super.key,
