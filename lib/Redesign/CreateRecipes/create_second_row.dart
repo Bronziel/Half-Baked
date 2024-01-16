@@ -3,6 +3,7 @@ import '../components/sizedboxes.dart';
 import 'popups.dart';
 import 'package:flutter/services.dart';
 import 'style.dart';
+import 'style_objects.dart';
 
 class CreateSecondRowWidget extends StatelessWidget {
   const CreateSecondRowWidget({
@@ -116,10 +117,8 @@ class SmallTextfieldPop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 460,
-      height: 140,
-      child: Card(
+    return Utils.SmallPopbox(
+      Card(
         color: StyleUtils.cardcolorgrey(),
         child: Stack(
           children: [
