@@ -54,10 +54,12 @@ class Mymenue extends StatelessWidget {
                 label: 'g',
                 trailingIcon: Utils.info(),
               ),
-              DropdownMenuEntry(
+              const DropdownMenuEntry(
                 value: 6,
                 label: 'tsk',
-                trailingIcon: Utils.info(),
+                trailingIcon: Tooltipinfo(
+                  message: '1tsk = 5ml',
+                ),
               ),
               const DropdownMenuEntry(
                 value: 7,
