@@ -59,20 +59,11 @@ class Mymenue extends StatelessWidget {
                 label: 'tsk',
                 trailingIcon: Utils.info(),
               ),
-              DropdownMenuEntry(
+              const DropdownMenuEntry(
                 value: 7,
                 label: 'msk',
-                trailingIcon: Tooltip(
+                trailingIcon: Tooltipinfo(
                   message: '1msk=15ml',
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFFFFFFF),
-                    border: Border.all(
-                      color: const Color(0xFF161414),
-                      width: 1,
-                    ),
-                  ),
-                  textStyle: StyleUtils.textfieldstylepop(),
-                  child: Utils.info(),
                 ),
               ),
             ],
@@ -80,5 +71,30 @@ class Mymenue extends StatelessWidget {
         ),
       ],
     ));
+  }
+}
+
+//'1msk=15ml'
+class Tooltipinfo extends StatelessWidget {
+  final String message;
+  const Tooltipinfo({
+    required this.message,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: message,
+      decoration: BoxDecoration(
+        color: const Color(0xFFFFFFFF),
+        border: Border.all(
+          color: const Color(0xFF161414),
+          width: 1,
+        ),
+      ),
+      textStyle: StyleUtils.textfieldstylepop(),
+      child: Utils.info(),
+    );
   }
 }
