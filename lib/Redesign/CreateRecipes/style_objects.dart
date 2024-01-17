@@ -33,4 +33,18 @@ class Utils {
       child: child,
     );
   }
+
+  static Icon info() {
+    return const Icon(
+      Icons.info_outline,
+      size: 20,
+    );
+  }
+
+  static Icon infotext(Widget child) {
+    return const Icon(
+      Icons.info_outline,
+      size: 20,
+    );
+  }
 }
