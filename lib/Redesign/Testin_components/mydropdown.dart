@@ -62,7 +62,18 @@ class Mymenue extends StatelessWidget {
               DropdownMenuEntry(
                 value: 7,
                 label: 'msk',
-                trailingIcon: Utils.infotext(const Text('1tsk=15ml')),
+                trailingIcon: Tooltip(
+                  message: '1msk=15ml',
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFFFFFF),
+                    border: Border.all(
+                      color: const Color(0xFF161414),
+                      width: 1,
+                    ),
+                  ),
+                  textStyle: StyleUtils.textfieldstylepop(),
+                  child: Utils.info(),
+                ),
               ),
             ],
           ),
