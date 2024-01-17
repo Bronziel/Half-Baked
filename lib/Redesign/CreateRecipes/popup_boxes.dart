@@ -3,6 +3,7 @@ import 'create_second_row.dart';
 import 'popup_components.dart';
 import 'style.dart';
 import 'style_objects.dart';
+import 'textfields.dart';
 
 //Detta är ingridnetbox save
 class IngPop extends StatelessWidget {
@@ -146,28 +147,42 @@ class PopDescription extends StatelessWidget {
         child: Stack(
           children: [
             Titles(title: title),
-            Positioned(
-              bottom: 10,
-              left: 10,
-              top: 45,
-              right:
-                  100, // Adjusted to ensure the TextField is more square-like
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Add a Description',
-                  labelStyle: StyleUtils.labelstylepop(),
-                  border: const OutlineInputBorder(),
-                  enabledBorder: StyleUtils.enabledborderstyle(),
-                ),
-                style: StyleUtils.textfieldstylepop(),
-                maxLines: null, // Allows for unlimited lines
-                minLines: 5, // Set this to a desired initial size
-              ),
+            const Descriptiontextfield(
+              labeltext: 'Add a Description',
             ),
             const PostionedStopButton(),
             const PostionedSaveButton(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Descriptiontextfield extends StatelessWidget {
+  final String labeltext;
+  const Descriptiontextfield({
+    required this.labeltext,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: 10,
+      left: 10,
+      top: 45,
+      right: 100, // Adjusted to ensure the TextField is more square-like
+      child: TextField(
+        decoration: InputDecoration(
+          labelText: labeltext,
+          labelStyle: StyleUtils.labelstylepop(),
+          border: const OutlineInputBorder(),
+          enabledBorder: StyleUtils.enabledborderstyle(),
+        ),
+        style: StyleUtils.textfieldstylepop(),
+        maxLines: null, // Allows for unlimited lines
+        minLines: 5, // Set this to a desired initial size
       ),
     );
   }
@@ -189,23 +204,8 @@ class Popsteps extends StatelessWidget {
         child: Stack(
           children: [
             Titles(title: title),
-            Positioned(
-              bottom: 10,
-              left: 10,
-              top: 45,
-              right:
-                  100, // Adjusted to ensure the TextField is more square-like
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Add a step',
-                  labelStyle: StyleUtils.labelstylepop(),
-                  border: const OutlineInputBorder(),
-                  enabledBorder: StyleUtils.enabledborderstyle(),
-                ),
-                style: StyleUtils.textfieldstylepop(),
-                maxLines: null, // Allows for unlimited lines
-                minLines: 7, // Set this to a desired initial size
-              ),
+            const Stepstextfield(
+              labeltext: 'Add a step',
             ),
             const PostionedStopButton(),
             const PostionedSaveButton(),
