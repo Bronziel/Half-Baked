@@ -11,19 +11,17 @@ class IngPop extends StatelessWidget {
 
   final String labelText;
   final String labelText2;
-  final String labelText3;
+
   final String hintText;
   final String hintText2;
-  final String hintText3;
+
   final bool isPortionSize;
 
   const IngPop({
     required this.labelText,
     required this.labelText2,
-    required this.labelText3,
     this.hintText = '',
     this.hintText2 = '',
-    this.hintText3 = '',
     required this.title,
     this.isPortionSize = false,
     super.key,
@@ -49,10 +47,7 @@ class IngPop extends StatelessWidget {
               bottom: 85,
             ),
             //85
-            Smalltextfield(
-              labelText: labelText3,
-              hintText: hintText3,
-            ),
+            const Unitdropdown(),
             const PostionedStopButton(),
             const PostionedSaveButton(),
           ],
@@ -217,6 +212,7 @@ class Popsteps extends StatelessWidget {
 }
 
 //detta är lådan för titel,steptitle
+/*
 class IngamountfieldPop extends StatelessWidget {
   final String title;
   final String labelText;
@@ -243,4 +239,4 @@ class IngamountfieldPop extends StatelessWidget {
       ),
     );
   }
-}
+} */

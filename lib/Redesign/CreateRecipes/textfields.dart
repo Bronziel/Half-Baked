@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'style.dart';
 import 'package:flutter/services.dart';
+import '../Testin_components/mydropdown.dart';
 
 //litet textfield använd av title stepstitle o andra en rads fält
 class Smalltextfield extends StatelessWidget {
@@ -133,6 +134,27 @@ class Descriptiontextfield extends StatelessWidget {
         maxLines: null, // Allows for unlimited lines
         minLines: 5, // Set this to a desired initial size
       ),
+    );
+  }
+}
+
+class Unitdropdown extends StatelessWidget {
+  final double bottom;
+  const Unitdropdown({
+    this.bottom = 10,
+    //10
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      // Set the position for the TextField
+      bottom: bottom, // Adjust these values as needed
+      left: 10, // Adjust these values as needed
+      right: 100,
+
+      child: Boxwithdrop(),
     );
   }
 }

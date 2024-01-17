@@ -67,11 +67,11 @@ class Saveingridient extends StatelessWidget {
                         hintText: 'Ex Sidesallad, Prepping meat',
                       ),
 
-                      IngamountfieldPop(
+                      /* IngamountfieldPop(
                         title: 'ingamount',
                         labelText: 'Add a steps title',
                         hintText: 'Ex Sidesallad, Prepping meat',
-                      ),
+                      ),*/
                     ],
                   ),
                   Column(
@@ -95,10 +95,10 @@ class Saveingridient extends StatelessWidget {
                       IngPop(
                         labelText: 'Add a Ingridient',
                         labelText2: 'Add an amount',
-                        labelText3: 'Add a unit',
+                        //labelText3: 'Add a unit',
                         hintText: 'ex milk, ground beef',
                         hintText2: 'ex 500, 200,10',
-                        hintText3: 'ex ml, g , l',
+                        //hintText3: 'ex ml, g , l',
                         title: 'Ingridient',
                       ),
                     ],
