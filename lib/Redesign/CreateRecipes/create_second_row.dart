@@ -67,7 +67,7 @@ class Saveingridient extends StatelessWidget {
                         hintText: 'Ex Sidesallad, Prepping meat',
                       ),
 
-                      ingamountfieldPop(
+                      IngamountfieldPop(
                         title: 'ingamount',
                         labelText: 'Add a steps title',
                         hintText: 'Ex Sidesallad, Prepping meat',

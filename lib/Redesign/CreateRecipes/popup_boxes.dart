@@ -217,11 +217,11 @@ class Popsteps extends StatelessWidget {
 }
 
 //detta är lådan för titel,steptitle
-class ingamountfieldPop extends StatelessWidget {
+class IngamountfieldPop extends StatelessWidget {
   final String title;
   final String labelText;
   final String hintText;
-  const ingamountfieldPop({
+  const IngamountfieldPop({
     required this.labelText,
     this.hintText = '',
     required this.title,
@@ -236,7 +236,7 @@ class ingamountfieldPop extends StatelessWidget {
         child: Stack(
           children: [
             Titles(title: title),
-            Smalltextfield(
+            Dropfield(
               labelText: labelText,
               hintText: hintText,
             ),
@@ -247,4 +247,51 @@ class ingamountfieldPop extends StatelessWidget {
       ),
     );
   }
+}
+
+class Dropfield extends StatelessWidget {
+  final String labelText;
+  final String hintText;
+  final double bottom;
+  const Dropfield({
+    required this.labelText,
+    this.hintText = '',
+    this.bottom = 10,
+    //10
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      // Set the position for the TextField
+      bottom: bottom, // Adjust these values as needed
+      left: 10, // Adjust these values as needed
+      right: 100,
+
+      child: TextField(
+        decoration: InputDecoration(
+          labelText: labelText,
+          labelStyle: StyleUtils.labelstylepop(),
+          hintText: hintText,
+          hintStyle: StyleUtils.hintstylepop(),
+          border: const OutlineInputBorder(),
+          enabledBorder: StyleUtils.enabledborderstyle(),
+        ),
+        style: StyleUtils.textfieldstylepop(),
+      ),
+    );
+  }
+}
+
+enum ColorLabel {
+  blue('Blue', Colors.blue),
+  pink('Pink', Colors.pink),
+  green('Green', Colors.green),
+  yellow('Orange', Colors.orange),
+  grey('Grey', Colors.grey);
+
+  const ColorLabel(this.label, this.color);
+  final String label;
+  final Color color;
 }
