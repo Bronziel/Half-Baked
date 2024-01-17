@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/sizedboxes.dart';
-import 'popups.dart';
+
 import 'package:flutter/services.dart';
 import 'style.dart';
 import 'style_objects.dart';
