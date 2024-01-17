@@ -1,0 +1,38 @@
+IngPop(
+                        labelText: 'Add a Ingridient',
+                        labelText2: 'Add an amount',
+                        labelText3: 'Add a unit',
+                        hintText: 'ex milk, ground beef',
+                        hintText2: 'ex 500, 200,10',
+                        hintText3: 'ex ml, g , l',
+                        title: 'Ingridient',
+                      ),
+PopTimePort(
+                        title: 'Portionsize:',
+                        labelText: 'Add Portion size',
+                        isPortionSize:
+                            true, // Used to set the keyboard type to text
+                      ),
+PopTimePort(
+                        title: 'PrepTime:',
+                        labelText: 'Add Preperation time',
+                        hintText: 'preparation time in minutes',
+                      ),
+PopTimePort(
+                        title: 'TotalTime:',
+                        labelText: 'Add Total cooking time',
+                        hintText: 'Total cooking time in minutes',
+                      ),
+
+SmallTextfieldPop(
+                        title: 'Steps Title:',
+                        labelText: 'Add a steps title',
+                        hintText: 'Ex Sidesallad, Prepping meat',
+                      ),
+
+PopDescription(
+                        title: 'Description',
+                      ),
+Popsteps(
+                        title: 'Step 1:',
+                      )

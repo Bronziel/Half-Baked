@@ -66,16 +66,12 @@ class Saveingridient extends StatelessWidget {
                         labelText: 'Add a steps title',
                         hintText: 'Ex Sidesallad, Prepping meat',
                       ),
-                      SmallTextfieldPop(
-                        title: 'Steps Title:',
-                        labelText: 'Add a title',
+
+                      ingamountfieldPop(
+                        title: 'ingamount',
+                        labelText: 'Add a steps title',
+                        hintText: 'Ex Sidesallad, Prepping meat',
                       ),
-                      PopDescription(
-                        title: 'Description',
-                      ),
-                      /* Popsteps(
-                        title: 'Step 1:',
-                      )*/
                     ],
                   ),
                   Column(
