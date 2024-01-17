@@ -1,3 +1,4 @@
+import 'package:fb2/Redesign/Testin_components/mydropdown.dart';
 import 'package:fb2/Redesign/components/imagesclass.dart';
 import 'package:flutter/material.dart';
 import '../components/components_redesign.dart';
@@ -185,7 +186,7 @@ class MyownButton extends StatelessWidget {
 
   const MyownButton({
     super.key,
-    this.buttonText = 'list',
+    this.buttonText = 'mine',
     this.buttonColor = const Color.fromARGB(255, 12, 122, 225),
   });
 
@@ -195,7 +196,7 @@ class MyownButton extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const DropdownMenuExample()),
+          MaterialPageRoute(builder: (context) => const Mymenue()),
         );
       },
       style: ElevatedButton.styleFrom(

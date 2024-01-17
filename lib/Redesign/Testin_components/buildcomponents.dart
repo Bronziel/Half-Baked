@@ -50,6 +50,10 @@ class BuildComponentPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: listButton(),
               ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: MyownButton(),
+              ),
               SizedBox(
                 height: 400,
                 width: 1085,
