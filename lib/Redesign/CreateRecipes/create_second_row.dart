@@ -4,6 +4,7 @@ import 'popups.dart';
 import 'package:flutter/services.dart';
 import 'style.dart';
 import 'style_objects.dart';
+import 'popup_boxes.dart';
 
 class CreateSecondRowWidget extends StatelessWidget {
   const CreateSecondRowWidget({
@@ -116,94 +117,6 @@ class Saveingridient extends StatelessWidget {
   }
 }
 
-class IngPop extends StatelessWidget {
-  final String title;
-
-  final String labelText;
-  final String labelText2;
-  final String labelText3;
-  final String hintText;
-  final String hintText2;
-  final String hintText3;
-  final bool isPortionSize;
-
-  const IngPop({
-    required this.labelText,
-    required this.labelText2,
-    required this.labelText3,
-    this.hintText = '',
-    this.hintText2 = '',
-    this.hintText3 = '',
-    required this.title,
-    this.isPortionSize = false,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Utils.ingpop(
-      Card(
-        color: StyleUtils.cardcolorgrey(),
-        child: Stack(
-          children: [
-            Titles(title: title),
-            Smalltextfield(
-              labelText: labelText,
-              hintText: hintText,
-              bottom: 160,
-            ),
-            Numberonlytextfiel(
-              isPortionSize: false,
-              labelText: labelText2,
-              hintText: hintText2,
-              bottom: 85,
-            ),
-            //85
-            Smalltextfield(
-              labelText: labelText3,
-              hintText: hintText3,
-            ),
-            const PostionedStopButton(),
-            const PostionedSaveButton(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class SmallTextfieldPop extends StatelessWidget {
-  final String title;
-  final String labelText;
-  final String hintText;
-  const SmallTextfieldPop({
-    required this.labelText,
-    this.hintText = '',
-    required this.title,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Utils.smallpopbox(
-      Card(
-        color: StyleUtils.cardcolorgrey(),
-        child: Stack(
-          children: [
-            Titles(title: title),
-            Smalltextfield(
-              labelText: labelText,
-              hintText: hintText,
-            ),
-            const PostionedStopButton(),
-            const PostionedSaveButton(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class Smalltextfield extends StatelessWidget {
   final String labelText;
   final String hintText;
@@ -234,41 +147,6 @@ class Smalltextfield extends StatelessWidget {
           enabledBorder: StyleUtils.enabledborderstyle(),
         ),
         style: StyleUtils.textfieldstylepop(),
-      ),
-    );
-  }
-}
-
-class PopTimePort extends StatelessWidget {
-  final String title;
-  final String labelText;
-  final String hintText;
-  final bool isPortionSize;
-
-  const PopTimePort({
-    super.key,
-    required this.title,
-    required this.labelText,
-    this.hintText = '',
-    this.isPortionSize = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Utils.smallpopbox(
-      Card(
-        color: const Color(0xFFD9D9D9),
-        child: Stack(
-          children: [
-            Titles(title: title),
-            Numberonlytextfiel(
-                isPortionSize: isPortionSize,
-                labelText: labelText,
-                hintText: hintText),
-            const PostionedStopButton(),
-            const PostionedSaveButton(),
-          ],
-        ),
       ),
     );
   }
@@ -316,89 +194,6 @@ class Numberonlytextfiel extends StatelessWidget {
 //required this.title,
 //final String title;
 //Titles(title: title),
-class PopDescription extends StatelessWidget {
-  final String title;
-  const PopDescription({
-    required this.title,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Utils.bigpopbox(
-      Card(
-        color: const Color(0xFFD9D9D9),
-        child: Stack(
-          children: [
-            Titles(title: title),
-            Positioned(
-              bottom: 10,
-              left: 10,
-              top: 45,
-              right:
-                  100, // Adjusted to ensure the TextField is more square-like
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Add a Description',
-                  labelStyle: StyleUtils.labelstylepop(),
-                  border: const OutlineInputBorder(),
-                  enabledBorder: StyleUtils.enabledborderstyle(),
-                ),
-                style: StyleUtils.textfieldstylepop(),
-                maxLines: null, // Allows for unlimited lines
-                minLines: 5, // Set this to a desired initial size
-              ),
-            ),
-            const PostionedStopButton(),
-            const PostionedSaveButton(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Popsteps extends StatelessWidget {
-  final String title;
-  const Popsteps({
-    required this.title,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Utils.stepspopbox(
-      Card(
-        color: const Color(0xFFD9D9D9),
-        child: Stack(
-          children: [
-            Titles(title: title),
-            Positioned(
-              bottom: 10,
-              left: 10,
-              top: 45,
-              right:
-                  100, // Adjusted to ensure the TextField is more square-like
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Add a step',
-                  labelStyle: StyleUtils.labelstylepop(),
-                  border: const OutlineInputBorder(),
-                  enabledBorder: StyleUtils.enabledborderstyle(),
-                ),
-                style: StyleUtils.textfieldstylepop(),
-                maxLines: null, // Allows for unlimited lines
-                minLines: 7, // Set this to a desired initial size
-              ),
-            ),
-            const PostionedStopButton(),
-            const PostionedSaveButton(),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 /*class MyListTile extends StatefulWidget {
   @override
