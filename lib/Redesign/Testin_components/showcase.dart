@@ -46,8 +46,12 @@ class ShowcasePage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              const TimeTIlesshowcase(),
-              const RowOfIcons80(),
+              const Row(
+                children: [
+                  RowOfIcons80(),
+                  TimeTIlesshowcase(),
+                ],
+              ),
               const Row(
                 children: [
                   Column(
