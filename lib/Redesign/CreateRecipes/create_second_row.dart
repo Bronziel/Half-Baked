@@ -36,78 +36,6 @@ class Steps extends StatelessWidget {
       height: 474,
       child: Card(
         color: Color(0xffd9d9d9),
-        child: Saveingridient(),
-      ),
-    );
-  }
-}
-
-class Saveingridient extends StatelessWidget {
-  const Saveingridient({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(
-            child: Card(
-              color: Color(0xFF234567),
-              child: Row(
-                children: [
-                  Column(
-                    children: [
-                      //Popups(),
-
-                      SmallTextfieldPop(
-                        title: 'Steps Title:',
-                        labelText: 'Add a steps title',
-                        hintText: 'Ex Sidesallad, Prepping meat',
-                      ),
-
-                      /* IngamountfieldPop(
-                        title: 'ingamount',
-                        labelText: 'Add a steps title',
-                        hintText: 'Ex Sidesallad, Prepping meat',
-                      ),*/
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      PopTimePort(
-                        title: 'PrepTime:',
-                        labelText: 'Add Preperation time',
-                        hintText: 'preparation time in minutes',
-                      ),
-                      PopTimePort(
-                        title: 'TotalTime:',
-                        labelText: 'Add Total cooking time',
-                        hintText: 'Total cooking time in minutes',
-                      ),
-                      /*PopTimePort(
-                        title: 'Portionsize:',
-                        labelText: 'Add Portion size',
-                        isPortionSize:
-                            true, // Used to set the keyboard type to text
-                      ),*/
-                      IngPop(
-                        labelText: 'Add a Ingridient',
-                        labelText2: 'Add an amount',
-                        //labelText3: 'Add a unit',
-                        hintText: 'ex milk, ground beef',
-                        hintText2: 'ex 500, 200,10',
-                        //hintText3: 'ex ml, g , l',
-                        title: 'Ingridient',
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -278,21 +206,3 @@ class CreateIngMainTile extends StatelessWidget {
     );
   }
 }
-
-/*PopTimePort(
-                      title: 'PrepTime:',
-                      labelText: 'Add Preperation time',
-                      hintText: 'preparation time in minutes',
-                    ),
-                    PopTimePort(
-                      title: 'TotalTime:',
-                      labelText: 'Add Total cooking time',
-                      hintText: 'Total cooking time in minutes',
-                    ),
-                    PopTimePort(
-                      title: 'Portionsize:',
-                      labelText: 'Add Portion size',
-                      isPortionSize:
-                          true, // Used to set the keyboard type to text
-                    ),
-*/
