@@ -6,6 +6,8 @@ import '../CreateRecipes/create_second_row.dart';
 import '../CreateRecipes/CreateFirstRow/create_introduction_box.dart';
 import '../RecipePages/Recipe/FirstRow/introduction_box.dart';
 import '../RecipePages/Recipe/second_row_widget.dart';
+import '../RecipePages/Recipe/FirstRow/image_boxes.dart';
+import '../CreateRecipes/CreateFirstRow/create_image_boxes.dart';
 
 class ShowcasePage extends StatelessWidget {
   const ShowcasePage({super.key});
@@ -40,13 +42,13 @@ class ShowcasePage extends StatelessWidget {
           ),
         ),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
-              TimeTIlesshowcase(),
-              RowOfIcons80(),
-              Row(
+              const TimeTIlesshowcase(),
+              const RowOfIcons80(),
+              const Row(
                 children: [
                   Column(
                     children: [
@@ -103,7 +105,7 @@ class ShowcasePage extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
+              const Row(
                 children: [
                   Column(
                     children: [
@@ -125,6 +127,17 @@ class ShowcasePage extends StatelessWidget {
                       IntroductionWidget(),
                     ],
                   ),
+                ],
+              ),
+              const Column(
+                children: [
+                  MainImagePlusBoxes(),
+                  CreateMainImagePlusBoxes(),
+                ],
+              ),
+              Column(
+                children: [
+                  StepsWidget(),
                 ],
               ),
             ],
