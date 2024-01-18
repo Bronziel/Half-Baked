@@ -48,20 +48,6 @@ class ShowcasePage extends StatelessWidget {
               RowOfIcons80(),
               Row(
                 children: [
-                  CalorieCardWidget(),
-                  CaloriecardStackedWidget(),
-                ],
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 4,
-                  ),
-                  Containerkals(),
-                ],
-              ),
-              Row(
-                children: [
                   Column(
                     children: [
                       PopTimePort(
