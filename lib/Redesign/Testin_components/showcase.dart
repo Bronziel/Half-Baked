@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'doneshowcase.dart';
+import '../CreateRecipes/popup_boxes.dart';
+import '../CreateRecipes/create_second_row.dart';
+import '../CreateRecipes/CreateFirstRow/create_introduction_box.dart';
+import '../RecipePages/Recipe/FirstRow/introduction_box.dart';
+import '../RecipePages/Recipe/second_row_widget.dart';
 
 class ShowcasePage extends StatelessWidget {
   const ShowcasePage({super.key});
@@ -54,7 +59,88 @@ class ShowcasePage extends StatelessWidget {
                   ),
                   Containerkals(),
                 ],
-              )
+              ),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      PopTimePort(
+                        title: 'PrepTime:',
+                        labelText: 'Add Preperation time',
+                        hintText: 'preparation time in minutes',
+                      ),
+                      PopTimePort(
+                        title: 'TotalTime:',
+                        labelText: 'Add Total cooking time',
+                        hintText: 'Total cooking time in minutes',
+                      ),
+                      PopTimePort(
+                        title: 'Portionsize:',
+                        labelText: 'Add Portion size',
+                        isPortionSize:
+                            true, // Used to set the keyboard type to text
+                      ),
+                      SmallTextfieldPop(
+                        title: 'Steps Title:',
+                        labelText: 'Add a steps title',
+                        hintText: 'Ex Sidesallad, Prepping meat',
+                      ),
+                      SmallTextfieldPop(
+                        title: 'Title:',
+                        labelText: 'Add a title',
+                        hintText: 'Ex Kebabrulle',
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      IngPop(
+                        labelText: 'Add a Ingridient',
+                        labelText2: 'Add an amount',
+                        //labelText3: 'Add a unit',
+                        hintText: 'ex milk, ground beef',
+                        hintText2: 'ex 500, 200,10',
+                        //hintText3: 'ex ml, g , l',
+                        title: 'Ingridient',
+                      ),
+                      PopDescription(
+                        title: 'Description',
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Popsteps(
+                        title: 'Step 1:',
+                      )
+                    ],
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      CreateRecipeListCard(),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      RecipeListCard(),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      CreateIntroductionWidget(),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      IntroductionWidget(),
+                    ],
+                  ),
+                ],
+              ),
             ],
           ),
         ),

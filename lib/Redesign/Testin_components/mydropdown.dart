@@ -15,7 +15,7 @@ class Mymenue extends StatelessWidget {
       body: Container(
         width: 400,
         height: 400,
-        child: Card(
+        child: const Card(
           color: Color.fromARGB(255, 234, 26, 26),
           child: Column(
             children: [

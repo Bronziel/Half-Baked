@@ -29,6 +29,11 @@ SmallTextfieldPop(
                         labelText: 'Add a steps title',
                         hintText: 'Ex Sidesallad, Prepping meat',
                       ),
+SmallTextfieldPop(
+                        title: 'Title:',
+                        labelText: 'Add a title',
+                        hintText: 'Ex Kebabrulle',
+                      ),
 
 PopDescription(
                         title: 'Description',
