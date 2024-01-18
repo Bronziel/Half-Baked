@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import '..//CreateRecipes/style.dart';
@@ -9,12 +11,21 @@ class Mymenue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Row(
-      children: [
-        Boxwithdrop(),
-      ],
-    ));
+    return Scaffold(
+      body: Container(
+        width: 400,
+        height: 400,
+        child: Card(
+          color: Color.fromARGB(255, 234, 26, 26),
+          child: Column(
+            children: [
+              TextField(),
+              Boxwithdrop(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -26,6 +37,8 @@ class Boxwithdrop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownMenu(
+      //expandedinset makes so that the menu takes size of parent otehrwise need set widh
+      expandedInsets: EdgeInsets.zero,
       enableFilter: true,
       textStyle: StyleUtils.textfieldstylepop(),
       label: const Text(
