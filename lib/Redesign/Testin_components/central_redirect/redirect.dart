@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../showcase/comb_showcase.dart';
 import 'buttons.dart';
-import 'building_buttons.dart';
 
 class BuildComponentPage extends StatelessWidget {
   const BuildComponentPage({super.key});

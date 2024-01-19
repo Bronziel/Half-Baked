@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/sizedboxes.dart';
 
-import 'package:flutter/services.dart';
-import 'style.dart';
-import 'style_objects.dart';
-import 'popup_boxes.dart';
-
 class CreateSecondRowWidget extends StatelessWidget {
   const CreateSecondRowWidget({
     super.key,

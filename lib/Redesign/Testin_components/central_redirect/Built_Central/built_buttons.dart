@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../built/dropdown.dart';
-import '../built/mydropdown.dart';
+import '../../built/dropdown.dart';
+import '../../built/mydropdown.dart';
 
 class ListButton extends StatelessWidget {
   final String buttonText;
@@ -8,7 +8,7 @@ class ListButton extends StatelessWidget {
 
   const ListButton({
     super.key,
-    this.buttonText = 'list',
+    this.buttonText = 'Dropdown  Menue',
     this.buttonColor = const Color.fromARGB(255, 12, 122, 225),
   });
 
@@ -40,7 +40,7 @@ class MydropdownButton extends StatelessWidget {
 
   const MydropdownButton({
     super.key,
-    this.buttonText = 'mine',
+    this.buttonText = 'My drop  down menue',
     this.buttonColor = const Color.fromARGB(255, 12, 122, 225),
   });
 

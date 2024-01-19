@@ -1,11 +1,7 @@
-import 'package:fb2/Redesign/Testin_components/built/mydropdown.dart';
 import 'package:fb2/Redesign/components/imagesclass.dart';
 import 'package:flutter/material.dart';
 import '../../components/components_redesign.dart';
-import 'showcase.dart';
-import '../building/listviewreorder.dart';
-import '../built/dropdown.dart';
-import '../central_redirect/redirect.dart';
+import '../../CreateRecipes/popup_boxes.dart';
 
 class RowOfIcons80 extends StatelessWidget {
   const RowOfIcons80({
@@ -111,6 +107,72 @@ class TimeTIlesshowcase extends StatelessWidget {
         TimeCard(
           title: "Prep Time:",
           time: "300",
+        ),
+      ],
+    );
+  }
+}
+
+class Popupsdisplayed extends StatelessWidget {
+  const Popupsdisplayed({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      children: [
+        Column(
+          children: [
+            PopTimePort(
+              title: 'PrepTime:',
+              labelText: 'Add Preperation time',
+              hintText: 'preparation time in minutes',
+            ),
+            PopTimePort(
+              title: 'TotalTime:',
+              labelText: 'Add Total cooking time',
+              hintText: 'Total cooking time in minutes',
+            ),
+            PopTimePort(
+              title: 'Portionsize:',
+              labelText: 'Add Portion size',
+              isPortionSize: true, // Used to set the keyboard type to text
+            ),
+            SmallTextfieldPop(
+              title: 'Steps Title:',
+              labelText: 'Add a steps title',
+              hintText: 'Ex Sidesallad, Prepping meat',
+            ),
+            SmallTextfieldPop(
+              title: 'Title:',
+              labelText: 'Add a title',
+              hintText: 'Ex Kebabrulle',
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            IngPop(
+              labelText: 'Add a Ingridient',
+              labelText2: 'Add an amount',
+              //labelText3: 'Add a unit',
+              hintText: 'ex milk, ground beef',
+              hintText2: 'ex 500, 200,10',
+              //hintText3: 'ex ml, g , l',
+              title: 'Ingridient',
+            ),
+            PopDescription(
+              title: 'Description',
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Popsteps(
+              title: 'Step 1:',
+            )
+          ],
         ),
       ],
     );

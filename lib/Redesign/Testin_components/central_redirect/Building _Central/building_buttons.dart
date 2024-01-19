@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../building/listviewreorder.dart';
-import '../building/building.dart';
+import '../../building/listviewreorder.dart';
+import '../../building/building.dart';
 
 class Reord extends StatelessWidget {
   final String buttonText;
