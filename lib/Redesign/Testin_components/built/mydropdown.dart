@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
-import '..//CreateRecipes/style.dart';
-import '../CreateRecipes/style_objects.dart';
+import '../../CreateRecipes/style.dart';
+import '../../CreateRecipes/style_objects.dart';
 
 //should use enum to make it more consice
 class Mymenue extends StatelessWidget {

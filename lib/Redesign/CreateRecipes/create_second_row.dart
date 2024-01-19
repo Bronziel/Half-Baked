@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/sizedboxes.dart';
 
-import 'package:flutter/services.dart';
-import 'style.dart';
-import 'style_objects.dart';
-import 'popup_boxes.dart';
-
 class CreateSecondRowWidget extends StatelessWidget {
   const CreateSecondRowWidget({
     super.key,
@@ -108,6 +103,11 @@ class CreateRecipeListCard extends StatelessWidget {
                     CreateIngredientTile(
                       label: "Add ingridient",
                     ),
+                    EditingTile(
+                      label: 'Kebab',
+                      amount: '500',
+                      unit: 'g',
+                    ),
 
                     // Add more children as needed
                   ],
@@ -166,6 +166,74 @@ class CreateIngredientTile extends StatelessWidget {
               color: const Color.fromARGB(255, 233, 228, 228),
               // Plus icon
               onPressed: () {
+                // Add your action for this button
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class EditingTile extends StatelessWidget {
+  final String label; // First parameter
+  final String amount;
+  final String unit;
+  // Third parameter
+
+  // Update the constructor to accept three parameters
+  const EditingTile({
+    super.key,
+    required this.label,
+    required this.amount,
+    required this.unit,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    const textStyle = TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w700,
+      color: Colors.white, // Set your desired color here
+    );
+
+    return Container(
+      height: 50,
+      width: 410,
+      color: const Color(0xff161414),
+      child: SizedBox(
+        child: Row(
+          children: [
+            const SizedBox(
+              width: 16,
+            ),
+            IconButton(
+              onPressed: () {
+                print('menue clicked');
+              },
+              icon: const Icon(
+                Icons.menu,
+                color: Color.fromARGB(255, 233, 228, 228),
+              ),
+            ),
+            const SizedBox(width: 16),
+            Text(label, style: textStyle), // Use the label parameter
+            const Text(':', style: textStyle),
+            const SizedBox(width: 20),
+            Text(amount, style: textStyle), // Use the quantity parameter
+            const SizedBox(width: 3),
+            Text(unit, style: textStyle), // Use the unit parameter
+            const SizedBox(
+              width: 130,
+            ),
+            IconButton(
+              constraints: const BoxConstraints(maxHeight: 100, maxWidth: 100),
+              icon: const Icon(Icons.edit, size: 24),
+              color: const Color.fromARGB(255, 233, 228, 228),
+              // Plus icon
+              onPressed: () {
+                print('Edit clicked');
                 // Add your action for this button
               },
             ),

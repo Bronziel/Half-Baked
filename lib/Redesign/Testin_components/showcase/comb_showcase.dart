@@ -1,10 +1,7 @@
-import 'package:fb2/Redesign/Testin_components/mydropdown.dart';
 import 'package:fb2/Redesign/components/imagesclass.dart';
 import 'package:flutter/material.dart';
-import '../components/components_redesign.dart';
-import 'showcase.dart';
-
-import 'buildcomponents.dart';
+import '../../components/components_redesign.dart';
+import '../../CreateRecipes/popup_boxes.dart';
 
 class RowOfIcons80 extends StatelessWidget {
   const RowOfIcons80({
@@ -116,98 +113,68 @@ class TimeTIlesshowcase extends StatelessWidget {
   }
 }
 
-class ShowcaseButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const ShowcaseButton({
+class Popupsdisplayed extends StatelessWidget {
+  const Popupsdisplayed({
     super.key,
-    this.buttonText = 'ShowCase',
-    this.buttonColor = const Color.fromARGB(255, 189, 12, 225),
   });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ShowcasePage()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class listButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const listButton({
-    super.key,
-    this.buttonText = 'list',
-    this.buttonColor = const Color.fromARGB(255, 12, 122, 225),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const DropdownMenuExample()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class MyownButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const MyownButton({
-    super.key,
-    this.buttonText = 'mine',
-    this.buttonColor = const Color.fromARGB(255, 12, 122, 225),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const Mymenue()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
+    return const Row(
+      children: [
+        Column(
+          children: [
+            PopTimePort(
+              title: 'PrepTime:',
+              labelText: 'Add Preperation time',
+              hintText: 'preparation time in minutes',
+            ),
+            PopTimePort(
+              title: 'TotalTime:',
+              labelText: 'Add Total cooking time',
+              hintText: 'Total cooking time in minutes',
+            ),
+            PopTimePort(
+              title: 'Portionsize:',
+              labelText: 'Add Portion size',
+              isPortionSize: true, // Used to set the keyboard type to text
+            ),
+            SmallTextfieldPop(
+              title: 'Steps Title:',
+              labelText: 'Add a steps title',
+              hintText: 'Ex Sidesallad, Prepping meat',
+            ),
+            SmallTextfieldPop(
+              title: 'Title:',
+              labelText: 'Add a title',
+              hintText: 'Ex Kebabrulle',
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            IngPop(
+              labelText: 'Add a Ingridient',
+              labelText2: 'Add an amount',
+              //labelText3: 'Add a unit',
+              hintText: 'ex milk, ground beef',
+              hintText2: 'ex 500, 200,10',
+              //hintText3: 'ex ml, g , l',
+              title: 'Ingridient',
+            ),
+            PopDescription(
+              title: 'Description',
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Popsteps(
+              title: 'Step 1:',
+            )
+          ],
+        ),
+      ],
     );
   }
 }
