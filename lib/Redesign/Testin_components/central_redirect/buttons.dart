@@ -1,107 +1,9 @@
 import 'package:flutter/material.dart';
-
-import '../building/listviewreorder.dart';
-import '../built/dropdown.dart';
-import 'button_redirect.dart';
+import 'redirect.dart';
 import '../showcase/showcase.dart';
-import 'button_redirect.dart';
-import '../built/mydropdown.dart';
-
-class listButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const listButton({
-    super.key,
-    this.buttonText = 'list',
-    this.buttonColor = const Color.fromARGB(255, 12, 122, 225),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const DropdownMenuExample()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class MyownButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const MyownButton({
-    super.key,
-    this.buttonText = 'mine',
-    this.buttonColor = const Color.fromARGB(255, 12, 122, 225),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const Mymenue()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class Reord extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const Reord({
-    super.key,
-    this.buttonText = 'mine',
-    this.buttonColor = const Color.fromARGB(255, 12, 122, 225),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ReorderableApp()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
+import 'redirect.dart';
+import 'built_redirected.dart';
+import 'building_redirected.dart';
 
 class ShowcaseButton extends StatelessWidget {
   final String buttonText;
@@ -120,6 +22,70 @@ class ShowcaseButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const ShowcasePage()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(16.0),
+        minimumSize: const Size(double.infinity, 64.0),
+        backgroundColor: buttonColor,
+      ),
+      child: Text(
+        buttonText,
+        style: const TextStyle(fontSize: 36, color: Colors.white),
+      ),
+    );
+  }
+}
+
+class BuildingButton extends StatelessWidget {
+  final String buttonText;
+  final Color buttonColor;
+
+  const BuildingButton({
+    super.key,
+    this.buttonText = 'Building Components',
+    this.buttonColor = const Color.fromARGB(255, 47, 237, 17),
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const BuildingRedirect()),
+        );
+      },
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(16.0),
+        minimumSize: const Size(double.infinity, 64.0),
+        backgroundColor: buttonColor,
+      ),
+      child: Text(
+        buttonText,
+        style: const TextStyle(fontSize: 36, color: Colors.white),
+      ),
+    );
+  }
+}
+
+class BuiltButton extends StatelessWidget {
+  final String buttonText;
+  final Color buttonColor;
+
+  const BuiltButton({
+    super.key,
+    this.buttonText = 'Built Components',
+    this.buttonColor = const Color.fromARGB(255, 225, 12, 40),
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Builtredirect()),
         );
       },
       style: ElevatedButton.styleFrom(

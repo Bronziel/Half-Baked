@@ -5,7 +5,7 @@ import '../../components/components_redesign.dart';
 import 'showcase.dart';
 import '../building/listviewreorder.dart';
 import '../built/dropdown.dart';
-import '../central_redirect/button_redirect.dart';
+import '../central_redirect/redirect.dart';
 
 class RowOfIcons80 extends StatelessWidget {
   const RowOfIcons80({

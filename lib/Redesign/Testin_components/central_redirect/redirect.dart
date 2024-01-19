@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../showcase/comb_showcase.dart';
 import 'buttons.dart';
+import 'building_buttons.dart';
 
 class BuildComponentPage extends StatelessWidget {
   const BuildComponentPage({super.key});
@@ -38,28 +39,35 @@ class BuildComponentPage extends StatelessWidget {
       ),
       body: const SingleChildScrollView(
         child: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: ShowcaseButton(),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: listButton(),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: MyownButton(),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Reord(),
-              ),
-            ],
-          ),
+          child: ButtonColumn(),
         ),
       ),
+    );
+  }
+}
+
+class ButtonColumn extends StatelessWidget {
+  const ButtonColumn({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: ShowcaseButton(),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: BuildingButton(),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: BuiltButton(),
+        ),
+      ],
     );
   }
 }
