@@ -1,10 +1,11 @@
-import 'package:fb2/Redesign/Testin_components/mydropdown.dart';
+import 'package:fb2/Redesign/Testin_components/built/mydropdown.dart';
 import 'package:fb2/Redesign/components/imagesclass.dart';
 import 'package:flutter/material.dart';
-import '../components/components_redesign.dart';
+import '../../components/components_redesign.dart';
 import 'showcase.dart';
-
-import 'buildcomponents.dart';
+import '../building/listviewreorder.dart';
+import '../built/dropdown.dart';
+import '../central_redirect/button_redirect.dart';
 
 class RowOfIcons80 extends StatelessWidget {
   const RowOfIcons80({
@@ -112,102 +113,6 @@ class TimeTIlesshowcase extends StatelessWidget {
           time: "300",
         ),
       ],
-    );
-  }
-}
-
-class ShowcaseButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const ShowcaseButton({
-    super.key,
-    this.buttonText = 'ShowCase',
-    this.buttonColor = const Color.fromARGB(255, 189, 12, 225),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ShowcasePage()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class listButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const listButton({
-    super.key,
-    this.buttonText = 'list',
-    this.buttonColor = const Color.fromARGB(255, 12, 122, 225),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const DropdownMenuExample()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class MyownButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const MyownButton({
-    super.key,
-    this.buttonText = 'mine',
-    this.buttonColor = const Color.fromARGB(255, 12, 122, 225),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const Mymenue()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
     );
   }
 }

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'doneshowcase.dart';
-import '../CreateRecipes/popup_boxes.dart';
-import '../CreateRecipes/create_second_row.dart';
-import '../CreateRecipes/CreateFirstRow/create_introduction_box.dart';
-import '../RecipePages/Recipe/FirstRow/introduction_box.dart';
-import '../RecipePages/Recipe/second_row_widget.dart';
-import '../RecipePages/Recipe/FirstRow/image_boxes.dart';
-import '../CreateRecipes/CreateFirstRow/create_image_boxes.dart';
+import 'comb_showcase.dart';
+import '../../CreateRecipes/popup_boxes.dart';
+import '../../CreateRecipes/create_second_row.dart';
+import '../../CreateRecipes/CreateFirstRow/create_introduction_box.dart';
+import '../../RecipePages/Recipe/FirstRow/introduction_box.dart';
+import '../../RecipePages/Recipe/second_row_widget.dart';
+import '../../RecipePages/Recipe/FirstRow/image_boxes.dart';
+import '../../CreateRecipes/CreateFirstRow/create_image_boxes.dart';
 
 class ShowcasePage extends StatelessWidget {
   const ShowcasePage({super.key});
