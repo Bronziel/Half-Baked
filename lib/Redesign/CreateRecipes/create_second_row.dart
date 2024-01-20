@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/sizedboxes.dart';
+import '../Testin_components/building/building.dart';
 
 class CreateSecondRowWidget extends StatelessWidget {
   const CreateSecondRowWidget({
@@ -12,6 +13,7 @@ class CreateSecondRowWidget extends StatelessWidget {
       children: [
         Widht40wallWidget(),
         CreateRecipeListCard(),
+        //CreateRecipeListCard2(),
         Width20StandardWidget(),
         Steps(),
       ],
@@ -27,8 +29,9 @@ class Steps extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      width: 1200,
-      height: 474,
+      //width: 1200,
+      width: 1110,
+      height: 450,
       child: Card(
         color: Color(0xffd9d9d9),
       ),
