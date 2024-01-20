@@ -6,7 +6,12 @@ class Building extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Listing(),
+      body: Row(
+        children: [
+          SizedBox(width: 600, child: Listing()),
+          SizedBox(width: 600, child: Withclass()),
+        ],
+      ),
     );
   }
 }
@@ -20,7 +25,7 @@ class Listing extends StatefulWidget {
 
 class _ListingState extends State<Listing> {
   // Sample data
-  final List<Map<String, String>> _items = [
+  final List<Map<String, String>> _potatis = [
     {'label': 'Item 1', 'amount': '100', 'unit': 'kg'},
     {'label': 'Item 2', 'amount': '200', 'unit': 'g'},
     // Add more items as needed
@@ -29,8 +34,9 @@ class _ListingState extends State<Listing> {
   @override
   Widget build(BuildContext context) {
     return ReorderableListView(
-      children: List.generate(_items.length, (index) {
-        Map<String, String> item = _items[index];
+      children: List.generate(_potatis.length, (index) {
+        Map<String, String> item = _potatis[index];
+        print('potatis');
         return EditingTile(
           key: ValueKey('item_${item['label']}'),
           label: item['label']!,
@@ -43,13 +49,66 @@ class _ListingState extends State<Listing> {
           if (newIndex > oldIndex) {
             newIndex -= 1;
           }
-          final item = _items.removeAt(oldIndex);
+          final item = _potatis.removeAt(oldIndex);
+          _potatis.insert(newIndex, item);
+        });
+      },
+    );
+  }
+}
+
+class Withclass extends StatefulWidget {
+  const Withclass({super.key});
+
+  @override
+  State<Withclass> createState() => _WithclassState();
+}
+
+class _WithclassState extends State<Withclass> {
+  final List<Item> _items = [
+    Item(label: 'Item 1', amount: 100, unit: 'kg'),
+    Item(label: 'Item 2', amount: 200, unit: 'g'),
+    // ... more items
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return ReorderableListView(
+      children: List.generate(_items.length, (index) {
+        Item item = _items[index];
+        return EditingTile(
+          key: ValueKey(item.label),
+          label: item.label,
+          amount: item.amount.toString(), // Convert int to String
+          unit: item.unit,
+        );
+      }),
+      onReorder: (int oldIndex, int newIndex) {
+        setState(() {
+          if (newIndex > oldIndex) {
+            newIndex -= 1;
+          }
+          final Item item = _items.removeAt(oldIndex);
           _items.insert(newIndex, item);
         });
       },
     );
   }
 }
+
+class Item {
+  final String label;
+  final int amount;
+  final String unit;
+
+  Item({required this.label, required this.amount, required this.unit});
+}
+
+final List<Item> _items = [
+  Item(label: 'Item 1', amount: 100, unit: 'kg'),
+  Item(label: 'Item 2', amount: 200, unit: 'g'),
+  // ...
+];
 
 class EditingTile extends StatelessWidget {
   final String label; // First parameter
