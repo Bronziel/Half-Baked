@@ -1,39 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../building/listviewreorder.dart';
 import '../../building/building.dart';
-import '../../building/MyReorder.dart';
-
-class B2Button extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const B2Button({
-    super.key,
-    this.buttonText = 'b2',
-    this.buttonColor = const Color.fromARGB(255, 12, 122, 225),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const B2()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
 
 class Reord extends StatelessWidget {
   final String buttonText;
