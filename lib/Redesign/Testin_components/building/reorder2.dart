@@ -196,6 +196,21 @@ class Tilebbs extends StatelessWidget {
                 },
               ),
             ),
+            Positioned(
+              top: 5,
+              right: 10,
+              child: IconButton(
+                constraints:
+                    const BoxConstraints(maxHeight: 100, maxWidth: 100),
+                icon: const Icon(Icons.delete, size: 24),
+                color: const Color.fromARGB(255, 233, 228, 228),
+                // Plus icon
+                onPressed: () {
+                  print('delete button');
+                  // Add your action for this button
+                },
+              ),
+            ),
           ],
         ),
       ),
