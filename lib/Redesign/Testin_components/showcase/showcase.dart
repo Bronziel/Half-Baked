@@ -1,3 +1,4 @@
+import 'package:fb2/Redesign/Testin_components/building/building.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'comb_showcase.dart';
@@ -56,7 +57,7 @@ class ShowcasePage extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      CreateRecipeListCard(),
+                      CreateRecipeListCard2(),
                     ],
                   ),
                   Column(
