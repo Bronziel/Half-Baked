@@ -29,6 +29,7 @@ class _ReorderIngridientlistState extends State<ReorderIngridientlist> {
   @override
   Widget build(BuildContext context) {
     return ReorderableListView(
+      buildDefaultDragHandles: false,
       children: List.generate(_items.length, (index) {
         Item item = _items[index];
         return EditingTile(
@@ -36,6 +37,7 @@ class _ReorderIngridientlistState extends State<ReorderIngridientlist> {
           label: item.label,
           amount: item.amount,
           unit: item.unit,
+          index: index,
         );
       }),
       onReorder: (int oldIndex, int newIndex) {
@@ -64,14 +66,18 @@ class EditingTile extends StatelessWidget {
   final String label; // First parameter
   final String amount;
   final String unit;
+  final int index;
+
   // Third parameter
 
   // Update the constructor to accept three parameters
   const EditingTile({
     super.key,
+    // Initialize key
     required this.label,
     required this.amount,
     required this.unit,
+    required this.index, // Initialize index
   });
 
   @override
@@ -92,13 +98,16 @@ class EditingTile extends StatelessWidget {
             const SizedBox(
               width: 16,
             ),
-            IconButton(
-              onPressed: () {
-                print('menue clicked');
-              },
-              icon: const Icon(
-                Icons.menu,
-                color: Color.fromARGB(255, 233, 228, 228),
+            ReorderableDragStartListener(
+              index: index,
+              child: IconButton(
+                onPressed: () {
+                  print('menue clicked');
+                },
+                icon: const Icon(
+                  Icons.menu,
+                  color: Color.fromARGB(255, 233, 228, 228),
+                ),
               ),
             ),
             const SizedBox(width: 16),
