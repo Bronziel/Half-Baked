@@ -1,28 +1,7 @@
 import 'package:flutter/material.dart';
-import 'reorder2.dart';
 
-class B2 extends StatelessWidget {
-  const B2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Row(
-        children: [
-          CreateRecipeListCard(),
-          SizedBox(
-            width: 600,
-            child: ReorderIngridientlist(),
-          ),
-          CreateRecipeListCard2(),
-        ],
-      ),
-    );
-  }
-}
-
-class CreateRecipeListCard extends StatelessWidget {
-  const CreateRecipeListCard({
+class CreateRecipeListCard2 extends StatelessWidget {
+  const CreateRecipeListCard2({
     super.key,
   });
 
@@ -47,6 +26,55 @@ class CreateRecipeListCard extends StatelessWidget {
       ),
     );
   }
+}
+
+class ReorderIngridientlist extends StatefulWidget {
+  const ReorderIngridientlist({super.key});
+
+  @override
+  State<ReorderIngridientlist> createState() => _ReorderIngridientlistState();
+}
+
+class _ReorderIngridientlistState extends State<ReorderIngridientlist> {
+  final List<Item> _items = [
+    Item(label: 'Item 1', amount: '100', unit: 'kg'),
+    Item(label: 'Item 2', amount: '200', unit: 'g'),
+    // ... more items
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return ReorderableListView(
+      buildDefaultDragHandles: false,
+      children: List.generate(_items.length, (index) {
+        Item item = _items[index];
+        return Tilebbs(
+          key: ValueKey(item.label),
+          label: item.label,
+          amount: item.amount,
+          unit: item.unit,
+          index: index,
+        );
+      }),
+      onReorder: (int oldIndex, int newIndex) {
+        setState(() {
+          if (newIndex > oldIndex) {
+            newIndex -= 1;
+          }
+          final Item item = _items.removeAt(oldIndex);
+
+          _items.insert(newIndex, item);
+        });
+      },
+    );
+  }
+}
+
+class Item {
+  final String label;
+  final String amount;
+  final String unit;
+
+  Item({required this.label, required this.amount, required this.unit});
 }
 
 class CreateIngMainTile extends StatelessWidget {
@@ -80,57 +108,7 @@ class CreateIngMainTile extends StatelessWidget {
   }
 }
 
-//
-class ReorderIngridientlist extends StatefulWidget {
-  const ReorderIngridientlist({super.key});
-
-  @override
-  State<ReorderIngridientlist> createState() => _ReorderIngridientlistState();
-}
-
-class _ReorderIngridientlistState extends State<ReorderIngridientlist> {
-  final List<Item> _items = [
-    Item(label: 'Item 1', amount: '100', unit: 'kg'),
-    Item(label: 'Item 2', amount: '200', unit: 'g'),
-    // ... more items
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return ReorderableListView(
-      buildDefaultDragHandles: false,
-      children: List.generate(_items.length, (index) {
-        Item item = _items[index];
-        return EditingTile(
-          key: ValueKey(item.label),
-          label: item.label,
-          amount: item.amount,
-          unit: item.unit,
-          index: index,
-        );
-      }),
-      onReorder: (int oldIndex, int newIndex) {
-        setState(() {
-          if (newIndex > oldIndex) {
-            newIndex -= 1;
-          }
-          final Item item = _items.removeAt(oldIndex);
-
-          _items.insert(newIndex, item);
-        });
-      },
-    );
-  }
-}
-
-class Item {
-  final String label;
-  final String amount;
-  final String unit;
-
-  Item({required this.label, required this.amount, required this.unit});
-}
-
-class EditingTile extends StatelessWidget {
+class Tilebbs extends StatelessWidget {
   final String label; // First parameter
   final String amount;
   final String unit;
@@ -139,7 +117,7 @@ class EditingTile extends StatelessWidget {
   // Third parameter
 
   // Update the constructor to accept three parameters
-  const EditingTile({
+  const Tilebbs({
     super.key,
     // Initialize key
     required this.label,
@@ -161,42 +139,62 @@ class EditingTile extends StatelessWidget {
       width: 410,
       color: const Color(0xff161414),
       child: SizedBox(
-        child: Row(
+        child: Stack(
           children: [
-            const SizedBox(
-              width: 16,
-            ),
-            ReorderableDragStartListener(
-              index: index,
-              child: IconButton(
-                onPressed: () {
-                  print('menue clicked');
-                },
-                icon: const Icon(
-                  Icons.menu,
-                  color: Color.fromARGB(255, 233, 228, 228),
+            Positioned(
+              top: 5,
+              left: 5,
+              child: ReorderableDragStartListener(
+                index: index,
+                child: IconButton(
+                  onPressed: () {
+                    print('menue clicked');
+                  },
+                  icon: const Icon(
+                    Icons.menu,
+                    color: Color.fromARGB(255, 233, 228, 228),
+                  ),
                 ),
               ),
             ),
-            const SizedBox(width: 16),
-            Text(label, style: textStyle), // Use the label parameter
-            const Text(':', style: textStyle),
-            const SizedBox(width: 20),
-            Text(amount, style: textStyle), // Use the quantity parameter
-            const SizedBox(width: 3),
-            Text(unit, style: textStyle), // Use the unit parameter
-            const SizedBox(
-              width: 120,
+
+            Positioned(
+                top: 5,
+                left: 45,
+                child:
+                    Text(label, style: textStyle)), // Use the label parameter
+            const Positioned(
+              //make plus  insted
+              top: 5,
+              left: 120,
+              child: Text(':', style: textStyle),
             ),
-            IconButton(
-              constraints: const BoxConstraints(maxHeight: 100, maxWidth: 100),
-              icon: const Icon(Icons.edit, size: 24),
-              color: const Color.fromARGB(255, 233, 228, 228),
-              // Plus icon
-              onPressed: () {
-                print('Edit clicked');
-                // Add your action for this button
-              },
+
+            Positioned(
+                top: 5,
+                left: 160,
+                child: Text(amount,
+                    style: textStyle)), // Use the quantity parameter
+
+            Positioned(
+                top: 5,
+                left: 200,
+                child: Text(unit, style: textStyle)), // Use the unit parameter
+
+            Positioned(
+              top: 5,
+              left: 300,
+              child: IconButton(
+                constraints:
+                    const BoxConstraints(maxHeight: 100, maxWidth: 100),
+                icon: const Icon(Icons.edit, size: 24),
+                color: const Color.fromARGB(255, 233, 228, 228),
+                // Plus icon
+                onPressed: () {
+                  print('Edit clicked');
+                  // Add your action for this button
+                },
+              ),
             ),
           ],
         ),
