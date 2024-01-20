@@ -8,15 +8,15 @@ class CreateRecipeListCard2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 410,
-      height: 463,
+      width: 500,
+      height: 450,
       child: Card(
         color: const Color(0xffd9d9d9),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          child: Column(
+          child: const Column(
             children: [
-              const CreateIngMainTile(),
+              CreateIngMainTile(),
               Expanded(
                 child: ReorderIngridientlist(),
               ),
@@ -37,8 +37,8 @@ class ReorderIngridientlist extends StatefulWidget {
 
 class _ReorderIngridientlistState extends State<ReorderIngridientlist> {
   final List<Item> _items = [
-    Item(label: 'Item 1', amount: '100', unit: 'kg'),
-    Item(label: 'Item 2', amount: '200', unit: 'g'),
+    Item(label: 'maricha sås', amount: '1000', unit: 'ml'),
+    Item(label: 'Jordgubbssylt', amount: '2000', unit: 'tsk'),
     // ... more items
   ];
   @override
@@ -92,19 +92,43 @@ class CreateIngMainTile extends StatelessWidget {
 
     return Container(
       height: 50,
-      width: 410,
+      width: 500,
       color: const Color(0xFFD9D9D9),
-      child: Row(
+      child: const Stack(
         children: [
-          const SizedBox(width: 20),
-          Image.asset('images/new/icons/cart.png'),
-          const SizedBox(width: 82),
-          const Text("Ingridients", style: textStyle),
-          const SizedBox(width: 82),
-          Image.asset('images/new/icons/cart.png'),
+          Positioned(
+            left: 20,
+            top: 10,
+            child: carticon(),
+          ),
+          Positioned(
+            top: 10,
+            left: 0,
+            right: 0,
+            child: Align(
+              alignment: Alignment.center,
+              child: Text("Ingridients", style: textStyle),
+            ),
+          ),
+          Positioned(
+            top: 10,
+            right: 20,
+            child: carticon(),
+          ),
         ],
       ),
     );
+  }
+}
+
+class carticon extends StatelessWidget {
+  const carticon({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset('images/new/icons/cart.png');
   }
 }
 
@@ -136,7 +160,7 @@ class Tilebbs extends StatelessWidget {
 
     return Container(
       height: 50,
-      width: 410,
+      width: 500,
       color: const Color(0xff161414),
       child: SizedBox(
         child: Stack(
@@ -157,63 +181,69 @@ class Tilebbs extends StatelessWidget {
                 ),
               ),
             ),
-
             Positioned(
                 top: 5,
                 left: 45,
-                child:
-                    Text(label, style: textStyle)), // Use the label parameter
-            const Positioned(
-              //make plus  insted
-              top: 5,
-              left: 120,
-              child: Text(':', style: textStyle),
-            ),
-
+                child: Text('$label:',
+                    style: textStyle)), // Use the label parameter
             Positioned(
                 top: 5,
-                left: 160,
-                child: Text(amount,
+                left: 300,
+                child: Text('$amount $unit',
                     style: textStyle)), // Use the quantity parameter
 
-            Positioned(
-                top: 5,
-                left: 200,
-                child: Text(unit, style: textStyle)), // Use the unit parameter
+            // Use the unit parameter
 
-            Positioned(
+            const Positioned(
               top: 5,
-              left: 300,
-              child: IconButton(
-                constraints:
-                    const BoxConstraints(maxHeight: 100, maxWidth: 100),
-                icon: const Icon(Icons.edit, size: 24),
-                color: const Color.fromARGB(255, 233, 228, 228),
-                // Plus icon
-                onPressed: () {
-                  print('Edit clicked');
-                  // Add your action for this button
-                },
-              ),
-            ),
-            Positioned(
-              top: 5,
-              right: 10,
-              child: IconButton(
-                constraints:
-                    const BoxConstraints(maxHeight: 100, maxWidth: 100),
-                icon: const Icon(Icons.delete, size: 24),
-                color: const Color.fromARGB(255, 233, 228, 228),
-                // Plus icon
-                onPressed: () {
-                  print('delete button');
-                  // Add your action for this button
-                },
+              right: 5,
+              child: Row(
+                children: [Editcontainer(), Deletecontainer()],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class Deletecontainer extends StatelessWidget {
+  const Deletecontainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      constraints: const BoxConstraints(maxHeight: 100, maxWidth: 100),
+      icon: const Icon(Icons.delete, size: 24),
+      color: const Color.fromARGB(255, 233, 228, 228),
+      // Plus icon
+      onPressed: () {
+        print('delete button');
+        // Add your action for this button
+      },
+    );
+  }
+}
+
+class Editcontainer extends StatelessWidget {
+  const Editcontainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      constraints: const BoxConstraints(maxHeight: 100, maxWidth: 100),
+      icon: const Icon(Icons.edit, size: 24),
+      color: const Color.fromARGB(255, 233, 228, 228),
+      // Plus icon
+      onPressed: () {
+        print('Edit clicked');
+        // Add your action for this button
+      },
     );
   }
 }
