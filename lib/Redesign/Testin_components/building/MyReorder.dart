@@ -6,13 +6,79 @@ class B2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: SizedBox(
-        child: ReorderIngridientlist(),
+      body: Row(
+        children: [
+          CreateRecipeListCard(),
+          SizedBox(
+            width: 600,
+            child: ReorderIngridientlist(),
+          ),
+        ],
       ),
     );
   }
 }
 
+class CreateRecipeListCard extends StatelessWidget {
+  const CreateRecipeListCard({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 410,
+      height: 463,
+      child: Card(
+        color: const Color(0xffd9d9d9),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Column(
+            children: [
+              const CreateIngMainTile(),
+              Expanded(
+                child: ReorderIngridientlist(),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CreateIngMainTile extends StatelessWidget {
+  const CreateIngMainTile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    const textStyle = TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w700,
+      color: Color(0xFF000000), // Set your desired color here
+    );
+
+    return Container(
+      height: 50,
+      width: 410,
+      color: const Color(0xFFD9D9D9),
+      child: Row(
+        children: [
+          const SizedBox(width: 20),
+          Image.asset('images/new/icons/cart.png'),
+          const SizedBox(width: 82),
+          const Text("Ingridients", style: textStyle),
+          const SizedBox(width: 82),
+          Image.asset('images/new/icons/cart.png'),
+        ],
+      ),
+    );
+  }
+}
+
+//
 class ReorderIngridientlist extends StatefulWidget {
   const ReorderIngridientlist({super.key});
 
@@ -118,7 +184,7 @@ class EditingTile extends StatelessWidget {
             const SizedBox(width: 3),
             Text(unit, style: textStyle), // Use the unit parameter
             const SizedBox(
-              width: 130,
+              width: 120,
             ),
             IconButton(
               constraints: const BoxConstraints(maxHeight: 100, maxWidth: 100),
