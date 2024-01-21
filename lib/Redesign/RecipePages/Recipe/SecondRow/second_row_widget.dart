@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/sizedboxes.dart';
+import '../../../components/sizedboxes.dart';
 
 class SecondRowWidget extends StatelessWidget {
   const SecondRowWidget({

@@ -4,9 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'comb_showcase.dart';
 import '../built/myreorder.dart';
 import '../../CreateRecipes/CreateFirstRow/introductionholder/create_introduction_box.dart';
-import '../../RecipePages/Recipe/FirstRow/introduction_box.dart';
-import '../../RecipePages/Recipe/second_row_widget.dart';
-import '../../RecipePages/Recipe/FirstRow/image_boxes.dart';
+import '../../RecipePages/Recipe/FirstRow/introholder2/introduction_box.dart';
+import '../../RecipePages/Recipe/SecondRow/second_row_widget.dart';
+import '../../RecipePages/Recipe/FirstRow/imagholder2/image_boxes.dart';
 import '../../CreateRecipes/CreateFirstRow/imageholder/create_image_boxes.dart';
 
 class ShowcasePage extends StatelessWidget {
