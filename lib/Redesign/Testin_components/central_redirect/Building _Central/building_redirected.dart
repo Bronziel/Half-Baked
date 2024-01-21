@@ -14,10 +14,6 @@ class BuildingRedirect extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Reord(),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: BuildingActiveButton(),
               ),
             ],

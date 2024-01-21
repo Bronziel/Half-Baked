@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CreateRecipeListCard extends StatelessWidget {
-  const CreateRecipeListCard({
+class CreateRecipeListCard2 extends StatelessWidget {
+  const CreateRecipeListCard2({
     super.key,
   });
 
