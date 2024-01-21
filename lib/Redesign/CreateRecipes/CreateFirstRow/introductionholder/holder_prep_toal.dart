@@ -27,11 +27,7 @@ class CreateIcontilesBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-            border: Border.all(
-          color: const Color.fromARGB(255, 213, 6, 164),
-          width: 2,
-        )),
+        decoration: jajas(),
         child: const Row(
           children: [
             SizedBox(
@@ -56,5 +52,13 @@ class CreateIcontilesBox extends StatelessWidget {
             ),
           ],
         ));
+  }
+
+  BoxDecoration jajas() {
+    return BoxDecoration(
+        border: Border.all(
+      color: const Color.fromARGB(255, 213, 6, 164),
+      width: 2,
+    ));
   }
 }

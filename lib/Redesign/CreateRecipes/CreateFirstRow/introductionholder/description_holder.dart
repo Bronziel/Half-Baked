@@ -10,45 +10,60 @@ class Descriptionholder extends StatelessWidget {
     return Container(
       width: 410,
       height: 130,
-      decoration: BoxDecoration(
-          border: Border.all(
-        color: const Color(0xff234234),
-        width: 1,
-      )),
-      child: Row(children: [
-        const SizedBox(
-          width: 60,
-        ),
+      decoration: boxouter(),
+      child: Stack(children: [
         //actualbox with description in it
-        SizedBox(
-          width: 280,
-          height: 130,
-          child: Container(
-            decoration: BoxDecoration(
-                border: Border.all(
-              color: const Color.fromARGB(255, 213, 6, 164),
-              width: 2,
-            )),
-            child: Column(
-              children: [
-                const CreateDescription(createdescription: 'Add a description'),
-                const SizedBox(height: 8),
-                IconButton(
-                  color: const Color(0xFFCECCCC),
-                  icon: const Icon(Icons.add), // Plus icon
-                  onPressed: () {
-                    // Add your action for this button
-                  },
-                ),
-              ],
+        Positioned(
+          left: 60,
+          child: SizedBox(
+            width: 280,
+            height: 130,
+            child: Container(
+              decoration: DDecoration(),
+              child: const Column(
+                children: [
+                  CreateDescription(createdescription: 'Add a description'),
+                  SizedBox(height: 8),
+                  addbuttons(),
+                ],
+              ),
             ),
           ),
         ),
-
-        const SizedBox(
-          width: 60,
-        ),
       ]),
+    );
+  }
+
+  BoxDecoration boxouter() {
+    return BoxDecoration(
+        border: Border.all(
+      color: const Color(0xff234234),
+      width: 1,
+    ));
+  }
+
+  BoxDecoration DDecoration() {
+    return BoxDecoration(
+        border: Border.all(
+      color: const Color.fromARGB(255, 213, 6, 164),
+      width: 2,
+    ));
+  }
+}
+
+class addbuttons extends StatelessWidget {
+  const addbuttons({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      color: const Color(0xFFCECCCC),
+      icon: const Icon(Icons.add), // Plus icon
+      onPressed: () {
+        // Add your action for this button
+      },
     );
   }
 }
@@ -65,11 +80,15 @@ class CreateDescription extends StatelessWidget {
     return Text(
       createdescription,
       softWrap: true,
-      style: const TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
-        color: Color(0xFFFFFFff),
-      ),
+      style: descriptionstyle(),
+    );
+  }
+
+  TextStyle descriptionstyle() {
+    return const TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
+      color: Color(0xFFFFFFff),
     );
   }
 }
