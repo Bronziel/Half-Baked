@@ -1,6 +1,6 @@
 import 'package:fb2/Redesign/components/imagesclass.dart';
 import 'package:flutter/material.dart';
-import '../../components/components_redesign.dart';
+import '../../components/time_portion_tiles.dart';
 import '../../CreateRecipes/Popups/popup_boxes.dart';
 
 class RowOfIcons80 extends StatelessWidget {

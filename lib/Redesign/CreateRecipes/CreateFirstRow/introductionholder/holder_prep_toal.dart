@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../components/components_redesign.dart';
+import '../../../components/time_portion_tiles.dart';
 
 class PortionPrepTotalHolder extends StatelessWidget {
   const PortionPrepTotalHolder({
