@@ -1,3 +1,4 @@
+import 'package:fb2/Redesign/components/buttons.dart' show Addbuttoncontainer;
 import 'package:flutter/material.dart';
 
 class Titelholder extends StatelessWidget {
@@ -29,7 +30,7 @@ class Titelholder extends StatelessWidget {
                   SizedBox(
                     width: 10,
                   ),
-                  addss3(),
+                  Addbuttoncontainer(),
                 ],
               ),
             ),
@@ -54,23 +55,6 @@ class Titelholder extends StatelessWidget {
         color: const Color.fromARGB(255, 70, 115, 231),
         width: 1,
       ),
-    );
-  }
-}
-
-class addss3 extends StatelessWidget {
-  const addss3({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      color: const Color(0xFFCECCCC),
-      icon: const Icon(Icons.add), // Plus icon
-      onPressed: () {
-        // Add your action for this button
-      },
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'buttons.dart' show Addbuttoncontainer;
 
 //this is the widget that show prep and total time tile
 class TimeCard extends StatelessWidget {
@@ -82,11 +83,8 @@ class CreateTimeCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            IconButton(
-              icon: const Icon(Icons.add), // Plus icon
-              onPressed: () {
-                // Add your action for this button
-              },
+            const Addbuttoncontainer(
+              color: Color(0xFF000000),
             ),
             const SizedBox(width: 1),
             const Text(
@@ -178,12 +176,10 @@ class CreatePortionsizeCardWidget extends StatelessWidget {
             ),
             const SizedBox(width: 9),
             // Replace this Text widget with IconButton
-            IconButton(
-              icon: const Icon(Icons.add), // Plus icon
-              onPressed: () {
-                // Add your action for this button
-              },
+            const Addbuttoncontainer(
+              color: Color(0xFF000000),
             ),
+
             const SizedBox(width: 6),
             Image.asset('images/new/icons/man.png'),
           ],

@@ -1,0 +1,29 @@
+
+These all have a add button
+{
+add title  done
+add description done 
+add portionsize done
+add preptime done 
+add total time  done 
+add an ingridinet done
+}
+
+should be same font and fontSize
+{
+    C&s ingridinettile /ingridinentile
+    c&s ingtitle tile
+    C&s tot, prep, portion
+    c&s description
+}
+
+{
+    C&S add title
+    appbar
+}
+
+Color
+{
+    (title,description,ingridinentile,)
+    (steps,prep,total,portionsize, ingiriendts)
+}

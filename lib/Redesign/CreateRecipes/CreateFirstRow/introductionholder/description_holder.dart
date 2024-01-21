@@ -1,3 +1,4 @@
+import 'package:fb2/Redesign/components/buttons.dart' show Addbuttoncontainer;
 import 'package:flutter/material.dart';
 
 class Descriptionholder extends StatelessWidget {
@@ -24,7 +25,7 @@ class Descriptionholder extends StatelessWidget {
                 children: [
                   CreateDescription(createdescription: 'Add a description'),
                   SizedBox(height: 8),
-                  addbuttons(),
+                  Addbuttoncontainer(),
                 ],
               ),
             ),
@@ -48,23 +49,6 @@ class Descriptionholder extends StatelessWidget {
       color: const Color.fromARGB(255, 213, 6, 164),
       width: 2,
     ));
-  }
-}
-
-class addbuttons extends StatelessWidget {
-  const addbuttons({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      color: const Color(0xFFCECCCC),
-      icon: const Icon(Icons.add), // Plus icon
-      onPressed: () {
-        // Add your action for this button
-      },
-    );
   }
 }
 

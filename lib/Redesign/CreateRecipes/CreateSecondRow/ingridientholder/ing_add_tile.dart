@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../components/buttons.dart' show Addbuttoncontainer;
 
 class Addinngtile extends StatelessWidget {
   const Addinngtile({super.key});
@@ -22,14 +23,14 @@ class Addinngtile extends StatelessWidget {
             width: 2,
           ),
         ),
-        child: Stack(
+        child: const Stack(
           children: [
             Positioned(
               top: 5,
               left: 10,
               child: Text('Add an Ingridient', style: textStyle),
             ),
-            const Positioned(
+            Positioned(
               top: 5,
               right: 10,
               child: Addbuttoncontainer(),
@@ -37,25 +38,6 @@ class Addinngtile extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class Addbuttoncontainer extends StatelessWidget {
-  const Addbuttoncontainer({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      constraints: const BoxConstraints(maxHeight: 100, maxWidth: 100),
-      icon: const Icon(Icons.add, size: 24),
-      color: const Color.fromARGB(255, 233, 228, 228),
-      // Plus icon
-      onPressed: () {
-        // Add your action for this button
-      },
     );
   }
 }
