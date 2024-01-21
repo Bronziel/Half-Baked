@@ -9,65 +9,86 @@ class IntroductionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       height: 400,
       width: 410,
       child: Card(
-        color: const Color(0xFF161414),
+        color: Color(0xFF161414),
         child: Column(
           children: [
-            Container(
-              width: 410,
-              height: 75,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: const Color(0xff234234),
-                  width: 1,
-                ),
-              ),
-              child: const Stack(
-                children: <Widget>[
-                  Positioned(
-                    top: 11, // Your specified distance from the top
-                    left: 0,
-                    right: 0,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Title(
-                        title: 'KebabRulle',
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: 410,
-              height: 130,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                color: const Color(0xff234234),
-                width: 1,
-              )),
-              child: const Row(children: [
-                SizedBox(
-                  width: 60,
-                ),
-                SizedBox(
-                  width: 280,
-                  height: 130,
-                  child: Description(
-                      description:
-                          'En god Kebab rulle som aldrig gör en Besviken.'),
-                ),
-                SizedBox(
-                  width: 60,
-                ),
-              ]),
-            ),
-            const IcontilesBox(),
+            Titleholder(),
+            Descirptionholder(),
+            IcontilesBox(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Descirptionholder extends StatelessWidget {
+  const Descirptionholder({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 410,
+      height: 130,
+      decoration: BoxDecoration(
+          border: Border.all(
+        color: const Color(0xff234234),
+        width: 1,
+      )),
+      child: const Row(children: [
+        SizedBox(
+          width: 60,
+        ),
+        SizedBox(
+          width: 280,
+          height: 130,
+          child: Description(
+              description: 'En god Kebab rulle som aldrig gör en Besviken.'),
+        ),
+        SizedBox(
+          width: 60,
+        ),
+      ]),
+    );
+  }
+}
+
+class Titleholder extends StatelessWidget {
+  const Titleholder({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 410,
+      height: 75,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: const Color(0xff234234),
+          width: 1,
+        ),
+      ),
+      child: const Stack(
+        children: <Widget>[
+          Positioned(
+            top: 11, // Your specified distance from the top
+            left: 0,
+            right: 0,
+            child: Align(
+              alignment: Alignment.center,
+              child: Title(
+                title: 'KebabRulle',
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
