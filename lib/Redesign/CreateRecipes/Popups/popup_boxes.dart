@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'popup_components.dart';
-import 'style.dart';
-import 'style_objects.dart';
+import '../style.dart';
+import '../style_objects.dart';
 import 'textfields.dart';
 
 //Detta är ingridnetbox save

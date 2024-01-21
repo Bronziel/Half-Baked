@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'style.dart';
+import '../style.dart';
 import 'package:flutter/services.dart';
-import '../Testin_components/built/mydropdown.dart';
+import '../../Testin_components/built/mydropdown.dart';
 
 //litet textfield använd av title stepstitle o andra en rads fält
 class Smalltextfield extends StatelessWidget {
