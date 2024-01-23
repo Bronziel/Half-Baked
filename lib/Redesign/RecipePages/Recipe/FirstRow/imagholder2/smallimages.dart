@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../components/sizedboxes.dart';
+import '../../../../components/sharingimgholder.dart';
 
 class Smallboxesholder extends StatelessWidget {
   const Smallboxesholder({
@@ -33,21 +34,21 @@ class SmallImgBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70,
-      width: 70,
+      height: smallimgheight,
+      width: smallimgwidth,
       child: Card(
         shape:
             smallImageShape(), // Assuming this is a function returning a ShapeBorder
-        child: ClipsmallImg(imagePath: imagePath),
+        child: ClipImg(imagePath: imagePath),
       ),
     );
   }
 }
 
-class ClipsmallImg extends StatelessWidget {
+class ClipImg extends StatelessWidget {
   final String imagePath; // Add an imagePath property
 
-  const ClipsmallImg({
+  const ClipImg({
     super.key,
     required this.imagePath, // Make imagePath required
   });
@@ -62,11 +63,4 @@ class ClipsmallImg extends StatelessWidget {
       ),
     );
   }
-}
-
-BorderRadius borderradius() => BorderRadius.circular(10);
-RoundedRectangleBorder smallImageShape() {
-  return RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(10), // Define the border radius here
-  );
 }

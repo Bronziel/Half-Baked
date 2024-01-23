@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'smallimages.dart';
+import '../../../../components/sharingimgholder.dart';
 
 class MaingImgHolder extends StatelessWidget {
   final String imagePath;
@@ -11,11 +12,11 @@ class MaingImgHolder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 400,
-      width: 1085,
+      height: heightimage,
+      width: widthbigimage,
       child: Card(
         shape: smallImageShape(),
-        child: ClipsmallImg(imagePath: imagePath),
+        child: ClipImg(imagePath: imagePath),
         // Add other properties of Card if needed
       ),
     );

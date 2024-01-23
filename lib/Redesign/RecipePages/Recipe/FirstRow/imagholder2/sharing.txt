@@ -1,3 +1,9 @@
 they share
 shape method. 
 clipreact
+both use clipimg class
+
+both have height and widht method to use for create img.
+
+
+create sharing file for images
