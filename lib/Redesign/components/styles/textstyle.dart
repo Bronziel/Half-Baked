@@ -13,6 +13,7 @@
 //showcase text
 
 import 'package:flutter/material.dart';
+import 'colors.dart';
 
 //recipe page textstyle
 //text colorblack color: Color(0xFF161414),
