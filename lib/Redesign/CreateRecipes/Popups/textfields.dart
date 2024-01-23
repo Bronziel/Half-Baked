@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../style.dart';
+import '../../components/styles/style.dart';
 import 'package:flutter/services.dart';
 import '../../Testin_components/built/mydropdown.dart';
 

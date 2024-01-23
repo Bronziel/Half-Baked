@@ -2,6 +2,7 @@ they share
 shape method. 
 clipreact
 both use clipimg class
+sizedbox for spacing.
 
 both have height and widht method to use for create img.
 

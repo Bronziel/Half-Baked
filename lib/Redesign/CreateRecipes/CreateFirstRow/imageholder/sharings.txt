@@ -1,0 +1,5 @@
+2 add buttons
+1 text style fontsize 30
+
+same size as img standard. 
+sizedbox for spacing
