@@ -77,9 +77,11 @@ class Recipetextview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          'Title',
-          style: StyleTextRecipe.titelrecipe(),
+        SizedBox(
+          child: Text(
+            'Title',
+            style: StyleTextRecipe.titelrecipe(),
+          ),
         ),
         Text(
           'Description. en smaskig gebarulle',
@@ -93,9 +95,13 @@ class Recipetextview extends StatelessWidget {
           'titel ing Ingriediants',
           style: StyleTextRecipe.ingboxtitel(),
         ),
-        Text(
-          'ing Kebarulle 100g',
-          style: StyleTextRecipe.ingbox(),
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: const Color(0xff161414),
+          child: Text(
+            'ing Kebarulle 100g',
+            style: StyleTextRecipe.ingbox(),
+          ),
         ),
         Text(
           '1',

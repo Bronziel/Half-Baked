@@ -15,53 +15,84 @@
 import 'package:flutter/material.dart';
 
 //recipe page textstyle
+//text colorblack color: Color(0xFF161414),
+//text colorwhite color: Color(0xFFFFFFFF),
+
+class Colortextstyle {
+  static Color white() {
+    return const Color(0xFFFFFFFF);
+  }
+
+  static Color black() {
+    return const Color(0xFF161414);
+  }
+}
+
+class Fontsize {
+  static const double bigfont = 40;
+  static const double avgfont = 24;
+  static const double popfont = 20;
+}
+
+class FontFamily {
+  static const String bigTitle = 'Pacifico';
+  static const String popTitle = 'Montserrat Semibold'; //FontWeight.w800,
+  static const String poptext = 'inter';
+}
+
 class StyleTextRecipe {
   static TextStyle titelrecipe() {
-    return const TextStyle(
-      fontFamily: 'Pacifico',
-      fontSize: 40,
+    return TextStyle(
+      fontFamily: FontFamily.bigTitle,
+      fontSize: Fontsize.bigfont,
+      color: Colortextstyle.white(),
     );
   }
 
   static TextStyle descriptionrecipe() {
-    return const TextStyle(
+    return TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 24,
+      fontSize: Fontsize.avgfont,
+      color: Colortextstyle.white(),
     );
   }
 
   static TextStyle porttotalrecipe() {
-    return const TextStyle(
-      fontWeight: FontWeight.w700,
-      fontSize: 24,
+    return TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: Fontsize.avgfont,
+      color: Colortextstyle.black(),
     );
   }
 
   static TextStyle ingboxtitel() {
-    return const TextStyle(
+    return TextStyle(
       fontWeight: FontWeight.w700,
-      fontSize: 24,
+      fontSize: Fontsize.avgfont,
+      color: Colortextstyle.black(),
     );
   }
 
   static TextStyle ingbox() {
-    return const TextStyle(
+    return TextStyle(
       fontWeight: FontWeight.w700,
-      fontSize: 24,
+      fontSize: Fontsize.avgfont,
+      color: Colortextstyle.white(),
     );
   }
 
   static TextStyle stepsnumber() {
-    return const TextStyle(
-      fontFamily: 'Pacifico',
-      fontSize: 40,
+    return TextStyle(
+      fontFamily: FontFamily.bigTitle,
+      fontSize: Fontsize.bigfont,
+      color: Colortextstyle.black(),
     );
   }
 
   static TextStyle stepstext() {
-    return const TextStyle(
-      fontFamily: '',
-      fontSize: 24,
+    return TextStyle(
+      fontSize: Fontsize.avgfont,
+      color: Colortextstyle.black(),
     );
   }
 }
@@ -70,35 +101,38 @@ class StyleTextRecipe {
 class TextPopStyle {
 //titel
   static TextStyle poptitle() {
-    return const TextStyle(
-      fontFamily: 'Montserrat Semibold',
+    return TextStyle(
+      fontFamily: FontFamily.popTitle,
       fontWeight: FontWeight.w800,
-      fontSize: 20,
+      fontSize: Fontsize.popfont,
+      color: Colortextstyle.black(),
     );
   }
 
 //label pop
   static TextStyle labelstylepop() {
-    return const TextStyle(
-      fontFamily: 'inter',
-      fontSize: 20,
-      color: Color(0xFF161414),
+    return TextStyle(
+      fontFamily: FontFamily.poptext,
+      fontSize: Fontsize.popfont,
+      color: Colortextstyle.black(),
     );
   }
 
 //texten som skrivs
   static TextStyle poptextfield() {
-    return const TextStyle(
-      fontFamily: 'inter',
-      fontSize: 20,
+    return TextStyle(
+      fontFamily: FontFamily.poptext,
+      fontSize: Fontsize.popfont,
+      color: Colortextstyle.black(),
     );
   }
 
 //text som hintar vad som kan skrivas som ett exmplet
   static TextStyle pophinttext() {
-    return const TextStyle(
-      fontFamily: 'inter',
-      fontSize: 20,
+    return TextStyle(
+      fontFamily: FontFamily.poptext,
+      fontSize: Fontsize.popfont,
+      color: Colortextstyle.black(),
     );
   }
 }
@@ -106,3 +140,10 @@ class TextPopStyle {
 //popuptextfields use 20 inter.
 //popuptitle use monserrat semibodl 20
 //hint text textfield inter 20,
+
+//alla dom icons med logo i
+class Iconstext {
+  static TextStyle icontextview() {
+    return const TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700);
+  }
+}
