@@ -14,6 +14,7 @@
 
 import 'package:flutter/material.dart';
 
+//recipe page textstyle
 class StyleTextRecipe {
   static TextStyle titelrecipe() {
     return const TextStyle(

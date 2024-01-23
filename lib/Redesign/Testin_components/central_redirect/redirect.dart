@@ -59,6 +59,10 @@ class ButtonColumn extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: Styleshowcasepageredirect(),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
           child: BuildingButton(),
         ),
         Padding(
