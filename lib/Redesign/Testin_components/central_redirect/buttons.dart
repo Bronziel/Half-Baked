@@ -52,7 +52,7 @@ class Styleshowcasepageredirect extends StatelessWidget {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const styleshowcasepage()),
+          MaterialPageRoute(builder: (context) => const Styleshowcasepage()),
         );
       },
       style: ElevatedButton.styleFrom(

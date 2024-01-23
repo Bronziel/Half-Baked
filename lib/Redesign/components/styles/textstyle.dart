@@ -68,6 +68,7 @@ class StyleTextRecipe {
 
 //popupboxes
 class TextPopStyle {
+//titel
   static TextStyle poptitle() {
     return const TextStyle(
       fontFamily: 'Montserrat Semibold',
@@ -75,6 +76,16 @@ class TextPopStyle {
     );
   }
 
+//label pop
+  static TextStyle labelstylepop() {
+    return const TextStyle(
+      fontFamily: 'inter',
+      fontSize: 20,
+      color: Color(0xFF161414),
+    );
+  }
+
+//texten som skrivs
   static TextStyle poptextfield() {
     return const TextStyle(
       fontFamily: 'inter',
@@ -82,6 +93,7 @@ class TextPopStyle {
     );
   }
 
+//text som hintar vad som kan skrivas som ett exmplet
   static TextStyle pophinttext() {
     return const TextStyle(
       fontFamily: 'inter',
@@ -89,7 +101,6 @@ class TextPopStyle {
     );
   }
 }
-
 
 //popuptextfields use 20 inter.
 //popuptitle use monserrat semibodl 20
