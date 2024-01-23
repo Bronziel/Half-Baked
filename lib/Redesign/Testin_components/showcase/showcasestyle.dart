@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../components/styles/textstyle.dart';
+import '../../components/styles/colors.dart';
 
 class Styleshowcasepage extends StatelessWidget {
   const Styleshowcasepage({super.key});
@@ -77,23 +78,37 @@ class Recipetextview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        Container(
+          color: Colorst.blacks(),
+          padding: const EdgeInsets.all(8),
           child: Text(
             'Title',
             style: StyleTextRecipe.titelrecipe(),
           ),
         ),
-        Text(
-          'Description. en smaskig gebarulle',
-          style: StyleTextRecipe.descriptionrecipe(),
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colorst.blacks(),
+          child: Text(
+            'Description. en smaskig gebarulle',
+            style: StyleTextRecipe.descriptionrecipe(),
+          ),
         ),
-        Text(
-          'Total/prep time and portionsize prep time 10 mins',
-          style: StyleTextRecipe.porttotalrecipe(),
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colorst.cardcolorgrey(),
+          child: Text(
+            'Total/prep time and portionsize prep time 10 mins',
+            style: StyleTextRecipe.porttotalrecipe(),
+          ),
         ),
-        Text(
-          'titel ing Ingriediants',
-          style: StyleTextRecipe.ingboxtitel(),
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colorst.cardcolorgrey(),
+          child: Text(
+            'titel ing Ingriediants',
+            style: StyleTextRecipe.ingboxtitel(),
+          ),
         ),
         Container(
           padding: const EdgeInsets.all(8),
@@ -103,13 +118,21 @@ class Recipetextview extends StatelessWidget {
             style: StyleTextRecipe.ingbox(),
           ),
         ),
-        Text(
-          '1',
-          style: StyleTextRecipe.stepsnumber(),
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colorst.cardcolorgrey(),
+          child: Text(
+            '1',
+            style: StyleTextRecipe.stepsnumber(),
+          ),
         ),
-        Text(
-          'Steps text: kasta in kycklingne i ugnen.',
-          style: StyleTextRecipe.stepstext(),
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colorst.cardcolorgrey(),
+          child: Text(
+            'Steps text: kasta in kycklingne i ugnen.',
+            style: StyleTextRecipe.stepstext(),
+          ),
         ),
       ],
     );
