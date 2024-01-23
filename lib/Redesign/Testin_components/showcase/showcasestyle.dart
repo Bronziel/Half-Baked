@@ -32,14 +32,14 @@ class Textviews extends StatelessWidget {
         SizedBox(
           width: 50,
         ),
-        poptextview(),
+        Poptextview(),
       ],
     );
   }
 }
 
-class poptextview extends StatelessWidget {
-  const poptextview({
+class Poptextview extends StatelessWidget {
+  const Poptextview({
     super.key,
   });
 
