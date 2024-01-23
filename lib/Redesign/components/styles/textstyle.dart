@@ -60,7 +60,7 @@ class StyleTextRecipe {
 
   static TextStyle stepstext() {
     return const TextStyle(
-      fontFamily: 'Paprika',
+      fontFamily: '',
       fontSize: 24,
     );
   }
@@ -72,6 +72,7 @@ class TextPopStyle {
   static TextStyle poptitle() {
     return const TextStyle(
       fontFamily: 'Montserrat Semibold',
+      fontWeight: FontWeight.w800,
       fontSize: 20,
     );
   }
