@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'title_holder.dart';
 import 'holder_prep_toal.dart';
 import '../../../../Redesign/components/currents/introductionholder/descriptionshared.dart';
+import '../../../../Redesign/components/currents/sharedtitle.dart';
 
 class CreateIntroductionWidget extends StatelessWidget {
   const CreateIntroductionWidget({
@@ -18,7 +18,7 @@ class CreateIntroductionWidget extends StatelessWidget {
         color: Color(0xFF161414),
         child: Column(
           children: [
-            Titelholder(),
+            Titleholder(showtitle: false),
             //description big box
             Descirptionholder(showObject1: false),
             SizedBox(
