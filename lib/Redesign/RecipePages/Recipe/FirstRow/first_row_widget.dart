@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../components/sizedboxes.dart';
+import '../../../components/spacing/sizedboxes.dart';
 import 'introholder2/introduction_box.dart';
 import 'imagholder2/image_boxes.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../components/time_portion_tiles.dart';
-import '../../../../components/imagesclass.dart';
+import '../../../../components/tiles/time_portion_tiles.dart';
+import '../../../../components/smallicons.dart';
 
 class IntroductionWidget extends StatelessWidget {
   const IntroductionWidget({

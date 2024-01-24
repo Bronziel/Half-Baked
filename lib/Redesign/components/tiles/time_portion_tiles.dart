@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'buttons.dart' show Addbuttoncontainer;
+import '../currents/buttons.dart' show Addbuttoncontainer;
 
 //this is the widget that show prep and total time tile
 class TimeCard extends StatelessWidget {

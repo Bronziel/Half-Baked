@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../components/sizedboxes.dart';
+import '../components/spacing/sizedboxes.dart';
 import 'CreateFirstRow/create_first_row.dart';
 import 'CreateSecondRow/create_second_row.dart';
 
