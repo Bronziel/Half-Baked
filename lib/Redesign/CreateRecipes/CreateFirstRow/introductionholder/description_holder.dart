@@ -13,22 +13,19 @@ class Descriptionholder extends StatelessWidget {
       width: 410,
       height: 130,
       decoration: boxouter(),
-      child: Stack(children: [
+      child: const Stack(children: [
         //actualbox with description in it
         Positioned(
           left: 60,
           child: SizedBox(
             width: 280,
             height: 130,
-            child: Container(
-              decoration: DDecoration(),
-              child: const Column(
-                children: [
-                  CreateDescription(createdescription: 'Add a description'),
-                  SizedBox(height: 8),
-                  Addbuttoncontainer(),
-                ],
-              ),
+            child: Column(
+              children: [
+                CreateDescription(createdescription: 'Add a description'),
+                SizedBox(height: 8),
+                Addbuttoncontainer(),
+              ],
             ),
           ),
         ),
