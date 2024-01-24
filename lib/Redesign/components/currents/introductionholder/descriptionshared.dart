@@ -42,12 +42,12 @@ class Descirptionholder extends StatelessWidget {
   }
 
   Widget object2() {
-    return const descriptionadd();
+    return const Descriptionadd();
   }
 }
 
-class descriptionadd extends StatelessWidget {
-  const descriptionadd({
+class Descriptionadd extends StatelessWidget {
+  const Descriptionadd({
     super.key,
   });
 

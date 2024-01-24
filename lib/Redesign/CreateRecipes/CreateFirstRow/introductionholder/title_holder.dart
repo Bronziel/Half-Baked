@@ -14,39 +14,7 @@ class Titelholder extends StatelessWidget {
       height: 75,
       decoration: jajsjs2(),
       //title row
-      child: Row(
-        children: [
-          const SizedBox(
-            width: 60,
-          ),
-          SizedBox(
-            width: 280,
-            child: Container(
-              decoration: sdasdasd(),
-              child: const Row(
-                children: [
-                  CreateTitle(
-                    createtitle: 'Add title',
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Addbuttoncontainer(),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  BoxDecoration sdasdasd() {
-    return BoxDecoration(
-      border: Border.all(
-        color: const Color.fromARGB(255, 213, 6, 164),
-        width: 2,
-      ),
+      child: addstitel(),
     );
   }
 
@@ -58,6 +26,49 @@ class Titelholder extends StatelessWidget {
       ),
     );
   }
+}
+
+class addstitel extends StatelessWidget {
+  const addstitel({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const SizedBox(
+          width: 60,
+        ),
+        SizedBox(
+          width: 280,
+          child: Container(
+            decoration: sdasdasd(),
+            child: const Row(
+              children: [
+                CreateTitle(
+                  createtitle: 'Add title',
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Addbuttoncontainer(),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+BoxDecoration sdasdasd() {
+  return BoxDecoration(
+    border: Border.all(
+      color: const Color.fromARGB(255, 213, 6, 164),
+      width: 2,
+    ),
+  );
 }
 
 class CreateTitle extends StatelessWidget {

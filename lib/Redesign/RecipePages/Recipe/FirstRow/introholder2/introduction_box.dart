@@ -18,7 +18,7 @@ class IntroductionWidget extends StatelessWidget {
         color: Color(0xFF161414),
         child: Column(
           children: [
-            Titleholder(),
+            Titleholder(showtitle: true),
             Descirptionholder(showObject1: true),
             IcontilesBox(),
           ],
