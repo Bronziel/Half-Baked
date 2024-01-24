@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../components/spacing/sizedboxes.dart';
-import '../../../../components/currents/sharingimgholder.dart';
+import '../../../../components/currents/imgholders/sharingimgholder.dart';
 
 class Smallboxesholder extends StatelessWidget {
   const Smallboxesholder({

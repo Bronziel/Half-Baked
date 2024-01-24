@@ -1,0 +1,2 @@
+height widht of main card color
+make both stack

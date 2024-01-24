@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../components/tiles/time_portion_tiles.dart';
 import '../../../../components/smallicons.dart';
+import '../../../../components/currents/introductionholder/descriptionshared.dart';
 
 class IntroductionWidget extends StatelessWidget {
   const IntroductionWidget({
@@ -36,23 +37,16 @@ class Descirptionholder extends StatelessWidget {
     return Container(
       width: 410,
       height: 130,
-      decoration: BoxDecoration(
-          border: Border.all(
-        color: const Color(0xff234234),
-        width: 1,
-      )),
-      child: const Row(children: [
-        SizedBox(
-          width: 60,
-        ),
-        SizedBox(
-          width: 280,
-          height: 130,
-          child: Description(
-              description: 'En god Kebab rulle som aldrig gör en Besviken.'),
-        ),
-        SizedBox(
-          width: 60,
+      decoration: boxouter(),
+      child: const Stack(children: [
+        Positioned(
+          left: 60,
+          child: SizedBox(
+            width: 280,
+            height: 130,
+            child: Description(
+                description: 'En god Kebab rulle som aldrig gör en Besviken.'),
+          ),
         ),
       ]),
     );
