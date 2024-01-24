@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'title_holder.dart';
 import 'holder_prep_toal.dart';
-import 'description_holder.dart';
+import '../../../../Redesign/components/currents/introductionholder/descriptionshared.dart';
 
 class CreateIntroductionWidget extends StatelessWidget {
   const CreateIntroductionWidget({
@@ -20,7 +20,7 @@ class CreateIntroductionWidget extends StatelessWidget {
           children: [
             Titelholder(),
             //description big box
-            Descriptionholder(),
+            Descirptionholder(showObject1: false),
             SizedBox(
               height: 10,
             ),

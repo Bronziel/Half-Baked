@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../components/tiles/time_portion_tiles.dart';
 import '../../../../components/smallicons.dart';
 import '../../../../components/currents/introductionholder/descriptionshared.dart';
+import 'package:fb2/Redesign/components/currents/buttons.dart';
 
 class IntroductionWidget extends StatelessWidget {
   const IntroductionWidget({
@@ -18,37 +19,11 @@ class IntroductionWidget extends StatelessWidget {
         child: Column(
           children: [
             Titleholder(),
-            Descirptionholder(),
+            Descirptionholder(showObject1: true),
             IcontilesBox(),
           ],
         ),
       ),
-    );
-  }
-}
-
-class Descirptionholder extends StatelessWidget {
-  const Descirptionholder({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 410,
-      height: 130,
-      decoration: boxouter(),
-      child: const Stack(children: [
-        Positioned(
-          left: 60,
-          child: SizedBox(
-            width: 280,
-            height: 130,
-            child: Description(
-                description: 'En god Kebab rulle som aldrig gör en Besviken.'),
-          ),
-        ),
-      ]),
     );
   }
 }
@@ -83,27 +58,6 @@ class Titleholder extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class Description extends StatelessWidget {
-  final String description;
-  const Description({
-    super.key,
-    this.description = '',
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      description,
-      softWrap: true,
-      style: const TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
-        color: Color(0xFFFFFFff),
       ),
     );
   }
