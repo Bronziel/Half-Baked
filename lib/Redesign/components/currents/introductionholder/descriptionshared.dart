@@ -10,14 +10,6 @@ BoxDecoration boxouter() {
   ));
 }
 
-BoxDecoration DDecoration() {
-  return BoxDecoration(
-      border: Border.all(
-    color: const Color.fromARGB(255, 213, 6, 164),
-    width: 2,
-  ));
-}
-
 class Descirptionholder extends StatelessWidget {
   final bool showObject1;
 
@@ -61,7 +53,7 @@ class descriptionadd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
         CreateDescription(createdescription: 'Add a description'),
         SizedBox(height: 8),
