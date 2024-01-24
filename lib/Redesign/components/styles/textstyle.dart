@@ -19,7 +19,7 @@ import 'colors.dart';
 //text colorblack color: Color(0xFF161414),
 //text colorwhite color: Color(0xFFFFFFFF),
 
-class Colortextstyle {
+class PaintText {
   static Color white() {
     return const Color(0xFFFFFFFF);
   }
@@ -46,7 +46,7 @@ class StyleTextRecipe {
     return TextStyle(
       fontFamily: FontFamily.bigTitle,
       fontSize: Fontsize.bigfont,
-      color: Colortextstyle.white(),
+      color: PaintText.white(),
     );
   }
 
@@ -54,7 +54,7 @@ class StyleTextRecipe {
     return TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: Fontsize.avgfont,
-      color: Colortextstyle.white(),
+      color: PaintText.white(),
     );
   }
 
@@ -62,7 +62,7 @@ class StyleTextRecipe {
     return TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: Fontsize.avgfont,
-      color: Colortextstyle.black(),
+      color: PaintText.black(),
     );
   }
 
@@ -70,7 +70,7 @@ class StyleTextRecipe {
     return TextStyle(
       fontWeight: FontWeight.w700,
       fontSize: Fontsize.avgfont,
-      color: Colortextstyle.black(),
+      color: PaintText.black(),
     );
   }
 
@@ -78,7 +78,7 @@ class StyleTextRecipe {
     return TextStyle(
       fontWeight: FontWeight.w700,
       fontSize: Fontsize.avgfont,
-      color: Colortextstyle.white(),
+      color: PaintText.white(),
     );
   }
 
@@ -86,14 +86,14 @@ class StyleTextRecipe {
     return TextStyle(
       fontFamily: FontFamily.bigTitle,
       fontSize: Fontsize.bigfont,
-      color: Colortextstyle.black(),
+      color: PaintText.black(),
     );
   }
 
   static TextStyle stepstext() {
     return TextStyle(
       fontSize: Fontsize.avgfont,
-      color: Colortextstyle.black(),
+      color: PaintText.black(),
     );
   }
 }
@@ -106,7 +106,7 @@ class TextPopStyle {
       fontFamily: FontFamily.popTitle,
       fontWeight: FontWeight.w800,
       fontSize: Fontsize.popfont,
-      color: Colortextstyle.black(),
+      color: PaintText.black(),
     );
   }
 
@@ -115,7 +115,7 @@ class TextPopStyle {
     return TextStyle(
       fontFamily: FontFamily.poptext,
       fontSize: Fontsize.popfont,
-      color: Colortextstyle.black(),
+      color: PaintText.black(),
     );
   }
 
@@ -124,7 +124,7 @@ class TextPopStyle {
     return TextStyle(
       fontFamily: FontFamily.poptext,
       fontSize: Fontsize.popfont,
-      color: Colortextstyle.black(),
+      color: PaintText.black(),
     );
   }
 
@@ -133,7 +133,7 @@ class TextPopStyle {
     return TextStyle(
       fontFamily: FontFamily.poptext,
       fontSize: Fontsize.popfont,
-      color: Colortextstyle.black(),
+      color: PaintText.black(),
     );
   }
 }
