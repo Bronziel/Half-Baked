@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../components/tiles/time_portion_tiles.dart';
 import '../../../components/currents/buttons.dart';
 import '../../../components/currents/cards/fixedportionsize.dart';
+import '../../../components/currents/cards/fixedtimecard.dart';
 
 class PortionPrepTotalHolder extends StatelessWidget {
   const PortionPrepTotalHolder({
@@ -51,14 +51,23 @@ class addcardcolumn extends StatelessWidget {
           showdisplayport: false,
           portion: '15',
         ),
-        CreateTimeCard(
-          title: "Prep Time:",
+        SizedBox(
+          height: 5,
+        ),
+        TimeCard(
+          showdisplaytime: false,
+          titleadd: "Prep Time:",
+          title: "",
+          time: "",
         ),
         SizedBox(
           height: 5,
         ),
-        CreateTimeCard(
-          title: "Total Time:",
+        TimeCard(
+          showdisplaytime: false,
+          titleadd: "Total Time:",
+          title: "",
+          time: "",
         ),
       ],
     );

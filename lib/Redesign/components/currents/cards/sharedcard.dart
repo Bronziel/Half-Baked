@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../smallicons.dart';
-import '../../tiles/time_portion_tiles.dart';
 import '../buttons.dart';
 import 'fixedportionsize.dart';
+import 'fixedtimecard.dart';
 
 //alla 5 objek ska kunnas byta
 class IcontilesBox extends StatelessWidget {
@@ -48,6 +48,8 @@ class Cardcolumns extends StatelessWidget {
           height: 5,
         ),
         TimeCard(
+          showdisplaytime: true,
+          titleadd: '',
           title: "Prep Time:",
           time: "300",
         ),
@@ -55,6 +57,8 @@ class Cardcolumns extends StatelessWidget {
           height: 5,
         ),
         TimeCard(
+          showdisplaytime: true,
+          titleadd: '',
           title: "Total Time:",
           time: "450",
         ),
@@ -63,6 +67,7 @@ class Cardcolumns extends StatelessWidget {
   }
 }
 
+///need diffrnet logic i tihnk
 //create recipe
 class addcardcolumn extends StatelessWidget {
   const addcardcolumn({
@@ -80,14 +85,20 @@ class addcardcolumn extends StatelessWidget {
         SizedBox(
           height: 5,
         ),
-        CreateTimeCard(
-          title: "Prep Time:",
+        TimeCard(
+          showdisplaytime: false,
+          titleadd: "Prep Time:",
+          title: "",
+          time: "",
         ),
         SizedBox(
           height: 5,
         ),
-        CreateTimeCard(
-          title: "Total Time:",
+        TimeCard(
+          showdisplaytime: false,
+          titleadd: "Total Time:",
+          title: "",
+          time: "",
         ),
       ],
     );
