@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../components/tiles/time_portion_tiles.dart';
 import '../../../components/currents/buttons.dart';
+import '../../../components/currents/cards/fixedportionsize.dart';
 
 class PortionPrepTotalHolder extends StatelessWidget {
   const PortionPrepTotalHolder({
@@ -25,16 +26,15 @@ class CreateIcontilesBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: jajas(),
         child: const Row(
-          children: [
-            SizedBox(
-              width: 5,
-            ),
-            addcardcolumn(),
-            addiconcard(),
-          ],
-        ));
+      children: [
+        SizedBox(
+          width: 5,
+        ),
+        addcardcolumn(),
+        addiconcard(),
+      ],
+    ));
   }
 }
 
@@ -47,9 +47,9 @@ class addcardcolumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        CreatePortionsizeCardWidget(),
-        SizedBox(
-          height: 5,
+        PortionsizeCardWidget(
+          showdisplayport: false,
+          portion: '15',
         ),
         CreateTimeCard(
           title: "Prep Time:",
@@ -102,12 +102,4 @@ class Addicon extends StatelessWidget {
       ),
     );
   }
-}
-
-BoxDecoration jajas() {
-  return BoxDecoration(
-      border: Border.all(
-    color: const Color.fromARGB(255, 213, 6, 164),
-    width: 2,
-  ));
 }

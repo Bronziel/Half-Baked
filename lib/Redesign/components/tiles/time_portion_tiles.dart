@@ -22,7 +22,7 @@ class TimeCard extends StatelessWidget {
         child: Row(
           children: [
             const SizedBox(width: 9),
-            Image.asset('images/new/icons/clock.png'),
+            const clockimg(),
             const SizedBox(width: 5),
             Text(
               title,
@@ -73,7 +73,7 @@ class CreateTimeCard extends StatelessWidget {
         child: Row(
           children: [
             const SizedBox(width: 9),
-            Image.asset('images/new/icons/clock.png'),
+            const clockimg(),
             const SizedBox(width: 5),
             Text(
               title,
@@ -101,90 +101,13 @@ class CreateTimeCard extends StatelessWidget {
   }
 }
 
-//this is the portionsize tile
-class PortionsizeCardWidget extends StatelessWidget {
-  final String portion;
-
-  // The constructor now includes an optional 'portion' parameter
-  const PortionsizeCardWidget({
+class clockimg extends StatelessWidget {
+  const clockimg({
     super.key,
-    this.portion = '', // Default is an empty string if no value is provided
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 290,
-      height: 50,
-      child: Card(
-        color: const Color(0xffd9d9d9),
-        child: Row(
-          children: [
-            const SizedBox(width: 7.2),
-            Image.asset('images/new/icons/portion.png'),
-            const SizedBox(width: 4.99),
-            const Text(
-              "Portionsize:",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const SizedBox(width: 9),
-            Text(
-              portion, // Use the 'portion' parameter here
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const SizedBox(width: 6),
-            Image.asset('images/new/icons/man.png'),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-//to add portion size number widget
-class CreatePortionsizeCardWidget extends StatelessWidget {
-  const CreatePortionsizeCardWidget({
-    super.key,
-    // Add any other parameters you might need
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 290,
-      height: 50,
-      child: Card(
-        color: const Color(0xffd9d9d9),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(width: 7.2),
-            Image.asset('images/new/icons/portion.png'),
-            const SizedBox(width: 4.99),
-            const Text(
-              "Portionsize:",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const SizedBox(width: 9),
-            // Replace this Text widget with IconButton
-            const Addbuttoncontainer(
-              color: Color(0xFF000000),
-            ),
-
-            const SizedBox(width: 6),
-            Image.asset('images/new/icons/man.png'),
-          ],
-        ),
-      ),
-    );
+    return Image.asset('images/new/icons/clock.png');
   }
 }

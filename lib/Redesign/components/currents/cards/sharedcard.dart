@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../../smallicons.dart';
 import '../../tiles/time_portion_tiles.dart';
 import '../buttons.dart';
+import 'fixedportionsize.dart';
 
+//alla 5 objek ska kunnas byta
 class IcontilesBox extends StatelessWidget {
   const IcontilesBox({
     super.key,
@@ -39,6 +41,7 @@ class Cardcolumns extends StatelessWidget {
     return const Column(
       children: [
         PortionsizeCardWidget(
+          showdisplayport: true,
           portion: '15',
         ),
         SizedBox(
@@ -70,7 +73,10 @@ class addcardcolumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        CreatePortionsizeCardWidget(),
+        PortionsizeCardWidget(
+          showdisplayport: false,
+          portion: '15',
+        ),
         SizedBox(
           height: 5,
         ),
