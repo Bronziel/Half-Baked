@@ -1,43 +1,66 @@
 import 'package:flutter/material.dart';
-import '../../../components/tiles/time_portion_tiles.dart';
-import '../../../components/currents/buttons.dart';
+import '../../smallicons.dart';
+import '../../tiles/time_portion_tiles.dart';
+import '../buttons.dart';
 
-class PortionPrepTotalHolder extends StatelessWidget {
-  const PortionPrepTotalHolder({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        CreateIcontilesBox(),
-      ],
-    );
-  }
-}
-
-class CreateIcontilesBox extends StatelessWidget {
-  const CreateIcontilesBox({
+class IcontilesBox extends StatelessWidget {
+  const IcontilesBox({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: jajas(),
+        decoration: BoxDecoration(
+            border: Border.all(
+          color: const Color(0xff234234),
+          width: 1,
+        )),
         child: const Row(
           children: [
             SizedBox(
               width: 5,
             ),
-            addcardcolumn(),
-            addiconcard(),
+            Cardcolumns(),
+            iconcard(),
           ],
         ));
   }
 }
 
+//recipe
+class Cardcolumns extends StatelessWidget {
+  const Cardcolumns({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        PortionsizeCardWidget(
+          portion: '15',
+        ),
+        SizedBox(
+          height: 5,
+        ),
+        TimeCard(
+          title: "Prep Time:",
+          time: "300",
+        ),
+        SizedBox(
+          height: 5,
+        ),
+        TimeCard(
+          title: "Total Time:",
+          time: "450",
+        ),
+      ],
+    );
+  }
+}
+
+//create recipe
 class addcardcolumn extends StatelessWidget {
   const addcardcolumn({
     super.key,
@@ -65,6 +88,24 @@ class addcardcolumn extends StatelessWidget {
   }
 }
 
+//recipe
+class iconcard extends StatelessWidget {
+  const iconcard({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        IconTile(iconName: 'Cow100'),
+        IconTile(iconName: 'Bread100'),
+      ],
+    );
+  }
+}
+
+//create
 class addiconcard extends StatelessWidget {
   const addiconcard({
     super.key,
@@ -81,6 +122,7 @@ class addiconcard extends StatelessWidget {
   }
 }
 
+//create
 class Addicon extends StatelessWidget {
   const Addicon({super.key});
 
@@ -102,12 +144,4 @@ class Addicon extends StatelessWidget {
       ),
     );
   }
-}
-
-BoxDecoration jajas() {
-  return BoxDecoration(
-      border: Border.all(
-    color: const Color.fromARGB(255, 213, 6, 164),
-    width: 2,
-  ));
 }
