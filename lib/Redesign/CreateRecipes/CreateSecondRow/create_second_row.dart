@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../components/spacing/sizedboxes.dart';
 
 import 'stepsholder/CreateSteps.dart';
-import 'ingridientholder/Createingfield.dart';
+import '../../components/currents/ingholder/ingboxshared.dart';
 
 class CreateSecondRowWidget extends StatelessWidget {
   const CreateSecondRowWidget({
@@ -14,7 +14,7 @@ class CreateSecondRowWidget extends StatelessWidget {
     return const Row(
       children: [
         Widht40wallWidget(),
-        CreateRecipeListCard(),
+        RecipeListCard(other: false),
         Width20StandardWidget(),
         Steps(),
       ],
