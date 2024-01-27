@@ -16,7 +16,6 @@ class Listnormal extends StatelessWidget {
           child: ListView(
             children: const <Widget>[
               IngredientTile(
-                shownormal: true,
                 label: "Kebabkött",
                 amount: "500",
                 unit: "ml",
@@ -24,7 +23,6 @@ class Listnormal extends StatelessWidget {
               ),
 
               IngredientTile(
-                shownormal: true,
                 label: "Kebabkött",
                 amount: "500",
                 unit: "ml",
