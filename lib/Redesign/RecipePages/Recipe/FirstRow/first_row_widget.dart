@@ -13,7 +13,7 @@ class FirstRowWidget extends StatelessWidget {
     return const Row(
       children: [
         Widht40wallWidget(),
-        IntroductionWidget(),
+        IntroductionWidget(showIntrodisplay: true),
         Width20StandardWidget(),
         MainImagePlusBoxes(),
       ],

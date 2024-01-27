@@ -24,7 +24,7 @@ class IcontilesBox extends StatelessWidget {
               width: 5,
             ),
             Cardcolumns(),
-            iconcard(),
+            Iconcard(),
           ],
         ));
   }
@@ -69,8 +69,8 @@ class Cardcolumns extends StatelessWidget {
 
 ///need diffrnet logic i tihnk
 //create recipe
-class addcardcolumn extends StatelessWidget {
-  const addcardcolumn({
+class Addcardcolumn extends StatelessWidget {
+  const Addcardcolumn({
     super.key,
   });
 
@@ -106,8 +106,8 @@ class addcardcolumn extends StatelessWidget {
 }
 
 //recipe
-class iconcard extends StatelessWidget {
-  const iconcard({
+class Iconcard extends StatelessWidget {
+  const Iconcard({
     super.key,
   });
 
@@ -123,14 +123,14 @@ class iconcard extends StatelessWidget {
 }
 
 //create
-class addiconcard extends StatelessWidget {
-  const addiconcard({
+class Addiconcard extends StatelessWidget {
+  const Addiconcard({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
         Addicon(),
         Addicon(),

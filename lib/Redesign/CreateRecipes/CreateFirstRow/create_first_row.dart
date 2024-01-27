@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../components/spacing/sizedboxes.dart';
-import 'introductionholder/create_introduction_box.dart';
+
 import 'imageholder/create_image_boxes.dart';
+import '../../RecipePages/Recipe/FirstRow/introholder2/introduction_box.dart';
 
 class CreateFirstRowWidget extends StatelessWidget {
   const CreateFirstRowWidget({
@@ -13,7 +14,7 @@ class CreateFirstRowWidget extends StatelessWidget {
     return const Row(
       children: [
         Widht40wallWidget(),
-        CreateIntroductionWidget(),
+        IntroductionWidget(showIntrodisplay: false),
         Width20StandardWidget(),
         CreateMainImagePlusBoxes(),
       ],

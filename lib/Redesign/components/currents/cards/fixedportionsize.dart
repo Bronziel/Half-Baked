@@ -26,18 +26,18 @@ class PortionsizeCardWidget extends StatelessWidget {
   }
 
   Widget displayport() {
-    return displayportion(portion: portion);
+    return Displayportion(portion: portion);
   }
 
   Widget addport() {
-    return const addportion();
+    return const Addportion();
   }
 }
 
 //displayportion(portion: portion)
 
-class displayportion extends StatelessWidget {
-  const displayportion({
+class Displayportion extends StatelessWidget {
+  const Displayportion({
     super.key,
     required this.portion,
   });
@@ -73,8 +73,8 @@ class displayportion extends StatelessWidget {
   }
 }
 
-class addportion extends StatelessWidget {
-  const addportion({
+class Addportion extends StatelessWidget {
+  const Addportion({
     super.key,
   });
 

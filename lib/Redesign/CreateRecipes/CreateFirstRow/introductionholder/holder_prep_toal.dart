@@ -32,7 +32,7 @@ class CreateIcontilesBox extends StatelessWidget {
           width: 5,
         ),
         addcardcolumn(),
-        addiconcard(),
+        Addiconcard(),
       ],
     ));
   }
@@ -74,14 +74,14 @@ class addcardcolumn extends StatelessWidget {
   }
 }
 
-class addiconcard extends StatelessWidget {
-  const addiconcard({
+class Addiconcard extends StatelessWidget {
+  const Addiconcard({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
         Addicon(),
         Addicon(),

@@ -29,18 +29,18 @@ class TimeCard extends StatelessWidget {
   }
 
   Widget displaytime() {
-    return displaytimes(title: title, time: time);
+    return Displaytimes(title: title, time: time);
   }
 
   Widget addtime() {
-    return addtimes(titleadd: titleadd);
+    return Addtimes(titleadd: titleadd);
   }
 }
 
 //displaytimes(title: title, time: time)
 //addtimes(titleadd: titleadd),
-class displaytimes extends StatelessWidget {
-  const displaytimes({
+class Displaytimes extends StatelessWidget {
+  const Displaytimes({
     super.key,
     required this.title,
     required this.time,
@@ -54,7 +54,7 @@ class displaytimes extends StatelessWidget {
     return Row(
       children: [
         const SizedBox(width: 9),
-        const clockimg(),
+        const Clockimg(),
         const SizedBox(width: 5),
         Text(
           title,
@@ -84,8 +84,8 @@ class displaytimes extends StatelessWidget {
   }
 }
 
-class addtimes extends StatelessWidget {
-  const addtimes({
+class Addtimes extends StatelessWidget {
+  const Addtimes({
     super.key,
     required this.titleadd,
   });
@@ -97,7 +97,7 @@ class addtimes extends StatelessWidget {
     return Row(
       children: [
         const SizedBox(width: 9),
-        const clockimg(),
+        const Clockimg(),
         const SizedBox(width: 5),
         Text(
           titleadd,
@@ -123,8 +123,8 @@ class addtimes extends StatelessWidget {
   }
 }
 
-class clockimg extends StatelessWidget {
-  const clockimg({
+class Clockimg extends StatelessWidget {
+  const Clockimg({
     super.key,
   });
 
