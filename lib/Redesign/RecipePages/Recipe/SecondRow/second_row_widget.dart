@@ -83,15 +83,20 @@ class _StepsWidgetState extends State<StepsWidget> {
         ),
       ),
       child: ListTile(
-        leading: SizedBox(
-          child: Text(
-            '${index + 1}:',
-            style: const TextStyle(
-              fontFamily: 'Pacifico',
-              fontSize: 40,
-              color: Colors.black,
+        leading: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              child: Text(
+                '${index + 1}:',
+                style: const TextStyle(
+                  fontFamily: 'Pacifico',
+                  fontSize: 30,
+                  color: Colors.black,
+                ),
+              ),
             ),
-          ),
+          ],
         ),
         title: Text(
           step,
