@@ -23,20 +23,20 @@ class SecondRowWidget extends StatelessWidget {
 class StepsWidget extends StatefulWidget {
   final List<String> steps = [
     // Populate this list with your step descriptions
-    '1:mix cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv, cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv',
-    '2:add sugar. mix. scrape. Lägg till socker i mixa rejält. Sen skrapa',
-    '3:add eggs one at a time. Scrape. Bland med skrapa. Försiktigt och långsamt ett ägg i taget inte mixa',
-    '4:add cream/vispgrädde  and vanill//vanila extract mix and scrape',
-    '5:Krossa kakorna/brownies. Koka up smör. Lägg  i lite smör i taget. Du vill att smulorna sticker ihop men krossa lätt när du trycket',
-    '6:pressa  mixen av botten av formen. Häll sedan i färdiga cream mixen.',
-    '7:Step 7 Description',
-    '8:Step 8 Description',
-    '9:Step 9 Description',
-    '10:Step 10 Description',
-    '11:Step 7 Description',
-    '12:Step 8 Description',
-    '13:Step 9 Description',
-    '14:Step 10 Description',
+    'mix cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv, cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv',
+    'add sugar. mix. scrape. Lägg till socker i mixa rejält. Sen skrapa',
+    'add eggs one at a time. Scrape. Bland med skrapa. Försiktigt och långsamt ett ägg i taget inte mixa',
+    'add cream/vispgrädde  and vanill//vanila extract mix and scrape',
+    'Krossa kakorna/brownies. Koka up smör. Lägg  i lite smör i taget. Du vill att smulorna sticker ihop men krossa lätt när du trycket',
+    'pressa  mixen av botten av formen. Häll sedan i färdiga cream mixen.',
+    'mix cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv, cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv',
+    'mix cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv, cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv',
+    'mix cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv, cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv',
+    'mix cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv, cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv',
+    'mix cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv, cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv',
+    'mix cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv, cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv',
+    'mix cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv, cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv',
+    'mix cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv, cream cheese until smooth. Scrape Mixa den tills flytig inte så fast. Skrapa med en bakkniv',
 
     // Add more steps as needed
   ];
@@ -59,89 +59,56 @@ class _StepsWidgetState extends State<StepsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // Splitting steps into two lists for left and right columns
-    final leftColumnSteps = <String>[];
-    final rightColumnSteps = <String>[];
-
-    for (var i = 0; i < widget.steps.length; i++) {
-      if (i % 2 == 0) {
-        leftColumnSteps.add(widget.steps[i]);
-      } else {
-        rightColumnSteps.add(widget.steps[i]);
-      }
-    }
-
     return SizedBox(
       width: 1200,
-      height: 474,
+      height: 475,
       child: Card(
         color: const Color(0xffd9d9d9),
-        child: Row(
-          children: [
-            buildStepsColumn(leftColumnSteps, context, 0),
-            const VerticalDivider(
-              color: Color(0xFFFFFFFF),
-              indent: 20,
-              width: 40,
-              endIndent: 20,
-            ),
-            buildStepsColumn(rightColumnSteps, context, leftColumnSteps.length),
-          ],
+        child: ListView.builder(
+          itemCount: widget.steps.length,
+          itemBuilder: (context, index) {
+            return buildStepItem(widget.steps[index], index);
+          },
         ),
       ),
     );
   }
 
-  Widget buildStepsColumn(
-      List<String> steps, BuildContext context, int offset) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: steps.length,
-        itemBuilder: (context, index) {
-          int actualIndex = index + offset;
-          return Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black, // Set your desired border color
-                width: 1, // Set your desired border width
-              ),
+  Widget buildStepItem(String step, int index) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black,
+          width: 1,
+        ),
+      ),
+      child: ListTile(
+        leading: SizedBox(
+          child: Text(
+            '${index + 1}:',
+            style: const TextStyle(
+              fontFamily: 'Pacifico',
+              fontSize: 40,
+              color: Colors.black,
             ),
-            child: ListTile(
-              leading: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black, // Set your desired border color
-                    width: 1, // Set your desired border width
-                  ),
-                ),
-                child: Text(
-                  '${actualIndex + 1}',
-                  style: const TextStyle(
-                    fontFamily: 'Pacifico',
-                    fontSize: 40,
-                    color: Color(0xFF0922FD),
-                  ),
-                ),
-              ),
-              title: Text(
-                steps[index],
-                style: const TextStyle(
-                  fontFamily: 'Paprika',
-                  fontSize: 24,
-                  color: Color(0xFF000000),
-                ),
-              ),
-              trailing: Checkbox(
-                value: checkedStates[actualIndex],
-                onChanged: (bool? newValue) {
-                  setState(() {
-                    checkedStates[actualIndex] = newValue ?? false;
-                  });
-                },
-              ),
-            ),
-          );
-        },
+          ),
+        ),
+        title: Text(
+          step,
+          style: const TextStyle(
+            fontFamily: 'Inter',
+            fontSize: 24,
+            color: Color(0xFF000000),
+          ),
+        ),
+        trailing: Checkbox(
+          value: checkedStates[index],
+          onChanged: (bool? newValue) {
+            setState(() {
+              checkedStates[index] = newValue ?? false;
+            });
+          },
+        ),
       ),
     );
   }
