@@ -31,15 +31,15 @@ class CreateIcontilesBox extends StatelessWidget {
         SizedBox(
           width: 5,
         ),
-        addcardcolumn(),
+        Addcardcolumn(),
         Addiconcard(),
       ],
     ));
   }
 }
 
-class addcardcolumn extends StatelessWidget {
-  const addcardcolumn({
+class Addcardcolumn extends StatelessWidget {
+  const Addcardcolumn({
     super.key,
   });
 

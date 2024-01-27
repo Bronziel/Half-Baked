@@ -9,11 +9,11 @@ class CreateMainImagePlusBoxes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       child: Row(
         children: [
           Createbigimg(),
-          const Width20StandardWidget(),
+          Width20StandardWidget(),
           Createsmallimg(),
         ],
       ),
@@ -35,7 +35,7 @@ class Createsmallimg extends StatelessWidget {
           width: smallimgwidth,
           child: Card(
             shape: smallImageShape(),
-            child: addiconimgsmall(),
+            child: const Addiconimgsmall(),
           ),
         ),
       ],
@@ -66,7 +66,7 @@ class Createbigimg extends StatelessWidget {
             const SizedBox(
               width: 50,
               height: 50,
-              child: addiconimgbig(),
+              child: Addiconimgbig(),
             ),
             Text(
               'Add Images',
@@ -80,14 +80,14 @@ class Createbigimg extends StatelessWidget {
   }
 
   TextStyle textstyleaddbigimage() {
-    return TextStyle(
+    return const TextStyle(
       fontSize: 30,
     );
   }
 }
 
-class addiconimgsmall extends StatelessWidget {
-  const addiconimgsmall({
+class Addiconimgsmall extends StatelessWidget {
+  const Addiconimgsmall({
     super.key,
   });
 
@@ -105,8 +105,8 @@ class addiconimgsmall extends StatelessWidget {
   }
 }
 
-class addiconimgbig extends StatelessWidget {
-  const addiconimgbig({
+class Addiconimgbig extends StatelessWidget {
+  const Addiconimgbig({
     super.key,
   });
 
