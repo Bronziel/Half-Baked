@@ -8,11 +8,11 @@ class Mymenue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return const Scaffold(
+      body: SizedBox(
         width: 400,
         height: 400,
-        child: const Card(
+        child: Card(
           color: Color.fromARGB(255, 234, 26, 26),
           child: Column(
             children: [
