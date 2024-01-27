@@ -2,12 +2,12 @@ import 'package:fb2/Redesign/Testin_components/building/building.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'comb_showcase.dart';
-import '../../CreateRecipes/create_second_row.dart';
-import '../../CreateRecipes/CreateFirstRow/create_introduction_box.dart';
-import '../../RecipePages/Recipe/FirstRow/introduction_box.dart';
-import '../../RecipePages/Recipe/second_row_widget.dart';
-import '../../RecipePages/Recipe/FirstRow/image_boxes.dart';
-import '../../CreateRecipes/CreateFirstRow/create_image_boxes.dart';
+import '../built/myreorder.dart';
+import '../../RecipePages/Recipe/FirstRow/introholder2/introduction_box.dart';
+import '../../RecipePages/Recipe/SecondRow/second_row_widget.dart';
+import '../../RecipePages/Recipe/FirstRow/imagholder2/image_boxes.dart';
+import '../../CreateRecipes/CreateFirstRow/imageholder/create_image_boxes.dart';
+import '../../components/currents/ingholder/ingboxshared.dart';
 
 class ShowcasePage extends StatelessWidget {
   const ShowcasePage({super.key});
@@ -62,17 +62,17 @@ class ShowcasePage extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      RecipeListCard(),
+                      RecipeListCard(other: true),
                     ],
                   ),
                   Column(
                     children: [
-                      CreateIntroductionWidget(),
+                      IntroductionWidget(showIntrodisplay: true),
                     ],
                   ),
                   Column(
                     children: [
-                      IntroductionWidget(),
+                      IntroductionWidget(showIntrodisplay: false),
                     ],
                   ),
                 ],

@@ -33,6 +33,16 @@ class Builtredirect extends StatelessWidget {
                       child: MydropdownButton(),
                     ),
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    width: 500,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Reord(),
+                    ),
+                  ),
                 ],
               ),
             ],
