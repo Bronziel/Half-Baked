@@ -6,7 +6,7 @@ import '../built/myreorder.dart';
 import '../../RecipePages/Recipe/FirstRow/introholder2/introduction_box.dart';
 import '../../RecipePages/Recipe/SecondRow/second_row_widget.dart';
 import '../../RecipePages/Recipe/FirstRow/imagholder2/image_boxes.dart';
-import '../../CreateRecipes/CreateFirstRow/imageholder/create_image_boxes.dart';
+import '../../RecipePages/CreateRecipes/CreateFirstRow/imageholder/create_image_boxes.dart';
 import '../../components/currents/ingholder/ingboxshared.dart';
 
 class ShowcasePage extends StatelessWidget {

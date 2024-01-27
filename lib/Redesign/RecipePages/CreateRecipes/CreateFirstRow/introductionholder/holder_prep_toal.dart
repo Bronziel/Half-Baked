@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../components/currents/buttons.dart';
-import '../../../components/currents/cards/fixedportionsize.dart';
-import '../../../components/currents/cards/fixedtimecard.dart';
+import '../../../../components/currents/buttons.dart';
+import '../../../../components/currents/cards/fixedportionsize.dart';
+import '../../../../components/currents/cards/fixedtimecard.dart';
 
 class PortionPrepTotalHolder extends StatelessWidget {
   const PortionPrepTotalHolder({
