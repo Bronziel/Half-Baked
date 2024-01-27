@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'ing_title_tile.dart';
 import 'ing_add_tile.dart';
 import 'ing_list.dart';
+import '../../../components/currents/ingholder/maintile.dart';
 
 class CreateRecipeListCard extends StatelessWidget {
   const CreateRecipeListCard({
@@ -19,7 +19,7 @@ class CreateRecipeListCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           child: const Column(
             children: [
-              IngTitleTile(),
+              IngMainTile(showMaintile: false),
               Addinngtile(),
               Expanded(
                 child: ListOfIng(),
