@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'ing_tile.dart';
+import '../ingtile.dart';
+//import 'ing_tile.dart';
 
 class ListOfIng extends StatefulWidget {
   const ListOfIng({super.key});
@@ -15,12 +16,13 @@ class _ListOfIngState extends State<ListOfIng> {
       buildDefaultDragHandles: false,
       children: List.generate(_items.length, (index) {
         Item item = _items[index];
-        return IngTile(
+        return IngredientTile(
           key: ValueKey(item.label),
           label: item.label,
           amount: item.amount,
           unit: item.unit,
           index: index,
+          shownormal: false,
         );
       }),
       onReorder: (int oldIndex, int newIndex) {
