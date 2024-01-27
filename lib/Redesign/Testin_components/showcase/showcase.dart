@@ -62,7 +62,7 @@ class ShowcasePage extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      RecipeListCard(),
+                      RecipeListCard(other: true),
                     ],
                   ),
                   Column(

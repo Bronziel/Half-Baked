@@ -1,26 +1,51 @@
 import 'package:flutter/material.dart';
 import 'lists.dart';
+import '../../..//CreateRecipes/CreateSecondRow/ingridientholder/ing_list.dart';
+import '../../..//CreateRecipes/CreateSecondRow/ingridientholder/ing_add_tile.dart';
+import 'maintile.dart';
 
 class RecipeListCard extends StatelessWidget {
+  final bool other;
   const RecipeListCard({
+    required this.other,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Cardsize(
-      showdisplayport: true,
+      showdisplayport: other,
       child: Card(
         color: const Color(0xffd9d9d9),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          child: const Listnormal(),
+          child: Holder(showlist: other),
         ),
       ),
     );
   }
 }
 
+class Creates extends StatelessWidget {
+  const Creates({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        IngMainTile(showMaintile: false),
+        Addinngtile(),
+        Expanded(
+          child: ListOfIng(),
+        ),
+      ],
+    );
+  }
+}
+
+//card sized adjuster
 class Cardsize extends StatelessWidget {
   final bool showdisplayport;
   final Widget child;
@@ -59,5 +84,26 @@ class Heights {
       height: 460,
       child: child,
     );
+  }
+}
+
+class Holder extends StatelessWidget {
+  final bool showlist;
+  const Holder({
+    super.key,
+    required this.showlist,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return showlist ? const Listnormal() : const Creates();
+  }
+
+  Widget normalbox() {
+    return const Listnormal();
+  }
+
+  Widget createbox() {
+    return const Creates();
   }
 }

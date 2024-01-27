@@ -12,7 +12,7 @@ class SecondRowWidget extends StatelessWidget {
     return Row(
       children: [
         const Widht40wallWidget(),
-        const RecipeListCard(),
+        const RecipeListCard(other: true),
         const Width20StandardWidget(),
         StepsWidget(),
       ],
