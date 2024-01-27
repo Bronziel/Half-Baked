@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../buttons.dart' show Addbuttoncontainer;
+import '../buttons.dart' show Addbuttoncontainer;
 
 class Addinngtile extends StatelessWidget {
   const Addinngtile({super.key});

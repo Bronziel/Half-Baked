@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'lists.dart';
-import 'ingridientholder/ing_list.dart';
-import 'ingridientholder/ing_add_tile.dart';
+import 'ing_add_tile.dart';
 import 'maintile.dart';
 
 class RecipeListCard extends StatelessWidget {
