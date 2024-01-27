@@ -4,7 +4,6 @@ class IngredientTile extends StatelessWidget {
   final String label; // First parameter
   final String amount; // Second parameter
   final String unit; // Third parameter
-  final int index;
 
   // Update the constructor to accept three parameters
   const IngredientTile({
@@ -12,7 +11,6 @@ class IngredientTile extends StatelessWidget {
     required this.label,
     required this.amount,
     required this.unit,
-    this.index = 0,
   });
 
   @override
@@ -23,31 +21,6 @@ class IngredientTile extends StatelessWidget {
       color: Colors.white, // Set your desired color here
     );
 
-    return Ingcontain(
-      amount: amount,
-      label: label,
-      unit: unit,
-      textStyle: textStyle,
-    );
-  }
-}
-
-class Ingcontain extends StatelessWidget {
-  const Ingcontain({
-    super.key,
-    required this.label,
-    required this.textStyle,
-    required this.amount,
-    required this.unit,
-  });
-
-  final String label;
-  final TextStyle textStyle;
-  final String amount;
-  final String unit;
-
-  @override
-  Widget build(BuildContext context) {
     return Container(
       height: 50,
       width: 410,
