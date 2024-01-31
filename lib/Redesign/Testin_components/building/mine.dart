@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
 
 class Mine extends StatelessWidget {
   const Mine({
@@ -138,7 +139,24 @@ class Mine2 extends StatelessWidget {
       height: 475,
       child: Card(
         color: Colors.green,
+        child: Text(restaurant.name),
       ),
     );
   }
 }
+
+class Restaurant {
+  final String name;
+  final String cuisine;
+  Restaurant({required this.name, required this.cuisine});
+  factory Restaurant.fromJson(Map<String, dynamic> data) {
+    final name = data['name'];
+    final cuisine = data['cuisine'];
+    return Restaurant(name: name, cuisine: cuisine);
+  }
+}
+
+// type: String
+final jsonData = '{ "name": "Pizza da Mario", "cuisine": "Italian" }';
+final parsedJson = jsonDecode(jsonData);
+final restaurant = Restaurant.fromJson(parsedJson);
