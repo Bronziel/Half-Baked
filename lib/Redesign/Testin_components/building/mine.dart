@@ -139,7 +139,25 @@ class Mine2 extends StatelessWidget {
       height: 475,
       child: Card(
         color: Colors.green,
-        child: Text(restaurant.name),
+        child: Column(
+          children: [
+            Text(restaurant.name),
+            Text(stepeed.id.toString()),
+            const Row(
+              children: [
+                Text(''), //text inforamtion
+                SizedBox(
+                  width: 150,
+                ),
+                Text(''), //just number
+                SizedBox(
+                  width: 30,
+                ),
+                Text('') //string and int this belongs to "number"
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -160,3 +178,108 @@ class Restaurant {
 final jsonData = '{ "name": "Pizza da Mario", "cuisine": "Italian" }';
 final parsedJson = jsonDecode(jsonData);
 final restaurant = Restaurant.fromJson(parsedJson);
+
+//single string of text test with map
+class Omg {
+  final int id;
+  final int idheader;
+  final String text;
+  Omg({required this.id, required this.idheader, required this.text});
+  factory Omg.fromjson(Map<String, dynamic> Passed) {
+    final myid = Passed['id'];
+    final myheader = Passed['idheader'];
+    final mytext = Passed['text'];
+    return Omg(
+      id: myid,
+      idheader: myheader,
+      text: mytext,
+    );
+  }
+}
+
+final jsonPassed =
+    jsonEncode({"id": 1, "idheader": 1, "text": "börja med att mixa äggen"});
+final jsontest = jsonDecode(jsonPassed);
+final stepeed = Omg.fromjson(jsontest);
+
+//when sending string to firebase will header be a int yes bc a int is needed for the
+//header and id bc list reseeded with int id.
+
+final multijson = jsonEncode({
+  "foodsteps": [
+    {
+      "step2": 1,
+      "id": 1,
+      "text2": "ibland laggar jag för lite mat",
+    },
+    {
+      "step2": 2,
+      "id": 2,
+      "text2": "vrf finns inte det så mkt mat",
+    }
+  ],
+  "foodsteps2": [
+    {
+      "step2": 1,
+      "id": 1,
+      "text2": "ibland laggar jag för lite mat",
+    },
+    {
+      "step2": 2,
+      "id": 2,
+      "text2": "vrf finns inte det så mkt mat",
+    }
+  ]
+});
+//step 1 decode map step 2 create the list of the decoded obejcts, step 3 pass decoded list to
+final Map<String, dynamic> multijsondata = jsonDecode(multijson);
+final List<dynamic> jsonmulti = multijsondata['foodsteps'];
+
+class Multiples {
+  final String textar;
+  final int id2;
+  final int steps;
+  Multiples({
+    required this.id2,
+    required this.steps,
+    required this.textar,
+  });
+  factory Multiples.fromjson(Map<String, dynamic> multiples) {
+    //vrf anurlunda med fler? vrf ingen dekleration. ah för jag deklarar konstat för steps etc
+    return Multiples(
+      id2: multiples['id'],
+      steps: multiples['step2'],
+      textar: multiples['text2'],
+    );
+  }
+}
+
+List<Multiples> result =
+    jsonmulti.map((item) => Multiples.fromjson(item)).toList();
+//reorder hear?
+//happends after class handles the json string
+/*Detta är vad som händer med json.
+1:första steget är att vi säger hej vi har data i annat format snälla översätt till dart objecst.
+-vi vet bara nu att hej här massa data object men ingen betydelse.
+
+2:vi säger nu hej datan du har fått följer ett mönster som är en map object
+-detta map object är inuti foodsteps varje map har en string dynamic key vlaute system. 
+-vi vet nu att det finns 2 mappar med denna utlägning men datan i sig är inte fäst till något-
+
+3: vi har en klass som säger hej we har 3 parametar som är 3 olika json data punkter.
+id är id json nu har vi en mall som datorn kan följa o säga hej kolla på mallen för att se vad json datan är.
+
+4: vi säger nu hej det här är en lista med mallen multiples som kallas med variable result.
+-vi säger använd mapparn from jsonmulti datan. omvandala/transfrom mapparna med mallen så att det är json
+-to list är för att säga alla maparna läggs sedan i en lista efter omvandlats.
+- item delen är lambda för att temporärt difrenter objecten så var objects omvanlda.
+hej det kommer flera object så¨temporärt heter varje object någit med item.
+nament påverkas inte av andra variablker med samma namn 
+
+ps. vrf används map<string, dynamic>
+jo för typesafty decode leverar alltid en string dynamice men det är bara för typesafe
+some när man gör <widget>
+
+ps.2 just nu ger den ut en map vilket var mening för det är ju lista av maps.
+måste lägga till en fuction för att söka på en keyvalue om det är det man vill.
+ */
