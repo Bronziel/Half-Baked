@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'idk.dart';
 import 'dart:convert';
 
 class Mine extends StatelessWidget {
@@ -163,9 +164,14 @@ class Mine2 extends StatelessWidget {
   }
 }
 
+// type: String
+final jsonData = '{ "name": "Pizza da Mario", "cuisine": "Italian" }';
+final parsedJson = jsonDecode(jsonData);
+
 class Restaurant {
   final String name;
   final String cuisine;
+
   Restaurant({required this.name, required this.cuisine});
   factory Restaurant.fromJson(Map<String, dynamic> data) {
     final name = data['name'];
@@ -174,12 +180,12 @@ class Restaurant {
   }
 }
 
-// type: String
-final jsonData = '{ "name": "Pizza da Mario", "cuisine": "Italian" }';
-final parsedJson = jsonDecode(jsonData);
 final restaurant = Restaurant.fromJson(parsedJson);
-
 //single string of text test with map
+final jsonPassed =
+    jsonEncode({"id": 1, "idheader": 1, "text": "börja med att mixa äggen"});
+final jsontest = jsonDecode(jsonPassed);
+
 class Omg {
   final int id;
   final int idheader;
@@ -197,11 +203,7 @@ class Omg {
   }
 }
 
-final jsonPassed =
-    jsonEncode({"id": 1, "idheader": 1, "text": "börja med att mixa äggen"});
-final jsontest = jsonDecode(jsonPassed);
 final stepeed = Omg.fromjson(jsontest);
-
 //when sending string to firebase will header be a int yes bc a int is needed for the
 //header and id bc list reseeded with int id.
 
@@ -253,9 +255,14 @@ class Multiples {
     );
   }
 }
+// Assuming jsonmulti is already defined and populated as per your example
 
-List<Multiples> result =
-    jsonmulti.map((item) => Multiples.fromjson(item)).toList();
+List<Multiples> result = jsonmulti
+    .map((item) => Multiples.fromjson(item))
+    .toList()
+  ..sort((a, b) => a.id2.compareTo(b.id2));
+
+
 //reorder hear?
 //happends after class handles the json string
 /*Detta är vad som händer med json.
@@ -282,4 +289,8 @@ some när man gör <widget>
 
 ps.2 just nu ger den ut en map vilket var mening för det är ju lista av maps.
 måste lägga till en fuction för att söka på en keyvalue om det är det man vill.
+
+ps 3. hur kallas min data just nu ligger den utanför och den kallas inte så hur laddas den in?
+jo den ligger nu istället i global scope vilket gör att den intiliserar med appen startar
+den kollar alla filer och kollar alla data etc och intliserar dom istället för ha dom i en funktion.
  */
