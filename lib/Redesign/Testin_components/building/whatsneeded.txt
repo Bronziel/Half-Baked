@@ -1,0 +1,23 @@
+
+Listview builder
+Data
+
+Noraml tile holding a step
+
+Header tile holdign a Header
+
+a sorter
+yes no Header
+
+sorting header groups
+ 
+checking how many groups
+
+build all groups
+
+class
+header yes no
+header class
+step id
+
+

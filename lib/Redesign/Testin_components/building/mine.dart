@@ -157,6 +157,9 @@ class Mine2 extends StatelessWidget {
                 Text('') //string and int this belongs to "number"
               ],
             ),
+            const SizedBox(
+              child: Okeyyes(),
+            ),
           ],
         ),
       ),

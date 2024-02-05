@@ -43,46 +43,6 @@ class Displayedtexts extends StatelessWidget {
   }
 }
 
-void mydatas() {
-  final String jsonStr = jsonEncode({
-    "foodsteps": [
-      {
-        "step2": 1,
-        "id": 1,
-        "text2": "ibland laggar jag för lite mat",
-      },
-      {
-        "step2": 2,
-        "id": 2,
-        "text2": "vrf finns inte det så mkt mat",
-      }
-    ],
-    "foodsteps2": [
-      {
-        "step2": 2,
-        "id": 1,
-        "text2": "ibland laggar jag för lite mat",
-      },
-      {
-        "step2": 2,
-        "id": 2,
-        "text2": "vrf finns inte det så mkt mat",
-      }
-    ]
-  });
-  final multijson = jsonDecode(jsonStr);
-
-  final List<dynamic> foodsteps = multijson['foodsteps'];
-  final List<Multiples> foodstepsResults =
-      foodsteps.map((item) => Multiples.fromJson(item)).toList();
-  foodstepsResults.sort((a, b) => a.id.compareTo(b.id));
-
-  final List<dynamic> foodsteps2 = multijson['foodsteps2'];
-  final List<Multiples> foodsteps2Results =
-      foodsteps2.map((item) => Multiples.fromJson(item)).toList();
-  foodsteps2Results.sort((a, b) => a.id.compareTo(b.id));
-}
-
 class Okeyyes extends StatefulWidget {
   const Okeyyes({super.key});
 
@@ -92,9 +52,102 @@ class Okeyyes extends StatefulWidget {
 
 class _OkeyyesState extends State<Okeyyes> {
   late List<Multiples> foodsteps2Results;
-  late List<Multiples> foodstepsResults;
+  List<Multiples> foodstepsResults = [];
+  @override
+  void initState() {
+    super.initState();
+    mydatas();
+  }
+
+  void mydatas() {
+    final String jsonStr = jsonEncode({
+      "foodsteps": [
+        {"step2": 1, "id": 1, "text2": "ibland laggar jag för lite mat"},
+        {"step2": 2, "id": 2, "text2": "vrf finns inte det så mkt mat"},
+      ],
+      "foodsteps2": [
+        {"step2": 2, "id": 1, "text2": "ibland laggar jag för lite mat"},
+        {"step2": 2, "id": 2, "text2": "vrf finns inte det så mkt mat"},
+      ]
+    });
+    final multijson = jsonDecode(jsonStr);
+
+    // Update the state variables directly
+    setState(() {
+      foodstepsResults = multijson['foodsteps']
+          .map<Multiples>((item) => Multiples.fromJson(item))
+          .toList();
+      foodstepsResults.sort((a, b) => a.id.compareTo(b.id));
+
+      foodsteps2Results = multijson['foodsteps2']
+          .map<Multiples>((item) => Multiples.fromJson(item))
+          .toList();
+      foodsteps2Results.sort((a, b) => a.id.compareTo(b.id));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SizedBox(
+      width: 400,
+      height: 400,
+      child: ListView.builder(
+        itemCount: foodstepsResults.length,
+        itemBuilder: (context, index) {
+          final item = foodstepsResults[index];
+          return ListTile(
+            title: Text(item.text2),
+            subtitle: Text('Step: ${item.step2}, ID: ${item.id}'),
+          );
+        },
+      ),
+    );
   }
 }
+
+/*
+ final String jsonStr = jsonEncode({
+      "foodsteps": [
+        {
+          "step2": 1,
+          "id": 1,
+          "text2": "ibland laggar jag för lite mat",
+        },
+        {
+          "step2": 2,
+          "id": 2,
+          "text2": "vrf finns inte det så mkt mat",
+        }
+      ],
+      "foodsteps2": [
+        {
+          "step2": 2,
+          "id": 1,
+          "text2": "ibland laggar jag för lite mat",
+        },
+        {
+          "step2": 2,
+          "id": 2,
+          "text2": "vrf finns inte det så mkt mat",
+        }
+      ]
+    });
+    final multijson = jsonDecode(jsonStr);
+
+    final List<dynamic> foodsteps = multijson['foodsteps'];
+    final List<Multiples> foodstepsResults =
+        foodsteps.map((item) => Multiples.fromJson(item)).toList();
+    foodstepsResults.sort((a, b) => a.id.compareTo(b.id));
+
+      foodstepsResults = multijson['foodsteps']
+          .map<Multiples>((item) => Multiples.fromJson(item))
+          .toList();
+      foodstepsResults.sort((a, b) => a.id.compareTo(b.id));
+
+
+    final List<dynamic> foodsteps2 = multijson['foodsteps2'];
+    final List<Multiples> foodsteps2Results =
+        foodsteps2.map((item) => Multiples.fromJson(item)).toList();
+    foodsteps2Results.sort((a, b) => a.id.compareTo(b.id));
+ */
+
