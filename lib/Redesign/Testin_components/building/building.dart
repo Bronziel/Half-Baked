@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'mine.dart';
+import 'progs/prog_ui.dart';
 
 class Building extends StatelessWidget {
   const Building({super.key});
@@ -7,11 +8,20 @@ class Building extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
+      body: Column(
         children: [
-          Mine(),
-          StepsWidget2(steps2: steps2),
-          Mine2(),
+          Row(
+            children: [
+              Mine(),
+              StepsWidget2(steps2: steps2),
+              Mine2(),
+            ],
+          ),
+          Row(
+            children: [
+              Builtbyme(),
+            ],
+          ),
         ],
       ),
     );

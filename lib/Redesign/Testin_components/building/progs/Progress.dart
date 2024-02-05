@@ -2,55 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
-class Stepbox extends StatelessWidget {
-  //steptext string
-  //hdid int
-  //step int
-  const Stepbox({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      width: 400,
-      child: const Row(
-        children: [
-          SizedBox(
-            child: Text('step etc'),
-          ),
-          SizedBox(
-            child: Text('Step text'),
-          ),
-          SizedBox(
-            child: Text('checkbox'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class HeaderBox extends StatelessWidget {
-  //headertext string
-  //hdid int
-  const HeaderBox({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      width: 400,
-      child: const Row(
-        children: [
-          SizedBox(
-            child: Text('Header text'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class Head {
   final int hdid;
   final String headertext;
@@ -68,19 +19,19 @@ class Head {
   }
 }
 
-class Step {
+class Steps {
   final int hdid;
   final int stepid;
   final String steptext;
 
-  Step({
+  Steps({
     required this.hdid,
     required this.stepid,
     required this.steptext,
   });
 
-  factory Step.fromJson(Map<String, dynamic> json) {
-    return Step(
+  factory Steps.fromJson(Map<String, dynamic> json) {
+    return Steps(
       stepid: json['step'],
       hdid: json['hdid'],
       steptext: json['steptext'],
@@ -89,7 +40,7 @@ class Step {
 }
 
 class Dataset {
-  static Future<List<Step>> finshedsteps() async {
+  static Future<List<Steps>> finshedsteps() async {
     final String datastrn = jsonEncode({
       "Steps": [
         {"step": 1, "hdid": 1, "steptext": "ibland laggar jag för lite mat"},
@@ -103,7 +54,7 @@ class Dataset {
     final rawdata = jsonDecode(datastrn);
 
     final List<dynamic> mysteps = rawdata['Steps'];
-    List<Step> result = mysteps.map((item) => Step.fromJson(item)).toList();
+    List<Steps> result = mysteps.map((item) => Steps.fromJson(item)).toList();
     //decode
     //put into list
     // sort list
@@ -111,7 +62,7 @@ class Dataset {
     return result;
   }
 
-  static void grouped(List<Step> steps) {
+  static void grouped(List<Steps> steps) {
     // Group by 'hdid'
     var groupedByHdid = groupBy(steps, (item) => item.hdid);
     print(groupedByHdid);
