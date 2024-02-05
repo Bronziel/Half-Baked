@@ -81,6 +81,9 @@ class Stepbox extends StatelessWidget {
             child: Text('Step $step:'),
           ),
           SizedBox(
+            width: 40,
+          ),
+          SizedBox(
             child: Text(steptext),
           ),
           const SizedBox(

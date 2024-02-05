@@ -44,7 +44,12 @@ class Dataset {
     final String datastrn = jsonEncode({
       "Steps": [
         {"step": 1, "hdid": 1, "steptext": "ibland laggar jag för lite mat"},
-        {"step": 2, "hdid": 1, "steptext": "vrf finns inte det så mkt mat"},
+        {
+          "step": 3,
+          "hdid": 1,
+          "steptext": "vrf finns inte det så mkt matibland"
+        },
+        {"step": 2, "hdid": 2, "steptext": "vrf finns inte det så mkt mat"},
       ],
       "Header": [
         {"hdid": 1, "headertext": "ibland laggar jag för lite mat"},
@@ -55,6 +60,7 @@ class Dataset {
 
     final List<dynamic> mysteps = rawdata['Steps'];
     List<Steps> result = mysteps.map((item) => Steps.fromJson(item)).toList();
+    // result.sort((a, b) => a.stepid.compareTo(b.stepid));
     //decode
     //put into list
     // sort list
