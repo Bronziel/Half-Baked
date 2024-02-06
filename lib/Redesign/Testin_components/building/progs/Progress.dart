@@ -44,15 +44,63 @@ class Steps {
 class Dataset {
   static final String _dataStrn = jsonEncode({
     "Steps": [
-      {"step": 1, "hdid": 1, "steptext": "ibland laggar jag för lite mat"},
-      {"step": 3, "hdid": 1, "steptext": "vrf finns inte det så mkt matibland"},
-      {"step": 2, "hdid": 2, "steptext": "vrf finns inte det så mkt mat"},
+      {
+        "step": 2,
+        "hdid": 1,
+        "steptext": "Börja med att skära up salladshuuvudet."
+      },
+      {
+        "step": 3,
+        "hdid": 1,
+        "steptext": "Blanda ihop kryddorna samt ta fram knvien"
+      },
+      {
+        "step": 5,
+        "hdid": 2,
+        "steptext":
+            "Lägg kötbitten i en panna med medelvarm tempratur. lägg i frivigilg olja samt kryddor"
+      },
+      {
+        "step": 6,
+        "hdid": 2,
+        "steptext":
+            "När kebaben har en brun färg samt köttet nått tempraturen 60 grader så kan du ta av köttet."
+      },
+      {"step": 7, "hdid": 2, "steptext": "Skär upp kötet  i strimmlor."},
+      {
+        "step": 9,
+        "hdid": 3,
+        "steptext": "blanda ihop olja  med salads  huuvudet."
+      },
+      {"step": 10, "hdid": 3, "steptext": "kasta i tomaterna samt paprikan"},
+      {
+        "step": 12,
+        "hdid": 4,
+        "steptext": "blanda  ihop majonäsen  med salt peppar"
+      },
+      {"step": 13, "hdid": 4, "steptext": "kasta i resten av kryddorna"},
+      {"step": 15, "hdid": 5, "steptext": "grilla brödet lätt i en stekpanna"},
+      {"step": 16, "hdid": 5, "steptext": "smörj in brödet med lite smör"},
+      {
+        "step": 18,
+        "hdid": 6,
+        "steptext": "lägg ett  lager av  sås  sedan lager  av sallad."
+      },
+      {"step": 19, "hdid": 6, "steptext": "lägg ett  lager av  kött och sås"},
+      {
+        "step": 20,
+        "hdid": 6,
+        "steptext":
+            "blanda ihop sista kötet med sallad och sås  och  lägg ett  sista lager"
+      },
     ],
     "Header": [
-      {"hdid": 1, "headertext": "ibland laggar jag för lite mat"},
-      {"hdid": 2, "headertext": "vrf finns inte det så mkt mat"},
-      {"hdid": 4, "headertext": "vrf finns inte det så mkt mat2"},
-      {"hdid": 3, "headertext": "vrf finns inte det så mkt mat3"},
+      {"step": 1, "hdid": 1, "headertext": "Prepp"},
+      {"step": 4, "hdid": 2, "headertext": "Kött tillagning"},
+      {"step": 8, "hdid": 3, "headertext": "salladen"},
+      {"step": 11, "hdid": 4, "headertext": "såsen"},
+      {"step": 14, "hdid": 5, "headertext": "Bröd"},
+      {"step": 17, "hdid": 6, "headertext": "sätttihopp"},
     ]
   });
   //underscore for only using the varibel inside this class.

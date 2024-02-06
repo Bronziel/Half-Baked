@@ -12,7 +12,7 @@ class Builtbyme extends StatelessWidget {
       width: 650,
       height: 475,
       child: Card(
-        color: Colors.green,
+        color: Color(0xffd9d9d9),
         child: Displaytestlist(),
       ),
     );
@@ -117,27 +117,39 @@ class Stepbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 50,
       width: 400,
-      child: Row(
-        children: [
-          SizedBox(
-            child: Text('Step $step:'),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black,
+          width: 1,
+        ),
+      ),
+      child: ListTile(
+        leading: SizedBox(
+          child: Text(
+            'Step $step:',
+            style: const TextStyle(
+              fontFamily: 'Pacifico',
+              fontSize: 30,
+              color: Colors.black,
+            ),
           ),
-          const SizedBox(
-            width: 40,
+        ),
+        title: SizedBox(
+          child: Text(
+            steptext,
+            style: const TextStyle(
+              fontFamily: 'Inter',
+              fontSize: 24,
+              color: Color(0xFF000000),
+            ),
           ),
-          SizedBox(
-            child: Text(steptext),
-          ),
-          const SizedBox(
-            width: 20,
-          ),
-          const SizedBox(
-            child: Text('checkbox'),
-          ),
-        ],
+        ),
+        trailing: const SizedBox(
+          child: Text('checkbox'),
+        ),
       ),
     );
   }
@@ -154,15 +166,27 @@ class HeaderBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black,
+          width: 1,
+        ),
+      ),
       height: 50,
       width: 400,
-      child: Row(
-        children: [
-          SizedBox(
-            child: Text(headerText),
+      child: Align(
+        alignment: Alignment.center,
+        child: SizedBox(
+          child: Text(
+            headerText,
+            style: const TextStyle(
+              fontFamily: 'Montserrat Semibold',
+              fontWeight: FontWeight.w800, // ExtraBold
+              fontSize: 20,
+            ),
           ),
-        ],
+        ),
       ),
     );
   }
