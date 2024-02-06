@@ -29,6 +29,7 @@ class Displaytestlist extends StatefulWidget {
 class _DisplaytestlistState extends State<Displaytestlist> {
   late List<Steps> result = [];
   late List<Head> resulthead = [];
+  late List<Combined> idk = [];
 
   @override
   void initState() {
@@ -40,7 +41,31 @@ class _DisplaytestlistState extends State<Displaytestlist> {
     //needs eror hanadling
     result = await Dataset.finshedsteps();
     resulthead = await Dataset.finshedheader();
-    setState(() {});
+
+    //declaring emptylist
+    List<Combined> combinedList = [];
+    //changing map objects in a loop to map combined objects and adding to list
+    for (var headers in resulthead) {
+      combinedList.add(
+          Combined(header: true, id: headers.hdid, text: headers.headertext));
+    }
+
+    for (var steps in result) {
+      combinedList
+          .add(Combined(header: false, id: steps.stepid, text: steps.steptext));
+    }
+    // Sort combinedList by hdid and then by step order for non-headers
+    combinedList.sort((a, b) {
+      int compare = a.id.compareTo(b.id);
+      if (compare == 0 && !a.header && !b.header) {
+        // Assuming you have a way to sort steps when ids are the same
+        return a.text.compareTo(b.text); // Or use step order if available
+      }
+      return compare;
+    });
+    setState(() {
+      idk = combinedList;
+    });
   }
 
   @override
@@ -49,20 +74,33 @@ class _DisplaytestlistState extends State<Displaytestlist> {
       width: 400,
       height: 400,
       child: ListView.builder(
-        itemCount: result.length,
+        itemCount: idk.length,
         itemBuilder: (context, index) {
-          final stepItem = result[index];
-          return Stepbox(
-            step: stepItem.stepid,
-            steptext: stepItem.steptext,
-          );
+          final item = idk[index];
+
+          if (item.header) {
+            return HeaderBox(headerText: item.text);
+          } else {
+            return Stepbox(
+                steptext: item.text,
+                step: item.id); // Adjust parameters as needed
+          }
         },
       ),
     );
   }
 }
 
-class Fixinglist {}
+class Combined {
+  final int id;
+  final bool header;
+  final String text;
+  Combined({
+    required this.header,
+    required this.id,
+    required this.text,
+  });
+}
 
 //check index of headers, check header yes no , put in list of steps of hdid 1 then hdid2
 //void check amount of headers.

@@ -13,10 +13,10 @@ class Head {
     required this.headertext,
   });
 
-  factory Head.fromJson(Map<String, dynamic> json) {
+  factory Head.fromJson(Map<String, dynamic> json2) {
     return Head(
-      hdid: json['hdid'],
-      headertext: json['headertext'],
+      hdid: json2['hdid'],
+      headertext: json2['headertext'],
     );
   }
 }
@@ -32,11 +32,11 @@ class Steps {
     required this.steptext,
   });
 
-  factory Steps.fromJson(Map<String, dynamic> json) {
+  factory Steps.fromJson(Map<String, dynamic> json3) {
     return Steps(
-      stepid: json['step'],
-      hdid: json['hdid'],
-      steptext: json['steptext'],
+      stepid: json3['step'],
+      hdid: json3['hdid'],
+      steptext: json3['steptext'],
     );
   }
 }
@@ -51,6 +51,8 @@ class Dataset {
     "Header": [
       {"hdid": 1, "headertext": "ibland laggar jag för lite mat"},
       {"hdid": 2, "headertext": "vrf finns inte det så mkt mat"},
+      {"hdid": 4, "headertext": "vrf finns inte det så mkt mat2"},
+      {"hdid": 3, "headertext": "vrf finns inte det så mkt mat3"},
     ]
   });
   //underscore for only using the varibel inside this class.
@@ -59,23 +61,23 @@ class Dataset {
     final List<dynamic> mysteps = _rawData['Steps'];
     List<Steps> result = mysteps.map((item) => Steps.fromJson(item)).toList();
     result.sort((a, b) => a.stepid.compareTo(b.stepid));
-    // List<Header> resulthead =
-    //  myheader.map((item) => Header.fromJson(item)).toList();
     //grouped(result);
     return result;
-  }
-
-  static void grouped(List<Steps> steps) {
-    // Group by 'hdid'
-    var groupedByHdid = groupBy(steps, (item) => item.hdid);
-    print(groupedByHdid);
   }
 
   static Future<List<Head>> finshedheader() async {
     final List<dynamic> myheader = _rawData['Header'];
     List<Head> resulthead =
         myheader.map((item) => Head.fromJson(item)).toList();
+    resulthead.sort((a, b) => a.hdid.compareTo(b.hdid));
+
     return resulthead;
+  }
+
+  static void grouped(List<Steps> steps) {
+    // Group by 'hdid'
+    var groupedByHdid = groupBy(steps, (item) => item.hdid);
+    print(groupedByHdid);
   }
 }
 
