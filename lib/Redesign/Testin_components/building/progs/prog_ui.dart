@@ -47,12 +47,15 @@ class _DisplaytestlistState extends State<Displaytestlist> {
     //changing map objects in a loop to map combined objects and adding to list
     for (var headers in resulthead) {
       combinedList.add(
-          Combined(header: true, id: headers.hdid, text: headers.headertext));
+          Combined(header: true, id: headers.step, text: headers.headertext));
     }
 
     for (var steps in result) {
-      combinedList
-          .add(Combined(header: false, id: steps.stepid, text: steps.steptext));
+      combinedList.add(Combined(
+          header: false,
+          id: steps.stepid,
+          text: steps.steptext,
+          showid: steps.realstep));
     }
     // Sort combinedList by hdid and then by step order for non-headers
     combinedList.sort((a, b) {
@@ -83,7 +86,7 @@ class _DisplaytestlistState extends State<Displaytestlist> {
           } else {
             return Stepbox(
                 steptext: item.text,
-                step: item.id); // Adjust parameters as needed
+                step: item.showid); // Adjust parameters as needed
           }
         },
       ),
@@ -92,6 +95,7 @@ class _DisplaytestlistState extends State<Displaytestlist> {
 }
 
 class Combined {
+  final int showid;
   final int id;
   final bool header;
   final String text;
@@ -99,6 +103,7 @@ class Combined {
     required this.header,
     required this.id,
     required this.text,
+    this.showid = 0,
   });
 }
 
