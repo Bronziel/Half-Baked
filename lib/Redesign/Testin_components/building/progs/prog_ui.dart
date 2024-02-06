@@ -28,6 +28,7 @@ class Displaytestlist extends StatefulWidget {
 
 class _DisplaytestlistState extends State<Displaytestlist> {
   late List<Steps> result = [];
+  late List<Head> resulthead = [];
 
   @override
   void initState() {
@@ -36,7 +37,9 @@ class _DisplaytestlistState extends State<Displaytestlist> {
   }
 
   void loadData() async {
+    //needs eror hanadling
     result = await Dataset.finshedsteps();
+    resulthead = await Dataset.finshedheader();
     setState(() {});
   }
 
@@ -59,6 +62,8 @@ class _DisplaytestlistState extends State<Displaytestlist> {
   }
 }
 
+//check index of headers, check header yes no , put in list of steps of hdid 1 then hdid2
+//void check
 class Stepbox extends StatelessWidget {
   //steptext string
   //hdid int
@@ -80,11 +85,14 @@ class Stepbox extends StatelessWidget {
           SizedBox(
             child: Text('Step $step:'),
           ),
-          SizedBox(
+          const SizedBox(
             width: 40,
           ),
           SizedBox(
             child: Text(steptext),
+          ),
+          const SizedBox(
+            width: 20,
           ),
           const SizedBox(
             child: Text('checkbox'),
@@ -98,17 +106,21 @@ class Stepbox extends StatelessWidget {
 class HeaderBox extends StatelessWidget {
   //headertext string
   //hdid int
-  const HeaderBox({super.key});
+  final String headerText;
+  const HeaderBox({
+    required this.headerText,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
       width: 400,
-      child: const Row(
+      child: Row(
         children: [
           SizedBox(
-            child: Text('Header text'),
+            child: Text(headerText),
           ),
         ],
       ),
