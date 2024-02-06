@@ -62,8 +62,10 @@ class _DisplaytestlistState extends State<Displaytestlist> {
   }
 }
 
+class Fixinglist {}
+
 //check index of headers, check header yes no , put in list of steps of hdid 1 then hdid2
-//void check
+//void check amount of headers.
 class Stepbox extends StatelessWidget {
   //steptext string
   //hdid int
@@ -127,3 +129,28 @@ class HeaderBox extends StatelessWidget {
     );
   }
 }
+
+/* 
+so if i understand this correctly first 
+it does finished stepss and finishsed headers 
+wich both returns  list 
+
+we then declare a new list that is emptyy that uses the steporheader classa template for the list
+
+we then make a loop to 
+for each object inside header loop to add new parameter isheader and declaring it truen
+chaning header parameter hdid to id parameter
+and turning step.steptext into parameter text.
+the objec is then aded to the combinedlist.
+this happens to all objects inside header.
+
+similiar proce happens to steps objects.
+
+this comment is just a statmetn of where we are inn the proces.
+the combined list is now filled with the transformed  header and steps objects. that now are ust steporheader map objects
+
+then a sorting process starts i dont understnads the sorting it then returns list that is sorted
+and after that we call set state to say 
+hey we have rebuilt this cominedlist
+and result variable is now = the sorted combinedList .
+*/
