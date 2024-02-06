@@ -19,6 +19,9 @@ class Builtbyme extends StatelessWidget {
   }
 }
 
+//need for saving steps.
+//need update checkbox crossing over the text
+//arrow that minmises list into titel tile
 class Displaytestlist extends StatefulWidget {
   const Displaytestlist({super.key});
 
@@ -123,8 +126,6 @@ class Stepbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      width: 400,
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.black,
