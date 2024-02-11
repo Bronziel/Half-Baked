@@ -55,22 +55,41 @@ class Thecheckbox extends StatefulWidget {
 }
 
 class _ThecheckboxState extends State<Thecheckbox> {
+  bool isChecked = false;
+  String myText = 'this is the text';
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 100,
       child: Row(
         children: [
           SizedBox(
-            child: Text(
-              'my step',
-              style: TextStyle(
-                fontSize: 30,
-              ),
+            child: Checkbox(
+              value: isChecked,
+              activeColor: Colors.green,
+              onChanged: (newBool) {
+                setState(() {
+                  isChecked = newBool!;
+                });
+              },
             ),
           ),
-          SizedBox(),
-          SizedBox(),
+          SizedBox(
+            child: isChecked
+                ? Text(
+                    myText,
+                    style: const TextStyle(
+                      fontSize: 30,
+                      decoration: TextDecoration.lineThrough,
+                    ),
+                  )
+                : Text(
+                    myText,
+                    style: const TextStyle(
+                      fontSize: 30,
+                    ),
+                  ),
+          ),
         ],
       ),
     );
