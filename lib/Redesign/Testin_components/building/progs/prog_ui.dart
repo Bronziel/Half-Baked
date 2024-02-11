@@ -111,6 +111,7 @@ class Combined {
   });
 }
 
+/*
 //check index of headers, check header yes no , put in list of steps of hdid 1 then hdid2
 //void check amount of headers.
 class Stepbox extends StatelessWidget {
@@ -161,7 +162,7 @@ class Stepbox extends StatelessWidget {
     );
   }
 }
-
+*/
 class HeaderBox extends StatelessWidget {
   //headertext string
   //hdid int
@@ -192,6 +193,71 @@ class HeaderBox extends StatelessWidget {
               fontWeight: FontWeight.w800, // ExtraBold
               fontSize: 20,
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Stepbox extends StatefulWidget {
+  final String steptext;
+  final int step;
+  const Stepbox({
+    required this.step,
+    required this.steptext,
+    super.key,
+  });
+
+  @override
+  State<Stepbox> createState() => _BoxwithstepsState();
+}
+
+class _BoxwithstepsState extends State<Stepbox> {
+  bool isChecked = false;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black,
+          width: 1,
+        ),
+      ),
+      child: ListTile(
+        leading: SizedBox(
+          child: Text(
+            'Step ${widget.step}:',
+            style: const TextStyle(
+              fontFamily: 'Pacifico',
+              fontSize: 30,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        title: SizedBox(
+          child: Text(
+            widget.steptext,
+            style: TextStyle(
+              fontFamily: 'Inter',
+              fontSize: 24,
+              color: const Color(0xFF000000),
+              decoration: isChecked ? TextDecoration.lineThrough : null,
+            ),
+          ),
+        ),
+        trailing: SizedBox(
+          child: Checkbox(
+            value: isChecked,
+            activeColor: Colors.green,
+            onChanged: (newBool) {
+              setState(() {
+                if (newBool != null) {
+                  // Check for null
+                  isChecked = newBool;
+                }
+              });
+            },
           ),
         ),
       ),
