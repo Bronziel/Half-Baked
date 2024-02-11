@@ -200,6 +200,7 @@ class HeaderBox extends StatelessWidget {
   }
 }
 
+//genereated a chceklist so it rembers for teh full list
 class Stepbox extends StatefulWidget {
   final String steptext;
   final int step;
