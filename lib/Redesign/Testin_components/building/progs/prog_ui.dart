@@ -22,6 +22,7 @@ class Builtbyme extends StatelessWidget {
 //need for saving steps.
 //need update checkbox crossing over the text
 //arrow that minmises list into titel tile
+//if  checkboox checked textdecoration line through.
 class Displaytestlist extends StatefulWidget {
   const Displaytestlist({super.key});
 

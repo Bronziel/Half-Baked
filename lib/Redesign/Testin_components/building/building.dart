@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'mine.dart';
+import 'learn_json togheter.dart';
 import 'progs/prog_ui.dart';
 
 class Building extends StatelessWidget {
