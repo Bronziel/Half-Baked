@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'learn_json togheter.dart';
+
+///import 'learn_json togheter.txt';
 import 'progs/prog_ui.dart';
 
 class Building extends StatelessWidget {
@@ -12,15 +13,14 @@ class Building extends StatelessWidget {
         children: [
           Row(
             children: [
-              Mine(),
+              //Mine(),
               StepsWidget2(steps2: steps2),
-              Mine2(),
+              Builtbyme(),
+              //Mine2(),
             ],
           ),
-          Row(
-            children: [
-              Builtbyme(),
-            ],
+          const Row(
+            children: [],
           ),
         ],
       ),

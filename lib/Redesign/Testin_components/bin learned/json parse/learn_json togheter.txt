@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'learnagin.dart';
+import 'learnagin.txt';
 import 'dart:convert';
 
 class Mine extends StatelessWidget {
