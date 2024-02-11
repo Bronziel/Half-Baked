@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'checkbox.dart';
 
 ///import 'learn_json togheter.txt';
 import 'progs/prog_ui.dart';
@@ -15,7 +16,8 @@ class Building extends StatelessWidget {
             children: [
               //Mine(),
               StepsWidget2(steps2: steps2),
-              Builtbyme(),
+              const Builtbyme(),
+              const Boxwithtext(),
               //Mine2(),
             ],
           ),
