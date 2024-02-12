@@ -34,6 +34,7 @@ class _DisplaytestlistState extends State<Displaytestlist> {
   late List<Steps> result = [];
   late List<Head> resulthead = [];
   late List<Combined> idk = [];
+  late List<bool> memoryState;
 
   @override
   void initState() {
@@ -61,6 +62,8 @@ class _DisplaytestlistState extends State<Displaytestlist> {
           text: steps.steptext,
           showid: steps.realstep));
     }
+    //use populated list
+    List<bool> memoryState = List.generate(combinedList.length, (_) => false);
     // Sort combinedList by hdid and then by step order for non-headers
     combinedList.sort((a, b) {
       int compare = a.id.compareTo(b.id);
@@ -72,6 +75,7 @@ class _DisplaytestlistState extends State<Displaytestlist> {
     });
     setState(() {
       idk = combinedList;
+      this.memoryState = memoryState;
     });
   }
 
@@ -86,11 +90,21 @@ class _DisplaytestlistState extends State<Displaytestlist> {
           final item = idk[index];
 
           if (item.header) {
+            // For header items, simply return your HeaderBox widget
             return HeaderBox(headerText: item.text);
           } else {
+            // For step items, pass the current state and callback to Stepbox
             return Stepbox(
-                steptext: item.text,
-                step: item.showid); // Adjust parameters as needed
+              steptext: item.text,
+              step: item.showid,
+              isChecked: memoryState[index], // Pass the current state
+              onCheckedChanged: (bool newValue) {
+                // Callback to update the state
+                setState(() {
+                  memoryState[index] = newValue;
+                });
+              },
+            );
           }
         },
       ),
@@ -111,58 +125,6 @@ class Combined {
   });
 }
 
-/*
-//check index of headers, check header yes no , put in list of steps of hdid 1 then hdid2
-//void check amount of headers.
-class Stepbox extends StatelessWidget {
-  //steptext string
-  //hdid int
-  final String steptext;
-  final int step;
-  const Stepbox({
-    required this.steptext,
-    required this.step,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black,
-          width: 1,
-        ),
-      ),
-      child: ListTile(
-        leading: SizedBox(
-          child: Text(
-            'Step $step:',
-            style: const TextStyle(
-              fontFamily: 'Pacifico',
-              fontSize: 30,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        title: SizedBox(
-          child: Text(
-            steptext,
-            style: const TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 24,
-              color: Color(0xFF000000),
-            ),
-          ),
-        ),
-        trailing: const SizedBox(
-          child: Text('checkbox'),
-        ),
-      ),
-    );
-  }
-}
-*/
 class HeaderBox extends StatelessWidget {
   //headertext string
   //hdid int
@@ -204,9 +166,17 @@ class HeaderBox extends StatelessWidget {
 class Stepbox extends StatefulWidget {
   final String steptext;
   final int step;
+
+  final bool isChecked; // The current state of the checkbox
+  final ValueChanged<bool>
+      onCheckedChanged; // Callback function to update the state
+
   const Stepbox({
     required this.step,
     required this.steptext,
+    //new
+    required this.isChecked,
+    required this.onCheckedChanged,
     super.key,
   });
 
@@ -215,7 +185,6 @@ class Stepbox extends StatefulWidget {
 }
 
 class _BoxwithstepsState extends State<Stepbox> {
-  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -243,21 +212,18 @@ class _BoxwithstepsState extends State<Stepbox> {
               fontFamily: 'Inter',
               fontSize: 24,
               color: const Color(0xFF000000),
-              decoration: isChecked ? TextDecoration.lineThrough : null,
+              decoration: widget.isChecked ? TextDecoration.lineThrough : null,
             ),
           ),
         ),
         trailing: SizedBox(
           child: Checkbox(
-            value: isChecked,
+            value: widget.isChecked,
             activeColor: Colors.green,
-            onChanged: (newBool) {
-              setState(() {
-                if (newBool != null) {
-                  // Check for null
-                  isChecked = newBool;
-                }
-              });
+            onChanged: (bool? newBool) {
+              if (newBool != null) {
+                widget.onCheckedChanged(newBool);
+              }
             },
           ),
         ),
