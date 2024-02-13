@@ -82,6 +82,7 @@ class DialogUtils {
       context: context,
       builder: (BuildContext context) {
         return const Dialog(
+          backgroundColor: Colors.transparent,
           child: IngPop(
             title: "Ingredient Details",
             labelText: "Ingredient",

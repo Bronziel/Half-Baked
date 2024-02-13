@@ -28,6 +28,7 @@ class Stopdownbutton extends StatelessWidget {
       color: const Color(0xFF000000),
       icon: const Icon(Icons.close), // Plus icon
       onPressed: () {
+        Navigator.of(context).pop();
         // Add your action for this button
       },
     );
