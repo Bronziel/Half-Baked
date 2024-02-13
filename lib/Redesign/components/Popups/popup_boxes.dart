@@ -5,6 +5,9 @@ import '../styles/style_objects.dart';
 import 'textfields.dart';
 
 //Detta är ingridnetbox save
+//on save text controller
+//text field controller sen on save return Mydata(thetext: mycontroller.text)
+// add items.list mycontroller.text
 class IngPop extends StatelessWidget {
   final String title;
 
