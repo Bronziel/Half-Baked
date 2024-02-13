@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../currents/buttons.dart' show Addbuttoncontainer;
+import '../../Popups/popupclass.dart';
 
 //this is the widget that show prep and total time tile
 class TimeCard extends StatelessWidget {
@@ -7,9 +8,11 @@ class TimeCard extends StatelessWidget {
   final String time;
   final String titleadd;
   final bool showdisplaytime;
+  final bool prepOrTotal;
 
   const TimeCard({
     required this.showdisplaytime,
+    required this.prepOrTotal,
     super.key,
     required this.titleadd,
     required this.title,
@@ -33,7 +36,10 @@ class TimeCard extends StatelessWidget {
   }
 
   Widget addtime() {
-    return Addtimes(titleadd: titleadd);
+    return Addtimes(
+      titleadd: titleadd,
+      preptot: prepOrTotal,
+    );
   }
 }
 
@@ -85,9 +91,11 @@ class Displaytimes extends StatelessWidget {
 }
 
 class Addtimes extends StatelessWidget {
+  final bool preptot;
   const Addtimes({
     super.key,
     required this.titleadd,
+    required this.preptot,
   });
 
   final String titleadd;
@@ -107,8 +115,11 @@ class Addtimes extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
-        const Addbuttoncontainer5(
-          color: Color(0xFF000000),
+        Addbuttoncontainer(
+          onPressed: preptot
+              ? () => DialogUtils.showTimePrepDialog(context)
+              : () => DialogUtils.showTimeTotalDialog(context),
+          color: const Color(0xFF000000),
         ),
         const SizedBox(width: 1),
         const Text(

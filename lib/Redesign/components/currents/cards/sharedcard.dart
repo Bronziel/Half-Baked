@@ -52,6 +52,7 @@ class Cardcolumns extends StatelessWidget {
           titleadd: '',
           title: "Prep Time:",
           time: "300",
+          prepOrTotal: false,
         ),
         SizedBox(
           height: 5,
@@ -61,6 +62,7 @@ class Cardcolumns extends StatelessWidget {
           titleadd: '',
           title: "Total Time:",
           time: "450",
+          prepOrTotal: false,
         ),
       ],
     );
@@ -69,6 +71,7 @@ class Cardcolumns extends StatelessWidget {
 
 ///need diffrnet logic i tihnk
 //create recipe
+//vem använder ens denna?
 class Addcardcolumn extends StatelessWidget {
   const Addcardcolumn({
     super.key,
@@ -90,6 +93,7 @@ class Addcardcolumn extends StatelessWidget {
           titleadd: "Prep Time:",
           title: "",
           time: "",
+          prepOrTotal: true,
         ),
         SizedBox(
           height: 5,
@@ -99,6 +103,7 @@ class Addcardcolumn extends StatelessWidget {
           titleadd: "Total Time:",
           title: "",
           time: "",
+          prepOrTotal: true,
         ),
       ],
     );

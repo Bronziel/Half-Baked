@@ -109,12 +109,14 @@ class TimeTIlesshowcase extends StatelessWidget {
           titleadd: '',
           title: "Total Time:",
           time: "450",
+          prepOrTotal: false,
         ),
         TimeCard(
           showdisplaytime: true,
           titleadd: '',
           title: "Prep Time:",
           time: "300",
+          prepOrTotal: false,
         ),
       ],
     );

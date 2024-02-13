@@ -59,15 +59,18 @@ class Addcardcolumn extends StatelessWidget {
           titleadd: "Prep Time:",
           title: "",
           time: "",
+          prepOrTotal: true, //true is for preptime
         ),
         SizedBox(
           height: 5,
         ),
         TimeCard(
-          showdisplaytime: false,
+          showdisplaytime:
+              false, //true for showing done recipe false for adding
           titleadd: "Total Time:",
           title: "",
           time: "",
+          prepOrTotal: false, //false is for totaltime
         ),
       ],
     );
