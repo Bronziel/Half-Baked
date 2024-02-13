@@ -103,12 +103,30 @@ class Addicon extends StatelessWidget {
         child: Center(
           child: FittedBox(
             fit: BoxFit.contain,
-            child: Addbuttoncontainer(
+            child: Addbuttoncontainer2(
               color: Color(0xFF000000),
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class Addbuttoncontainer2 extends StatelessWidget {
+  final Color color; // Add a color property
+
+  const Addbuttoncontainer2({
+    super.key,
+    this.color = const Color(0xFFCECCCC), // Set default color
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.add, size: 24),
+      color: color, // Use the color property
+      onPressed: () {},
     );
   }
 }
