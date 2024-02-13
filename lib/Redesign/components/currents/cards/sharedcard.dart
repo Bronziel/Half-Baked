@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../smallicons.dart';
-import '../buttons.dart';
 import 'fixedportionsize.dart';
 import 'fixedtimecard.dart';
 
@@ -89,11 +88,12 @@ class Addcardcolumn extends StatelessWidget {
           height: 5,
         ),
         TimeCard(
-          showdisplaytime: false,
+          showdisplaytime:
+              false, //true for showing done recipe false for adding
           titleadd: "Prep Time:",
           title: "",
           time: "",
-          prepOrTotal: true,
+          prepOrTotal: true, //true is for totaltime
         ),
         SizedBox(
           height: 5,
@@ -103,7 +103,7 @@ class Addcardcolumn extends StatelessWidget {
           titleadd: "Total Time:",
           title: "",
           time: "",
-          prepOrTotal: true,
+          prepOrTotal: false, //false is for totaltime
         ),
       ],
     );
