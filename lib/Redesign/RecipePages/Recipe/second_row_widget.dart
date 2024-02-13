@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../components/spacing/sizedboxes.dart';
-import '../../../components/currents/ingholder/ingboxshared.dart';
-import '../../../components/currents/stepholder/prog_ui.dart';
+import '../../components/spacing/sizedboxes.dart';
+import '../../components/currents/ingholder/ingboxshared.dart';
+import '../../components/currents/stepholder/prog_ui.dart';
 
 class SecondRowWidget extends StatelessWidget {
   const SecondRowWidget({

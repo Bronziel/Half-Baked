@@ -209,33 +209,3 @@ class Popsteps extends StatelessWidget {
     );
   }
 }
-
-//detta är lådan för titel,steptitle
-/*
-class IngamountfieldPop extends StatelessWidget {
-  final String title;
-  final String labelText;
-  final String hintText;
-  const IngamountfieldPop({
-    required this.labelText,
-    this.hintText = '',
-    required this.title,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Utils.smallpopbox(
-      Card(
-        color: StyleUtils.cardcolorgrey(),
-        child: Stack(
-          children: [
-            Titles(title: title),
-            const PostionedStopButton(),
-            const PostionedSaveButton(),
-          ],
-        ),
-      ),
-    );
-  }
-} */
