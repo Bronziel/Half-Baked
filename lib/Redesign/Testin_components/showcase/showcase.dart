@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'comb_showcase.dart';
 import '../built/myreorder.dart';
-import '../../RecipePages/Recipe/FirstRow/introholder2/introduction_box.dart';
-import '../../RecipePages/Recipe/FirstRow/imagholder2/image_boxes.dart';
-import '../../RecipePages/CreateRecipes/CreateFirstRow/imageholder/create_image_boxes.dart';
+import '../../components/currents/introductionholder/normal_intro/introduction_box.dart';
+import '../../components/currents/imgholders/normal/image_boxes.dart';
+import '../../components/currents/imgholders/image_create_hold/create_image_boxes.dart';
 import '../../components/currents/ingholder/ingboxshared.dart';
 import '../../components/currents/stepholder/prog_ui.dart';
 

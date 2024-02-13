@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'smallimages.dart';
-import '../../../../components/currents/imgholders/sharingimgholder.dart';
+import '../sharingimgholder.dart';
 
 class MaingImgHolder extends StatelessWidget {
   final String imagePath;

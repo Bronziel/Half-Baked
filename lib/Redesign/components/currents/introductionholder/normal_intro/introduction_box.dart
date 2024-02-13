@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../components/currents/introductionholder/descriptionshared.dart';
-import '../../../../components/currents/sharedtitle.dart';
-import '../../../../components/currents/cards/sharedcard.dart';
-import '../../../CreateRecipes/CreateFirstRow/introductionholder/holder_prep_toal.dart';
+import '../descriptionshared.dart';
+import '../../sharedtitle.dart';
+import '../../cards/sharedcard.dart';
+import '../../../../RecipePages/CreateRecipes/CreateFirstRow/introductionholder/holder_prep_toal.dart';
 
 class IntroductionWidget extends StatelessWidget {
   final bool showIntrodisplay;
