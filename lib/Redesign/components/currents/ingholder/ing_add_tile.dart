@@ -1,3 +1,4 @@
+import 'package:fb2/Redesign/components/Popups/popup_boxes.dart';
 import 'package:flutter/material.dart';
 import '../buttons.dart' show Addbuttoncontainer;
 
@@ -33,7 +34,7 @@ class Addinngtile extends StatelessWidget {
             Positioned(
               top: 5,
               right: 10,
-              child: Addbuttoncontainer(),
+              child: Addbuttoning(),
             ),
           ],
         ),
@@ -41,3 +42,58 @@ class Addinngtile extends StatelessWidget {
     );
   }
 }
+
+class Addbuttoning extends StatelessWidget {
+  final Color color; // Add a color property
+
+  const Addbuttoning({
+    super.key,
+    this.color = const Color(0xFFCECCCC), // Set default color
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.add, size: 24),
+      color: color, // Use the color property
+
+      onPressed: () => DialogUtils.showIngPopDialog(context),
+
+      // Add your action for this button
+    );
+  }
+}
+
+//ing pop
+/* IngPop(
+            title: "Ingredient Details",
+            labelText: "Ingredient",
+            labelText2: "Quantity",
+            hintText: "Enter ingredient name",
+            hintText2: "Enter quantity",
+          ),*/
+
+class DialogUtils {
+  //not retuurn value insted retunr action
+  static void showIngPopDialog(
+    BuildContext context,
+  ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const Dialog(
+          child: IngPop(
+            title: "Ingredient Details",
+            labelText: "Ingredient",
+            labelText2: "Quantity",
+            hintText: "Enter ingredient name",
+            hintText2: "Enter quantity",
+          ),
+        );
+      },
+    );
+  }
+}
+/* static void showIngPopDialog(BuildContext context, {required String title, required String labelText, required String labelText2, String hintText = '', String hintText2 = ''}) {
+    showDialog(
+      context: context, */

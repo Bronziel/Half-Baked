@@ -231,6 +231,8 @@ class _BoxwithstepsState extends State<Stepbox> {
     );
   }
 }
+
+
 //we say list with empty bool values
 //we generate the combined list we use this list to see lenght and give automatic value false. 
 //we say use 

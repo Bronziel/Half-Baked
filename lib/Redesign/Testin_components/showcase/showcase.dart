@@ -42,18 +42,18 @@ class ShowcasePage extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
-              const Row(
+              Row(
                 children: [
                   RowOfIcons80(),
                   TimeTIlesshowcase(),
                 ],
               ),
-              const Popupsdisplayed(),
-              const Row(
+              Popupsdisplayed(),
+              Row(
                 children: [
                   Column(
                     children: [
@@ -77,7 +77,7 @@ class ShowcasePage extends StatelessWidget {
                   ),
                 ],
               ),
-              const Column(
+              Column(
                 children: [
                   MainImagePlusBoxes(),
                   CreateMainImagePlusBoxes(),
