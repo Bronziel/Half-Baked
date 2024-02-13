@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'checkbox.dart';
 
 ///import 'learn_json togheter.txt';
-import 'progs/prog_ui.dart';
+import '../../components/currents/stepholder/prog_ui.dart';
 
 class Building extends StatelessWidget {
   const Building({super.key});
