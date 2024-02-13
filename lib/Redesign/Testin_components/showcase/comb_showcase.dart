@@ -1,6 +1,6 @@
 import 'package:fb2/Redesign/components/smallicons.dart';
 import 'package:flutter/material.dart';
-import '../../RecipePages/CreateRecipes/Popups/popup_boxes.dart';
+import '../../components/Popups/popup_boxes.dart';
 import '../../../Redesign/components/currents/cards/fixedportionsize.dart';
 import '../../../Redesign/components/currents/cards/fixedtimecard.dart';
 

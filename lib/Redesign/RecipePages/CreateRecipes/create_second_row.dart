@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../components/spacing/sizedboxes.dart';
+import '../../components/spacing/sizedboxes.dart';
 
-import 'CreateSteps.dart';
-import '../../../components/currents/ingholder/ingboxshared.dart';
+import '../../components/currents/stepholder/create_step/CreateSteps.dart';
+import '../../components/currents/ingholder/ingboxshared.dart';
 
 class CreateSecondRowWidget extends StatelessWidget {
   const CreateSecondRowWidget({

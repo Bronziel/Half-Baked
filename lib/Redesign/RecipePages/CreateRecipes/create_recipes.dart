@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../components/spacing/sizedboxes.dart';
-import 'CreateFirstRow/create_first_row.dart';
-import 'CreateSecondRow/create_second_row.dart';
+import 'create_first_row.dart';
+import 'create_second_row.dart';
 
 class CreateRecipesPage extends StatelessWidget {
   const CreateRecipesPage({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../components/styles/style.dart';
+import '../styles/style.dart';
 
 class PostionedStopButton extends StatelessWidget {
   const PostionedStopButton({
