@@ -4,10 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'comb_showcase.dart';
 import '../built/myreorder.dart';
 import '../../RecipePages/Recipe/FirstRow/introholder2/introduction_box.dart';
-import '../../RecipePages/Recipe/SecondRow/second_row_widget.dart';
 import '../../RecipePages/Recipe/FirstRow/imagholder2/image_boxes.dart';
 import '../../RecipePages/CreateRecipes/CreateFirstRow/imageholder/create_image_boxes.dart';
 import '../../components/currents/ingholder/ingboxshared.dart';
+import '../../components/currents/stepholder/prog_ui.dart';
 
 class ShowcasePage extends StatelessWidget {
   const ShowcasePage({super.key});
@@ -85,7 +85,7 @@ class ShowcasePage extends StatelessWidget {
               ),
               Column(
                 children: [
-                  StepsWidget(),
+                  Builtbyme(),
                 ],
               ),
             ],

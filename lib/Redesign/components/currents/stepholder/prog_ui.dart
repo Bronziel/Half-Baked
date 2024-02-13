@@ -9,7 +9,7 @@ class Builtbyme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      width: 650,
+      width: 1200,
       height: 475,
       child: Card(
         color: Color(0xffd9d9d9),
