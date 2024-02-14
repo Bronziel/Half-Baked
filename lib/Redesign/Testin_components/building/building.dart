@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'classforpopup.dart';
 
 ///import 'learn_json togheter.txt';
 import '../../components/currents/stepholder/prog_ui.dart';
@@ -8,10 +9,10 @@ class Building extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
         children: [
-          Row(
+          const Row(
             children: [
               //Mine(),
               Builtbyme(),
@@ -21,7 +22,9 @@ class Building extends StatelessWidget {
           Row(
             children: [
               SizedBox(
-                child: Text('hello'),
+                child: Addbuttoncontainertest(
+                  onPressed: () => DialogUtilstest.showIngPopDialog(context),
+                ),
               )
             ],
           ),
@@ -46,4 +49,24 @@ class IngPass {
   final String unit;
 
   IngPass({required this.label, required this.amount, required this.unit});
+}
+
+class Addbuttoncontainertest extends StatelessWidget {
+  final VoidCallback onPressed;
+  final Color color; // Add a color property
+
+  const Addbuttoncontainertest({
+    required this.onPressed,
+    super.key,
+    this.color = const Color(0xFFCECCCC), // Set default color
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.add, size: 24),
+      color: color, // Use the color property
+      onPressed: onPressed,
+    );
+  }
 }

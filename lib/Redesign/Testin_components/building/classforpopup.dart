@@ -78,3 +78,26 @@ class Titlestest extends StatelessWidget {
         ));
   }
 }
+
+class DialogUtilstest {
+  //not retuurn value insted retunr action
+  static void showIngPopDialog(
+    BuildContext context,
+  ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const Dialog(
+          backgroundColor: Colors.transparent,
+          child: IngPoptest(
+            title: "Ingredient Details",
+            labelText: "Ingredient",
+            labelText2: "Quantity",
+            hintText: "Enter ingredient name",
+            hintText2: "Enter quantity",
+          ),
+        );
+      },
+    );
+  }
+}
