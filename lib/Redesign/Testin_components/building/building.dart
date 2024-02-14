@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'classforpopup.dart';
+import 'testlist.dart';
 
 ///import 'learn_json togheter.txt';
 import '../../components/currents/stepholder/prog_ui.dart';
@@ -25,30 +26,18 @@ class Building extends StatelessWidget {
                 child: Addbuttoncontainertest(
                   onPressed: () => DialogUtilstest.showIngPopDialog(context),
                 ),
-              )
+              ),
+              const SizedBox(
+                width: 400,
+                height: 400,
+                child: ListOfIngtest(),
+              ),
             ],
           ),
         ],
       ),
     );
   }
-}
-
-class Listholder extends StatelessWidget {
-  const Listholder({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class IngPass {
-  final String label;
-  final String amount;
-  final String unit;
-
-  IngPass({required this.label, required this.amount, required this.unit});
 }
 
 class Addbuttoncontainertest extends StatelessWidget {
