@@ -8,23 +8,42 @@ class Building extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Column(
         children: [
           Row(
             children: [
               //Mine(),
-
-              const Builtbyme(),
-
+              Builtbyme(),
               //Mine2(),
             ],
           ),
-          const Row(
-            children: [],
+          Row(
+            children: [
+              SizedBox(
+                child: Text('hello'),
+              )
+            ],
           ),
         ],
       ),
     );
   }
+}
+
+class Listholder extends StatelessWidget {
+  const Listholder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class IngPass {
+  final String label;
+  final String amount;
+  final String unit;
+
+  IngPass({required this.label, required this.amount, required this.unit});
 }
