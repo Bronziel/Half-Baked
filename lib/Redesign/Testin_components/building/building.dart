@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'classforpopup.dart';
 import 'testlist.dart';
+import 'simpleone/okeyy.dart';
 
 ///import 'learn_json togheter.txt';
 
@@ -11,25 +12,30 @@ class Building extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SingleChildScrollView(
-        child: Column(
+        child: Row(
           children: [
-            SizedBox(
-              width: 800,
-              height: 1000,
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: 800,
-                    height: 50,
-                    child: Addinngtiletest(),
+            minie3(),
+            Column(
+              children: [
+                SizedBox(
+                  width: 800,
+                  height: 1000,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        width: 800,
+                        height: 50,
+                        child: Addinngtiletest(),
+                      ),
+                      SizedBox(
+                        width: 800,
+                        height: 600,
+                        child: ListOfIngtest(),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 800,
-                    height: 600,
-                    child: ListOfIngtest(),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
