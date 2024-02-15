@@ -14,7 +14,7 @@ class Building extends StatelessWidget {
       body: SingleChildScrollView(
         child: Row(
           children: [
-            minie3(),
+            Minie3(),
             Column(
               children: [
                 SizedBox(
