@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'styletest.dart';
-import 'textfieldtest.dart';
 import 'dropdowntest.dart';
 import 'buttontest.dart';
+import 'takedata.dart';
 
 //Detta är ingridnetbox save
 //on save text controller
 //text field controller sen on save return Mydata(thetext: mycontroller.text)
 // add items.list mycontroller.text
+/*
 class IngPoptest extends StatelessWidget {
   final String title;
 
@@ -58,7 +59,7 @@ class IngPoptest extends StatelessWidget {
     );
   }
 }
-
+*/
 class Titlestest extends StatelessWidget {
   const Titlestest({
     super.key,
@@ -89,7 +90,7 @@ class DialogUtilstest {
       builder: (BuildContext context) {
         return const Dialog(
           backgroundColor: Colors.transparent,
-          child: IngPoptest(
+          child: Takedata(
             title: "Ingredient Details",
             labelText: "Ingredient",
             labelText2: "Quantity",

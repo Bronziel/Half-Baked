@@ -3,38 +3,36 @@ import 'classforpopup.dart';
 import 'testlist.dart';
 
 ///import 'learn_json togheter.txt';
-import '../../components/currents/stepholder/prog_ui.dart';
 
 class Building extends StatelessWidget {
   const Building({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          const Row(
-            children: [
-              //Mine(),
-              Builtbyme(),
-              //Mine2(),
-            ],
-          ),
-          Row(
-            children: [
-              SizedBox(
-                child: Addbuttoncontainertest(
-                  onPressed: () => DialogUtilstest.showIngPopDialog(context),
-                ),
+    return const Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              width: 800,
+              height: 1000,
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: 800,
+                    height: 50,
+                    child: Addinngtiletest(),
+                  ),
+                  SizedBox(
+                    width: 800,
+                    height: 600,
+                    child: ListOfIngtest(),
+                  ),
+                ],
               ),
-              const SizedBox(
-                width: 400,
-                height: 400,
-                child: ListOfIngtest(),
-              ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -56,6 +54,49 @@ class Addbuttoncontainertest extends StatelessWidget {
       icon: const Icon(Icons.add, size: 24),
       color: color, // Use the color property
       onPressed: onPressed,
+    );
+  }
+}
+
+class Addinngtiletest extends StatelessWidget {
+  const Addinngtiletest({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    const textStyle = TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w700,
+      color: Colors.white, // Set your desired color here
+    );
+
+    return Container(
+      height: 50,
+      width: 500,
+      color: const Color(0xff161414),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: const Color.fromARGB(255, 240, 13, 229),
+            width: 2,
+          ),
+        ),
+        child: Stack(
+          children: [
+            const Positioned(
+              top: 5,
+              left: 10,
+              child: Text('Add an Ingridient', style: textStyle),
+            ),
+            Positioned(
+              top: 5,
+              right: 10,
+              child: Addbuttoncontainertest(
+                onPressed: () => DialogUtilstest.showIngPopDialog(context),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
