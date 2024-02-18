@@ -121,9 +121,9 @@ class _CreateListWithIngridientsState extends State<CreateListWithIngridients> {
 }
 
 class SaveButtonCreate extends StatefulWidget {
-  String? errorText1;
-  String? errorText2;
-  String? errorText3;
+  final String? errorText1;
+  final String? errorText2;
+  final String? errorText3;
   var myController = TextEditingController();
   var mySecondController = TextEditingController();
   var myThirdController = TextEditingController();
