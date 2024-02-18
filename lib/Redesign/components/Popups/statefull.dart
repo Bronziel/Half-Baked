@@ -172,6 +172,7 @@ class DropDownMenueTextField extends StatefulWidget {
 class _DropDownMenueTextFieldState extends State<DropDownMenueTextField> {
   @override
   Widget build(BuildContext context) {
+    //add controller inside  dropdownmenue
     return DropdownMenu(
       //expandedinset makes so that the menu takes size of parent otehrwise need set widh
       expandedInsets: EdgeInsets.zero,
@@ -187,6 +188,7 @@ class _DropDownMenueTextFieldState extends State<DropDownMenueTextField> {
         enabledBorder: StyleUtils.enabledborderstyle(),
         hintStyle: StyleUtils.hintstylepop(),
       ),
+      //extract??
       dropdownMenuEntries: <DropdownMenuEntry>[
         DropdownMenuEntry(
           value: 1,
