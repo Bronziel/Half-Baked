@@ -1,5 +1,6 @@
 import 'package:fb2/Redesign/components/Popups/popup_boxes.dart';
 import 'package:flutter/material.dart';
+import 'popstatefull.dart';
 
 //onPressed: () => DialogUtils.showIngPopDialog(context)
 class DialogUtils {
@@ -13,6 +14,26 @@ class DialogUtils {
         return const Dialog(
           backgroundColor: Colors.transparent,
           child: IngPop(
+            title: "Ingredient Details",
+            labelText: "Ingredient",
+            labelText2: "Quantity",
+            hintText: "Enter ingredient name",
+            hintText2: "Enter quantity",
+          ),
+        );
+      },
+    );
+  }
+
+  static void testShowIngPopDialog(
+    BuildContext context,
+  ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const Dialog(
+          backgroundColor: Colors.transparent,
+          child: IngridientPopupp(
             title: "Ingredient Details",
             labelText: "Ingredient",
             labelText2: "Quantity",
