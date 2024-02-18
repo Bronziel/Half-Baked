@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import '../styles/style.dart';
 
 //need to intalitse controller  but doing that outside this  class.
+
+// används i portionsize time card bara för siffror single rad
 class NumberTextField extends StatefulWidget {
   final bool isPortionSize;
   final String labelText;
@@ -81,6 +83,41 @@ class _TitleTextFieldState extends State<TitleTextField> {
           enabledBorder: StyleUtils.enabledborderstyle(),
         ),
         style: StyleUtils.textfieldstylepop(),
+      ),
+    );
+  }
+}
+
+//text field for description box
+class DescriptionTextField extends StatefulWidget {
+  final String labeltext;
+  const DescriptionTextField({
+    required this.labeltext,
+    super.key,
+  });
+
+  @override
+  State<DescriptionTextField> createState() => _DescriptionTextFieldState();
+}
+
+class _DescriptionTextFieldState extends State<DescriptionTextField> {
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: 10,
+      left: 10,
+      top: 45,
+      right: 100, // Adjusted to ensure the TextField is more square-like
+      child: TextField(
+        decoration: InputDecoration(
+          labelText: widget.labeltext,
+          labelStyle: StyleUtils.labelstylepop(),
+          border: const OutlineInputBorder(),
+          enabledBorder: StyleUtils.enabledborderstyle(),
+        ),
+        style: StyleUtils.textfieldstylepop(),
+        maxLines: null, // Allows for unlimited lines
+        minLines: 5, // Set this to a desired initial size
       ),
     );
   }
