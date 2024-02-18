@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'simpleone/okeyy.dart';
 
 ///import 'learn_json togheter.txt';
-
+//error message for not fufilling every box suces message after adding a item
 class Building extends StatelessWidget {
   const Building({super.key});
 

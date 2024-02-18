@@ -111,16 +111,37 @@ class _TextfinderState extends State<Textfinder> {
         ),
         ElevatedButton(
           onPressed: () {
-            // Use the addItem method from the parent widget to add the item
-            if (context.findAncestorStateOfType<_Minie3State>() != null) {
-              context
-                  .findAncestorStateOfType<_Minie3State>()!
-                  .addItem(myController.text, mySecondController.text);
+            // Check if both TextFields are not empty
+            if (myController.text.isNotEmpty &&
+                mySecondController.text.isNotEmpty) {
+              final state = context.findAncestorStateOfType<_Minie3State>();
+              // Use the addItem method from the parent widget to add the item
+              if (state != null) {
+                state.addItem(
+                  myController.text, // Text from the first TextField
+                  mySecondController.text, // Text from the second TextField
+                );
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('successfully added item'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
+              }
+              // Clear the text fields after adding
+              myController.clear();
+              mySecondController.clear();
+            } else {
+              // Optional: Show an error message if one or both TextFields are empty
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Both fields are required'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
             }
-            myController.clear(); // Clear the text field
-            mySecondController.clear();
           },
-          child: const Icon(Icons.save), // Changed icon to indicate save action
+          child: const Icon(Icons.save), // Keep the save icon
         ),
       ],
     );
