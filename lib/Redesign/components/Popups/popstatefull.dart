@@ -33,7 +33,7 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
   Widget build(BuildContext context) {
     return Utils.ingpop(
       Card(
-        color: StyleUtils.cardcolorgrey(),
+        color: Colors.amber,
         child: Stack(
           children: [
             Titles(title: widget.title),
