@@ -7,11 +7,15 @@ import '../styles/style_objects.dart';
 
 // används i portionsize time card bara för siffror single rad
 class NumberTextField extends StatefulWidget {
+  final String? errorText2;
+  final TextEditingController numberController;
   final bool isPortionSize;
   final String labelText;
   final String hintText;
   final double bottom;
   const NumberTextField({
+    this.errorText2,
+    required this.numberController,
     required this.isPortionSize,
     required this.labelText,
     required this.hintText,
@@ -31,12 +35,14 @@ class _NumberTextFieldState extends State<NumberTextField> {
       left: 10,
       right: 100,
       child: TextField(
+          controller: widget.numberController,
           keyboardType:
               widget.isPortionSize ? TextInputType.text : TextInputType.number,
           inputFormatters: widget.isPortionSize
               ? []
               : [FilteringTextInputFormatter.digitsOnly],
           decoration: InputDecoration(
+            errorText: widget.errorText2,
             labelText: widget.labelText,
             labelStyle: StyleUtils.labelstylepop(),
             hintText: widget.hintText,
@@ -51,11 +57,15 @@ class _NumberTextFieldState extends State<NumberTextField> {
 
 //litet textfield använd av title stepstitle o andra en rads fält
 class TitleTextField extends StatefulWidget {
+  final TextEditingController titleController;
   final String labelText;
   final String hintText;
   final double bottom;
+  final String? errorText1;
   const TitleTextField({
+    required this.titleController,
     required this.labelText,
+    this.errorText1,
     this.hintText = '',
     this.bottom = 10,
     super.key,
@@ -75,7 +85,9 @@ class _TitleTextFieldState extends State<TitleTextField> {
       right: 100,
 
       child: TextField(
+        controller: widget.titleController,
         decoration: InputDecoration(
+          errorText: widget.errorText1,
           labelText: widget.labelText,
           labelStyle: StyleUtils.labelstylepop(),
           hintText: widget.hintText,
@@ -161,8 +173,12 @@ class _StepsTextFieldState extends State<StepsTextField> {
 
 //används i dropdown men kan behvöer unitdropdown class
 class DropDownMenueTextField extends StatefulWidget {
+  final String? errorText3;
+  final TextEditingController dropdownController;
   final double bottom;
   const DropDownMenueTextField({
+    this.errorText3,
+    required this.dropdownController,
     this.bottom = 10,
     super.key,
   });
@@ -181,6 +197,8 @@ class _DropDownMenueTextFieldState extends State<DropDownMenueTextField> {
       left: 10, // Adjust these values as needed
       right: 100,
       child: DropdownMenu(
+        errorText: widget.errorText3,
+        controller: widget.dropdownController,
         //expandedinset makes so that the menu takes size of parent otehrwise need set widh
         expandedInsets: EdgeInsets.zero,
         enableFilter: true,

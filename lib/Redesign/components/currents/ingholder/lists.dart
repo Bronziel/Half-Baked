@@ -52,8 +52,8 @@ class _ListOfIngState extends State<ListOfIng> {
   Widget build(BuildContext context) {
     return ReorderableListView(
       buildDefaultDragHandles: false,
-      children: List.generate(_items.length, (index) {
-        Item item = _items[index];
+      children: List.generate(items.length, (index) {
+        Item item = items[index];
         return IngredientTile(
           key: ValueKey(item.label),
           label: item.label,
@@ -68,9 +68,9 @@ class _ListOfIngState extends State<ListOfIng> {
           if (newIndex > oldIndex) {
             newIndex -= 1;
           }
-          final Item item = _items.removeAt(oldIndex);
+          final Item item = items.removeAt(oldIndex);
 
-          _items.insert(newIndex, item);
+          items.insert(newIndex, item);
         });
       },
     );
@@ -85,7 +85,7 @@ class Item {
   Item({required this.label, required this.amount, required this.unit});
 }
 
-final List<Item> _items = [
+final List<Item> items = [
   Item(label: 'maricha sås', amount: '300', unit: 'ml'),
   Item(label: 'Jordgubbssylt', amount: '4', unit: 'dl'),
   Item(label: 'Kebabkött', amount: '400', unit: 'g'),

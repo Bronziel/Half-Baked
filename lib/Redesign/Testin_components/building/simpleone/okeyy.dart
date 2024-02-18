@@ -117,6 +117,7 @@ class _TextfinderState extends State<Textfinder> {
           ),
         ),
         ElevatedButton(
+          //here
           onPressed: () {
             // Reset error messages
             setState(() {
@@ -140,6 +141,7 @@ class _TextfinderState extends State<Textfinder> {
               mySecondController.clear();
             }
           },
+          //here
           child: const Icon(Icons.save), // Keep the save icon
         ),
       ],
