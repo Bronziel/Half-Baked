@@ -70,6 +70,10 @@ class _TextfinderState extends State<Textfinder> {
   final myController = TextEditingController();
   final mySecondController = TextEditingController();
 
+  // State variables for error messages
+  String? _errorText1;
+  String? _errorText2;
+
   @override
   void dispose() {
     myController.dispose();
@@ -91,16 +95,19 @@ class _TextfinderState extends State<Textfinder> {
               child: Column(
                 children: [
                   TextField(
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       labelText: 'Enter text',
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
+                      errorText: _errorText1,
                     ),
                     controller: myController,
                   ),
                   TextField(
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       labelText: 'Enter text',
                       border: OutlineInputBorder(),
+                      //eror text hantereat auutomatisk röd ring etc men man kan  customisa ifall man vill
+                      errorText: _errorText2,
                     ),
                     controller: mySecondController,
                   ),
@@ -111,34 +118,26 @@ class _TextfinderState extends State<Textfinder> {
         ),
         ElevatedButton(
           onPressed: () {
-            // Check if both TextFields are not empty
-            if (myController.text.isNotEmpty &&
-                mySecondController.text.isNotEmpty) {
+            // Reset error messages
+            setState(() {
+              _errorText1 =
+                  myController.text.isEmpty ? 'Field cannot be empty' : null;
+              _errorText2 = mySecondController.text.isEmpty
+                  ? 'Field cannot be empty'
+                  : null;
+            });
+
+            // Proceed if no errors
+            //if both eror text and eror text 2 are equal to nun jump into this. null is no issue
+            if (_errorText1 == null && _errorText2 == null) {
+              //create state so i dont have to write it out all the time
               final state = context.findAncestorStateOfType<_Minie3State>();
-              // Use the addItem method from the parent widget to add the item
               if (state != null) {
-                state.addItem(
-                  myController.text, // Text from the first TextField
-                  mySecondController.text, // Text from the second TextField
-                );
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('successfully added item'),
-                    duration: Duration(seconds: 2),
-                  ),
-                );
+                state.addItem(myController.text, mySecondController.text);
               }
               // Clear the text fields after adding
               myController.clear();
               mySecondController.clear();
-            } else {
-              // Optional: Show an error message if one or both TextFields are empty
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Both fields are required'),
-                  duration: Duration(seconds: 2),
-                ),
-              );
             }
           },
           child: const Icon(Icons.save), // Keep the save icon
