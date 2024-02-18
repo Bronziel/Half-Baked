@@ -161,7 +161,9 @@ class _StepsTextFieldState extends State<StepsTextField> {
 
 //används i dropdown men kan behvöer unitdropdown class
 class DropDownMenueTextField extends StatefulWidget {
+  final double bottom;
   const DropDownMenueTextField({
+    this.bottom = 10,
     super.key,
   });
 
@@ -173,63 +175,69 @@ class _DropDownMenueTextFieldState extends State<DropDownMenueTextField> {
   @override
   Widget build(BuildContext context) {
     //add controller inside  dropdownmenue
-    return DropdownMenu(
-      //expandedinset makes so that the menu takes size of parent otehrwise need set widh
-      expandedInsets: EdgeInsets.zero,
-      enableFilter: true,
-      textStyle: StyleUtils.textfieldstylepop(),
-      label: const Text(
-        'Unit',
-      ),
-      hintText: 'ex ml, g , l',
-      inputDecorationTheme: InputDecorationTheme(
-        border: const OutlineInputBorder(
-            borderSide: BorderSide(color: Color.fromARGB(255, 19, 19, 19))),
-        enabledBorder: StyleUtils.enabledborderstyle(),
-        hintStyle: StyleUtils.hintstylepop(),
-      ),
-      //extract??
-      dropdownMenuEntries: <DropdownMenuEntry>[
-        DropdownMenuEntry(
-          value: 1,
-          label: 'ml',
-          trailingIcon: Utils.info(),
+    return Positioned(
+      // Set the position for the TextField
+      bottom: widget.bottom, // Adjust these values as needed
+      left: 10, // Adjust these values as needed
+      right: 100,
+      child: DropdownMenu(
+        //expandedinset makes so that the menu takes size of parent otehrwise need set widh
+        expandedInsets: EdgeInsets.zero,
+        enableFilter: true,
+        textStyle: StyleUtils.textfieldstylepop(),
+        label: const Text(
+          'Unit',
         ),
-        DropdownMenuEntry(
-          value: 2,
-          label: 'dl',
-          trailingIcon: Utils.info(),
+        hintText: 'ex ml, g , l',
+        inputDecorationTheme: InputDecorationTheme(
+          border: const OutlineInputBorder(
+              borderSide: BorderSide(color: Color.fromARGB(255, 19, 19, 19))),
+          enabledBorder: StyleUtils.enabledborderstyle(),
+          hintStyle: StyleUtils.hintstylepop(),
         ),
-        DropdownMenuEntry(
-          value: 3,
-          label: 'cl',
-          trailingIcon: Utils.info(),
-        ),
-        DropdownMenuEntry(
-          value: 'l',
-          label: 'liter',
-          trailingIcon: Utils.info(),
-        ),
-        DropdownMenuEntry(
-          value: 4,
-          label: 'g',
-          trailingIcon: Utils.info(),
-        ),
-        const DropdownMenuEntry(
-          value: 6,
-          label: 'tsk',
-          trailingIcon: Tooltipinfo(
-            message: '1tsk = 5ml',
+        //extract??
+        dropdownMenuEntries: <DropdownMenuEntry>[
+          DropdownMenuEntry(
+            value: 1,
+            label: 'ml',
+            trailingIcon: Utils.info(),
           ),
-        ),
-        const DropdownMenuEntry(
-          value: 7,
-          label: 'msk',
-          trailingIcon: Tooltipinfo(
-            message: '1msk=15ml',
+          DropdownMenuEntry(
+            value: 2,
+            label: 'dl',
+            trailingIcon: Utils.info(),
           ),
-        ),
-      ],
+          DropdownMenuEntry(
+            value: 3,
+            label: 'cl',
+            trailingIcon: Utils.info(),
+          ),
+          DropdownMenuEntry(
+            value: 'l',
+            label: 'liter',
+            trailingIcon: Utils.info(),
+          ),
+          DropdownMenuEntry(
+            value: 4,
+            label: 'g',
+            trailingIcon: Utils.info(),
+          ),
+          const DropdownMenuEntry(
+            value: 6,
+            label: 'tsk',
+            trailingIcon: Tooltipinfo(
+              message: '1tsk = 5ml',
+            ),
+          ),
+          const DropdownMenuEntry(
+            value: 7,
+            label: 'msk',
+            trailingIcon: Tooltipinfo(
+              message: '1msk=15ml',
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
