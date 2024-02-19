@@ -57,7 +57,9 @@ class Items {
   Items({required this.mytext, required this.stepText});
 }
 
-List<Items> myitems = [];
+List<Items> myitems = [
+  Items(mytext: 'starting point', stepText: 'starting point')
+];
 
 class Textfinder extends StatefulWidget {
   const Textfinder({super.key});

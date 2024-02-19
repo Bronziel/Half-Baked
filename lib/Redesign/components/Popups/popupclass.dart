@@ -31,6 +31,7 @@ class DialogUtils {
     showDialog(
       context: context,
       builder: (BuildContext context) {
+        print('dialog open');
         return const Dialog(
           backgroundColor: Colors.transparent,
           child: IngridientPopupp(
