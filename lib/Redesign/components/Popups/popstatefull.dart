@@ -100,6 +100,7 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
           dropdownController.text.isEmpty ? 'Field cannot be empty' : null;
     });
     print('1');
+
     if (errorText1 == null && errorText2 == null && errorText3 == null) {
       print('2');
       //create state so i dont have to write it out all the time
@@ -118,6 +119,8 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
       numberController.clear();
       dropdownController.clear();
       print('4');
+      Navigator.of(context).pop();
+      print('close dialog');
     }
   }
 
