@@ -23,19 +23,19 @@ class _CreateListWithIngridientsState extends State<CreateListWithIngridients> {
     setState(() {
       //parameter för sätta vilken info är vad items kräver mytext.vi säger hämta text från textfield
       items.add(Item(label: title, amount: amount, unit: unit));
-      print(items);
+      print('lagt till item');
       //set new state for ing here when item added to renew list state.
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         IngMainTile(
             showMaintile:
                 false), //controls wich main tile size.we get since false we get the bigger one
-        Addinngtile(), //tile to add new ingridninets
+        Addinngtile(addItemCallback: addItem), //tile to add new ingridninets
         Expanded(
           child: ListOfIng(), //specila list for ingridinets
         ),
@@ -45,6 +45,8 @@ class _CreateListWithIngridientsState extends State<CreateListWithIngridients> {
 }
 
 class IngridientPopupp extends StatefulWidget {
+  //new
+  final Function(String, String, String) addItem;
   final String title;
   final String labelText;
   final String labelText2;
@@ -52,6 +54,8 @@ class IngridientPopupp extends StatefulWidget {
   final String hintText2;
   final bool isPortionSize;
   const IngridientPopupp({
+    //new
+    required this.addItem,
     required this.labelText,
     required this.labelText2,
     this.hintText = '',
@@ -103,24 +107,21 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
 
     if (errorText1 == null && errorText2 == null && errorText3 == null) {
       print('2');
-      //create state so i dont have to write it out all the time
-      final state =
-          context.findAncestorStateOfType<_CreateListWithIngridientsState>();
-      if (state != null) {
-        print('3');
-        state.addItem(
-          titleController.text,
-          numberController.text,
-          dropdownController.text,
-        );
-      }
+      // Call the addItem callback directly with the values
+      widget.addItem(
+        titleController.text,
+        numberController.text,
+        dropdownController.text,
+      );
+      print('3');
+
       // Clear the text fields after adding
       titleController.clear();
       numberController.clear();
       dropdownController.clear();
       print('4');
-      Navigator.of(context).pop();
-      print('close dialog');
+
+      Navigator.of(context).pop(); // Close the dialog
     }
   }
 

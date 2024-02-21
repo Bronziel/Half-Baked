@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'lists.dart';
 import 'ing_add_tile.dart';
 import 'maintile.dart';
+import '../../Popups/popstatefull.dart';
 
 class RecipeListCard extends StatelessWidget {
   final bool other;
@@ -36,7 +37,7 @@ class Holder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return showlist ? const Listnormal() : const Creates();
+    return showlist ? const Listnormal() : const CreateListWithIngridients();
   }
 
   Widget normalbox() {
@@ -44,7 +45,7 @@ class Holder extends StatelessWidget {
   }
 
   Widget createbox() {
-    return const Creates();
+    return const CreateListWithIngridients();
   }
 }
 
@@ -60,7 +61,7 @@ class Creates extends StatelessWidget {
         IngMainTile(
             showMaintile:
                 false), //controls wich main tile size.we get since false we get the bigger one
-        Addinngtile(), //tile to add new ingridninets
+        //Addinngtile(addItemCallback: addItem), //tile to add new ingridninets
         Expanded(
           child: ListOfIng(), //specila list for ingridinets
         ),

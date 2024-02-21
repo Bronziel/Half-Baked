@@ -4,7 +4,11 @@ import '../buttons.dart' show Addbuttoncontainer;
 import '../../Popups/popupclass.dart';
 
 class Addinngtile extends StatelessWidget {
-  const Addinngtile({super.key});
+  final Function(String, String, String) addItemCallback;
+  const Addinngtile({
+    required this.addItemCallback,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,8 @@ class Addinngtile extends StatelessWidget {
               top: 5,
               right: 10,
               child: Addbuttoncontainer(
-                onPressed: () => DialogUtils.testShowIngPopDialog(context),
+                onPressed: () =>
+                    DialogUtils.testShowIngPopDialog(context, addItemCallback),
               ),
             ),
           ],

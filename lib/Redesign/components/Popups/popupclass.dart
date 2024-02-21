@@ -26,15 +26,19 @@ class DialogUtils {
   }
 
   static void testShowIngPopDialog(
+    //new
     BuildContext context,
+    Function(String, String, String) addItemCallback,
   ) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         print('dialog open');
-        return const Dialog(
+        return Dialog(
           backgroundColor: Colors.transparent,
           child: IngridientPopupp(
+            //new
+            addItem: addItemCallback,
             title: "Ingredient Details",
             labelText: "Ingredient",
             labelText2: "Quantity",
