@@ -48,6 +48,13 @@ class ListOfIng extends StatefulWidget {
 }
 
 class _ListOfIngState extends State<ListOfIng> {
+  void removeItem(int index) {
+    setState(() {
+      ingredients.removeAt(index);
+      print('fuka?');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ReorderableListView(
@@ -61,6 +68,7 @@ class _ListOfIngState extends State<ListOfIng> {
           unit: item.unit,
           index: index,
           shownormal: false,
+          onPressed: () => removeItem(index),
         );
       }),
       onReorder: (int oldIndex, int newIndex) {

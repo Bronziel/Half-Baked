@@ -6,6 +6,7 @@ class IngredientTile extends StatelessWidget {
   final String unit; // Third parameter
   final bool shownormal;
   final int? index; // Optional parameter for index
+  final VoidCallback? onPressed;
 
   // Update the constructor to accept three parameters
   const IngredientTile({
@@ -14,6 +15,7 @@ class IngredientTile extends StatelessWidget {
     required this.label,
     required this.amount,
     required this.unit,
+    this.onPressed,
     this.index, // It's optional and can be null
   });
 
@@ -40,6 +42,7 @@ class IngredientTile extends StatelessWidget {
     int safeIndex = index ?? 0; // Default value or handle appropriately
 
     return Createingcontain(
+        onPressed: onPressed,
         index: safeIndex,
         label: label,
         textStyle: textStyle,
@@ -86,13 +89,14 @@ class Ingcontain extends StatelessWidget {
 class Createingcontain extends StatelessWidget {
   const Createingcontain({
     super.key,
+    required this.onPressed,
     required this.index,
     required this.label,
     required this.textStyle,
     required this.amount,
     required this.unit,
   });
-
+  final VoidCallback? onPressed;
   final int index;
   final String label;
   final TextStyle textStyle;
@@ -135,11 +139,16 @@ class Createingcontain extends StatelessWidget {
                 child: Text('$amount $unit',
                     style: textStyle)), // Use the quantity parameter
             // Use the unit parameter
-            const Positioned(
+            Positioned(
               top: 5,
               right: 5,
               child: Row(
-                children: [Editcontainer(), Deletecontainer()],
+                children: [
+                  const Editcontainer(),
+                  Deletecontainer(
+                    onPressed: onPressed,
+                  )
+                ],
               ),
             ),
           ],
@@ -150,7 +159,9 @@ class Createingcontain extends StatelessWidget {
 }
 
 class Deletecontainer extends StatelessWidget {
+  final VoidCallback? onPressed;
   const Deletecontainer({
+    required this.onPressed,
     super.key,
   });
 
@@ -161,10 +172,7 @@ class Deletecontainer extends StatelessWidget {
       icon: const Icon(Icons.delete, size: 24),
       color: const Color.fromARGB(255, 233, 228, 228),
       // Plus icon
-      onPressed: () {
-        print('delete button');
-        // Add your action for this button
-      },
+      onPressed: onPressed ?? () {},
     );
   }
 }
