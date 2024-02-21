@@ -140,7 +140,7 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
               hintText: widget.hintText,
               bottom: 160,
             ),
-            Numberonlytextfiel2(
+            NumberTextField(
               errorText2: errorText2,
               numberController: numberController,
               isPortionSize: false,

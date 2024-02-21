@@ -45,8 +45,8 @@ class Smalltextfield2 extends StatelessWidget {
 }
 
 // används i portionsize time card bara för siffror single rad
-class Numberonlytextfiel2 extends StatelessWidget {
-  const Numberonlytextfiel2({
+class NumberTextField extends StatelessWidget {
+  const NumberTextField({
     this.errorText2,
     required this.numberController,
     super.key,

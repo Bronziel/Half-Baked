@@ -6,54 +6,6 @@ import '../styles/style_objects.dart';
 //need to intalitse controller  but doing that outside this  class.
 
 // används i portionsize time card bara för siffror single rad
-class NumberTextField extends StatefulWidget {
-  final String? errorText2;
-  final TextEditingController numberController;
-  final bool isPortionSize;
-  final String labelText;
-  final String hintText;
-  final double bottom;
-  const NumberTextField({
-    this.errorText2,
-    required this.numberController,
-    required this.isPortionSize,
-    required this.labelText,
-    required this.hintText,
-    this.bottom = 10,
-    super.key,
-  });
-
-  @override
-  State<NumberTextField> createState() => _NumberTextFieldState();
-}
-
-class _NumberTextFieldState extends State<NumberTextField> {
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      bottom: widget.bottom,
-      left: 10,
-      right: 100,
-      child: TextField(
-          controller: widget.numberController,
-          keyboardType:
-              widget.isPortionSize ? TextInputType.text : TextInputType.number,
-          inputFormatters: widget.isPortionSize
-              ? []
-              : [FilteringTextInputFormatter.digitsOnly],
-          decoration: InputDecoration(
-            errorText: widget.errorText2,
-            labelText: widget.labelText,
-            labelStyle: StyleUtils.labelstylepop(),
-            hintText: widget.hintText,
-            hintStyle: StyleUtils.hintstylepop(),
-            border: const OutlineInputBorder(),
-            enabledBorder: StyleUtils.enabledborderstyle(),
-          ),
-          style: StyleUtils.textfieldstylepop()),
-    );
-  }
-}
 
 //litet textfield använd av title stepstitle o andra en rads fält
 class TitleTextField extends StatefulWidget {
