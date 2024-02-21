@@ -195,9 +195,9 @@ class Tooltipinfo extends StatelessWidget {
   }
 }
 
-class SaveButtonsCreate2 extends StatelessWidget {
+class SaveButtonIng extends StatelessWidget {
   final VoidCallback onPressed;
-  const SaveButtonsCreate2({
+  const SaveButtonIng({
     required this.onPressed,
     super.key,
   });
