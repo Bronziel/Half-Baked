@@ -89,11 +89,11 @@ class NumberTextField extends StatelessWidget {
   }
 }
 
-class Boxwithdrop2 extends StatelessWidget {
+class DropDownMenueTextField extends StatelessWidget {
   final String? errorText3;
   final double bottom;
   final TextEditingController dropdownController;
-  const Boxwithdrop2({
+  const DropDownMenueTextField({
     this.errorText3,
     required this.dropdownController,
     this.bottom = 10,

@@ -149,7 +149,7 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
               bottom: 85,
             ),
             //85
-            Boxwithdrop2(
+            DropDownMenueTextField(
               errorText3: errorText3,
               dropdownController: dropdownController,
             ),
