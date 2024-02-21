@@ -10,56 +10,6 @@ import 'textfields.dart';
 // add items.list mycontroller.text
 
 ///Next up
-class IngPop extends StatelessWidget {
-  final String title;
-
-  final String labelText;
-  final String labelText2;
-
-  final String hintText;
-  final String hintText2;
-
-  final bool isPortionSize;
-
-  const IngPop({
-    required this.labelText,
-    required this.labelText2,
-    this.hintText = '',
-    this.hintText2 = '',
-    required this.title,
-    this.isPortionSize = false,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Utils.ingpop(
-      Card(
-        color: StyleUtils.cardcolorgrey(),
-        child: Stack(
-          children: [
-            Titles(title: title),
-            Smalltextfield(
-              labelText: labelText,
-              hintText: hintText,
-              bottom: 160,
-            ),
-            Numberonlytextfiel(
-              isPortionSize: false,
-              labelText: labelText2,
-              hintText: hintText2,
-              bottom: 85,
-            ),
-            //85
-            const Unitdropdown(),
-            const PostionedStopButton(),
-            const PostionedSaveButton(),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 //detta är lådan för titel,steptitle
 class SmallTextfieldPop extends StatelessWidget {

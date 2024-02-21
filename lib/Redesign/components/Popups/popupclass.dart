@@ -5,25 +5,7 @@ import 'popstatefull.dart';
 //onPressed: () => DialogUtils.showIngPopDialog(context)
 class DialogUtils {
   //not retuurn value insted retunr action
-  static void showIngPopDialog(
-    BuildContext context,
-  ) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return const Dialog(
-          backgroundColor: Colors.transparent,
-          child: IngPop(
-            title: "Ingredient Details",
-            labelText: "Ingredient",
-            labelText2: "Quantity",
-            hintText: "Enter ingredient name",
-            hintText2: "Enter quantity",
-          ),
-        );
-      },
-    );
-  }
+  //showIngPopDialog
 
   static void testShowIngPopDialog(
     //new

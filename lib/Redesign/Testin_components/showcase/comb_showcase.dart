@@ -163,15 +163,6 @@ class Popupsdisplayed extends StatelessWidget {
         ),
         Column(
           children: [
-            IngPop(
-              labelText: 'Add a Ingridient',
-              labelText2: 'Add an amount',
-              //labelText3: 'Add a unit',
-              hintText: 'ex milk, ground beef',
-              hintText2: 'ex 500, 200,10',
-              //hintText3: 'ex ml, g , l',
-              title: 'Ingridient',
-            ),
             PopDescription(
               title: 'Description',
             ),
