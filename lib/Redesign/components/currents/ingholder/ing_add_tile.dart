@@ -1,8 +1,14 @@
+import 'package:fb2/Redesign/components/Popups/popup_boxes.dart';
 import 'package:flutter/material.dart';
 import '../buttons.dart' show Addbuttoncontainer;
+import '../../Popups/popupclass.dart';
 
 class Addinngtile extends StatelessWidget {
-  const Addinngtile({super.key});
+  final Function(String, String, String) addItemCallback;
+  const Addinngtile({
+    required this.addItemCallback,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +29,9 @@ class Addinngtile extends StatelessWidget {
             width: 2,
           ),
         ),
-        child: const Stack(
+        child: Stack(
           children: [
-            Positioned(
+            const Positioned(
               top: 5,
               left: 10,
               child: Text('Add an Ingridient', style: textStyle),
@@ -33,7 +39,10 @@ class Addinngtile extends StatelessWidget {
             Positioned(
               top: 5,
               right: 10,
-              child: Addbuttoncontainer(),
+              child: Addbuttoncontainer(
+                onPressed: () =>
+                    DialogUtils.testShowIngPopDialog(context, addItemCallback),
+              ),
             ),
           ],
         ),

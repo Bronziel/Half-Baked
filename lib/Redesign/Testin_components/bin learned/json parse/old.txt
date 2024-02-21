@@ -1,0 +1,189 @@
+
+  void loadData() {
+    final multijson = jsonEncode({
+      "foodsteps": [
+        {
+          "step2": 1,
+          "id": 1,
+          "text2": "ibland laggar jag för lite mat",
+        },
+        {
+          "step2": 2,
+          "id": 2,
+          "text2": "vrf finns inte det så mkt mat",
+        }
+      ],
+      "foodsteps2": [
+        {
+          "step2": 1,
+          "id": 1,
+          "text2": "ibland laggar jag för lite mat",
+        },
+        {
+          "step2": 2,
+          "id": 2,
+          "text2": "vrf finns inte det så mkt mat",
+        }
+      ]
+    });
+
+    final Map<String, dynamic> multijsondata = jsonDecode(multijson);
+    final List<dynamic> jsonmulti = multijsondata['foodsteps'];
+    result = jsonmulti
+        .map((item) => Multiples.fromjson(item))
+        .toList()
+      ..sort((a, b) => a.id2.compareTo(b.id2));
+
+    // Since loadData() modifies the state, wrap any state-changing code in setState to trigger a rebuild
+    setState(() {});
+  }
+
+
+  import 'package:flutter/material.dart';
+import 'dart:convert';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Sorted List Example')),
+        body: MyWidget(),
+      ),
+    );
+  }
+}
+
+class MyWidget extends StatefulWidget {
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  late List<Multiples> result;
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  void loadData() {
+    final multijson = jsonEncode({
+      "foodsteps": [
+        {
+          "step2": 1,
+          "id": 1,
+          "text2": "ibland laggar jag för lite mat",
+        },
+        {
+          "step2": 2,
+          "id": 2,
+          "text2": "vrf finns inte det så mkt mat",
+        }
+      ],
+      "foodsteps2": [
+        {
+          "step2": 1,
+          "id": 1,
+          "text2": "ibland laggar jag för lite mat",
+        },
+        {
+          "step2": 2,
+          "id": 2,
+          "text2": "vrf finns inte det så mkt mat",
+        }
+      ]
+    });
+
+    final Map<String, dynamic> multijsondata = jsonDecode(multijson);
+    final List<dynamic> jsonmulti = multijsondata['foodsteps'];
+    result = jsonmulti
+        .map((item) => Multiples.fromjson(item))
+        .toList()
+      ..sort((a, b) => a.id2.compareTo(b.id2));
+
+    // Since loadData() modifies the state, wrap any state-changing code in setState to trigger a rebuild
+    setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: result.length,
+      itemBuilder: (context, index) {
+        final item = result[index];
+        return ListTile(
+          title: Text(item.textar),
+          subtitle: Text('ID: ${item.id2}, Step: ${item.steps}'),
+        );
+      },
+    );
+  }
+}
+
+class Multiples {
+  final String textar;
+  final int id2;
+  final int steps;
+  Multiples({required this.id2, required this.steps, required this.textar});
+
+  factory Multiples.fromjson(Map<String, dynamic> json) {
+    return Multiples(
+      id2: json['id'],
+      steps: json['step2'],
+      textar: json['text2'],
+    );
+  }
+}
+
+
+
+/*
+ final String jsonStr = jsonEncode({
+      "foodsteps": [
+        {
+          "step2": 1,
+          "id": 1,
+          "text2": "ibland laggar jag för lite mat",
+        },
+        {
+          "step2": 2,
+          "id": 2,
+          "text2": "vrf finns inte det så mkt mat",
+        }
+      ],
+      "foodsteps2": [
+        {
+          "step2": 2,
+          "id": 1,
+          "text2": "ibland laggar jag för lite mat",
+        },
+        {
+          "step2": 2,
+          "id": 2,
+          "text2": "vrf finns inte det så mkt mat",
+        }
+      ]
+    });
+    final multijson = jsonDecode(jsonStr);
+
+    final List<dynamic> foodsteps = multijson['foodsteps'];
+    final List<Multiples> foodstepsResults =
+        foodsteps.map((item) => Multiples.fromJson(item)).toList();
+    foodstepsResults.sort((a, b) => a.id.compareTo(b.id));
+
+      foodstepsResults = multijson['foodsteps']
+          .map<Multiples>((item) => Multiples.fromJson(item))
+          .toList();
+      foodstepsResults.sort((a, b) => a.id.compareTo(b.id));
+
+
+    final List<dynamic> foodsteps2 = multijson['foodsteps2'];
+    final List<Multiples> foodsteps2Results =
+        foodsteps2.map((item) => Multiples.fromJson(item)).toList();
+    foodsteps2Results.sort((a, b) => a.id.compareTo(b.id));
+ */
+

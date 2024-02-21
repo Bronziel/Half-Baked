@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../buttons.dart';
+import '../../Popups/popupclass.dart';
 
 BoxDecoration boxouter() {
   return BoxDecoration(
@@ -53,11 +54,12 @@ class Descriptionadd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        CreateDescription(createdescription: 'Add a description'),
-        SizedBox(height: 8),
-        Addbuttoncontainer(),
+        const CreateDescription(createdescription: 'Add a description'),
+        const SizedBox(height: 8),
+        Addbuttoncontainer(
+            onPressed: () => DialogUtils.showDescriptionDialog(context)),
       ],
     );
   }

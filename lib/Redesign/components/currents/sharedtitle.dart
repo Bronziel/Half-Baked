@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'buttons.dart';
+import '../Popups/popupclass.dart';
 
 class Titleholder extends StatelessWidget {
   final bool showtitle;
@@ -77,15 +78,16 @@ class Addstitel extends StatelessWidget {
           width: 280,
           child: Container(
             decoration: sdasdasd(),
-            child: const Row(
+            child: Row(
               children: [
-                Title(
+                const Title(
                   title: 'Add title',
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
-                Addbuttoncontainer(),
+                Addbuttoncontainer(
+                    onPressed: () => DialogUtils.showTitelDialog(context)),
               ],
             ),
           ),

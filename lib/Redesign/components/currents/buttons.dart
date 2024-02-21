@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import '../Popups/popupclass.dart';
 
 //used by title,description,total,prep,portionsize,add ingiridnet tile
 class Addbuttoncontainer extends StatelessWidget {
+  final VoidCallback onPressed;
   final Color color; // Add a color property
 
   const Addbuttoncontainer({
+    required this.onPressed,
     super.key,
     this.color = const Color(0xFFCECCCC), // Set default color
   });
@@ -14,9 +17,8 @@ class Addbuttoncontainer extends StatelessWidget {
     return IconButton(
       icon: const Icon(Icons.add, size: 24),
       color: color, // Use the color property
-      onPressed: () {
-        // Add your action for this button
-      },
+      onPressed: onPressed,
     );
   }
 }
+//onPressed: () => DialogUtils.me(context),

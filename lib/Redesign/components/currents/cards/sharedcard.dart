@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../smallicons.dart';
-import '../buttons.dart';
 import 'fixedportionsize.dart';
 import 'fixedtimecard.dart';
 
@@ -52,6 +51,7 @@ class Cardcolumns extends StatelessWidget {
           titleadd: '',
           title: "Prep Time:",
           time: "300",
+          prepOrTotal: false,
         ),
         SizedBox(
           height: 5,
@@ -61,6 +61,7 @@ class Cardcolumns extends StatelessWidget {
           titleadd: '',
           title: "Total Time:",
           time: "450",
+          prepOrTotal: false,
         ),
       ],
     );
@@ -69,6 +70,7 @@ class Cardcolumns extends StatelessWidget {
 
 ///need diffrnet logic i tihnk
 //create recipe
+//vem använder ens denna?
 class Addcardcolumn extends StatelessWidget {
   const Addcardcolumn({
     super.key,
@@ -86,10 +88,12 @@ class Addcardcolumn extends StatelessWidget {
           height: 5,
         ),
         TimeCard(
-          showdisplaytime: false,
+          showdisplaytime:
+              false, //true for showing done recipe false for adding
           titleadd: "Prep Time:",
           title: "",
           time: "",
+          prepOrTotal: true, //true is for totaltime
         ),
         SizedBox(
           height: 5,
@@ -99,6 +103,7 @@ class Addcardcolumn extends StatelessWidget {
           titleadd: "Total Time:",
           title: "",
           time: "",
+          prepOrTotal: false, //false is for totaltime
         ),
       ],
     );
@@ -153,12 +158,30 @@ class Addicon extends StatelessWidget {
         child: Center(
           child: FittedBox(
             fit: BoxFit.contain,
-            child: Addbuttoncontainer(
+            child: Addbuttoncontainer3(
               color: Color(0xFF000000),
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class Addbuttoncontainer3 extends StatelessWidget {
+  final Color color; // Add a color property
+
+  const Addbuttoncontainer3({
+    super.key,
+    this.color = const Color(0xFFCECCCC), // Set default color
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.add, size: 24),
+      color: color, // Use the color property
+      onPressed: () {},
     );
   }
 }

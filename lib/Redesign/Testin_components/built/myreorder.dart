@@ -279,14 +279,14 @@ class Addinngtile extends StatelessWidget {
             width: 2,
           ),
         ),
-        child: Stack(
+        child: const Stack(
           children: [
             Positioned(
               top: 5,
               left: 10,
               child: Text('Add an Ingridient', style: textStyle),
             ),
-            const Positioned(
+            Positioned(
               top: 5,
               right: 10,
               child: Addbuttoncontainer(),

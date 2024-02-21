@@ -1,0 +1,10 @@
+
+
+{
+    "steps": [
+      {"id": 1, "text": "Chop the vegetables.", "headerId": 1,"idclass": 2},
+      {"id": 2, "text": "Boil water for rice.", "headerId": 1,"idclass": 2},
+      {"id": 3, "text": "Season the chicken.", "headerId": 2, "idclass": 2}
+    ]
+  }
+  

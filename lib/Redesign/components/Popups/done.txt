@@ -1,0 +1,4 @@
+context  förpopupen fungerar inte  med alert dialog 
+kolla att det  rebuildar correct
+kan inte ge double etc till knappen
+måste  se till att allt byggs om som det ska

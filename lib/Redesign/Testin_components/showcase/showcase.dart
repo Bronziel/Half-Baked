@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'comb_showcase.dart';
 import '../built/myreorder.dart';
-import '../../RecipePages/Recipe/FirstRow/introholder2/introduction_box.dart';
-import '../../RecipePages/Recipe/SecondRow/second_row_widget.dart';
-import '../../RecipePages/Recipe/FirstRow/imagholder2/image_boxes.dart';
-import '../../CreateRecipes/CreateFirstRow/imageholder/create_image_boxes.dart';
+import '../../components/currents/introductionholder/normal_intro/introduction_box.dart';
+import '../../components/currents/imgholders/normal/image_boxes.dart';
+import '../../components/currents/imgholders/image_create_hold/create_image_boxes.dart';
 import '../../components/currents/ingholder/ingboxshared.dart';
+import '../../components/currents/stepholder/prog_ui.dart';
 
 class ShowcasePage extends StatelessWidget {
   const ShowcasePage({super.key});
@@ -42,18 +42,18 @@ class ShowcasePage extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
-              const Row(
+              Row(
                 children: [
                   RowOfIcons80(),
                   TimeTIlesshowcase(),
                 ],
               ),
-              const Popupsdisplayed(),
-              const Row(
+              Popupsdisplayed(),
+              Row(
                 children: [
                   Column(
                     children: [
@@ -77,7 +77,7 @@ class ShowcasePage extends StatelessWidget {
                   ),
                 ],
               ),
-              const Column(
+              Column(
                 children: [
                   MainImagePlusBoxes(),
                   CreateMainImagePlusBoxes(),
@@ -85,7 +85,7 @@ class ShowcasePage extends StatelessWidget {
               ),
               Column(
                 children: [
-                  StepsWidget(),
+                  Builtbyme(),
                 ],
               ),
             ],

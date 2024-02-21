@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../buttons.dart';
+import '../../Popups/popupclass.dart';
 
 //this is the portionsize tile
 class PortionsizeCardWidget extends StatelessWidget {
@@ -95,8 +96,9 @@ class Addportion extends StatelessWidget {
         ),
         const SizedBox(width: 9),
         // Replace this Text widget with IconButton
-        const Addbuttoncontainer(
-          color: Color(0xFF000000),
+        Addbuttoncontainer(
+          onPressed: () => DialogUtils.showPortionsizeDialog(context),
+          color: const Color(0xFF000000),
         ),
 
         const SizedBox(width: 6),
