@@ -52,8 +52,8 @@ class _ListOfIngState extends State<ListOfIng> {
   Widget build(BuildContext context) {
     return ReorderableListView(
       buildDefaultDragHandles: false,
-      children: List.generate(items.length, (index) {
-        Item item = items[index];
+      children: List.generate(ingredients.length, (index) {
+        Ingredients item = ingredients[index];
         return IngredientTile(
           key: ValueKey(item.label),
           label: item.label,
@@ -68,35 +68,35 @@ class _ListOfIngState extends State<ListOfIng> {
           if (newIndex > oldIndex) {
             newIndex -= 1;
           }
-          final Item item = items.removeAt(oldIndex);
+          final Ingredients item = ingredients.removeAt(oldIndex);
 
-          items.insert(newIndex, item);
+          ingredients.insert(newIndex, item);
         });
       },
     );
   }
 }
 
-class Item {
+class Ingredients {
   final String label;
   final String amount;
   final String unit;
 
-  Item({required this.label, required this.amount, required this.unit});
+  Ingredients({required this.label, required this.amount, required this.unit});
 }
 
-final List<Item> items = [
-  Item(label: 'maricha sås', amount: '300', unit: 'ml'),
-  Item(label: 'Jordgubbssylt', amount: '4', unit: 'dl'),
-  Item(label: 'Kebabkött', amount: '400', unit: 'g'),
-  Item(label: 'vitlöksås', amount: '1', unit: 'l'),
-  Item(label: 'vitlök', amount: '2', unit: 'st'),
-  Item(label: 'gullök', amount: '2000', unit: 'tsk'),
-  Item(label: 'honung', amount: '1000', unit: 'ml'),
-  Item(label: 'socker', amount: '2000', unit: 'tsk'),
-  Item(label: 'mjölk', amount: '1000', unit: 'ml'),
-  Item(label: 'Bröd', amount: '2000', unit: 'tsk'),
-  Item(label: 'Fetaost', amount: '1000', unit: 'ml'),
-  Item(label: 'Ketchup', amount: '2000', unit: 'tsk'),
+final List<Ingredients> ingredients = [
+  Ingredients(label: 'maricha sås', amount: '300', unit: 'ml'),
+  Ingredients(label: 'Jordgubbssylt', amount: '4', unit: 'dl'),
+  Ingredients(label: 'Kebabkött', amount: '400', unit: 'g'),
+  Ingredients(label: 'vitlöksås', amount: '1', unit: 'l'),
+  Ingredients(label: 'vitlök', amount: '2', unit: 'st'),
+  Ingredients(label: 'gullök', amount: '2000', unit: 'tsk'),
+  Ingredients(label: 'honung', amount: '1000', unit: 'ml'),
+  Ingredients(label: 'socker', amount: '2000', unit: 'tsk'),
+  Ingredients(label: 'mjölk', amount: '1000', unit: 'ml'),
+  Ingredients(label: 'Bröd', amount: '2000', unit: 'tsk'),
+  Ingredients(label: 'Fetaost', amount: '1000', unit: 'ml'),
+  Ingredients(label: 'Ketchup', amount: '2000', unit: 'tsk'),
   // ... more items
 ];
