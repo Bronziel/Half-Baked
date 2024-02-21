@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'lists.dart';
 import 'maintile.dart';
-import '../../Popups/popstatefull.dart';
+import '../../Popups/ing_popup.dart';
 
 class RecipeListCard extends StatelessWidget {
   final bool other;

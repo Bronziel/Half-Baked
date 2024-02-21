@@ -1,6 +1,6 @@
 import 'package:fb2/Redesign/components/Popups/popup_boxes.dart';
 import 'package:flutter/material.dart';
-import 'popstatefull.dart';
+import 'ing_popup.dart';
 
 //onPressed: () => DialogUtils.showIngPopDialog(context)
 class DialogUtils {
