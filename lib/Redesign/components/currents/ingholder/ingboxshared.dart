@@ -48,27 +48,6 @@ class Holder extends StatelessWidget {
   }
 }
 
-class Creates extends StatelessWidget {
-  const Creates({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        IngMainTile(
-            showMaintile:
-                false), //controls wich main tile size.we get since false we get the bigger one
-        //Addinngtile(addItemCallback: addItem), //tile to add new ingridninets
-        Expanded(
-          child: ListOfIng(), //specila list for ingridinets
-        ),
-      ],
-    );
-  }
-}
-
 //card sized adjuster
 class Cardsize extends StatelessWidget {
   final bool showdisplayport;
