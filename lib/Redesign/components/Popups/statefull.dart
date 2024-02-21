@@ -8,50 +8,6 @@ import '../styles/style_objects.dart';
 // används i portionsize time card bara för siffror single rad
 
 //litet textfield använd av title stepstitle o andra en rads fält
-class TitleTextField extends StatefulWidget {
-  final TextEditingController titleController;
-  final String labelText;
-  final String hintText;
-  final double bottom;
-  final String? errorText1;
-  const TitleTextField({
-    required this.titleController,
-    required this.labelText,
-    this.errorText1,
-    this.hintText = '',
-    this.bottom = 10,
-    super.key,
-  });
-
-  @override
-  State<TitleTextField> createState() => _TitleTextFieldState();
-}
-
-class _TitleTextFieldState extends State<TitleTextField> {
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      // Set the position for the TextField
-      bottom: widget.bottom, // Adjust these values as needed
-      left: 10, // Adjust these values as needed
-      right: 100,
-
-      child: TextField(
-        controller: widget.titleController,
-        decoration: InputDecoration(
-          errorText: widget.errorText1,
-          labelText: widget.labelText,
-          labelStyle: StyleUtils.labelstylepop(),
-          hintText: widget.hintText,
-          hintStyle: StyleUtils.hintstylepop(),
-          border: const OutlineInputBorder(),
-          enabledBorder: StyleUtils.enabledborderstyle(),
-        ),
-        style: StyleUtils.textfieldstylepop(),
-      ),
-    );
-  }
-}
 
 //text field for description box
 class DescriptionTextField extends StatefulWidget {

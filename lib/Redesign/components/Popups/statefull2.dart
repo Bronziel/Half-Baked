@@ -3,13 +3,13 @@ import '../styles/style.dart';
 import '../styles/style_objects.dart';
 import 'package:flutter/services.dart';
 
-class Smalltextfield2 extends StatelessWidget {
+class TitleTextField extends StatelessWidget {
   final String? errorText1;
   final TextEditingController titleController;
   final String labelText;
   final String hintText;
   final double bottom;
-  const Smalltextfield2({
+  const TitleTextField({
     this.errorText1,
     required this.titleController,
     required this.labelText,

@@ -133,7 +133,7 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
         child: Stack(
           children: [
             Titles(title: widget.title),
-            Smalltextfield2(
+            TitleTextField(
               errorText1: errorText1,
               titleController: titleController,
               labelText: widget.labelText,
