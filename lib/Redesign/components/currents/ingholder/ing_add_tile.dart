@@ -41,7 +41,7 @@ class Addinngtile extends StatelessWidget {
               right: 10,
               child: Addbuttoncontainer(
                 onPressed: () =>
-                    DialogUtils.testShowIngPopDialog(context, addItemCallback),
+                    DialogUtils.showIngPopDialog(context, addItemCallback),
               ),
             ),
           ],

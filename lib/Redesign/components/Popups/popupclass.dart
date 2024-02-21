@@ -7,7 +7,7 @@ class DialogUtils {
   //not retuurn value insted retunr action
   //showIngPopDialog
 
-  static void testShowIngPopDialog(
+  static void showIngPopDialog(
     //new
     BuildContext context,
     Function(String, String, String) addItemCallback,
