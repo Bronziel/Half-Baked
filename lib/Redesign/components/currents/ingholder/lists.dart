@@ -68,7 +68,7 @@ class _ListOfIngState extends State<ListOfIng> {
           unit: item.unit,
           index: index,
           shownormal: false,
-          onPressed: () => removeItem(index),
+          onPressedDelete: () => removeItem(index),
         );
       }),
       onReorder: (int oldIndex, int newIndex) {
