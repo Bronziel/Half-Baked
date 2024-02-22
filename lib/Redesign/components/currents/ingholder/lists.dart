@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ingtile.dart';
 import 'maintile.dart';
+import '../../Popups/popupclass.dart';
 
 class Listnormal extends StatelessWidget {
   const Listnormal({
@@ -41,7 +42,9 @@ class Listnormal extends StatelessWidget {
 //create list and reorder
 
 class ListOfIng extends StatefulWidget {
-  const ListOfIng({super.key});
+  const ListOfIng({
+    super.key,
+  });
 
   @override
   State<ListOfIng> createState() => _ListOfIngState();
@@ -69,6 +72,9 @@ class _ListOfIngState extends State<ListOfIng> {
           index: index,
           shownormal: false,
           onPressedDelete: () => removeItem(index),
+
+          //onpressed edit edititem(index)
+          //FUNCTION FOR THE ON pressed
         );
       }),
       onReorder: (int oldIndex, int newIndex) {

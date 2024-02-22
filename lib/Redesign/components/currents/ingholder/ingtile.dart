@@ -7,6 +7,7 @@ class IngredientTile extends StatelessWidget {
   final bool shownormal;
   final int? index; // Optional parameter for index
   final VoidCallback? onPressedDelete;
+  final VoidCallback? onPressedEdit;
 
   // Update the constructor to accept three parameters
   const IngredientTile({
@@ -16,6 +17,7 @@ class IngredientTile extends StatelessWidget {
     required this.amount,
     required this.unit,
     this.onPressedDelete,
+    this.onPressedEdit,
     this.index, // It's optional and can be null
   });
 
@@ -43,6 +45,7 @@ class IngredientTile extends StatelessWidget {
 
     return Createingcontain(
         onPressedDelete: onPressedDelete,
+        onPressedEdit: onPressedEdit,
         index: safeIndex,
         label: label,
         textStyle: textStyle,
@@ -90,6 +93,7 @@ class Createingcontain extends StatelessWidget {
   const Createingcontain({
     super.key,
     required this.onPressedDelete,
+    required this.onPressedEdit,
     required this.index,
     required this.label,
     required this.textStyle,
@@ -97,6 +101,7 @@ class Createingcontain extends StatelessWidget {
     required this.unit,
   });
   final VoidCallback? onPressedDelete;
+  final VoidCallback? onPressedEdit;
   final int index;
   final String label;
   final TextStyle textStyle;
@@ -144,7 +149,7 @@ class Createingcontain extends StatelessWidget {
               right: 5,
               child: Row(
                 children: [
-                  const Editcontainer(),
+                  Editcontainer(onPressedEdit: onPressedEdit),
                   Deletecontainer(
                     onPressedDelete: onPressedDelete,
                   )
@@ -178,7 +183,9 @@ class Deletecontainer extends StatelessWidget {
 }
 
 class Editcontainer extends StatelessWidget {
+  final VoidCallback? onPressedEdit;
   const Editcontainer({
+    required this.onPressedEdit,
     super.key,
   });
 
@@ -189,10 +196,7 @@ class Editcontainer extends StatelessWidget {
       icon: const Icon(Icons.edit, size: 24),
       color: const Color.fromARGB(255, 233, 228, 228),
       // Plus icon
-      onPressed: () {
-        print('Edit clicked');
-        // Add your action for this button
-      },
+      onPressed: onPressedEdit ?? () {},
     );
   }
 }

@@ -27,6 +27,8 @@ class _CreateListWithIngridientsState extends State<CreateListWithIngridients> {
     });
   }
 
+  void editItem() {}
+
   @override
   Widget build(BuildContext context) {
     return Column(
