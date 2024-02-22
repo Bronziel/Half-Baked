@@ -42,7 +42,9 @@ class Listnormal extends StatelessWidget {
 //create list and reorder
 
 class ListOfIng extends StatefulWidget {
+  final Function(String, String, String) addItem;
   const ListOfIng({
+    required this.addItem,
     super.key,
   });
 
@@ -72,6 +74,8 @@ class _ListOfIngState extends State<ListOfIng> {
           index: index,
           shownormal: false,
           onPressedDelete: () => removeItem(index),
+          onPressedEdit: () =>
+              DialogUtils.showIngPopDialog(context, widget.addItem),
 
           //onpressed edit edititem(index)
           //FUNCTION FOR THE ON pressed

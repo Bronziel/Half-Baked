@@ -38,7 +38,7 @@ class _CreateListWithIngridientsState extends State<CreateListWithIngridients> {
                 false), //controls wich main tile size.we get since false we get the bigger one
         Addinngtile(addItemCallback: addItem), //tile to add new ingridninets
         Expanded(
-          child: ListOfIng(), //specila list for ingridinets
+          child: ListOfIng(addItem: addItem), //specila list for ingridinets
         ),
       ],
     );
