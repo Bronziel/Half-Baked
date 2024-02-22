@@ -54,7 +54,7 @@ class DialogUtils {
           child: IngridientPopupp(
             //new
             addItem: addItemCallback,
-            title: "Ingredient Details",
+            title: "Edit Ingredient Details",
             labelText: "Ingredient",
             labelText2: "Quantity",
             hintText: "Enter ingredient name",
