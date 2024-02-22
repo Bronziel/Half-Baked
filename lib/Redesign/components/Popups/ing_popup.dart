@@ -54,7 +54,21 @@ class IngridientPopupp extends StatefulWidget {
   final String hintText;
   final String hintText2;
   final bool isPortionSize;
+
+//yes
+  final Function(int)? editItem;
+  final int index;
+  final bool isEdit;
+  final String? initialTitle;
+  final String? initialNumber;
+  final String? initialDropdownValue;
   const IngridientPopupp({
+    this.editItem,
+    this.index = 0,
+    this.isEdit = false,
+    this.initialTitle,
+    this.initialNumber,
+    this.initialDropdownValue,
     //new
     required this.addItem,
     required this.labelText,
@@ -81,9 +95,10 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
   @override
   void initState() {
     super.initState();
-    titleController = TextEditingController();
-    numberController = TextEditingController();
-    dropdownController = TextEditingController();
+    titleController = TextEditingController(text: widget.initialTitle);
+    numberController = TextEditingController(text: widget.initialNumber);
+    dropdownController =
+        TextEditingController(text: widget.initialDropdownValue);
   }
 
   @override
@@ -108,6 +123,7 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
 
     if (errorText1 == null && errorText2 == null && errorText3 == null) {
       print('2');
+      //another if statemetn if prefilled else widget.additem
       // Call the addItem callback directly with the values
       widget.addItem(
         titleController.text,
@@ -115,6 +131,10 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
         dropdownController.text,
       );
       print('3');
+      if (widget.isEdit == true) {
+        print('inside edit');
+        widget.editItem!(widget.index);
+      }
 
       // Clear the text fields after adding
       titleController.clear();

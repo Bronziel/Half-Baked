@@ -32,6 +32,45 @@ class DialogUtils {
     );
   }
 
+  static void showIngPopDialogEdit(
+    //new
+    BuildContext context,
+    Function(String, String, String) addItemCallback,
+    int index,
+    String label,
+    String amount,
+    String unit,
+    Function(int) editItem,
+  ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        print('dialog open edit');
+        print(
+          index,
+        );
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          child: IngridientPopupp(
+            //new
+            addItem: addItemCallback,
+            title: "Ingredient Details",
+            labelText: "Ingredient",
+            labelText2: "Quantity",
+            hintText: "Enter ingredient name",
+            hintText2: "Enter quantity",
+            initialTitle: label,
+            initialNumber: amount,
+            initialDropdownValue: unit,
+            isEdit: true,
+            index: index,
+            editItem: editItem,
+          ),
+        );
+      },
+    );
+  }
+
   static void showTitelDialog(
     BuildContext context,
   ) {

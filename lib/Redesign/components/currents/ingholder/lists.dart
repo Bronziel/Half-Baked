@@ -74,8 +74,14 @@ class _ListOfIngState extends State<ListOfIng> {
           index: index,
           shownormal: false,
           onPressedDelete: () => removeItem(index),
-          onPressedEdit: () =>
-              DialogUtils.showIngPopDialog(context, widget.addItem),
+          onPressedEdit: () => DialogUtils.showIngPopDialogEdit(
+              context,
+              widget.addItem,
+              index,
+              item.label,
+              item.amount,
+              item.unit,
+              removeItem),
 
           //onpressed edit edititem(index)
           //FUNCTION FOR THE ON pressed
