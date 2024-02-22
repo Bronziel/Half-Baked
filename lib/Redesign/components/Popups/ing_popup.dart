@@ -56,7 +56,7 @@ class IngridientPopupp extends StatefulWidget {
   final bool isPortionSize;
 
 //yes
-  final Function(int)? editItem;
+  final Function(int, String, String, String)? editItem;
   final int index;
   final bool isEdit;
   final String? initialTitle;
@@ -121,7 +121,10 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
     });
     print('1');
 
-    if (errorText1 == null && errorText2 == null && errorText3 == null) {
+    if (errorText1 == null &&
+        errorText2 == null &&
+        errorText3 == null &&
+        widget.isEdit == false) {
       print('2');
       //another if statemetn if prefilled else widget.additem
       // Call the addItem callback directly with the values
@@ -131,16 +134,35 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
         dropdownController.text,
       );
       print('3');
-      if (widget.isEdit == true) {
-        print('inside edit');
-        widget.editItem!(widget.index);
-      }
 
       // Clear the text fields after adding
       titleController.clear();
       numberController.clear();
       dropdownController.clear();
       print('4');
+
+      Navigator.of(context).pop(); // Close the dialog
+    }
+    if (errorText1 == null &&
+        errorText2 == null &&
+        errorText3 == null &&
+        widget.isEdit == true) {
+      print('edit mode save process');
+      //another if statemetn if prefilled else widget.additem
+      // Call the addItem callback directly with the values
+      //Edititem.widget etc....
+
+      widget.editItem!(
+        widget.index,
+        titleController.text,
+        numberController.text,
+        dropdownController.text,
+      );
+
+      // Clear the text fields after adding
+      titleController.clear();
+      numberController.clear();
+      dropdownController.clear();
 
       Navigator.of(context).pop(); // Close the dialog
     }

@@ -40,15 +40,13 @@ class DialogUtils {
     String label,
     String amount,
     String unit,
-    Function(int) editItem,
+    Function(int, String, String, String) editItem,
   ) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         print('dialog open edit');
-        print(
-          index,
-        );
+        print(index);
         return Dialog(
           backgroundColor: Colors.transparent,
           child: IngridientPopupp(

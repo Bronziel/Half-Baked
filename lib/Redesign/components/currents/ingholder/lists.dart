@@ -60,6 +60,20 @@ class _ListOfIngState extends State<ListOfIng> {
     });
   }
 
+  void replaceItem(int index, String title, String amount, String unit) {
+    setState(() {
+      print('replace??');
+      // Check if the index is within the bounds of the list
+      if (index >= 0 && index < ingredients.length) {
+        // Replace the item at the given index with a new object
+        ingredients[index] =
+            Ingredients(label: title, amount: amount, unit: unit);
+      } else {
+        print("Index out of bounds");
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ReorderableListView(
@@ -81,7 +95,7 @@ class _ListOfIngState extends State<ListOfIng> {
               item.label,
               item.amount,
               item.unit,
-              removeItem),
+              replaceItem),
 
           //onpressed edit edititem(index)
           //FUNCTION FOR THE ON pressed
