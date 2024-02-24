@@ -40,268 +40,81 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Gym and Food App')),
-      body: const Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: LoadingPageButton(),
+          ButtonTemplate(
+            landingspace: TabbedPage(),
+            buttonText: "Loading",
+            buttonColor: const Color.fromARGB(255, 189, 12, 225),
           ),
-          SizedBox(height: 16.0),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: GlistButton(),
+          const ButtonTemplate(
+            landingspace: GlistPage(),
+            buttonText: "Food",
+            buttonColor: Colors.orange,
           ),
-          SizedBox(height: 16.0),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: RecipeListButton(),
+          const ButtonTemplate(
+            landingspace: RecipelistPage(),
+            buttonText: "RecipeList",
+            buttonColor: Color.fromARGB(255, 224, 17, 131),
           ),
-          SizedBox(height: 16.0),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: NewDesignButton(), // Add this line
+          const ButtonTemplate(
+            landingspace: NewDesignPage(),
+            buttonText: "NewDesign",
+            buttonColor: Color.fromARGB(255, 72, 255, 0),
           ),
-          SizedBox(height: 16.0),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: ComponentButton(), // Add this line
+          const ButtonTemplate(
+            landingspace: BuildComponentPage(),
+            buttonText: "Component",
+            buttonColor: Color.fromARGB(255, 0, 30, 255),
           ),
-          SizedBox(height: 16.0),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: RedoneButton(), // Add this line
+          ButtonTemplate(
+            landingspace: RedonePage(),
+            buttonText: "Redone",
+            buttonColor: const Color.fromARGB(255, 255, 0, 119),
           ),
-          SizedBox(height: 16.0),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: CreateButton(), // Add this line
-          ),
+          const ButtonTemplate(
+            landingspace: CreateRecipesPage(),
+            buttonText: "Create",
+            buttonColor: Color.fromARGB(255, 248, 208, 10),
+          )
         ],
       ),
     );
   }
 }
 
-class LoadingPageButton extends StatelessWidget {
+class ButtonTemplate extends StatelessWidget {
   final String buttonText;
   final Color buttonColor;
-
-  const LoadingPageButton({
+  final Widget landingspace;
+  const ButtonTemplate({
+    required this.landingspace,
+    required this.buttonText,
+    required this.buttonColor,
     super.key,
-    this.buttonText = 'Loading',
-    this.buttonColor = const Color.fromARGB(255, 189, 12, 225),
   });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => TabbedPage()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class GlistButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const GlistButton({
-    super.key,
-    this.buttonText = 'Food',
-    this.buttonColor = Colors.orange,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const GlistPage()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class RecipeListButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const RecipeListButton({
-    super.key,
-    this.buttonText = 'RecipeList',
-    this.buttonColor = const Color.fromARGB(255, 224, 17, 131),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const RecipelistPage()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class NewDesignButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const NewDesignButton({
-    super.key,
-    this.buttonText = 'NewDesign',
-    this.buttonColor = const Color.fromARGB(255, 72, 255, 0),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const NewDesignPage()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class ComponentButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const ComponentButton({
-    super.key,
-    this.buttonText = 'Component',
-    this.buttonColor = const Color.fromARGB(255, 0, 30, 255),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const BuildComponentPage()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class RedoneButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const RedoneButton({
-    super.key,
-    this.buttonText = 'Redone',
-    this.buttonColor = const Color.fromARGB(255, 255, 0, 119),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => RedonePage()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
-      ),
-    );
-  }
-}
-
-class CreateButton extends StatelessWidget {
-  final String buttonText;
-  final Color buttonColor;
-
-  const CreateButton({
-    super.key,
-    this.buttonText = 'Create',
-    this.buttonColor = const Color.fromARGB(255, 248, 208, 10),
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const CreateRecipesPage()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        minimumSize: const Size(double.infinity, 64.0),
-        backgroundColor: buttonColor,
-      ),
-      child: Text(
-        buttonText,
-        style: const TextStyle(fontSize: 36, color: Colors.white),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => landingspace),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.all(16.0),
+          minimumSize: const Size(double.infinity, 64.0),
+          backgroundColor: buttonColor,
+        ),
+        child: Text(
+          buttonText,
+          style: const TextStyle(fontSize: 36, color: Colors.white),
+        ),
       ),
     );
   }
