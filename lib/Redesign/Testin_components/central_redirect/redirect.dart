@@ -65,10 +65,6 @@ class ButtonColumn extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.0),
           child: BuildingButton(),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: BuiltButton(),
-        ),
       ],
     );
   }
