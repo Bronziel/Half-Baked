@@ -11,12 +11,12 @@ class CreateRecipesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(90.0),
+        preferredSize: Size.fromHeight(90.0),
         child: NewAppbar(),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
@@ -32,8 +32,8 @@ class CreateRecipesPage extends StatelessWidget {
   }
 }
 
-class oldappbar extends StatelessWidget {
-  const oldappbar({
+class Oldappbar extends StatelessWidget {
+  const Oldappbar({
     super.key,
   });
 

@@ -31,6 +31,7 @@ class MyAppBarTitle extends StatelessWidget {
         children: [
           Text('HalfBaked',
               style: TextStyle(
+                color: Colors.white,
                 fontFamily: FontFamily.bigTitle,
                 fontSize: Fontsize.bigfont,
               )),
