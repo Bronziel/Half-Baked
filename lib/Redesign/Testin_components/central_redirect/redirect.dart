@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 //new
 import '../../styles_test/compos/buttone_template.dart';
 import '../showcase/showcase.dart';
-import 'Building _Central/building_redirected.dart';
+import 'building_redirected.dart';
 import '../showcase/showcasestyle.dart';
 
 class BuildComponentPage extends StatelessWidget {

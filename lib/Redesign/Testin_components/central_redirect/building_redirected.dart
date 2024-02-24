@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'building_buttons.dart';
+
+import '../building/building.dart';
+import '../../styles_test/compos/buttone_template.dart';
 
 //make  baseplate to copy
 class BuildingRedirect extends StatelessWidget {
@@ -12,9 +14,10 @@ class BuildingRedirect extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: BuildingActiveButton(),
+              ButtonTemplate(
+                landingspace: Building(),
+                buttonText: "Building Active",
+                buttonColor: Color.fromARGB(255, 193, 225, 12),
               ),
             ],
           ),
