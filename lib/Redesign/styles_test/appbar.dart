@@ -26,15 +26,20 @@ class MyAppBarTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        Text('HalfBaked',
-            style: TextStyle(
-              fontFamily: FontFamily.bigTitle,
-              fontSize: Fontsize.bigfont,
-            )),
-        BestickSvgIcon(),
-      ],
+    return const SizedBox(
+      child: Row(
+        children: [
+          Text('HalfBaked',
+              style: TextStyle(
+                fontFamily: FontFamily.bigTitle,
+                fontSize: Fontsize.bigfont,
+              )),
+          SizedBox(
+            width: 20,
+          ),
+          BestickSvgIcon(),
+        ],
+      ),
     );
   }
 }
