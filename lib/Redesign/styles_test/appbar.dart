@@ -14,7 +14,18 @@ class NewAppbar extends StatelessWidget {
       backgroundColor: Paint.mainncolor(),
       toolbarHeight: 90,
       centerTitle: true,
-      title: const MyAppBarTitle(),
+      title: const Text('HalfBaked',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: FontFamily.bigTitle,
+            fontSize: Fontsize.bigfont,
+          )),
+      actions: const [
+        BestickSvgIcon(),
+        SizedBox(
+          width: 780,
+        )
+      ],
     );
   }
 }

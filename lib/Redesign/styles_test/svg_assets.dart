@@ -11,6 +11,7 @@ class BestickSvgIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return SvgPicture.asset(
       'images/bestickvit.svg',
+
       width: 62, // Set the width of the SVG
       height: 54.63, // Set the height of the SVG
     );
