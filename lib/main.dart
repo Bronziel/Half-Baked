@@ -7,10 +7,10 @@ import 'pages/screens/glist.dart';
 import 'Redesign/styles_test/compos/buttone_template.dart';
 
 import 'visualview/themes.dart';
-import 'package:fb2/Redesign/RecipePages/Recipe/base_recipe.dart';
+import 'package:fb2/Redesign/RecipePages/base_recipe.dart';
 import 'pages/screens/loading.dart';
 import 'Redesign/glistredone.dart';
-import 'Redesign/RecipePages/CreateRecipes/create_recipes.dart';
+import 'Redesign/RecipePages/create_recipes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
