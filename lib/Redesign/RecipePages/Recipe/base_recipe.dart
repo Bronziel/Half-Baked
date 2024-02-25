@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../components/spacing/sizedboxes.dart';
-import 'first_row_widget.dart';
-import 'second_row_widget.dart';
 import '../../styles_test/appbar.dart';
+import '../../components/currents/introductionholder/normal_intro/introduction_box.dart';
+import '../../components/currents/imgholders/normal/image_boxes.dart';
+import '../../components/currents/ingholder/ingboxshared.dart';
+import '../../components/currents/stepholder/prog_ui.dart';
 
 class NewDesignPage extends StatelessWidget {
   const NewDesignPage({super.key});
@@ -24,6 +26,42 @@ class NewDesignPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class FirstRowWidget extends StatelessWidget {
+  const FirstRowWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      children: [
+        Widht40wallWidget(),
+        IntroductionWidget(showIntrodisplay: true),
+        Width20StandardWidget(),
+        MainImagePlusBoxes(),
+      ],
+    );
+  }
+}
+
+class SecondRowWidget extends StatelessWidget {
+  const SecondRowWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      children: [
+        Widht40wallWidget(),
+        RecipeListCard(other: true),
+        Width20StandardWidget(),
+        Builtbyme(),
+      ],
     );
   }
 }
