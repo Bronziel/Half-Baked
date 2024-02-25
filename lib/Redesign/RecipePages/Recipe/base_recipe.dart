@@ -11,7 +11,7 @@ class NewDesignPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(90.0), child: NewAppbar()),
+          preferredSize: Size.fromHeight(40.0), child: NewAppbar()),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
