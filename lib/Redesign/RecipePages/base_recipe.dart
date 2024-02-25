@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../components/spacing/sizedboxes.dart';
-import '../../styles_test/appbar.dart';
-import '../../components/currents/introductionholder/normal_intro/introduction_box.dart';
-import '../../components/currents/imgholders/normal/image_boxes.dart';
-import '../../components/currents/ingholder/ingboxshared.dart';
-import '../../components/currents/stepholder/prog_ui.dart';
+import '../components/spacing/sizedboxes.dart';
+import '../styles_test/appbar.dart';
+import '../components/currents/introductionholder/normal_intro/introduction_box.dart';
+import '../components/currents/imgholders/normal/image_boxes.dart';
+import '../components/currents/ingholder/ingboxshared.dart';
+import '../components/currents/stepholder/prog_ui.dart';
 
 class NewDesignPage extends StatelessWidget {
   const NewDesignPage({super.key});
