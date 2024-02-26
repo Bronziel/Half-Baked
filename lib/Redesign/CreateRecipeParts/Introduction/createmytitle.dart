@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/currents/sharedtitle.dart';
+import '../../components/currents/sharedtitleui.dart';
 import '../../components/currents/buttons.dart';
 import '../../components/Popups/popupclass.dart';
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../components/currents/introductionholder/descriptionshared.dart';
-import '../../components/currents/sharedtitle.dart';
 import '../../components/currents/cards/sharedcard.dart';
 import 'titletileholds.dart';
 

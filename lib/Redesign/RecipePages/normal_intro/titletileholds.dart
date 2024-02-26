@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/currents/sharedtitle.dart';
+import '../../components/currents/sharedtitleui.dart';
 
 class DisplaynormalBasictitle extends StatelessWidget {
   final String title;
