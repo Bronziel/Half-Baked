@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/styles/uifixedtimecard.dart';
+import '../../../components/styles/uifixedtimecard.dart';
 
 //displaytimes(title: title, time: time)
 //addtimes(titleadd: titleadd),
