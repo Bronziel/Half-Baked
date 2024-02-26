@@ -49,7 +49,7 @@ class Basictitle extends StatelessWidget {
           right: 0,
           child: Align(
             alignment: Alignment.center,
-            child: Title(
+            child: Titlewierd(
               title: title,
               //'KebabRulle'
             ),
@@ -80,7 +80,7 @@ class Addstitel extends StatelessWidget {
             decoration: sdasdasd(),
             child: Row(
               children: [
-                const Title(
+                const Titlewierd(
                   title: 'Add title',
                 ),
                 const SizedBox(
@@ -97,9 +97,9 @@ class Addstitel extends StatelessWidget {
   }
 }
 
-class Title extends StatelessWidget {
+class Titlewierd extends StatelessWidget {
   final String title;
-  const Title({
+  const Titlewierd({
     super.key,
     this.title = '',
   });

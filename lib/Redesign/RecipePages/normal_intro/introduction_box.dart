@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../components/currents/introductionholder/descriptionshared.dart';
 import '../../components/currents/sharedtitle.dart';
 import '../../components/currents/cards/sharedcard.dart';
+import 'titletileholds.dart';
 
 class Intro extends StatelessWidget {
   const Intro({
@@ -17,7 +18,9 @@ class Intro extends StatelessWidget {
         color: Color(0xFF161414),
         child: Column(
           children: [
-            Titleholder(showtitle: true),
+            DisplaynormalBasictitle(
+              title: 'Kebabrulle',
+            ),
             Descirptionholder(showObject1: true),
             IcontilesBox(),
           ],
