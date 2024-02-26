@@ -8,7 +8,7 @@ import '../../components/currents/imgholders/normal/image_boxes.dart';
 import '../../components/currents/imgholders/image_create_hold/create_image_boxes.dart';
 import '../../components/currents/ingholder/ingboxshared.dart';
 import '../../components/currents/stepholder/prog_ui.dart';
-import '../../CreateRecipeParts/Introduction/Createintro.dart';
+import '../../CreateRecipeParts/Introduction/create_intro.dart';
 
 class ShowcasePage extends StatelessWidget {
   const ShowcasePage({super.key});
