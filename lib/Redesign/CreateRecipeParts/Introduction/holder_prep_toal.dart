@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../cards/sharedcard.dart';
+import '../../components/currents/cards/sharedcard.dart';
 
 class PortionPrepTotalHolder extends StatelessWidget {
   const PortionPrepTotalHolder({

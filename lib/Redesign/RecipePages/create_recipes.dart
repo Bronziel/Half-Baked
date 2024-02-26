@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../components/styles/spacing/sizedboxes.dart';
 import '../styles_test/appbar.dart';
 import '../components/currents/imgholders/image_create_hold/create_image_boxes.dart';
-import '../components/currents/introductionholder/normal_intro/introduction_box.dart';
 import '../components/currents/stepholder/create_step/CreateSteps.dart';
 import '../components/currents/ingholder/ingboxshared.dart';
+import '../CreateRecipeParts/Introduction/Createintro.dart';
 
 class CreateRecipesPage extends StatelessWidget {
   const CreateRecipesPage({super.key});
@@ -42,7 +42,7 @@ class CreateFirstRowWidget extends StatelessWidget {
     return const Row(
       children: [
         Widht40wallWidget(),
-        IntroductionWidget(showIntrodisplay: false),
+        Createintro(),
         Width20StandardWidget(),
         CreateMainImagePlusBoxes(),
       ],
