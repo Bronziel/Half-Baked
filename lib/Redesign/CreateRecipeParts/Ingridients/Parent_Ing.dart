@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../components/currents/ingholder/lists.dart';
 import '../../components/currents/ingholder/ing_add_tile.dart';
 import '../../components/currents/ingholder/maintile.dart';
-import 'Ingridientlist/list_of_ing.dart';
 import 'Ingridientlist/list_of_ing.dart';
 import 'classIng/ing_class2.dart';
 

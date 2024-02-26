@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'ingtile.dart';
 import 'maintile.dart';
-import '../../Popups/popupclass.dart';
 
 class Listnormal extends StatelessWidget {
   const Listnormal({
