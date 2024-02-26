@@ -1,6 +1,6 @@
 import 'create_description.dart';
 import 'create_title.dart';
-import 'holder_prep_toal.dart';
+import 'create_tiles/tile_layout.dart';
 
 import 'package:flutter/material.dart';
 
@@ -24,7 +24,7 @@ class Createintro extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            PortionPrepTotalHolder(),
+            CreateIcontilesBox(),
           ],
         ),
       ),

@@ -2,6 +2,26 @@ import 'package:flutter/material.dart';
 import 'create_time_tile.dart';
 import 'create_portion_tile.dart';
 
+class CreateIcontilesBox extends StatelessWidget {
+  const CreateIcontilesBox({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: const Row(
+      children: [
+        SizedBox(
+          width: 5,
+        ),
+        Addcardcolumn(),
+        Addiconcard(),
+      ],
+    ));
+  }
+}
+
 class Addiconcard extends StatelessWidget {
   const Addiconcard({
     super.key,
