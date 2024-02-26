@@ -1,7 +1,6 @@
-import 'package:fb2/Redesign/components/Popups/popup_boxes.dart';
 import 'package:flutter/material.dart';
-import '../buttons.dart' show Addbuttoncontainer;
-import '../../Popups/popupclass.dart';
+import '../../components/currents/buttons.dart' show Addbuttoncontainer;
+import '../../components/Popups/popupclass.dart';
 
 class Addinngtile extends StatelessWidget {
   final Function(String, String, String) addItemCallback;

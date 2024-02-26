@@ -1,7 +1,6 @@
 import 'package:fb2/Redesign/components/Popups/popup_boxes.dart';
 import 'package:flutter/material.dart';
 import '../../CreateRecipeParts/Ingridients/Ingridientpops/ingridient_popupp.dart';
-import '../../CreateRecipeParts/Ingridients/parent_Ing.dart';
 
 //onPressed: () => DialogUtils.showIngPopDialog(context)
 class DialogUtils {
