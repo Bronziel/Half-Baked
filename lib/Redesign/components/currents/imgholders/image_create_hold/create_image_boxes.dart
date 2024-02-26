@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../spacing/sizedboxes.dart';
+import '../../../styles/spacing/sizedboxes.dart';
 import '../sharingimgholder.dart';
 
 class CreateMainImagePlusBoxes extends StatelessWidget {

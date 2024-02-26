@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'smallimages.dart';
 import 'mainimage.dart';
-import '../../../spacing/sizedboxes.dart';
+import '../../../styles/spacing/sizedboxes.dart';
 
 class MainImagePlusBoxes extends StatelessWidget {
   const MainImagePlusBoxes({
