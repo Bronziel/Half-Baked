@@ -2,6 +2,7 @@ import 'package:fb2/Redesign/components/Popups/popupclass.dart';
 import 'package:fb2/Redesign/components/currents/ingholder/ingtile.dart';
 import 'package:fb2/Redesign/components/currents/ingholder/lists.dart';
 import 'package:flutter/material.dart';
+import '../classIng/ing_class2.dart';
 
 class ListOfIng extends StatefulWidget {
   final Function(String, String, String) addItem;
