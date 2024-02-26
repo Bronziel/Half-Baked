@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../descriptionshared.dart';
-import '../../sharedtitle.dart';
-import '../../cards/sharedcard.dart';
+import '../../components/currents/introductionholder/descriptionshared.dart';
+import '../../components/currents/sharedtitle.dart';
+import '../../components/currents/cards/sharedcard.dart';
 
 class Intro extends StatelessWidget {
   const Intro({
