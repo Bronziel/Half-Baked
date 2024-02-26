@@ -1,5 +1,5 @@
-import '../../components/currents/sharedtitle.dart';
 import '../../components/currents/introductionholder/descriptionshared.dart';
+import 'createmytitle.dart';
 import 'holder_prep_toal.dart';
 
 import 'package:flutter/material.dart';
