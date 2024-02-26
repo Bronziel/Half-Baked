@@ -2,7 +2,7 @@ import 'package:fb2/Redesign/components/smallicons.dart';
 import 'package:flutter/material.dart';
 import '../../components/Popups/popup_boxes.dart';
 import '../../RecipePages/normal_intro/PortionsizeTile.dart';
-import '../../../Redesign/components/currents/cards/fixedtimecard.dart';
+import '../../CreateRecipeParts/Introduction/Createtimecards2.dart';
 
 class RowOfIcons80 extends StatelessWidget {
   const RowOfIcons80({

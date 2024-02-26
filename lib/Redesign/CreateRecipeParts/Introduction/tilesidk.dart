@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/currents/cards/fixedtimecard.dart';
+import 'Createtimecards2.dart';
 import 'portionsizecard.dart';
 
 class Addiconcard extends StatelessWidget {

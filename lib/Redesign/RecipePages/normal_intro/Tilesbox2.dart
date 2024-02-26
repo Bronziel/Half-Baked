@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'PortionsizeTile.dart';
-import '../../components/currents/cards/fixedtimecard.dart';
 import '../../components/smallicons.dart';
+import 'timecards2.dart';
 
 class IcontilesBox extends StatelessWidget {
   const IcontilesBox({
@@ -44,22 +44,16 @@ class Cardcolumns extends StatelessWidget {
         SizedBox(
           height: 5,
         ),
-        TimeCard(
-          showdisplaytime: true,
-          titleadd: '',
+        Displaytimesnow(
           title: "Prep Time:",
           time: "300",
-          prepOrTotal: false,
         ),
         SizedBox(
           height: 5,
         ),
-        TimeCard(
-          showdisplaytime: true,
-          titleadd: '',
+        Displaytimesnow(
           title: "Total Time:",
           time: "450",
-          prepOrTotal: false,
         ),
       ],
     );
