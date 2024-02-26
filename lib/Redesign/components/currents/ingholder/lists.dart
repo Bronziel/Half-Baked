@@ -19,14 +19,22 @@ class Listnormal extends StatelessWidget {
                 label: "Kebabkött",
                 amount: "500",
                 unit: "ml",
-                shownormal: true,
+                textStyle: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white, // Set your desired color here
+                ),
               ),
 
               IngredientTile(
                 label: "Kebabkött",
                 amount: "500",
                 unit: "ml",
-                shownormal: true,
+                textStyle: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white, // Set your desired color here
+                ),
               ),
 
               // Add more children as needed

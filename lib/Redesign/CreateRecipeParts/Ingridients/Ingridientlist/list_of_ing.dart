@@ -1,7 +1,7 @@
 import 'package:fb2/Redesign/components/Popups/popupclass.dart';
-import 'package:fb2/Redesign/components/currents/ingholder/ingtile.dart';
 import 'package:flutter/material.dart';
 import '../classIng/ing_class2.dart';
+import '../Tiles/Normaltile.dart';
 
 class ListOfIng extends StatefulWidget {
   final Function(String, String, String) addItem;
@@ -42,7 +42,7 @@ class _ListOfIngState extends State<ListOfIng> {
       buildDefaultDragHandles: false,
       children: List.generate(ingredients.length, (index) {
         Ingredients item = ingredients[index];
-        return IngredientTile(
+        return CreateIngredientTile(
           key: ValueKey(item.label),
           label: item.label,
           amount: item.amount,
