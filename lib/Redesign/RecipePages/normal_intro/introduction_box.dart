@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'titletileholds.dart';
-import 'description.dart';
+import 'title_box.dart';
+import 'description_box.dart';
 import 'Tiles/Tilesbox.dart';
 
 class Intro extends StatelessWidget {
