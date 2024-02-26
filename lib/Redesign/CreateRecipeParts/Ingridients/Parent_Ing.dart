@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../components/styles/style_objects.dart';
-import '../../components/styles/style.dart';
-import '../../components/Popups/popup_components.dart';
-
 import '../../components/currents/ingholder/lists.dart';
 import '../../components/currents/ingholder/ing_add_tile.dart';
 import '../../components/currents/ingholder/maintile.dart';
-import '../../components/currents/ingholder/lists.dart';
-import '../../components/Popups/textfield_ing.dart';
 
 class CreateListWithIngridients extends StatefulWidget {
   const CreateListWithIngridients({super.key});

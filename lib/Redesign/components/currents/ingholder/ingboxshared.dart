@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'lists.dart';
 import 'maintile.dart';
-import '../../../CreateRecipeParts/Ingridients/Parent_Ing.dart';
+import '../../../CreateRecipeParts/Ingridients/parent_Ing.dart';
 
 class RecipeListCard extends StatelessWidget {
   final bool other;
