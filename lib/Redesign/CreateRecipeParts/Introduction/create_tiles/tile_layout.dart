@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Createtimecards2.dart';
-import 'portionsizecard.dart';
+import 'create_time_tile.dart';
+import 'create_portion_tile.dart';
 
 class Addiconcard extends StatelessWidget {
   const Addiconcard({
