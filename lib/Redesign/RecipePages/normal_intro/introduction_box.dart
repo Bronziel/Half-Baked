@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../components/currents/cards/sharedcard.dart';
 import 'titletileholds.dart';
 import 'description.dart';
+import 'Tilesbox2.dart';
 
 class Intro extends StatelessWidget {
   const Intro({

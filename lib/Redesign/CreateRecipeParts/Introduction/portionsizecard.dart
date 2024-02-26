@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '../buttons.dart';
-import '../../Popups/popupclass.dart';
+import '../../components/Popups/popupclass.dart';
+import '../../components/currents/buttons.dart';
 
-//this is the portionsize tile
 class PortionsizeCardWidget extends StatelessWidget {
   final String portion;
   final bool showdisplayport;

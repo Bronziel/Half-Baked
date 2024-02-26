@@ -1,7 +1,7 @@
 import 'package:fb2/Redesign/components/smallicons.dart';
 import 'package:flutter/material.dart';
 import '../../components/Popups/popup_boxes.dart';
-import '../../../Redesign/components/currents/cards/fixedportionsize.dart';
+import '../../RecipePages/normal_intro/PortionsizeTile.dart';
 import '../../../Redesign/components/currents/cards/fixedtimecard.dart';
 
 class RowOfIcons80 extends StatelessWidget {
@@ -100,8 +100,7 @@ class TimeTIlesshowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        PortionsizeCardWidget(
-          showdisplayport: true,
+        DisplayPortionsizeCardWidget(
           portion: '15',
         ),
         TimeCard(
