@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/icons2/carticons.dart';
+import '../../components/styles/icons2/carticons.dart';
 
 class IngMaintileDisplay extends StatelessWidget {
   const IngMaintileDisplay({
