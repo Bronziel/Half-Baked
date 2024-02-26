@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'Tiles/ing_add_tile.dart';
-import '../../components/currents/ingholder/maintile.dart';
+import '../../RecipePages/Ingridients10/maintile.dart';
 import 'Ingridientlist/list_of_ing.dart';
 import 'classIng/ing_class2.dart';
+import 'Tiles/createmaintile.dart';
 
 class CreateListWithIngridients extends StatefulWidget {
   const CreateListWithIngridients({super.key});
@@ -28,9 +29,13 @@ class _CreateListWithIngridientsState extends State<CreateListWithIngridients> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const IngMainTile(
-            showMaintile:
-                false), //controls wich main tile size.we get since false we get the bigger one
+        const Createmaintitle(
+          textStyle: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w700,
+            color: Color(0xFF000000), // Set your desired color here
+          ),
+        ), //controls wich main tile size.we get since false we get the bigger one
         Addinngtile(addItemCallback: addItem), //tile to add new ingridninets
         Expanded(
           child: ListOfIng(addItem: addItem), //specila list for ingridinets

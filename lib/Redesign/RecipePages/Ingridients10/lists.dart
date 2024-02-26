@@ -11,7 +11,12 @@ class Listnormal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const IngMainTile(showMaintile: true),
+        const IngMaintileDisplay(
+            textStyle: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.w700,
+          color: Color(0xFF000000), // Set your desired color here
+        )),
         Expanded(
           child: ListView(
             children: const <Widget>[
