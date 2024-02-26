@@ -1,4 +1,4 @@
-import '../../components/currents/introductionholder/descriptionshared.dart';
+import 'createdescription.dart';
 import 'createmytitle.dart';
 import 'holder_prep_toal.dart';
 

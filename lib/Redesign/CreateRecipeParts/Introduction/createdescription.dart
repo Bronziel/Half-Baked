@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../buttons.dart';
-import '../../Popups/popupclass.dart';
-
-BoxDecoration boxouter() {
-  return BoxDecoration(
-      border: Border.all(
-    color: const Color(0xff234234),
-    width: 1,
-  ));
-}
+import '../../components/currents/buttons.dart';
+import '../../components/Popups/popupclass.dart';
+import '../../components/styles/uidescriptionshared.dart';
 
 class Descirptionholder extends StatelessWidget {
   final bool showObject1;

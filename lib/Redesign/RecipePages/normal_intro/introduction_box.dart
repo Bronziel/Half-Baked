@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../components/currents/introductionholder/descriptionshared.dart';
 import '../../components/currents/cards/sharedcard.dart';
 import 'titletileholds.dart';
+import 'description.dart';
 
 class Intro extends StatelessWidget {
   const Intro({
@@ -20,7 +20,8 @@ class Intro extends StatelessWidget {
             DisplaynormalBasictitle(
               title: 'Kebabrulle',
             ),
-            Descirptionholder(showObject1: true),
+            DisplayDescription(
+                description: 'En god Kebab rulle som aldrig gör en Besviken.'),
             IcontilesBox(),
           ],
         ),
