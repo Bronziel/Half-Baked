@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ing_add_tile.dart';
+import 'Tiles/ing_add_tile.dart';
 import '../../components/currents/ingholder/maintile.dart';
 import 'Ingridientlist/list_of_ing.dart';
 import 'classIng/ing_class2.dart';
