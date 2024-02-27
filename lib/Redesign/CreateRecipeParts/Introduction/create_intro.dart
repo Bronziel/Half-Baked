@@ -18,7 +18,7 @@ class Createintro extends StatelessWidget {
         color: Color(0xFF161414),
         child: Column(
           children: [
-            Titleholder(showtitle: false),
+            Titleholder(showtitle: true),
             //description big box
             Descirptionholder(showObject1: false),
             SizedBox(

@@ -21,7 +21,7 @@ class Titleholder extends StatelessWidget {
   }
 
   Widget title() {
-    return const Basictitle(
+    return const Showtitel(
       title: 'Kebabrulle',
     );
   }
@@ -33,9 +33,9 @@ class Titleholder extends StatelessWidget {
 
 //const Basictitle(title: 'Kebabrulle',),
 //const Addtitle(),
-class Basictitle extends StatelessWidget {
+class Showtitel extends StatelessWidget {
   final String title;
-  const Basictitle({
+  const Showtitel({
     required this.title,
     super.key,
   });
@@ -56,6 +56,12 @@ class Basictitle extends StatelessWidget {
             ),
           ),
         ),
+        Positioned(
+            top: 20,
+            right: 10,
+            child: Editcontainer(
+              onPressedEdit: () {},
+            ))
       ],
     );
   }
@@ -97,3 +103,43 @@ class Addstitel extends StatelessWidget {
     );
   }
 }
+
+class Editcontainer extends StatelessWidget {
+  final VoidCallback? onPressedEdit;
+  const Editcontainer({
+    required this.onPressedEdit,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      constraints: const BoxConstraints(maxHeight: 100, maxWidth: 100),
+      icon: const Icon(Icons.edit, size: 24),
+      color: const Color.fromARGB(255, 233, 228, 228),
+      // Plus icon
+      onPressed: onPressedEdit ?? () {},
+    );
+  }
+}
+
+class TitelHandler extends StatefulWidget {
+  const TitelHandler({super.key});
+
+  @override
+  State<TitelHandler> createState() => _TitelHandlerState();
+}
+
+class _TitelHandlerState extends State<TitelHandler> {
+  String? myTitel;
+  @override
+  Widget build(BuildContext context) {
+    if (myTitel == null) {
+      return Container();
+    } else {
+      return Container();
+    }
+  }
+}
+
+//always return adds titel when titles has string change to 
