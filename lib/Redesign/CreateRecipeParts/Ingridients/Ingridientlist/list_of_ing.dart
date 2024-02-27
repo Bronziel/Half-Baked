@@ -1,4 +1,4 @@
-import 'package:fb2/Redesign/components/Popups/popupclass.dart';
+import 'package:fb2/Redesign/components/Popups/popupDialogclass.dart';
 import 'package:flutter/material.dart';
 import '../classIng/ing_class2.dart';
 import '../Tiles/Normaltile.dart';

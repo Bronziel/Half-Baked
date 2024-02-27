@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../components/styles/sharedtitleui.dart';
 import '../../components/currents/buttons.dart';
-import '../../components/Popups/popupclass.dart';
+import '../../components/Popups/popupDialogclass.dart';
 
 class Titleholder extends StatelessWidget {
   final bool showtitle;
