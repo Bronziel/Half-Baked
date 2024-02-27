@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../components/styles/sharedtitleui.dart';
 import '../../components/currents/buttons.dart';
-import '../../components/Popups/popupDialogclass.dart';
+import '../Dialog/intro_dialogs.dart';
 
 class Titleholder extends StatelessWidget {
   final bool showtitle;
@@ -88,7 +88,7 @@ class Addstitel extends StatelessWidget {
                   width: 10,
                 ),
                 Addbuttoncontainer(
-                    onPressed: () => DialogUtils.showTitelDialog(context)),
+                    onPressed: () => TitelDialog.addTitel(context)),
               ],
             ),
           ),
