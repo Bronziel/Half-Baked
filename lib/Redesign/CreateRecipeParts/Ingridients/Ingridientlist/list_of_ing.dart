@@ -1,7 +1,7 @@
-import 'package:fb2/Redesign/components/Popups/popupDialogclass.dart';
 import 'package:flutter/material.dart';
 import '../classIng/ing_class2.dart';
 import '../Tiles/Normaltile.dart';
+import '../../Dialog/ingridient_dialog.dart';
 
 class ListOfIng extends StatefulWidget {
   final Function(String, String, String) addItem;
@@ -50,14 +50,8 @@ class _ListOfIngState extends State<ListOfIng> {
           index: index,
           shownormal: false,
           onPressedDelete: () => removeItem(index),
-          onPressedEdit: () => DialogUtils.showIngPopDialogEdit(
-              context,
-              widget.addItem,
-              index,
-              item.label,
-              item.amount,
-              item.unit,
-              replaceItem),
+          onPressedEdit: () => IngDialog.editIng(context, widget.addItem, index,
+              item.label, item.amount, item.unit, replaceItem),
 
           //onpressed edit edititem(index)
           //FUNCTION FOR THE ON pressed

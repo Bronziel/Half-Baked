@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../components/currents/buttons.dart' show Addbuttoncontainer;
-import '../../../components/Popups/popupDialogclass.dart';
+import '../../Dialog/ingridient_dialog.dart';
 
 class Addinngtile extends StatelessWidget {
   final Function(String, String, String) addItemCallback;
@@ -39,8 +39,7 @@ class Addinngtile extends StatelessWidget {
               top: 5,
               right: 10,
               child: Addbuttoncontainer(
-                onPressed: () =>
-                    DialogUtils.showIngPopDialog(context, addItemCallback),
+                onPressed: () => IngDialog.addIng(context, addItemCallback),
               ),
             ),
           ],
