@@ -47,6 +47,21 @@ class _IntroductionPopuppState extends State<IntroductionPopupp> {
     super.dispose();
   }
 
+  //for saving the input
+  void saveTitel() {
+    print('save titelbutton pressed');
+    setState(() {
+      errorText1 =
+          titleController.text.isEmpty ? 'Field cannot be empty' : null;
+    });
+    if (errorText1 == null) {
+      print('title textfield not  empty');
+      widget.addTitel(titleController.text);
+      titleController.clear();
+      Navigator.of(context).pop();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Utils.smallpopbox(
@@ -63,7 +78,9 @@ class _IntroductionPopuppState extends State<IntroductionPopupp> {
               titleController: titleController,
             ),
             const PostionedStopButton(),
-            const PostionedSaveButton(),
+            SaveButtonIng(
+              onPressed: () => saveTitel(),
+            ),
           ],
         ),
       ),

@@ -129,6 +129,7 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
 
   @override
   Widget build(BuildContext context) {
+    print('rebuilt??');
     return Utils.ingpop(
       Card(
         color: StyleUtils.cardcolorgrey(),
