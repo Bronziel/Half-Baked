@@ -1,5 +1,5 @@
 import 'package:fb2/Redesign/components/Popups/popup_components.dart';
-import 'package:fb2/Redesign/components/Popups/textfield_ing.dart';
+import 'package:fb2/Redesign/CreateRecipeParts/Ingridients/Ingridientpops/textfield_ing.dart';
 import 'package:fb2/Redesign/components/styles/style.dart';
 import 'package:fb2/Redesign/components/styles/style_objects.dart';
 import 'package:flutter/material.dart';
