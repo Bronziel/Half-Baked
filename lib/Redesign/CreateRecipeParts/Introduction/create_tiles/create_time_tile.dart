@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../components/styles/uifixedtimecard.dart';
-import '../../../components/currents/buttons.dart';
+import '../../Dialog/buttons_dialog/buttons.dart';
 import '../../../components/Popups/popupDialogclass.dart';
 
 class TimeCard extends StatelessWidget {

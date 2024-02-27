@@ -1,35 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../components/styles/sharedtitleui.dart';
-import '../../components/currents/buttons.dart';
+import '../Dialog/buttons_dialog/buttons.dart';
 import '../Dialog/intro_dialogs.dart';
-
-class Titleholder extends StatelessWidget {
-  final bool showtitle;
-  const Titleholder({
-    required this.showtitle,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 410,
-      height: 75,
-      decoration: jajsjs2(),
-      child: showtitle ? title() : addstitel(),
-    );
-  }
-
-  Widget title() {
-    return const Showtitel(
-      title: 'Kebabrulle',
-    );
-  }
-
-  Widget addstitel() {
-    return const Addstitel();
-  }
-}
 
 //const Basictitle(title: 'Kebabrulle',),
 //const Addtitle(),
@@ -70,7 +42,9 @@ class Showtitel extends StatelessWidget {
 //new
 
 class Addstitel extends StatelessWidget {
+  final Function(String) addTitel;
   const Addstitel({
+    required this.addTitel,
     super.key,
   });
 
@@ -94,7 +68,11 @@ class Addstitel extends StatelessWidget {
                   width: 10,
                 ),
                 Addbuttoncontainer(
-                    onPressed: () => TitelDialog.addTitel(context)),
+                  onPressed: () => TitelDialog.addTitel(
+                    context,
+                    addTitel,
+                  ),
+                ),
               ],
             ),
           ),
@@ -132,14 +110,46 @@ class TitelHandler extends StatefulWidget {
 
 class _TitelHandlerState extends State<TitelHandler> {
   String? myTitel;
+  void updateTitle(String newTitle) {
+    setState(() {
+      myTitel = newTitle;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    if (myTitel == null) {
-      return Container();
-    } else {
-      return Container();
-    }
+    return Container(
+      width: 410,
+      height: 75,
+      decoration: jajsjs2(),
+      child: myTitel == null
+          ? Addstitel(
+              addTitel: updateTitle,
+            )
+          : Showtitel(title: myTitel!),
+    );
   }
 }
+//always return adds titel when titles has string change to
+/*
+if (myTitel == null) {
+      return Container(
+        width: 410,
+        height: 75,
+        decoration: jajsjs2(),
+        child:const const Showtitel(
+      title: 'Kebabrulle',
+    )
+      );
+    } else {
+      return Container(
+        width: 410,
+        height: 75,
+        decoration: jajsjs2(),
+        child:const Addstitel()
+      );
+    }
 
-//always return adds titel when titles has string change to 
+
+*/
+

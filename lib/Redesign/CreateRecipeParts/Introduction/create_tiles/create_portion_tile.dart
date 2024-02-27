@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../components/Popups/popupDialogclass.dart';
-import '../../../components/currents/buttons.dart';
+import '../../Dialog/buttons_dialog/buttons.dart';
 
 class PortionsizeCardWidget extends StatelessWidget {
   final String portion;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../components/currents/buttons.dart' show Addbuttoncontainer;
+import '../../Dialog/buttons_dialog/buttons.dart' show Addbuttoncontainer;
 import '../../Dialog/ingridient_dialog.dart';
 
 class Addinngtile extends StatelessWidget {

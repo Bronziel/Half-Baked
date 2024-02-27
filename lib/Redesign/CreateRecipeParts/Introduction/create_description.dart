@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/currents/buttons.dart';
+import '../Dialog/buttons_dialog/buttons.dart';
 import '../../components/Popups/popupDialogclass.dart';
 import '../../components/styles/uidescriptionshared.dart';
 

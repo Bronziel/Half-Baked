@@ -13,12 +13,16 @@ class IntroductionPopupp extends StatefulWidget {
   final String labelText;
   final String hintText;
   final String title;
+  //funuction to update etc
+  final Function(String) addTitel;
 
   const IntroductionPopupp({
     //text
     required this.labelText,
     required this.hintText,
     required this.title,
+    //function
+    required this.addTitel,
     super.key,
   });
 
