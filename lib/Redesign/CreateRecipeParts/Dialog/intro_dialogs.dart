@@ -22,6 +22,32 @@ class TitelDialog {
       },
     );
   }
+
+  static void editTitel(
+    BuildContext context,
+    Function(String) addTitel,
+    Function(String) editTitel,
+    String initialTitel,
+  ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        print('open titel Dialog');
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          child: IntroductionPopupp(
+            initialTitle: initialTitel,
+            addTitel: addTitel,
+            editItem: editTitel,
+            title: 'Title:',
+            labelText: 'Add a title',
+            hintText: 'Ex Kebabrulle',
+            isEdit: true,
+          ),
+        );
+      },
+    );
+  }
 }
 
 class DescriptionDialog {}

@@ -15,6 +15,10 @@ class IntroductionPopupp extends StatefulWidget {
   final String title;
   //funuction to update etc
   final Function(String) addTitel;
+  //function to edit title ? bc not always needed only when eddit.and bool for if statment
+  final Function(String)? editItem;
+  final String? initialTitle;
+  final bool isEdit;
 
   const IntroductionPopupp({
     //text
@@ -23,6 +27,10 @@ class IntroductionPopupp extends StatefulWidget {
     required this.title,
     //function
     required this.addTitel,
+    //if edit initla value
+    this.initialTitle,
+    this.editItem,
+    this.isEdit = false,
     super.key,
   });
 
@@ -38,7 +46,7 @@ class _IntroductionPopuppState extends State<IntroductionPopupp> {
   @override
   void initState() {
     super.initState();
-    titleController = TextEditingController();
+    titleController = TextEditingController(text: widget.initialTitle);
   }
 
   @override
@@ -54,9 +62,15 @@ class _IntroductionPopuppState extends State<IntroductionPopupp> {
       errorText1 =
           titleController.text.isEmpty ? 'Field cannot be empty' : null;
     });
-    if (errorText1 == null) {
+    if (errorText1 == null && widget.isEdit == false) {
       print('title textfield not  empty');
       widget.addTitel(titleController.text);
+      titleController.clear();
+      Navigator.of(context).pop();
+    }
+    if (errorText1 == null && widget.isEdit == true) {
+      print('title textfield not  empty');
+      widget.editItem!(titleController.text);
       titleController.clear();
       Navigator.of(context).pop();
     }

@@ -6,8 +6,12 @@ import '../Dialog/intro_dialogs.dart';
 //const Basictitle(title: 'Kebabrulle',),
 //const Addtitle(),
 class Showtitel extends StatelessWidget {
+  final Function(String) editItem;
+  final Function(String) addItem;
   final String title;
   const Showtitel({
+    required this.editItem,
+    required this.addItem,
     required this.title,
     super.key,
   });
@@ -32,7 +36,8 @@ class Showtitel extends StatelessWidget {
             top: 20,
             right: 10,
             child: Editcontainer(
-              onPressedEdit: () {},
+              onPressedEdit: () =>
+                  TitelDialog.editTitel(context, editItem, addItem, title),
             ))
       ],
     );
@@ -96,7 +101,7 @@ class Editcontainer extends StatelessWidget {
       icon: const Icon(Icons.edit, size: 24),
       color: const Color.fromARGB(255, 233, 228, 228),
       // Plus icon
-      onPressed: onPressedEdit ?? () {},
+      onPressed: onPressedEdit,
     );
   }
 }
@@ -117,6 +122,13 @@ class _TitelHandlerState extends State<TitelHandler> {
     });
   }
 
+  void editTitle(String editTitle) {
+    print('titel updated?');
+    setState(() {
+      myTitel = editTitle;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -127,7 +139,11 @@ class _TitelHandlerState extends State<TitelHandler> {
           ? Addstitel(
               addTitel: updateTitle,
             )
-          : Showtitel(title: myTitel!),
+          : Showtitel(
+              title: myTitel!,
+              addItem: updateTitle,
+              editItem: editTitle,
+            ),
     );
   }
 }
