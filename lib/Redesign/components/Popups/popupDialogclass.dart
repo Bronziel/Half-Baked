@@ -6,24 +6,6 @@ class DialogUtils {
   //not retuurn value insted retunr action
   //showIngPopDialog
 
-  static void showTitelDialog(
-    BuildContext context,
-  ) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return const Dialog(
-          backgroundColor: Colors.transparent,
-          child: SmallTextfieldPop(
-            title: 'Title:',
-            labelText: 'Add a title',
-            hintText: 'Ex Kebabrulle',
-          ),
-        );
-      },
-    );
-  }
-
   static void showDescriptionDialog(
     BuildContext context,
   ) {
