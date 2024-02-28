@@ -1,4 +1,6 @@
 {
   "java.configuration.updateBuildConfiguration": "interactive",
-  "files.exclude": {}
+  "files.exclude": {
+    "lib\\pages": true
+  }
 }
