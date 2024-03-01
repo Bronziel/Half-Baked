@@ -3,7 +3,7 @@ import '../components/styles/spacing/sizedboxes.dart';
 import '../styles_test/appbar.dart';
 import '../components/currents/imgholders/image_create_hold/create_image_boxes.dart';
 import '../components/currents/stepholder/create_step/CreateSteps.dart';
-import '../components/currents/ingholder/ingboxshared.dart';
+import '../components/styles/ingboxshared.dart';
 import '../CreateRecipeParts/Introduction/create_intro.dart';
 
 class CreateRecipesPage extends StatelessWidget {

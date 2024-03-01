@@ -6,7 +6,7 @@ import '../built/myreorder.dart';
 import '../../RecipePages/normal_intro/introduction_box.dart';
 import '../../components/currents/imgholders/normal/image_boxes.dart';
 import '../../components/currents/imgholders/image_create_hold/create_image_boxes.dart';
-import '../../components/currents/ingholder/ingboxshared.dart';
+import '../../components/styles/ingboxshared.dart';
 import '../../components/currents/stepholder/prog_ui.dart';
 import '../../CreateRecipeParts/Introduction/create_intro.dart';
 
