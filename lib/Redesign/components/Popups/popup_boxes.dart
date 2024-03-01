@@ -81,32 +81,6 @@ class PopTimePort extends StatelessWidget {
 }
 
 //detta är lådan för lägga till description
-class PopDescription extends StatelessWidget {
-  final String title;
-  const PopDescription({
-    required this.title,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Utils.bigpopbox(
-      Card(
-        color: const Color(0xFFD9D9D9),
-        child: Stack(
-          children: [
-            Titles(title: title),
-            const Descriptiontextfield(
-              labeltext: 'Add a Description',
-            ),
-            const PostionedStopButton(),
-            const PostionedSaveButton(),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 class Descriptiontextfield extends StatelessWidget {
   final String labeltext;

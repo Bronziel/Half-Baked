@@ -8,11 +8,12 @@ class DescriptionDialog {
     showDialog(
       context: context,
       builder: (BuildContext context) {
+        print('new description dialog');
         return const Dialog(
           backgroundColor: Colors.transparent,
           child: DescriptionPopupp(
-              //title: 'Description',
-              ),
+            title: 'Description',
+          ),
         );
       },
     );

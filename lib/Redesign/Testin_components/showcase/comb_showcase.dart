@@ -161,11 +161,7 @@ class Popupsdisplayed extends StatelessWidget {
           ],
         ),
         Column(
-          children: [
-            PopDescription(
-              title: 'Description',
-            ),
-          ],
+          children: [],
         ),
         Column(
           children: [

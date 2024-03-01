@@ -6,22 +6,6 @@ class DialogUtils {
   //not retuurn value insted retunr action
   //showIngPopDialog
 
-  static void showDescriptionDialog(
-    BuildContext context,
-  ) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return const Dialog(
-          backgroundColor: Colors.transparent,
-          child: PopDescription(
-            title: 'Description',
-          ),
-        );
-      },
-    );
-  }
-
   static void showStepsTitelDialog(
     BuildContext context,
   ) {

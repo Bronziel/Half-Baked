@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../Dialog/buttons_dialog/buttons.dart';
 import '../../components/Popups/popupDialogclass.dart';
 import '../../components/styles/uidescriptionshared.dart';
+import '../Dialog/description_dialog.dart';
 
 class Descirptionholder extends StatelessWidget {
   final bool showObject1;
@@ -51,7 +52,7 @@ class Descriptionadd extends StatelessWidget {
         const CreateDescription(createdescription: 'Add a description'),
         const SizedBox(height: 8),
         Addbuttoncontainer(
-            onPressed: () => DialogUtils.showDescriptionDialog(context)),
+            onPressed: () => DescriptionDialog.addDescription(context)),
       ],
     );
   }
