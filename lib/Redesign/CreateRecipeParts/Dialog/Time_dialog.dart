@@ -3,16 +3,17 @@ import '../Introduction/Timepop/TotalPreppTimepop.dart';
 
 class TotalTimeDialog {
   static void addTotalTime(
+    Function(String) addTotalTime,
     BuildContext context,
   ) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return const Dialog(
+        return Dialog(
           backgroundColor: Colors.transparent,
           child: TimePopupp(
+            addTotalTime: addTotalTime,
             isTotaltime: true,
-            isPortionSize: false,
             title: 'TotalTime:',
             labelText: 'Add Total time',
             hintText:
@@ -26,16 +27,17 @@ class TotalTimeDialog {
 
 class PreppTimeDialog {
   static void addPreppTime(
+    Function(String) addTotalTime,
     BuildContext context,
   ) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return const Dialog(
+        return Dialog(
           backgroundColor: Colors.transparent,
           child: TimePopupp(
+            addTotalTime: addTotalTime,
             isPreppTime: true,
-            isPortionSize: false,
             title: 'PrepTime:',
             labelText: 'Add Preperation time',
             hintText:

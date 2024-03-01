@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'create_time_tile.dart';
 import 'create_portion_tile.dart';
+import '../create_times.dart';
 
 class CreateIcontilesBox extends StatelessWidget {
   const CreateIcontilesBox({
@@ -15,7 +15,7 @@ class CreateIcontilesBox extends StatelessWidget {
         SizedBox(
           width: 5,
         ),
-        Addcardcolumn(),
+        TimePrepTotalHandler(),
         Addiconcard(),
       ],
     ));
@@ -40,44 +40,6 @@ class Addiconcard extends StatelessWidget {
 
 //statefullwidget
 //nah remove this make tiem card and portion statefullwidgets insted.
-class Addcardcolumn extends StatelessWidget {
-  const Addcardcolumn({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        PortionsizeCardWidget(
-          showdisplayport: false,
-          portion: '15',
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        TimeCard(
-          showdisplaytime:
-              false, //true for showing done recipe false for adding
-          titleadd: "Prep Time:",
-          title: "",
-          time: "",
-          prepOrTotal: true, //true is for totaltime
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        TimeCard(
-          showdisplaytime: false,
-          titleadd: "Total Time:",
-          title: "",
-          time: "",
-          prepOrTotal: false, //false is for totaltime
-        ),
-      ],
-    );
-  }
-}
 
 class Addicon extends StatelessWidget {
   const Addicon({super.key});

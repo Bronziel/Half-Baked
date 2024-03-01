@@ -50,7 +50,6 @@ class NumberTextField extends StatelessWidget {
     this.errorText2,
     required this.numberController,
     super.key,
-    required this.isPortionSize,
     required this.labelText,
     required this.hintText,
     this.bottom = 10,
@@ -58,7 +57,6 @@ class NumberTextField extends StatelessWidget {
   final String? errorText2;
   final TextEditingController numberController;
 
-  final bool isPortionSize;
   final String labelText;
   final String hintText;
   final double bottom;
@@ -71,10 +69,8 @@ class NumberTextField extends StatelessWidget {
       right: 100,
       child: TextField(
           controller: numberController,
-          keyboardType:
-              isPortionSize ? TextInputType.text : TextInputType.number,
-          inputFormatters:
-              isPortionSize ? [] : [FilteringTextInputFormatter.digitsOnly],
+          keyboardType: TextInputType.number,
+          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           decoration: InputDecoration(
             errorText: errorText2,
             labelText: labelText,

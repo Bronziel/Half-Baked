@@ -12,7 +12,6 @@ class IngridientPopupp extends StatefulWidget {
   final String labelText2;
   final String hintText;
   final String hintText2;
-  final bool isPortionSize;
 
 //yes
   final Function(int, String, String, String)? editItem;
@@ -35,7 +34,6 @@ class IngridientPopupp extends StatefulWidget {
     this.hintText = '',
     this.hintText2 = '',
     required this.title,
-    this.isPortionSize = false,
     super.key,
   });
 
@@ -146,7 +144,6 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
             NumberTextField(
               errorText2: errorText2,
               numberController: numberController,
-              isPortionSize: false,
               labelText: widget.labelText2,
               hintText: widget.hintText2,
               bottom: 85,

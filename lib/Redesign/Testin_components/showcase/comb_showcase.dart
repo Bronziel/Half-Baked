@@ -2,7 +2,6 @@ import 'package:fb2/Redesign/components/smallicons.dart';
 import 'package:flutter/material.dart';
 import '../../components/Popups/popup_boxes.dart';
 import '../../RecipePages/normal_intro/Tiles/PortionsizeTile.dart';
-import '../../CreateRecipeParts/Introduction/create_tiles/create_time_tile.dart';
 
 class RowOfIcons80 extends StatelessWidget {
   const RowOfIcons80({
@@ -102,20 +101,6 @@ class TimeTIlesshowcase extends StatelessWidget {
       children: [
         DisplayPortionsizeCardWidget(
           portion: '15',
-        ),
-        TimeCard(
-          showdisplaytime: true,
-          titleadd: '',
-          title: "Total Time:",
-          time: "450",
-          prepOrTotal: false,
-        ),
-        TimeCard(
-          showdisplaytime: true,
-          titleadd: '',
-          title: "Prep Time:",
-          time: "300",
-          prepOrTotal: false,
         ),
       ],
     );

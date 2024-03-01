@@ -33,6 +33,17 @@ class TimeCardHanlder extends StatefulWidget {
 class _TimeCardHanlderState extends State<TimeCardHanlder> {
   String? totalTime;
   String? prepTime;
+  void addTotaltime(String newTotalTime) {
+    setState(() {
+      totalTime = newTotalTime;
+    });
+  }
+
+  void addPrepTime(String newPrepTime) {
+    setState(() {
+      prepTime = newPrepTime;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +54,11 @@ class _TimeCardHanlderState extends State<TimeCardHanlder> {
           height: 50,
           child: Card(
             color: const Color(0xffd9d9d9),
-            child: prepTime == null
+            child: totalTime == null
                 ? Addtimes2(
                     titleadd: 'Total Time:',
-                    onPressed: () => TotalTimeDialog.addTotalTime(context),
+                    onPressed: () =>
+                        TotalTimeDialog.addTotalTime(addTotaltime, context),
                   )
                 : Displaytimes2(time: totalTime!, title: 'Total time:'),
           ),
@@ -59,9 +71,10 @@ class _TimeCardHanlderState extends State<TimeCardHanlder> {
           height: 50,
           child: Card(
             color: const Color(0xffd9d9d9),
-            child: totalTime == null
+            child: prepTime == null
                 ? Addtimes2(
-                    onPressed: () => PreppTimeDialog.addPreppTime(context),
+                    onPressed: () =>
+                        PreppTimeDialog.addPreppTime(addTotaltime, context),
                     titleadd: 'Prepp Time:',
                   )
                 : Displaytimes2(time: prepTime!, title: 'Prepp Time'),
