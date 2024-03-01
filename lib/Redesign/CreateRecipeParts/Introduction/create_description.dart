@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../Dialog/buttons_dialog/buttons.dart';
-import '../../components/Popups/popupDialogclass.dart';
 import '../../components/styles/uidescriptionshared.dart';
 import '../Dialog/description_dialog.dart';
 
@@ -87,6 +86,45 @@ class Descriptionadd extends StatelessWidget {
       fontSize: 24,
       fontWeight: FontWeight.bold,
       color: Color(0xFFFFFFff),
+    );
+  }
+}
+
+class DescriptionHandler extends StatefulWidget {
+  const DescriptionHandler({
+    super.key,
+  });
+
+  @override
+  State<DescriptionHandler> createState() => _DescriptionHandlerState();
+}
+
+class _DescriptionHandlerState extends State<DescriptionHandler> {
+  String? myDescription;
+
+  void addDescription(String newDescription) {
+    setState(() {
+      myDescription = newDescription;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 410,
+      height: 130,
+      decoration: boxouter(),
+      child: Stack(children: [
+        Positioned(
+            left: 60,
+            child: SizedBox(
+              width: 280,
+              height: 130,
+              child: myDescription == null
+                  ? const Descriptionadd()
+                  : const Description(),
+            )),
+      ]),
     );
   }
 }
