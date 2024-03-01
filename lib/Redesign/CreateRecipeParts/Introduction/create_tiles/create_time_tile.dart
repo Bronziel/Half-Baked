@@ -92,13 +92,12 @@ class Displaytimes extends StatelessWidget {
 
 class Addtimes extends StatelessWidget {
   final bool preptot;
+  final String titleadd;
   const Addtimes({
     super.key,
     required this.titleadd,
     required this.preptot,
   });
-
-  final String titleadd;
 
   @override
   Widget build(BuildContext context) {

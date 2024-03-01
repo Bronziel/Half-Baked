@@ -39,7 +39,7 @@ class Addiconcard extends StatelessWidget {
 }
 
 //statefullwidget
-//
+//nah remove this make tiem card and portion statefullwidgets insted.
 class Addcardcolumn extends StatelessWidget {
   const Addcardcolumn({
     super.key,
