@@ -97,4 +97,46 @@ class PreppTimeDialog {
   }
 }
 
-class PortionsizeDialog {}
+class PortionsizeDialog {
+  static void addPortionSize(
+    Function(String) addPortionSize,
+    BuildContext context,
+  ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          child: TimePopupp(
+            dataSender: addPortionSize,
+            title: 'Portionsize:',
+            labelText: 'Add Portion size',
+            hintText: 'ex: 15',
+          ),
+        );
+      },
+    );
+  }
+
+  static void editPortionSize(
+    Function(String) addPortionSize,
+    String intialText,
+    BuildContext context,
+  ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          child: TimePopupp(
+            initalText: intialText,
+            dataSender: addPortionSize,
+            title: 'Portionsize:',
+            labelText: 'Add Portion size',
+            hintText: 'ex: 15',
+          ),
+        );
+      },
+    );
+  }
+}

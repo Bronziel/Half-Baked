@@ -92,30 +92,6 @@ class _TimeCardHanlderState extends State<TimeCardHanlder> {
   }
 }
 
-class PortionSizeCardHandler extends StatefulWidget {
-  const PortionSizeCardHandler({super.key});
-
-  @override
-  State<PortionSizeCardHandler> createState() => _PortionSizeCardHandlerState();
-}
-
-class _PortionSizeCardHandlerState extends State<PortionSizeCardHandler> {
-  String? portionSize;
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 290,
-      height: 50,
-      child: Card(
-        color: const Color(0xffd9d9d9),
-        child: portionSize == null
-            ? Addportion()
-            : Displayportion(portion: portionSize!),
-      ),
-    );
-  }
-}
-
 class Addtimes2 extends StatelessWidget {
   final VoidCallback onPressed;
 
@@ -202,6 +178,119 @@ class Displaytimes2 extends StatelessWidget {
             fontWeight: FontWeight.w700,
           ),
         ),
+      ],
+    );
+  }
+}
+
+class PortionSizeCardHandler extends StatefulWidget {
+  const PortionSizeCardHandler({super.key});
+
+  @override
+  State<PortionSizeCardHandler> createState() => _PortionSizeCardHandlerState();
+}
+
+class _PortionSizeCardHandlerState extends State<PortionSizeCardHandler> {
+  String? portionSize;
+  void updatePortionSize(String newPortionSize) {
+    setState(() {
+      portionSize = newPortionSize;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 290,
+      height: 50,
+      child: Card(
+        color: const Color(0xffd9d9d9),
+        child: portionSize == null
+            ? Addportion2(
+                onPressed: () => PortionsizeDialog.addPortionSize(
+                    updatePortionSize, context),
+              )
+            : Displayportion2(
+                portion: portionSize!,
+                onPressed: () => PortionsizeDialog.editPortionSize(
+                    updatePortionSize, portionSize!, context),
+              ),
+      ),
+    );
+  }
+}
+
+class Addportion2 extends StatelessWidget {
+  final VoidCallback onPressed;
+  const Addportion2({
+    required this.onPressed,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const SizedBox(width: 7.2),
+        Image.asset('images/new/icons/portion.png'),
+        const SizedBox(width: 4.99),
+        const Text(
+          "Portionsize:",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        const SizedBox(width: 9),
+        // Replace this Text widget with IconButton
+        Addbuttoncontainer(
+          onPressed: onPressed,
+          color: const Color(0xFF000000),
+        ),
+
+        const SizedBox(width: 6),
+        Image.asset('images/new/icons/man.png'),
+      ],
+    );
+  }
+}
+
+class Displayportion2 extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String portion;
+  const Displayportion2({
+    super.key,
+    required this.portion,
+    required this.onPressed,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const SizedBox(width: 7.2),
+        Editcontainer(
+          editColor: Colors.black,
+          onPressedEdit: onPressed,
+        ),
+        const SizedBox(width: 4.99),
+        const Text(
+          "Portionsize:",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        const SizedBox(width: 9),
+        Text(
+          portion, // Use the 'portion' parameter here
+          style: const TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        const SizedBox(width: 6),
+        Image.asset('images/new/icons/man.png'),
       ],
     );
   }
