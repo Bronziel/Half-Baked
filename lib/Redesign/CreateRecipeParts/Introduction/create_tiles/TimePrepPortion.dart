@@ -3,11 +3,11 @@ import '../../Introduction/create_title.dart';
 import 'package:fb2/Redesign/CreateRecipeParts/Dialog/buttons_dialog/buttons.dart';
 import 'package:fb2/Redesign/components/styles/uifixedtimecard.dart';
 
-class Addtimes2 extends StatelessWidget {
+class Addtimes extends StatelessWidget {
   final VoidCallback onPressed;
 
   final String titleadd;
-  const Addtimes2({
+  const Addtimes({
     required this.onPressed,
     super.key,
     required this.titleadd,
@@ -45,11 +45,11 @@ class Addtimes2 extends StatelessWidget {
   }
 }
 
-class Displaytimes2 extends StatelessWidget {
+class Displaytimes extends StatelessWidget {
   final String title;
   final String time;
   final VoidCallback editText;
-  const Displaytimes2({
+  const Displaytimes({
     super.key,
     required this.title,
     required this.time,
@@ -94,9 +94,9 @@ class Displaytimes2 extends StatelessWidget {
   }
 }
 
-class Addportion2 extends StatelessWidget {
+class Addportion extends StatelessWidget {
   final VoidCallback onPressed;
-  const Addportion2({
+  const Addportion({
     required this.onPressed,
     super.key,
   });
@@ -130,10 +130,10 @@ class Addportion2 extends StatelessWidget {
   }
 }
 
-class Displayportion2 extends StatelessWidget {
+class Displayportion extends StatelessWidget {
   final VoidCallback onPressed;
   final String portion;
-  const Displayportion2({
+  const Displayportion({
     super.key,
     required this.portion,
     required this.onPressed,

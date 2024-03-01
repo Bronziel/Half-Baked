@@ -50,17 +50,17 @@ class _TimeCardHanlderState extends State<TimeCardHanlder> {
           height: 50,
           child: Card(
             color: const Color(0xffd9d9d9),
-            child: totalTime == null
-                ? Addtimes2(
-                    titleadd: 'Total Time:',
+            child: prepTime == null
+                ? Addtimes(
                     onPressed: () =>
-                        TotalTimeDialog.addTotalTime(updateTotaltime, context),
+                        PreppTimeDialog.addPreppTime(updatePrepTime, context),
+                    titleadd: 'Prepp Time:',
                   )
-                : Displaytimes2(
-                    time: totalTime!,
-                    title: 'Total time:',
-                    editText: () => TotalTimeDialog.editTotalTime(
-                        updateTotaltime, totalTime!, context)),
+                : Displaytimes(
+                    time: prepTime!,
+                    title: 'Prepp Time',
+                    editText: () => PreppTimeDialog.editPreppTime(
+                        updatePrepTime, prepTime!, context)),
           ),
         ),
         const SizedBox(
@@ -71,17 +71,17 @@ class _TimeCardHanlderState extends State<TimeCardHanlder> {
           height: 50,
           child: Card(
             color: const Color(0xffd9d9d9),
-            child: prepTime == null
-                ? Addtimes2(
+            child: totalTime == null
+                ? Addtimes(
+                    titleadd: 'Total Time:',
                     onPressed: () =>
-                        PreppTimeDialog.addPreppTime(updatePrepTime, context),
-                    titleadd: 'Prepp Time:',
+                        TotalTimeDialog.addTotalTime(updateTotaltime, context),
                   )
-                : Displaytimes2(
-                    time: prepTime!,
-                    title: 'Prepp Time',
-                    editText: () => PreppTimeDialog.editPreppTime(
-                        updatePrepTime, prepTime!, context)),
+                : Displaytimes(
+                    time: totalTime!,
+                    title: 'Total time:',
+                    editText: () => TotalTimeDialog.editTotalTime(
+                        updateTotaltime, totalTime!, context)),
           ),
         ),
       ],
@@ -112,11 +112,11 @@ class _PortionSizeCardHandlerState extends State<PortionSizeCardHandler> {
       child: Card(
         color: const Color(0xffd9d9d9),
         child: portionSize == null
-            ? Addportion2(
+            ? Addportion(
                 onPressed: () => PortionsizeDialog.addPortionSize(
                     updatePortionSize, context),
               )
-            : Displayportion2(
+            : Displayportion(
                 portion: portionSize!,
                 onPressed: () => PortionsizeDialog.editPortionSize(
                     updatePortionSize, portionSize!, context),
