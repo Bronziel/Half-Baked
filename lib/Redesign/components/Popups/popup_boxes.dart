@@ -82,35 +82,6 @@ class PopTimePort extends StatelessWidget {
 
 //detta är lådan för lägga till description
 
-class Descriptiontextfield extends StatelessWidget {
-  final String labeltext;
-  const Descriptiontextfield({
-    required this.labeltext,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 10,
-      left: 10,
-      top: 45,
-      right: 100, // Adjusted to ensure the TextField is more square-like
-      child: TextField(
-        decoration: InputDecoration(
-          labelText: labeltext,
-          labelStyle: StyleUtils.labelstylepop(),
-          border: const OutlineInputBorder(),
-          enabledBorder: StyleUtils.enabledborderstyle(),
-        ),
-        style: StyleUtils.textfieldstylepop(),
-        maxLines: null, // Allows for unlimited lines
-        minLines: 5, // Set this to a desired initial size
-      ),
-    );
-  }
-}
-
 //detta är lådan för spara steps
 class Popsteps extends StatelessWidget {
   final String title;
