@@ -39,43 +39,6 @@ class Smalltextfield extends StatelessWidget {
 }
 
 // används i portionsize time card bara för siffror single rad
-class Numberonlytextfiel extends StatelessWidget {
-  const Numberonlytextfiel({
-    super.key,
-    required this.isPortionSize,
-    required this.labelText,
-    required this.hintText,
-    this.bottom = 10,
-  });
-
-  final bool isPortionSize;
-  final String labelText;
-  final String hintText;
-  final double bottom;
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      bottom: bottom,
-      left: 10,
-      right: 100,
-      child: TextField(
-          keyboardType:
-              isPortionSize ? TextInputType.text : TextInputType.number,
-          inputFormatters:
-              isPortionSize ? [] : [FilteringTextInputFormatter.digitsOnly],
-          decoration: InputDecoration(
-            labelText: labelText,
-            labelStyle: StyleUtils.labelstylepop(),
-            hintText: hintText,
-            hintStyle: StyleUtils.hintstylepop(),
-            border: const OutlineInputBorder(),
-            enabledBorder: StyleUtils.enabledborderstyle(),
-          ),
-          style: StyleUtils.textfieldstylepop()),
-    );
-  }
-}
 
 //steps textfield for saving new steps.
 class Stepstextfield extends StatelessWidget {

@@ -118,21 +118,6 @@ class Popupsdisplayed extends StatelessWidget {
       children: [
         Column(
           children: [
-            PopTimePort(
-              title: 'PrepTime:',
-              labelText: 'Add Preperation time',
-              hintText: 'preparation time in minutes',
-            ),
-            PopTimePort(
-              title: 'TotalTime:',
-              labelText: 'Add Total cooking time',
-              hintText: 'Total cooking time in minutes',
-            ),
-            PopTimePort(
-              title: 'Portionsize:',
-              labelText: 'Add Portion size',
-              isPortionSize: true, // Used to set the keyboard type to text
-            ),
             SmallTextfieldPop(
               title: 'Steps Title:',
               labelText: 'Add a steps title',

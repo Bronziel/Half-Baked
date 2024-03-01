@@ -44,42 +44,6 @@ class SmallTextfieldPop extends StatelessWidget {
   }
 }
 
-//lådan för prep/total time o portionsize
-class PopTimePort extends StatelessWidget {
-  final String title;
-  final String labelText;
-  final String hintText;
-  final bool isPortionSize;
-
-  const PopTimePort({
-    super.key,
-    required this.title,
-    required this.labelText,
-    this.hintText = '',
-    this.isPortionSize = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Utils.smallpopbox(
-      Card(
-        color: const Color(0xFFD9D9D9),
-        child: Stack(
-          children: [
-            Titles(title: title),
-            Numberonlytextfiel(
-                isPortionSize: isPortionSize,
-                labelText: labelText,
-                hintText: hintText),
-            const PostionedStopButton(),
-            const PostionedSaveButton(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 //detta är lådan för lägga till description
 
 //detta är lådan för spara steps
