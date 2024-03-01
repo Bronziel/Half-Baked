@@ -34,13 +34,13 @@ class TimeCardHanlder extends StatefulWidget {
 class _TimeCardHanlderState extends State<TimeCardHanlder> {
   String? totalTime;
   String? prepTime;
-  void addTotaltime(String newTotalTime) {
+  void updateTotaltime(String newTotalTime) {
     setState(() {
       totalTime = newTotalTime;
     });
   }
 
-  void addPrepTime(String newPrepTime) {
+  void updatePrepTime(String newPrepTime) {
     setState(() {
       prepTime = newPrepTime;
     });
@@ -59,13 +59,13 @@ class _TimeCardHanlderState extends State<TimeCardHanlder> {
                 ? Addtimes2(
                     titleadd: 'Total Time:',
                     onPressed: () =>
-                        TotalTimeDialog.addTotalTime(addTotaltime, context),
+                        TotalTimeDialog.addTotalTime(updateTotaltime, context),
                   )
                 : Displaytimes2(
                     time: totalTime!,
                     title: 'Total time:',
                     editText: () => TotalTimeDialog.editTotalTime(
-                        addTotaltime, totalTime!, context)),
+                        updateTotaltime, totalTime!, context)),
           ),
         ),
         const SizedBox(
@@ -79,14 +79,14 @@ class _TimeCardHanlderState extends State<TimeCardHanlder> {
             child: prepTime == null
                 ? Addtimes2(
                     onPressed: () =>
-                        PreppTimeDialog.addPreppTime(addTotaltime, context),
+                        PreppTimeDialog.addPreppTime(updatePrepTime, context),
                     titleadd: 'Prepp Time:',
                   )
                 : Displaytimes2(
                     time: prepTime!,
                     title: 'Prepp Time',
-                    editText: () => TotalTimeDialog.editTotalTime(
-                        addTotaltime, totalTime!, context)),
+                    editText: () => PreppTimeDialog.editPreppTime(
+                        updatePrepTime, prepTime!, context)),
           ),
         ),
       ],
@@ -177,6 +177,7 @@ class Displaytimes2 extends StatelessWidget {
       children: [
         const SizedBox(width: 9),
         Editcontainer(
+          editColor: Colors.black,
           onPressedEdit: editText,
         ),
         const SizedBox(width: 5),

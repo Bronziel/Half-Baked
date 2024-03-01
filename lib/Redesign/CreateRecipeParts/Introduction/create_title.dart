@@ -132,7 +132,9 @@ class Addstitel extends StatelessWidget {
 
 class Editcontainer extends StatelessWidget {
   final VoidCallback? onPressedEdit;
+  final Color editColor;
   const Editcontainer({
+    this.editColor = const Color.fromARGB(255, 233, 228, 228),
     required this.onPressedEdit,
     super.key,
   });
@@ -142,7 +144,7 @@ class Editcontainer extends StatelessWidget {
     return IconButton(
       constraints: const BoxConstraints(maxHeight: 100, maxWidth: 100),
       icon: const Icon(Icons.edit, size: 24),
-      color: const Color.fromARGB(255, 233, 228, 228),
+      color: editColor,
       // Plus icon
       onPressed: onPressedEdit,
     );
