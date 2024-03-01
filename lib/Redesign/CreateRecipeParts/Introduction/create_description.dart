@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../Dialog/buttons_dialog/buttons.dart';
 import '../../components/styles/uidescriptionshared.dart';
 import '../Dialog/description_dialog.dart';
+import 'create_title.dart';
 
 class DescriptionHandler extends StatefulWidget {
   const DescriptionHandler({
@@ -69,6 +70,12 @@ class Description extends StatelessWidget {
             ),
           ),
         ),
+        Positioned(
+            right: 10,
+            top: 45,
+            child: Editcontainer(
+              onPressedEdit: () {},
+            ))
       ],
     );
   }
