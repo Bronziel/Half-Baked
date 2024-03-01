@@ -23,61 +23,6 @@ class DialogUtils {
       },
     );
   }
-
-  static void showPortionsizeDialog(
-    BuildContext context,
-  ) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return const Dialog(
-          backgroundColor: Colors.transparent,
-          child: PopTimePort(
-            title: 'Portionsize:',
-            labelText: 'Add Portion size',
-            isPortionSize: true, // Used to set the keyboard type to text
-          ),
-        );
-      },
-    );
-  }
-
-  static void showTimePrepDialog(
-    BuildContext context,
-  ) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return const Dialog(
-          backgroundColor: Colors.transparent,
-          child: PopTimePort(
-            title: 'PrepTime:',
-            labelText: 'Add Preperation time',
-            hintText:
-                'preparation time in minutes', // Used to set the keyboard type to text
-          ),
-        );
-      },
-    );
-  }
-
-  static void showTimeTotalDialog(
-    BuildContext context,
-  ) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return const Dialog(
-          backgroundColor: Colors.transparent,
-          child: PopTimePort(
-            title: 'TotalTime:',
-            labelText: 'Add Total cooking time',
-            hintText: 'Total cooking time in minutes',
-          ),
-        );
-      },
-    );
-  }
 }
 /* static void showIngPopDialog(BuildContext context, {required String title, required String labelText, required String labelText2, String hintText = '', String hintText2 = ''}) {
     showDialog(
