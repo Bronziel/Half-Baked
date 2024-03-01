@@ -5,20 +5,24 @@ import '../../../components/styles/style_objects.dart';
 
 class TimePopupp extends StatefulWidget {
   //totaltime
-  final Function(String) addTotalTime;
+  final Function(String) dataSender;
   final String title;
   final String labelText;
   final String hintText;
   final bool isTotaltime;
   final bool isPreppTime;
-  //preptime
 
-  //portionsize
+  //intialdata
+  final String? initalText;
+
   const TimePopupp({
+    //intila data
+    this.initalText,
+    //later
     this.isPreppTime = false,
     this.isTotaltime = false,
     //totaltime
-    required this.addTotalTime,
+    required this.dataSender,
     required this.title,
     required this.labelText,
     required this.hintText,
@@ -37,7 +41,8 @@ class _TimePopuppState extends State<TimePopupp> {
   @override
   void initState() {
     super.initState();
-    timeController = TextEditingController();
+    //reuse
+    timeController = TextEditingController(text: widget.initalText);
   }
 
   @override
@@ -48,10 +53,11 @@ class _TimePopuppState extends State<TimePopupp> {
 
   void saveTime() {
     setState(() {
+      //just reuse
       errorText1 = timeController.text.isEmpty ? 'Field cannot be empty' : null;
     });
     if (errorText1 == null) {
-      widget.addTotalTime(timeController.text);
+      widget.dataSender(timeController.text);
       timeController.clear();
       Navigator.of(context).pop();
     }

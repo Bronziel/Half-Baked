@@ -12,7 +12,31 @@ class TotalTimeDialog {
         return Dialog(
           backgroundColor: Colors.transparent,
           child: TimePopupp(
-            addTotalTime: addTotalTime,
+            dataSender: addTotalTime,
+            isTotaltime: true,
+            title: 'TotalTime:',
+            labelText: 'Add Total time',
+            hintText:
+                'Total time in minutes', // Used to set the keyboard type to text
+          ),
+        );
+      },
+    );
+  }
+
+  static void editTotalTime(
+    Function(String) addTotalTime,
+    String intialText,
+    BuildContext context,
+  ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          child: TimePopupp(
+            initalText: intialText,
+            dataSender: addTotalTime,
             isTotaltime: true,
             title: 'TotalTime:',
             labelText: 'Add Total time',
@@ -36,7 +60,7 @@ class PreppTimeDialog {
         return Dialog(
           backgroundColor: Colors.transparent,
           child: TimePopupp(
-            addTotalTime: addTotalTime,
+            dataSender: addTotalTime,
             isPreppTime: true,
             title: 'PrepTime:',
             labelText: 'Add Preperation time',

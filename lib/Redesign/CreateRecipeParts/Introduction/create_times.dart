@@ -3,6 +3,7 @@ import 'create_tiles/create_portion_tile.dart';
 import 'package:fb2/Redesign/components/styles/uifixedtimecard.dart';
 import 'package:fb2/Redesign/CreateRecipeParts/Dialog/buttons_dialog/buttons.dart';
 import '../Dialog/Time_dialog.dart';
+import '../Introduction/create_title.dart';
 
 //      ? () => DialogUtils.showTimePrepDialog(context)
 //      : () => DialogUtils.showTimeTotalDialog(context),
@@ -60,7 +61,11 @@ class _TimeCardHanlderState extends State<TimeCardHanlder> {
                     onPressed: () =>
                         TotalTimeDialog.addTotalTime(addTotaltime, context),
                   )
-                : Displaytimes2(time: totalTime!, title: 'Total time:'),
+                : Displaytimes2(
+                    time: totalTime!,
+                    title: 'Total time:',
+                    editText: () => TotalTimeDialog.editTotalTime(
+                        addTotaltime, totalTime!, context)),
           ),
         ),
         const SizedBox(
@@ -77,7 +82,11 @@ class _TimeCardHanlderState extends State<TimeCardHanlder> {
                         PreppTimeDialog.addPreppTime(addTotaltime, context),
                     titleadd: 'Prepp Time:',
                   )
-                : Displaytimes2(time: prepTime!, title: 'Prepp Time'),
+                : Displaytimes2(
+                    time: prepTime!,
+                    title: 'Prepp Time',
+                    editText: () => TotalTimeDialog.editTotalTime(
+                        addTotaltime, totalTime!, context)),
           ),
         ),
       ],
@@ -152,21 +161,24 @@ class Addtimes2 extends StatelessWidget {
 }
 
 class Displaytimes2 extends StatelessWidget {
+  final String title;
+  final String time;
+  final VoidCallback editText;
   const Displaytimes2({
     super.key,
     required this.title,
     required this.time,
+    required this.editText,
   });
-
-  final String title;
-  final String time;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         const SizedBox(width: 9),
-        const Clockimg(),
+        Editcontainer(
+          onPressedEdit: editText,
+        ),
         const SizedBox(width: 5),
         Text(
           title,
