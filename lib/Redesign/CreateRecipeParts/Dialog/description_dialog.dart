@@ -3,15 +3,17 @@ import '../Introduction/descriptionpop/descriptionpopupp.dart';
 
 class DescriptionDialog {
   static void addDescription(
+    final Function(String) addDescription,
     BuildContext context,
   ) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         print('new description dialog');
-        return const Dialog(
+        return Dialog(
           backgroundColor: Colors.transparent,
           child: DescriptionPopupp(
+            addDescription: addDescription,
             title: 'Description',
           ),
         );

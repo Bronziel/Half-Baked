@@ -6,8 +6,10 @@ import '../../../components/Popups/popup_components.dart';
 import '../../Ingridients/Ingridientpops/textfield_ing.dart';
 
 class DescriptionPopupp extends StatefulWidget {
+  final Function(String) addDescription;
   final String title;
   const DescriptionPopupp({
+    required this.addDescription,
     required this.title,
     super.key,
   });
@@ -18,21 +20,31 @@ class DescriptionPopupp extends StatefulWidget {
 
 class _DescriptionPopuppState extends State<DescriptionPopupp> {
   String? errorText1;
-  late TextEditingController titleController;
+  late TextEditingController descriptionController;
 
   @override
   void initState() {
     super.initState();
-    titleController = TextEditingController();
+    descriptionController = TextEditingController();
   }
 
   @override
   void dispose() {
-    titleController.dispose();
+    descriptionController.dispose();
     super.dispose();
   }
 
-  void saveDescription() {}
+  void saveDescription() {
+    setState(() {
+      errorText1 =
+          descriptionController.text.isEmpty ? 'Field cannot be empty' : null;
+    });
+    if (errorText1 == null) {
+      widget.addDescription(descriptionController.text);
+      descriptionController.clear();
+      Navigator.of(context).pop();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +55,7 @@ class _DescriptionPopuppState extends State<DescriptionPopupp> {
           children: [
             Titles(title: widget.title),
             DescriptionTextField(
-              titleController: titleController,
+              titleController: descriptionController,
               errorText1: errorText1,
               labelText: 'Add a Description',
             ),
