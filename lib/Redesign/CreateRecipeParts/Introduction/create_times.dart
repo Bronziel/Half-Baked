@@ -5,8 +5,6 @@ import 'package:fb2/Redesign/CreateRecipeParts/Dialog/buttons_dialog/buttons.dar
 import '../Dialog/Time_dialog.dart';
 import '../Introduction/create_title.dart';
 
-//      ? () => DialogUtils.showTimePrepDialog(context)
-//      : () => DialogUtils.showTimeTotalDialog(context),
 class TimePrepTotalHandler extends StatelessWidget {
   const TimePrepTotalHandler({super.key});
 
