@@ -40,24 +40,6 @@ class Descirptionholder extends StatelessWidget {
   }
 }
 
-class Descriptionadd extends StatelessWidget {
-  const Descriptionadd({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const CreateDescription(createdescription: 'Add a description'),
-        const SizedBox(height: 8),
-        Addbuttoncontainer(
-            onPressed: () => DescriptionDialog.addDescription(context)),
-      ],
-    );
-  }
-}
-
 class Description extends StatelessWidget {
   final String description;
   const Description({
@@ -79,19 +61,24 @@ class Description extends StatelessWidget {
   }
 }
 
-class CreateDescription extends StatelessWidget {
-  final String createdescription;
-  const CreateDescription({
+class Descriptionadd extends StatelessWidget {
+  const Descriptionadd({
     super.key,
-    this.createdescription = '',
   });
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      createdescription,
-      softWrap: true,
-      style: descriptionstyle(),
+    return Column(
+      children: [
+        Text(
+          'Add a description',
+          softWrap: true,
+          style: descriptionstyle(),
+        ),
+        const SizedBox(height: 8),
+        Addbuttoncontainer(
+            onPressed: () => DescriptionDialog.addDescription(context)),
+      ],
     );
   }
 

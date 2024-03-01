@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'description_textfield.dart';
 import '../../../components/styles/style_objects.dart';
 import '../../../components/Popups/popup_components.dart';
+//save button
+import '../../Ingridients/Ingridientpops/textfield_ing.dart';
 
 class DescriptionPopupp extends StatefulWidget {
   final String title;
@@ -30,6 +32,8 @@ class _DescriptionPopuppState extends State<DescriptionPopupp> {
     super.dispose();
   }
 
+  void saveDescription() {}
+
   @override
   Widget build(BuildContext context) {
     return Utils.bigpopbox(
@@ -44,7 +48,7 @@ class _DescriptionPopuppState extends State<DescriptionPopupp> {
               labelText: 'Add a Description',
             ),
             const PostionedStopButton(),
-            const PostionedSaveButton(),
+            SaveButtonIng(onPressed: () => saveDescription()),
           ],
         ),
       ),
