@@ -1,3 +1,20 @@
 import 'package:flutter/material.dart';
+import '../Introduction/descriptionpop/descriptionpopupp.dart';
 
-class DescriptionDialog {}
+class DescriptionDialog {
+  static void addDescription(
+    BuildContext context,
+  ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const Dialog(
+          backgroundColor: Colors.transparent,
+          child: DescriptionPopupp(
+              //title: 'Description',
+              ),
+        );
+      },
+    );
+  }
+}
