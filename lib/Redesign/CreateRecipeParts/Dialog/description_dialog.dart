@@ -20,4 +20,28 @@ class DescriptionDialog {
       },
     );
   }
+
+  static void EditDescription(
+    final Function(String) addDescription,
+    final Function(String) editDescription,
+    final String initialDescription,
+    BuildContext context,
+  ) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        print('new description dialog');
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          child: DescriptionPopupp(
+            addDescription: addDescription,
+            editDescription: editDescription,
+            initialDescription: initialDescription,
+            title: 'Edit Description',
+            isEdit: true,
+          ),
+        );
+      },
+    );
+  }
 }

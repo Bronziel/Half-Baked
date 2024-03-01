@@ -38,14 +38,22 @@ class _DescriptionHandlerState extends State<DescriptionHandler> {
           ? Descriptionadd(
               addDescription: addDescription,
             )
-          : Description(description: myDescription!),
+          : Description(
+              description: myDescription!,
+              addDescription: addDescription,
+              editDescription: editDescription,
+            ),
     );
   }
 }
 
 class Description extends StatelessWidget {
+  final Function(String) addDescription;
+  final Function(String) editDescription;
   final String description;
   const Description({
+    required this.addDescription,
+    required this.editDescription,
     super.key,
     this.description = '',
   });
@@ -74,7 +82,12 @@ class Description extends StatelessWidget {
             right: 10,
             top: 45,
             child: Editcontainer(
-              onPressedEdit: () {},
+              onPressedEdit: () => DescriptionDialog.EditDescription(
+                addDescription,
+                editDescription,
+                description,
+                context,
+              ),
             ))
       ],
     );
