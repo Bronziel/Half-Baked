@@ -64,3 +64,56 @@ class ClipImg extends StatelessWidget {
     );
   }
 }
+
+class BigImageBoxes extends StatelessWidget {
+  final String imagePath;
+  final double aspectratio;
+  const BigImageBoxes(
+      {required this.aspectratio, required this.imagePath, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: smallimgheight,
+      width: smallimgwidth,
+      child: Card(
+        shape:
+            smallImageShape(), // Assuming this is a function returning a ShapeBorder
+        child: SecondBigImage(
+          imagePath: imagePath,
+          aspecRatio: aspectratio,
+        ),
+      ),
+    );
+  }
+}
+
+class ClipmyImages {
+  static ClipRRect myIMages(Widget child) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: child,
+    );
+  }
+}
+
+class SecondBigImage extends StatelessWidget {
+  final String imagePath;
+  final double aspecRatio;
+  const SecondBigImage({
+    required this.aspecRatio,
+    required this.imagePath,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AspectRatio(
+      aspectRatio: aspecRatio,
+      child: Image.asset(
+        imagePath,
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+}
