@@ -9,16 +9,13 @@ class Builtbyme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizeForObjects.cardFullSize(
-      Card(
-        color: const Color(0xffd9d9d9),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: const Column(
-            children: [
-              StepsBigtile(),
-              Displaytestlist(),
-            ],
-          ),
+      const Card(
+        color: Color(0xffd9d9d9),
+        child: Column(
+          children: [
+            StepsBigtile(),
+            Displaytestlist(),
+          ],
         ),
       ),
     );
@@ -35,7 +32,12 @@ class StepsBigtile extends StatelessWidget {
     return SizedBox(
       height: SizeForObjects.sizeboxTopcolumnbox,
       child: Container(
-        color: Colors.black,
+        decoration: const BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            )),
         child: Stack(
           children: [
             Positioned(
