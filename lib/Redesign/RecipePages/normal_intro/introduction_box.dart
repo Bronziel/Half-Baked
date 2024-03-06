@@ -18,7 +18,7 @@ class Intro extends StatelessWidget {
         child: Column(
           children: [
             DisplaynormalBasictitle(
-              title: 'Kebabrulle',
+              title: 'Laxpasta med lime',
             ),
             DisplayDescription(
                 description: 'En god Kebab rulle som aldrig gör en Besviken.'),
