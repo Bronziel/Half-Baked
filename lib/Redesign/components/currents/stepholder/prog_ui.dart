@@ -9,13 +9,16 @@ class Builtbyme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizeForObjects.cardFullSize(
-      const Card(
-        color: Color(0xffd9d9d9),
-        child: Column(
-          children: [
-            StepsBigtile(),
-            Displaytestlist(),
-          ],
+      Card(
+        color: const Color(0xffd9d9d9),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: const Column(
+            children: [
+              StepsBigtile(),
+              Displaytestlist(),
+            ],
+          ),
         ),
       ),
     );
@@ -31,16 +34,20 @@ class StepsBigtile extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: SizeForObjects.sizeboxTopcolumnbox,
-      child: Stack(
-        children: [
-          Positioned(
-            top: 20,
-            left: 20,
-            child: SizedBox(
-              child: Text('Steps', style: Stepstyleformat.stepNumber()),
-            ),
-          )
-        ],
+      child: Container(
+        color: Colors.black,
+        child: Stack(
+          children: [
+            Positioned(
+              top: 15,
+              left: 20,
+              child: SizedBox(
+                child: Text('Steps',
+                    style: Stepstyleformat.stepMainStepTextTile()),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -163,19 +170,12 @@ class HeaderBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black,
-          width: 1,
-        ),
-      ),
-      height: 50,
-      width: 400,
+    return SizedBox(
+      width: SizeForObjects.sizeWidthHeaderbox,
       child: Align(
-        alignment: Alignment.center,
+        alignment: Alignment.centerLeft,
         child: SizedBox(
-          child: Text(headerText, style: Stepstyleformat.stepHeadertext()),
+          child: Text(headerText, style: Stepstyleformat.stepTitelText()),
         ),
       ),
     );
@@ -207,13 +207,7 @@ class Stepbox extends StatefulWidget {
 class _BoxwithstepsState extends State<Stepbox> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black,
-          width: 1,
-        ),
-      ),
+    return SizedBox(
       child: ListTile(
         leading: SizedBox(
           child: Text('${widget.step}:', style: Stepstyleformat.stepNumber()),
@@ -227,7 +221,7 @@ class _BoxwithstepsState extends State<Stepbox> {
         trailing: SizedBox(
           child: Checkbox(
             value: widget.isChecked,
-            activeColor: Colors.green,
+            activeColor: Colors.black,
             onChanged: (bool? newBool) {
               if (newBool != null) {
                 widget.onCheckedChanged(newBool);
@@ -279,6 +273,22 @@ class Stepstyleformat {
       fontFamily: 'Pacifico',
       fontSize: 30,
       color: Colors.black,
+    );
+  }
+
+  static TextStyle stepTitelText() {
+    return const TextStyle(
+      fontFamily: 'Pacifico',
+      fontSize: 40,
+      color: Colors.black,
+    );
+  }
+
+  static TextStyle stepMainStepTextTile() {
+    return const TextStyle(
+      fontFamily: 'Pacifico',
+      fontSize: 40,
+      color: Colors.white,
     );
   }
 
