@@ -8,12 +8,39 @@ class Builtbyme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      width: 1200,
-      height: 475,
-      child: Card(
+    return SizeForObjects.cardFullSize(
+      const Card(
         color: Color(0xffd9d9d9),
-        child: Displaytestlist(),
+        child: Column(
+          children: [
+            StepsBigtile(),
+            Displaytestlist(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class StepsBigtile extends StatelessWidget {
+  const StepsBigtile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: SizeForObjects.sizeboxTopcolumnbox,
+      child: Stack(
+        children: [
+          Positioned(
+            top: 20,
+            left: 20,
+            child: SizedBox(
+              child: Text('Steps', style: Stepstyleformat.stepNumber()),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -82,8 +109,8 @@ class _DisplaytestlistState extends State<Displaytestlist> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 400,
-      height: 400,
+      width: SizeForObjects.sizeWidhtList,
+      height: SizeForObjects.sizeHeightList,
       child: ListView.builder(
         itemCount: idk.length,
         itemBuilder: (context, index) {
@@ -148,14 +175,7 @@ class HeaderBox extends StatelessWidget {
       child: Align(
         alignment: Alignment.center,
         child: SizedBox(
-          child: Text(
-            headerText,
-            style: const TextStyle(
-              fontFamily: 'Montserrat Semibold',
-              fontWeight: FontWeight.w800, // ExtraBold
-              fontSize: 20,
-            ),
-          ),
+          child: Text(headerText, style: Stepstyleformat.stepHeadertext()),
         ),
       ),
     );
@@ -196,24 +216,12 @@ class _BoxwithstepsState extends State<Stepbox> {
       ),
       child: ListTile(
         leading: SizedBox(
-          child: Text(
-            'Step ${widget.step}:',
-            style: const TextStyle(
-              fontFamily: 'Pacifico',
-              fontSize: 30,
-              color: Colors.black,
-            ),
-          ),
+          child: Text('${widget.step}:', style: Stepstyleformat.stepNumber()),
         ),
         title: SizedBox(
           child: Text(
             widget.steptext,
-            style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 24,
-              color: const Color(0xFF000000),
-              decoration: widget.isChecked ? TextDecoration.lineThrough : null,
-            ),
+            style: Stepstyleformat.stepMainText(widget.isChecked),
           ),
         ),
         trailing: SizedBox(
@@ -232,6 +240,57 @@ class _BoxwithstepsState extends State<Stepbox> {
   }
 }
 
+class SizeForObjects {
+  //Main card holding everything
+  static double get cardFullSizeWidth => 1000;
+  static double get cardFullSizehieght => 500;
+  //for box above stepslis
+  static double get sizeboxTopcolumnbox => 90;
+  //for list of steps
+  static double get sizeHeightList => 400;
+  static double get sizeWidhtList => cardFullSizeWidth - 100;
+  //headerbox
+  static double get sizeHeightHeaderbox => 50;
+  static double get sizeWidthHeaderbox => 400;
+  //stepbox
+  //static double get sizeHeightStepbox => 50;
+  //static double get sizeHeightStepbox => 50;
+
+  static SizedBox cardFullSize(Widget child) {
+    return SizedBox(
+      width: cardFullSizeWidth,
+      height: cardFullSizehieght,
+      child: child,
+    );
+  }
+}
+
+class Stepstyleformat {
+  static TextStyle stepHeadertext() {
+    return const TextStyle(
+      fontFamily: 'Montserrat Semibold',
+      fontWeight: FontWeight.w800, // ExtraBold
+      fontSize: 20,
+    );
+  }
+
+  static TextStyle stepNumber() {
+    return const TextStyle(
+      fontFamily: 'Pacifico',
+      fontSize: 30,
+      color: Colors.black,
+    );
+  }
+
+  static TextStyle stepMainText(bool isChecked) {
+    return TextStyle(
+      fontFamily: 'Inter',
+      fontSize: 24,
+      color: const Color(0xFF000000),
+      decoration: isChecked ? TextDecoration.lineThrough : null,
+    );
+  }
+}
 
 //we say list with empty bool values
 //we generate the combined list we use this list to see lenght and give automatic value false. 
