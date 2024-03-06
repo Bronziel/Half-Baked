@@ -67,25 +67,36 @@ class ClipImg extends StatelessWidget {
 
 class BigImageBoxes extends StatelessWidget {
   final String imagePath;
-  final double aspectratio;
-  const BigImageBoxes(
-      {required this.aspectratio, required this.imagePath, super.key});
+
+  const BigImageBoxes({required this.imagePath, super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: smallimgheight,
-      width: smallimgwidth,
-      child: Card(
-        shape:
-            smallImageShape(), // Assuming this is a function returning a ShapeBorder
-        child: SecondBigImage(
-          imagePath: imagePath,
-          aspecRatio: aspectratio,
-        ),
-      ),
-    );
+        height: CardBoxTwos.maxHeight,
+        width: CardBoxTwos.maxWidth,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+              maxWidth: BoxTwos.maxWidth, maxHeight: BoxTwos.maxHeight),
+          child: ClipmyImages.myIMages(
+            Card(
+              shape:
+                  smallImageShape(), // Assuming this is a function returning a ShapeBorder
+              child: SecondBigImage(
+                imagePath: imagePath,
+                aspecRatio: CustomASpectratios.aspectFullbox,
+              ),
+            ),
+          ),
+        ));
   }
+}
+
+class CustomASpectratios {
+  static double get aspectLaying => 3 / 2;
+  static double get aspectBoxy => 4 / 3;
+  static double get aspectPhone => 16 / 9;
+  static double get aspectFullbox => 1 / 1;
 }
 
 class ClipmyImages {
@@ -116,4 +127,14 @@ class SecondBigImage extends StatelessWidget {
       ),
     );
   }
+}
+
+class BoxTwos {
+  static double get maxWidth => 1000;
+  static double get maxHeight => 500;
+}
+
+class CardBoxTwos {
+  static double get maxWidth => 1000;
+  static double get maxHeight => 500;
 }

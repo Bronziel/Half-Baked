@@ -13,7 +13,7 @@ class MainImagePlusBoxes extends StatelessWidget {
     return const SizedBox(
       child: Row(
         children: [
-          MaingImgHolder(
+          BigImageBoxes(
             imagePath: 'images/new/webb.jpg',
           ),
           Width20StandardWidget(),
@@ -23,3 +23,8 @@ class MainImagePlusBoxes extends StatelessWidget {
     );
   }
 }
+
+
+/*MaingImgHolder(
+            imagePath: 'images/new/webb.jpg',
+          ), */
