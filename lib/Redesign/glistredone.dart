@@ -267,6 +267,7 @@ class _RedonePageState extends State<RedonePage> {
                           itemCount: _firebaseStoragePaths.length,
                           itemBuilder: (context, index, realIdx) {
                             return GestureDetector(
+                              //shows the image in a large version
                               onTap: () => _showImageDialog(
                                   _firebaseStoragePaths[index]),
                               child: SizedBox(
