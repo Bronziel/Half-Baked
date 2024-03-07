@@ -9,22 +9,24 @@ class BigImageBoxes1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: CardBoxTwos.maxHeight,
-        width: CardBoxTwos.maxWidth,
         child: ConstrainedBox(
-          constraints: BoxConstraints(
-              maxWidth: BoxTwos.maxWidth, maxHeight: BoxTwos.maxHeight),
-          child: ClipmyImages.myIMages(
-            Card(
-              shape:
-                  smallImageShape(), // Assuming this is a function returning a ShapeBorder
-              child: SecondBigImage2(
-                imagePath: imagePath,
-                aspecRatio: CustomASpectratios.aspectFullbox,
-              ),
-            ),
-          ),
-        ));
+      constraints: const BoxConstraints(
+        maxHeight: 500,
+        maxWidth: 1000,
+      ),
+      child: AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Card(
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              // Assuming this is a function returning a ShapeBorder
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.cover,
+              )),
+        ),
+      ),
+    ));
   }
 }
 
