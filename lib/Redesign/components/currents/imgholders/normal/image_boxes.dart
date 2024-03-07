@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'smallimages.dart';
-import 'mainimage.dart';
+
 import '../../../styles/spacing/sizedboxes.dart';
 import 'RedoneImage.dart';
 
