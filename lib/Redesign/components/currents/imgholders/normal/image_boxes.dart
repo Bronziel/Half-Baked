@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'smallimages.dart';
 
 import '../../../styles/spacing/sizedboxes.dart';
-import 'RedoneImage.dart';
+import 'redoneImage.dart';
 
 class MainImagePlusBoxes extends StatelessWidget {
   const MainImagePlusBoxes({
@@ -14,7 +14,7 @@ class MainImagePlusBoxes extends StatelessWidget {
     return const SizedBox(
       child: Row(
         children: [
-          BigImageBoxes(
+          BigImageBoxes1(
             imagePath: 'images/new/webb.jpg',
           ),
           Width20StandardWidget(),

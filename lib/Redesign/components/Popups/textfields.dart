@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../styles/style.dart';
-import 'package:flutter/services.dart';
 
 //litet textfield använd av title stepstitle o andra en rads fält
 class Smalltextfield extends StatelessWidget {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'Tiles/ing_add_tile.dart';
-import '../../RecipePages/Ingridients10/maintile.dart';
 import 'Ingridientlist/list_of_ing.dart';
 import 'classIng/ing_class2.dart';
 import 'Tiles/createmaintile.dart';
