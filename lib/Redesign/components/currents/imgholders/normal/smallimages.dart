@@ -2,29 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../styles/spacing/sizedboxes.dart';
 import '../sharingimgholder.dart';
 
-class MaingImgHolder extends StatelessWidget {
-  final String imagePath;
-  const MaingImgHolder({
-    super.key,
-    required this.imagePath,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: heightimage,
-      width: widthbigimage,
-      child: Card(
-        shape: smallImageShape(),
-        child: ClipImg(imagePath: imagePath),
-        // Add other properties of Card if needed
-      ),
-    );
-  }
-}
-
-class Smallboxesholder extends StatelessWidget {
-  const Smallboxesholder({
+class PreviewBoxholder extends StatelessWidget {
+  const PreviewBoxholder({
     super.key,
   });
 
@@ -32,22 +11,22 @@ class Smallboxesholder extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        SmallImgBox(imagePath: 'images/new/kebabrulle.jpg'),
+        Previewbox(imagePath: 'images/new/kebabrulle.jpg'),
         Height40StandardWidget(),
-        SmallImgBox(imagePath: 'images/new/kebab1.jpeg'),
+        Previewbox(imagePath: 'images/new/kebab1.jpeg'),
         Height40StandardWidget(),
-        SmallImgBox(imagePath: 'images/new/kebab3.jpg'),
+        Previewbox(imagePath: 'images/new/kebab3.jpg'),
         Height40StandardWidget(),
-        SmallImgBox(imagePath: 'images/new/kebabrulle.jpg'),
+        Previewbox(imagePath: 'images/new/kebabrulle.jpg'),
       ],
     );
   }
 }
 
-class SmallImgBox extends StatelessWidget {
+class Previewbox extends StatelessWidget {
   final String imagePath;
 
-  const SmallImgBox({
+  const Previewbox({
     super.key,
     required this.imagePath,
   });

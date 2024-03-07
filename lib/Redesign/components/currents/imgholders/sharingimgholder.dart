@@ -7,8 +7,6 @@ double get smallimgwidth => 70;
 //big img box
 double get widthbigimage => 1000;
 double get heightimage => 500;
-double get myaspectratio => 3 / 2;
-double get aspectratio2 => 4 / 3;
 //select icon img diffrent sizes etc
 
 //clip img

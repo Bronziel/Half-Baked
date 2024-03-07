@@ -18,7 +18,7 @@ class MainImagePlusBoxes extends StatelessWidget {
             imagePath: 'images/new/webb.jpg',
           ),
           Width20StandardWidget(),
-          Smallboxesholder(),
+          PreviewBoxholder(),
         ],
       ),
     );
