@@ -9,8 +9,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:image_cropper/image_cropper.dart';
 
 class RedonePage extends StatefulWidget {
+  const RedonePage({super.key});
   @override
-  _RedonePageState createState() => _RedonePageState();
+  State<RedonePage> createState() => _RedonePageState();
 }
 
 class _RedonePageState extends State<RedonePage> {
@@ -43,7 +44,7 @@ class _RedonePageState extends State<RedonePage> {
 //cropper
   Future<CroppedFile?> _cropImage(String path) async {
     // Calculate the aspect ratio
-    final double targetAspectRatio = 1085 / 400;
+    const double targetAspectRatio = 1085 / 400;
 
     return await ImageCropper().cropImage(
       sourcePath: path,
@@ -134,34 +135,8 @@ class _RedonePageState extends State<RedonePage> {
         context: context,
         builder: (BuildContext context) {
           //dialog when pressing images
-          return AlertDialog(
-            content: Stack(
-              children: <Widget>[
-                Container(
-                  width: 1085,
-                  height: 400,
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.network(imagePath)),
-                ),
-                Positioned(
-                  right: 0,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Align(
-                      alignment: Alignment.topRight,
-                      child: CircleAvatar(
-                        radius: 14,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.close, color: Colors.red),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+          return AlertDialogForBigimage(
+            imagePath: imagePath,
           );
         });
   }
@@ -266,6 +241,7 @@ class _RedonePageState extends State<RedonePage> {
                         child: CarouselSlider.builder(
                           itemCount: _firebaseStoragePaths.length,
                           itemBuilder: (context, index, realIdx) {
+                            //gesture dector only bc for the on press show full image.
                             return GestureDetector(
                               //shows the image in a large version
                               onTap: () => _showImageDialog(
@@ -308,6 +284,7 @@ class _RedonePageState extends State<RedonePage> {
                         children:
                             _firebaseStoragePaths.asMap().entries.map((entry) {
                           bool isCurrent = _current == entry.key;
+                          //for selecting small box when pressed go to that ones
                           return GestureDetector(
                             onTap: () => _controller.animateToPage(entry.key),
                             child: Container(
@@ -351,6 +328,48 @@ class _RedonePageState extends State<RedonePage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+//alert dialog showing the big image in carousel whne pressed on
+class AlertDialogForBigimage extends StatelessWidget {
+  final String imagePath;
+  const AlertDialogForBigimage({
+    required this.imagePath,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      content: Stack(
+        children: <Widget>[
+          Container(
+            width: 1085,
+            height: 400,
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(imagePath)),
+          ),
+          Positioned(
+            right: 0,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: const Align(
+                alignment: Alignment.topRight,
+                child: CircleAvatar(
+                  radius: 14,
+                  backgroundColor: Colors.white,
+                  child: Icon(Icons.close, color: Colors.red),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
