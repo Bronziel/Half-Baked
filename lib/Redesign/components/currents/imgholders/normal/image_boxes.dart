@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'smallimages.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../../../styles/spacing/sizedboxes.dart';
 import 'redoneImage.dart';
 
 class MainImagePlusBoxes extends StatelessWidget {
