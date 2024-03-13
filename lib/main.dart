@@ -69,10 +69,10 @@ class LandingPage extends StatelessWidget {
             buttonText: "Component",
             buttonColor: Color.fromARGB(255, 0, 30, 255),
           ),
-          ButtonTemplate(
+          const ButtonTemplate(
             landingspace: RedonePage(),
             buttonText: "Redone",
-            buttonColor: const Color.fromARGB(255, 255, 0, 119),
+            buttonColor: Color.fromARGB(255, 255, 0, 119),
           ),
           const ButtonTemplate(
             landingspace: CreateRecipesPage(),

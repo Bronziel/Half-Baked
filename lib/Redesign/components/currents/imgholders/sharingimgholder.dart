@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 //small img box
-double get smallimgheight => 70;
-double get smallimgwidth => 70;
+double get smallimgheight => 100;
+double get smallimgwidth => 100;
 
 //big img box
 double get widthbigimage => 1000;
