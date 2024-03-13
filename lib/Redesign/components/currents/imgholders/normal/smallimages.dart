@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../spacing/sizedboxes.dart';
+import '../../../styles/spacing/sizedboxes.dart';
 import '../sharingimgholder.dart';
 
-class Smallboxesholder extends StatelessWidget {
-  const Smallboxesholder({
+class PreviewBoxholder extends StatelessWidget {
+  const PreviewBoxholder({
     super.key,
   });
 
@@ -11,22 +11,22 @@ class Smallboxesholder extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        SmallImgBox(imagePath: 'images/new/kebabrulle.jpg'),
+        Previewbox(imagePath: 'images/new/kebabrulle.jpg'),
         Height40StandardWidget(),
-        SmallImgBox(imagePath: 'images/new/kebab1.jpeg'),
+        Previewbox(imagePath: 'images/new/kebab1.jpeg'),
         Height40StandardWidget(),
-        SmallImgBox(imagePath: 'images/new/kebab3.jpg'),
+        Previewbox(imagePath: 'images/new/kebab3.jpg'),
         Height40StandardWidget(),
-        SmallImgBox(imagePath: 'images/new/kebabrulle.jpg'),
+        Previewbox(imagePath: 'images/new/kebabrulle.jpg'),
       ],
     );
   }
 }
 
-class SmallImgBox extends StatelessWidget {
+class Previewbox extends StatelessWidget {
   final String imagePath;
 
-  const SmallImgBox({
+  const Previewbox({
     super.key,
     required this.imagePath,
   });

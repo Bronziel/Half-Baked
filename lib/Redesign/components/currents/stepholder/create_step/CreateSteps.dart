@@ -9,7 +9,7 @@ class Steps extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SizedBox(
       //width: 1200,
-      width: 1110,
+      width: 800,
       height: 450,
       child: Card(
         color: Color(0xffd9d9d9),

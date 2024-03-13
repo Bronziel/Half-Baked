@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'buttons.dart';
+
+//new
+import '../../styles_test/compos/buttone_template.dart';
+import '../showcase/showcase.dart';
+import 'building_redirected.dart';
+import '../showcase/showcasestyle.dart';
 
 class BuildComponentPage extends StatelessWidget {
   const BuildComponentPage({super.key});
@@ -53,21 +58,20 @@ class ButtonColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: ShowcaseButton(),
+        ButtonTemplate(
+          landingspace: ShowcasePage(),
+          buttonText: "ShowCase",
+          buttonColor: Color.fromARGB(255, 189, 12, 225),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: Styleshowcasepageredirect(),
+        ButtonTemplate(
+          landingspace: Styleshowcasepage(),
+          buttonText: "StyleShowcase",
+          buttonColor: Color.fromARGB(255, 214, 225, 12),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: BuildingButton(),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: BuiltButton(),
+        ButtonTemplate(
+          landingspace: BuildingRedirect(),
+          buttonText: "Building Components",
+          buttonColor: Color.fromARGB(255, 47, 237, 17),
         ),
       ],
     );

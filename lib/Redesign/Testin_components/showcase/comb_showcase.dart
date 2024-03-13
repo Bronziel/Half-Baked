@@ -1,8 +1,7 @@
 import 'package:fb2/Redesign/components/smallicons.dart';
 import 'package:flutter/material.dart';
 import '../../components/Popups/popup_boxes.dart';
-import '../../../Redesign/components/currents/cards/fixedportionsize.dart';
-import '../../../Redesign/components/currents/cards/fixedtimecard.dart';
+import '../../RecipePages/normal_intro/Tiles/PortionsizeTile.dart';
 
 class RowOfIcons80 extends StatelessWidget {
   const RowOfIcons80({
@@ -100,23 +99,8 @@ class TimeTIlesshowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        PortionsizeCardWidget(
-          showdisplayport: true,
+        DisplayPortionsizeCardWidget(
           portion: '15',
-        ),
-        TimeCard(
-          showdisplaytime: true,
-          titleadd: '',
-          title: "Total Time:",
-          time: "450",
-          prepOrTotal: false,
-        ),
-        TimeCard(
-          showdisplaytime: true,
-          titleadd: '',
-          title: "Prep Time:",
-          time: "300",
-          prepOrTotal: false,
         ),
       ],
     );
@@ -134,21 +118,6 @@ class Popupsdisplayed extends StatelessWidget {
       children: [
         Column(
           children: [
-            PopTimePort(
-              title: 'PrepTime:',
-              labelText: 'Add Preperation time',
-              hintText: 'preparation time in minutes',
-            ),
-            PopTimePort(
-              title: 'TotalTime:',
-              labelText: 'Add Total cooking time',
-              hintText: 'Total cooking time in minutes',
-            ),
-            PopTimePort(
-              title: 'Portionsize:',
-              labelText: 'Add Portion size',
-              isPortionSize: true, // Used to set the keyboard type to text
-            ),
             SmallTextfieldPop(
               title: 'Steps Title:',
               labelText: 'Add a steps title',
@@ -162,20 +131,7 @@ class Popupsdisplayed extends StatelessWidget {
           ],
         ),
         Column(
-          children: [
-            IngPop(
-              labelText: 'Add a Ingridient',
-              labelText2: 'Add an amount',
-              //labelText3: 'Add a unit',
-              hintText: 'ex milk, ground beef',
-              hintText2: 'ex 500, 200,10',
-              //hintText3: 'ex ml, g , l',
-              title: 'Ingridient',
-            ),
-            PopDescription(
-              title: 'Description',
-            ),
-          ],
+          children: [],
         ),
         Column(
           children: [
