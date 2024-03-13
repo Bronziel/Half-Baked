@@ -20,14 +20,6 @@ class MainImagePlusBoxes extends StatelessWidget {
     );
   }
 }
-/*BigImageBoxes1(
-            imagePath: 'images/new/webb.jpg',
-          ),*/
-
-/*MaingImgHolder(
-            imagePath: 'images/new/webb.jpg',
-          ), */
-
 //working on my new carousel
 //need to make it act like it fecthes data.
 
