@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter/foundation.dart'; // For detecting platform
 
 //1:image pikcer
 class ImagePickerRedone extends StatefulWidget {
@@ -11,7 +12,7 @@ class ImagePickerRedone extends StatefulWidget {
 }
 
 class _ImagePickerRedoneState extends State<ImagePickerRedone> {
-  File? _image;
+  XFile? _image; // Changed to XFile to accommodate both web and mobile
 
   Future getImage() async {
     final picker = ImagePicker();
@@ -19,9 +20,13 @@ class _ImagePickerRedoneState extends State<ImagePickerRedone> {
 
     setState(() {
       if (pickedFile != null) {
-        _image = File(pickedFile.path);
+        // An image was picked, handle accordingly
+        _image = pickedFile; // Direct assignment, works for both web and mobile
       } else {
-        print('No image selected.');
+        // No image was picked. This could be an intentional cancel or an error.
+        print('No image selected or an error occurred.');
+        // Optionally, you could set _image to null to reflect this state in your UI
+        _image = null;
       }
     });
   }
@@ -29,8 +34,10 @@ class _ImagePickerRedoneState extends State<ImagePickerRedone> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        decoration:
+            BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
         width: 800,
-        height: 800,
+        height: 300,
         child: Row(
           children: [
             _image == null
@@ -44,7 +51,10 @@ class _ImagePickerRedoneState extends State<ImagePickerRedone> {
                       const Text('No image'),
                     ],
                   )
-                : Image.file(_image!),
+                : kIsWeb
+                    ? Image.network(_image!.path) // For web, use Image.network
+                    : Image.file(
+                        File(_image!.path)), // For mobile, use Image.file
           ],
         ));
   }

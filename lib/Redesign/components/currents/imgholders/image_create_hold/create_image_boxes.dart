@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../styles/spacing/sizedboxes.dart';
 import '../sharingimgholder.dart';
+import 'imagepicker.dart';
 
 class CreateMainImagePlusBoxes extends StatelessWidget {
   const CreateMainImagePlusBoxes({
@@ -60,18 +61,7 @@ class Createbigimg extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const SizedBox(
-              height: 200,
-            ),
-            const SizedBox(
-              width: 50,
-              height: 50,
-              child: Addiconimgbig(),
-            ),
-            Text(
-              'Add Images',
-              style: textstyleaddbigimage(),
-            ),
+            ImagePickerRedone(),
           ],
         ),
         // Add other properties of Card if needed
