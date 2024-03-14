@@ -13,6 +13,7 @@ class ImagePickerRedone extends StatefulWidget {
 
 class _ImagePickerRedoneState extends State<ImagePickerRedone> {
   XFile? _image; // Changed to XFile to accommodate both web and mobile
+  List<XFile> images = [];
 
   Future getImage() async {
     final picker = ImagePicker();

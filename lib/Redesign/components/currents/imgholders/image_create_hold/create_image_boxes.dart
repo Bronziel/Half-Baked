@@ -59,7 +59,7 @@ class Createbigimg extends StatelessWidget {
           borderRadius:
               BorderRadius.circular(10), // Define the border radius here
         ),
-        child: Column(
+        child: const Column(
           children: [
             ImagePickerRedone(),
           ],
