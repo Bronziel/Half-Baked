@@ -62,3 +62,40 @@ class _ImagePickerRedoneState extends State<ImagePickerRedone> {
 }
 
 //2:image pricker do 1 first
+
+class ImagePickerManagement extends StatefulWidget {
+  const ImagePickerManagement({super.key});
+
+  @override
+  State<ImagePickerManagement> createState() => _ImagePickerManagementState();
+}
+
+class _ImagePickerManagementState extends State<ImagePickerManagement> {
+  //list to send to children with images
+  List<XFile> images = [];
+  //function to add images
+  void addImages(List<XFile> newImages) {
+    setState(() {
+      images.addAll(newImages);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class ImagePickerCarusell extends StatefulWidget {
+  const ImagePickerCarusell({super.key});
+
+  @override
+  State<ImagePickerCarusell> createState() => _ImagePickerCarusellState();
+}
+
+class _ImagePickerCarusellState extends State<ImagePickerCarusell> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
