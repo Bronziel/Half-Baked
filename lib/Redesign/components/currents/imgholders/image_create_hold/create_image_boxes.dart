@@ -61,7 +61,7 @@ class Createbigimg extends StatelessWidget {
         ),
         child: const Column(
           children: [
-            ImagePickerRedone(),
+            ImagePickerManagement(),
           ],
         ),
         // Add other properties of Card if needed
