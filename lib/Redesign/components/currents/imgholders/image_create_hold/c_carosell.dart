@@ -46,9 +46,9 @@ class _CarousellState extends State<CreateCarousell> {
                       snapshot.data != null) {
                     return BigImageBoxes2(imageData: snapshot.data!);
                   } else if (snapshot.hasError) {
-                    return Text('Error loading image');
+                    return const Text('Error loading image');
                   }
-                  return CircularProgressIndicator(); // Or some other placeholder
+                  return const CircularProgressIndicator(); // Or some other placeholder
                 },
               );
             },
@@ -129,9 +129,9 @@ class Sidecolumn extends StatelessWidget {
                     ),
                   );
                 } else if (snapshot.hasError) {
-                  return Text('Error loading image');
+                  return const Text('Error loading image');
                 }
-                return CircularProgressIndicator(); // Placeholder while loading
+                return const CircularProgressIndicator(); // Placeholder while loading
               },
             ),
           ),

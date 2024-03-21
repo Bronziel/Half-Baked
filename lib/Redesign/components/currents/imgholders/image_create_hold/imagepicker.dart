@@ -22,7 +22,7 @@ class ImagePickerUseable extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: pickImages,
-      child: Text('Pick Images'),
+      child: const Text('Pick Images'),
     );
   }
 }
