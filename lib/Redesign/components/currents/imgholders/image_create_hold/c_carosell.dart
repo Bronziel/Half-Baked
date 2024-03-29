@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import '../normal/smallimages.dart';
 import 'package:cross_file/cross_file.dart';
 import 'dart:typed_data';
+import 'create_image_boxes.dart';
 
 //working on my new carousel
 //need to make it act like it fecthes data.
@@ -98,45 +99,48 @@ class Sidecolumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: images.asMap().entries.map((entry) {
-        bool isCurrent = current == entry.key;
-        return GestureDetector(
-          onTap: () => primaryCarousellController.animateToPage(entry.key),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: FutureBuilder<Uint8List>(
-              future: entry.value.readAsBytes(),
-              builder:
-                  (BuildContext context, AsyncSnapshot<Uint8List> snapshot) {
-                if (snapshot.connectionState == ConnectionState.done &&
-                    snapshot.data != null) {
-                  return Container(
-                    decoration: isCurrent
-                        ? BoxDecoration(
-                            border:
-                                Border.all(color: Colors.purple, width: 2.0),
-                            borderRadius: BorderRadius.circular(12),
-                          )
-                        : null,
-                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                    // Assuming PreviewBox takes imageData directly for the thumbnail.
-                    child: Image.memory(
-                      snapshot.data!,
-                      width:
-                          100, // Example width, adjust based on your UI needs
-                      height: 100, // Example height, adjust as necessary
-                      fit: BoxFit.cover,
-                    ),
-                  );
-                } else if (snapshot.hasError) {
-                  return const Text('Error loading image');
-                }
-                return const CircularProgressIndicator(); // Placeholder while loading
-              },
+      children: [
+        const Createsmallimg(),
+        ...images.asMap().entries.map((entry) {
+          bool isCurrent = current == entry.key;
+          return GestureDetector(
+            onTap: () => primaryCarousellController.animateToPage(entry.key),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: FutureBuilder<Uint8List>(
+                future: entry.value.readAsBytes(),
+                builder:
+                    (BuildContext context, AsyncSnapshot<Uint8List> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done &&
+                      snapshot.data != null) {
+                    return Container(
+                      decoration: isCurrent
+                          ? BoxDecoration(
+                              border:
+                                  Border.all(color: Colors.purple, width: 2.0),
+                              borderRadius: BorderRadius.circular(12),
+                            )
+                          : null,
+                      margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                      // Assuming PreviewBox takes imageData directly for the thumbnail.
+                      child: Image.memory(
+                        snapshot.data!,
+                        width:
+                            100, // Example width, adjust based on your UI needs
+                        height: 100, // Example height, adjust as necessary
+                        fit: BoxFit.cover,
+                      ),
+                    );
+                  } else if (snapshot.hasError) {
+                    return const Text('Error loading image');
+                  }
+                  return const CircularProgressIndicator(); // Placeholder while loading
+                },
+              ),
             ),
-          ),
-        );
-      }).toList(),
+          );
+        }),
+      ],
     );
   }
 }

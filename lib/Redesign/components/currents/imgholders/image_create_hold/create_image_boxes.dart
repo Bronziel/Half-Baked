@@ -1,26 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../styles/spacing/sizedboxes.dart';
 import '../sharingimgholder.dart';
-import 'imagepicker.dart';
-
-class CreateMainImagePlusBoxes extends StatelessWidget {
-  const CreateMainImagePlusBoxes({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox(
-      child: Row(
-        children: [
-          Createbigimg(),
-          Width20StandardWidget(),
-          Createsmallimg(),
-        ],
-      ),
-    );
-  }
-}
 
 class Createsmallimg extends StatelessWidget {
   const Createsmallimg({
@@ -45,7 +24,9 @@ class Createsmallimg extends StatelessWidget {
 }
 
 class Createbigimg extends StatelessWidget {
+  final Widget needed;
   const Createbigimg({
+    required this.needed,
     super.key,
   });
 
@@ -59,9 +40,9 @@ class Createbigimg extends StatelessWidget {
           borderRadius:
               BorderRadius.circular(10), // Define the border radius here
         ),
-        child: const Column(
+        child: Column(
           children: [
-            ImagePickerManagement(),
+            needed,
           ],
         ),
         // Add other properties of Card if needed

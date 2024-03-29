@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'create_image_boxes.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/foundation.dart'; // For detecting platform
@@ -50,8 +51,10 @@ class _ImagePickerManagementState extends State<ImagePickerManagement> {
   Widget build(BuildContext context) {
     return SizedBox(
       child: images.isEmpty
-          ? ImagePickerUseable(
-              onImagesSelected: addImages,
+          ? Createbigimg(
+              needed: ImagePickerUseable(
+                onImagesSelected: addImages,
+              ),
             )
           : Row(
               children: [
