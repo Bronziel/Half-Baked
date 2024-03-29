@@ -1,28 +1,6 @@
 import 'package:flutter/material.dart';
 import '../sharingimgholder.dart';
 
-class Createsmallimg extends StatelessWidget {
-  const Createsmallimg({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: smallimgheight,
-          width: smallimgwidth,
-          child: Card(
-            shape: smallImageShape(),
-            child: const Addiconimgsmall(),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 class Createbigimg extends StatelessWidget {
   final Widget needed;
   const Createbigimg({
@@ -58,7 +36,9 @@ class Createbigimg extends StatelessWidget {
 }
 
 class Addiconimgsmall extends StatelessWidget {
+  final VoidCallback actions;
   const Addiconimgsmall({
+    required this.actions,
     super.key,
   });
 
@@ -69,9 +49,8 @@ class Addiconimgsmall extends StatelessWidget {
       icon: const Icon(Icons.add, size: 24),
       color: const Color.fromARGB(255, 12, 11, 11),
       // Plus icon
-      onPressed: () {
-        // Add your action for this button
-      },
+      onPressed: actions,
+      // Add your action for this button
     );
   }
 }

@@ -4,6 +4,9 @@ import '../normal/smallimages.dart';
 import 'package:cross_file/cross_file.dart';
 import 'dart:typed_data';
 import 'create_image_boxes.dart';
+import 'imagepicker.dart';
+
+import '../sharingimgholder.dart';
 
 //working on my new carousel
 //need to make it act like it fecthes data.
@@ -16,8 +19,10 @@ class CreateImagePathstring {
 }
 
 class CreateCarousell extends StatefulWidget {
+  final Function(List<XFile>) onImagesSelected;
   final List<XFile> images;
   const CreateCarousell({
+    required this.onImagesSelected,
     required this.images,
     super.key,
   });
@@ -73,6 +78,7 @@ class _CarousellState extends State<CreateCarousell> {
             width: 40,
           ),
           Sidecolumn(
+            onImagesSelected: widget.onImagesSelected,
             images: widget.images,
             primaryCarousellController: primaryCarousellController,
             current: currentPrimaryIndex,
@@ -84,12 +90,14 @@ class _CarousellState extends State<CreateCarousell> {
 }
 
 class Sidecolumn extends StatelessWidget {
+  final Function(List<XFile>) onImagesSelected;
   final List<XFile> images; // Updated to use XFile directly
   final CarouselController primaryCarousellController;
   final int current;
 
   const Sidecolumn({
     super.key,
+    required this.onImagesSelected, //for adding more images.
     required this.images,
     required this.primaryCarousellController,
     required this.current,
@@ -100,7 +108,9 @@ class Sidecolumn extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Createsmallimg(),
+        Createsmallimg(
+          onImagesSelected: onImagesSelected,
+        ),
         ...images.asMap().entries.map((entry) {
           bool isCurrent = current == entry.key;
           return GestureDetector(
@@ -213,4 +223,30 @@ class BoxTwos2 {
 class CardBoxTwos2 {
   static double get maxWidth => 1000;
   static double get maxHeight => 500;
+}
+
+class Createsmallimg extends StatelessWidget {
+  final Function(List<XFile>) onImagesSelected;
+  const Createsmallimg({
+    required this.onImagesSelected,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          height: smallimgheight,
+          width: smallimgwidth,
+          child: Card(
+            shape: smallImageShape(),
+            child: ImagePickerUseable(
+              onImagesSelected: onImagesSelected,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }

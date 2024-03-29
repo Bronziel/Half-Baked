@@ -59,6 +59,7 @@ class _ImagePickerManagementState extends State<ImagePickerManagement> {
           : Row(
               children: [
                 CreateCarousell(
+                  onImagesSelected: addImages,
                   images: images,
                 )
               ],

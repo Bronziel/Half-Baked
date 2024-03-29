@@ -81,7 +81,6 @@ class ShowcasePage extends StatelessWidget {
               Column(
                 children: [
                   MainImagePlusBoxes(),
-                  CreateMainImagePlusBoxes(),
                 ],
               ),
               Column(
