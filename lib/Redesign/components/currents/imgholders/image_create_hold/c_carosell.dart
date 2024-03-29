@@ -19,9 +19,11 @@ class CreateImagePathstring {
 }
 
 class CreateCarousell extends StatefulWidget {
+  final Function(int) deleteImage;
   final Function(List<XFile>) onImagesSelected;
   final List<XFile> images;
   const CreateCarousell({
+    required this.deleteImage,
     required this.onImagesSelected,
     required this.images,
     super.key,
@@ -78,6 +80,7 @@ class _CarousellState extends State<CreateCarousell> {
             width: 40,
           ),
           Sidecolumn(
+            deleteImage: widget.deleteImage,
             onImagesSelected: widget.onImagesSelected,
             images: widget.images,
             primaryCarousellController: primaryCarousellController,
@@ -91,12 +94,14 @@ class _CarousellState extends State<CreateCarousell> {
 
 class Sidecolumn extends StatelessWidget {
   final Function(List<XFile>) onImagesSelected;
+  final Function(int) deleteImage;
   final List<XFile> images; // Updated to use XFile directly
   final CarouselController primaryCarousellController;
   final int current;
 
   const Sidecolumn({
     super.key,
+    required this.deleteImage,
     required this.onImagesSelected, //for adding more images.
     required this.images,
     required this.primaryCarousellController,
@@ -113,41 +118,55 @@ class Sidecolumn extends StatelessWidget {
         ),
         ...images.asMap().entries.map((entry) {
           bool isCurrent = current == entry.key;
-          return GestureDetector(
-            onTap: () => primaryCarousellController.animateToPage(entry.key),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: FutureBuilder<Uint8List>(
-                future: entry.value.readAsBytes(),
-                builder:
-                    (BuildContext context, AsyncSnapshot<Uint8List> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done &&
-                      snapshot.data != null) {
-                    return Container(
-                      decoration: isCurrent
-                          ? BoxDecoration(
-                              border:
-                                  Border.all(color: Colors.purple, width: 2.0),
-                              borderRadius: BorderRadius.circular(12),
-                            )
-                          : null,
-                      margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                      // Assuming PreviewBox takes imageData directly for the thumbnail.
-                      child: Image.memory(
-                        snapshot.data!,
-                        width:
-                            100, // Example width, adjust based on your UI needs
-                        height: 100, // Example height, adjust as necessary
-                        fit: BoxFit.cover,
-                      ),
-                    );
-                  } else if (snapshot.hasError) {
-                    return const Text('Error loading image');
-                  }
-                  return const CircularProgressIndicator(); // Placeholder while loading
-                },
+          return Row(
+            children: [
+              GestureDetector(
+                onTap: () =>
+                    primaryCarousellController.animateToPage(entry.key),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: FutureBuilder<Uint8List>(
+                    future: entry.value.readAsBytes(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<Uint8List> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done &&
+                          snapshot.data != null) {
+                        return Container(
+                          decoration: isCurrent
+                              ? BoxDecoration(
+                                  border: Border.all(
+                                      color: Colors.purple, width: 2.0),
+                                  borderRadius: BorderRadius.circular(12),
+                                )
+                              : null,
+                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                          // Assuming PreviewBox takes imageData directly for the thumbnail.
+                          child: Image.memory(
+                            snapshot.data!,
+                            width:
+                                10, // Example width, adjust based on your UI needs
+                            height: 10, // Example height, adjust as necessary
+                            fit: BoxFit.cover,
+                          ),
+                        );
+                      } else if (snapshot.hasError) {
+                        return const Text('Error loading image');
+                      }
+                      return const CircularProgressIndicator(); // Placeholder while loading
+                    },
+                  ),
+                ),
               ),
-            ),
+              const SizedBox(
+                width: 20,
+              ),
+              SizedBox(
+                child: IconButton(
+                  icon: const Icon(Icons.delete, color: Colors.red),
+                  onPressed: () => deleteImage(entry.key),
+                ),
+              ),
+            ],
           );
         }),
       ],

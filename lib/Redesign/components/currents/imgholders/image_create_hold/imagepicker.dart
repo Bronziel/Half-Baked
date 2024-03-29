@@ -47,6 +47,14 @@ class _ImagePickerManagementState extends State<ImagePickerManagement> {
     });
   }
 
+  void deleteImage(int index) {
+    setState(() {
+      if (index >= 0 && index < images.length) {
+        images.removeAt(index);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -59,6 +67,7 @@ class _ImagePickerManagementState extends State<ImagePickerManagement> {
           : Row(
               children: [
                 CreateCarousell(
+                  deleteImage: deleteImage,
                   onImagesSelected: addImages,
                   images: images,
                 )
