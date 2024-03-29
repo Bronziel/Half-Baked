@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'create_image_boxes.dart';
-import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter/foundation.dart'; // For detecting platform
 import 'c_carosell.dart';
 
 class ImagePickerUseable extends StatelessWidget {

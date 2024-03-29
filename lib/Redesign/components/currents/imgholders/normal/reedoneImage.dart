@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../sharingimgholder.dart';
 
 class BigImageBoxes1 extends StatelessWidget {
   final String imagePath;

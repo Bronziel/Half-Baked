@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../normal/smallimages.dart';
 import 'package:cross_file/cross_file.dart';
 import 'dart:typed_data';
-import 'create_image_boxes.dart';
 import 'imagepicker.dart';
 
 import '../sharingimgholder.dart';

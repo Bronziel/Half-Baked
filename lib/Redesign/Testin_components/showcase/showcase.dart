@@ -1,11 +1,9 @@
-import 'package:fb2/Redesign/Testin_components/building/building.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'comb_showcase.dart';
 import '../built/myreorder.dart';
 import '../../RecipePages/normal_intro/introduction_box.dart';
 import '../../components/currents/imgholders/normal/image_boxes.dart';
-import '../../components/currents/imgholders/image_create_hold/create_image_boxes.dart';
 import '../../components/styles/ingboxshared.dart';
 import '../../components/currents/stepholder/prog_ui.dart';
 import '../../CreateRecipeParts/Introduction/create_intro.dart';
