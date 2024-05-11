@@ -130,6 +130,7 @@ class Sidecolumn extends StatelessWidget {
   }
 }
 
+//if list.lenght == >5 widget 2 active over widget 1?
 class Decoration {
   static BoxDecoration purpledecoration() {
     return BoxDecoration(
