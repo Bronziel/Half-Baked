@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../Ingridients/Ingridientpops/ingridient_popupp.dart';
 
 class IngDialog {
+  //nested method (){method2(){}}
   static void addIng(
     BuildContext context,
     Function(String, String, String) addItemCallback,
