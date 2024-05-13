@@ -30,7 +30,6 @@ class IngDialog {
   static void editIng(
     //new
     BuildContext context,
-    Function(String, String, String) addItemCallback,
     int index,
     String label,
     String amount,
@@ -46,7 +45,6 @@ class IngDialog {
           backgroundColor: Colors.transparent,
           child: IngridientPopupp(
             //new
-            addItem: addItemCallback,
             title: "Edit Ingredient Details",
             labelText: "Ingredient",
             labelText2: "Quantity",
