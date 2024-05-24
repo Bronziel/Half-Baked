@@ -58,13 +58,13 @@ class _ImagePickerManagementState extends State<ImagePickerManagement> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: images.isEmpty
-          ? Createbigimg(
-              needed: ImagePickerUseable(
-                onImagesSelected: addImages,
-              ),
-            )
-          : Row(
+        child: images.isEmpty
+            ? Createbigimg(
+                needed: ImagePickerUseable(
+                  onImagesSelected: addImages,
+                ),
+              )
+            : /*Row(
               children: [
                 CreateCarousell(
                   deleteImage: deleteImage,
@@ -72,7 +72,66 @@ class _ImagePickerManagementState extends State<ImagePickerManagement> {
                   images: images,
                 )
               ],
-            ),
-    );
+            ),*/
+            TestOfImageslist(
+                images: images,
+              ));
+  }
+}
+
+class TestOfImages extends StatelessWidget {
+  final XFile images;
+
+  const TestOfImages({
+    required this.images,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        child: ConstrainedBox(
+      constraints: const BoxConstraints(
+        maxHeight: 500,
+        maxWidth: 1000,
+      ),
+      child: Image.network(images!.path),
+    ));
+  }
+}
+
+class TestOfImageslist extends StatelessWidget {
+  final List<XFile> images;
+
+  const TestOfImageslist({
+    required this.images,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        child: ConstrainedBox(
+      constraints: const BoxConstraints(
+        maxHeight: 500,
+        maxWidth: 1000,
+      ),
+      child: Column(
+        children: [
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: images!.map((file) {
+              return Image.network(
+                file.path,
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+              );
+            }).toList(),
+          )
+        ],
+      ),
+    ));
   }
 }
