@@ -121,7 +121,7 @@ class TestOfImageslist extends StatelessWidget {
           Wrap(
             spacing: 8,
             runSpacing: 8,
-            children: images!.map((file) {
+            children: images.map((file) {
               return Image.network(
                 file.path,
                 width: 100,
