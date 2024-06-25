@@ -1,50 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../styles/spacing/sizedboxes.dart';
 import '../sharingimgholder.dart';
 
-class CreateMainImagePlusBoxes extends StatelessWidget {
-  const CreateMainImagePlusBoxes({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox(
-      child: Row(
-        children: [
-          Createbigimg(),
-          Width20StandardWidget(),
-          Createsmallimg(),
-        ],
-      ),
-    );
-  }
-}
-
-class Createsmallimg extends StatelessWidget {
-  const Createsmallimg({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: smallimgheight,
-          width: smallimgwidth,
-          child: Card(
-            shape: smallImageShape(),
-            child: const Addiconimgsmall(),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 class Createbigimg extends StatelessWidget {
+  final Widget needed;
   const Createbigimg({
+    required this.needed,
     super.key,
   });
 
@@ -60,18 +20,7 @@ class Createbigimg extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const SizedBox(
-              height: 200,
-            ),
-            const SizedBox(
-              width: 50,
-              height: 50,
-              child: Addiconimgbig(),
-            ),
-            Text(
-              'Add Images',
-              style: textstyleaddbigimage(),
-            ),
+            needed,
           ],
         ),
         // Add other properties of Card if needed
@@ -87,7 +36,9 @@ class Createbigimg extends StatelessWidget {
 }
 
 class Addiconimgsmall extends StatelessWidget {
+  final VoidCallback actions;
   const Addiconimgsmall({
+    required this.actions,
     super.key,
   });
 
@@ -98,9 +49,8 @@ class Addiconimgsmall extends StatelessWidget {
       icon: const Icon(Icons.add, size: 24),
       color: const Color.fromARGB(255, 12, 11, 11),
       // Plus icon
-      onPressed: () {
-        // Add your action for this button
-      },
+      onPressed: actions,
+      // Add your action for this button
     );
   }
 }

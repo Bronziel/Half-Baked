@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'smallimages.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'redoneImage.dart';
+import 'reedoneImage.dart';
 
 class MainImagePlusBoxes extends StatelessWidget {
   const MainImagePlusBoxes({
@@ -130,6 +130,7 @@ class Sidecolumn extends StatelessWidget {
   }
 }
 
+//if list.lenght == >5 widget 2 active over widget 1?
 class Decoration {
   static BoxDecoration purpledecoration() {
     return BoxDecoration(

@@ -103,10 +103,8 @@ class _DisplaytestlistState extends State<Displaytestlist> {
     // Sort combinedList by hdid and then by step order for non-headers
     combinedList.sort((a, b) {
       int compare = a.id.compareTo(b.id);
-      if (compare == 0 && !a.header && !b.header) {
-        // Assuming you have a way to sort steps when ids are the same
-        return a.text.compareTo(b.text); // Or use step order if available
-      }
+      //if compare is equal to 0 and a not header and b not header no usecase
+
       return compare;
     });
     setState(() {

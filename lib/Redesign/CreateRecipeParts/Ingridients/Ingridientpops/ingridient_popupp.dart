@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class IngridientPopupp extends StatefulWidget {
   //new
-  final Function(String, String, String) addItem;
+  final Function(String, String, String)? addItem;
   final String title;
   final String labelText;
   final String labelText2;
@@ -28,7 +28,7 @@ class IngridientPopupp extends StatefulWidget {
     this.initialNumber,
     this.initialDropdownValue,
     //new
-    required this.addItem,
+    this.addItem,
     required this.labelText,
     required this.labelText2,
     this.hintText = '',
@@ -66,6 +66,13 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
     super.dispose();
   }
 
+  void clearControllerAndExit() {
+    titleController.clear();
+    numberController.clear();
+    dropdownController.clear();
+    Navigator.of(context).pop();
+  }
+
   void saveData() {
     // Example validation function
     setState(() {
@@ -81,11 +88,13 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
     if (errorText1 == null &&
         errorText2 == null &&
         errorText3 == null &&
-        widget.isEdit == false) {
+        !widget.isEdit &&
+        widget.addItem != null) {
       print('2');
       //another if statemetn if prefilled else widget.additem
       // Call the addItem callback directly with the values
-      widget.addItem(
+      //make additem optional so i dont need to passitdown with edit item add null check.
+      widget.addItem!(
         titleController.text,
         numberController.text,
         dropdownController.text,
@@ -93,17 +102,14 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
       print('3');
 
       // Clear the text fields after adding
-      titleController.clear();
-      numberController.clear();
-      dropdownController.clear();
-      print('4');
-
-      Navigator.of(context).pop(); // Close the dialog
+      clearControllerAndExit();
+      print('afterClear');
     }
     if (errorText1 == null &&
         errorText2 == null &&
         errorText3 == null &&
-        widget.isEdit == true) {
+        widget.isEdit &&
+        widget.editItem != null) {
       print('edit mode save process');
       //another if statemetn if prefilled else widget.additem
       // Call the addItem callback directly with the values
@@ -117,11 +123,7 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
       );
 
       // Clear the text fields after adding
-      titleController.clear();
-      numberController.clear();
-      dropdownController.clear();
-
-      Navigator.of(context).pop(); // Close the dialog
+      clearControllerAndExit();
     }
   }
 
@@ -155,6 +157,7 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
             ),
             const PostionedStopButton(),
             SaveButtonIng(
+              //could do saveData() function signature matches but if pass parameters (){method savedata}
               onPressed: () => saveData(),
             ),
           ],

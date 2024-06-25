@@ -50,8 +50,8 @@ class _ListOfIngState extends State<ListOfIng> {
           index: index,
           shownormal: false,
           onPressedDelete: () => removeItem(index),
-          onPressedEdit: () => IngDialog.editIng(context, widget.addItem, index,
-              item.label, item.amount, item.unit, replaceItem),
+          onPressedEdit: () => IngDialog.editIng(
+              context, index, item.label, item.amount, item.unit, replaceItem),
 
           //onpressed edit edititem(index)
           //FUNCTION FOR THE ON pressed

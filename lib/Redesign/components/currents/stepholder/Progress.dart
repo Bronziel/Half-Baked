@@ -149,6 +149,7 @@ class Dataset {
   });
   //underscore for only using the varibel inside this class.
   static final _rawData = jsonDecode(_dataStrn);
+
   static Future<List<Steps>> finshedsteps() async {
     final List<dynamic> mysteps = _rawData['Steps'];
     List<Steps> result = mysteps.map((item) => Steps.fromJson(item)).toList();

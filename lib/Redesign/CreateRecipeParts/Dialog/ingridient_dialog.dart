@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../Ingridients/Ingridientpops/ingridient_popupp.dart';
 
 class IngDialog {
+  //nested method (){method2(){}}
   static void addIng(
     BuildContext context,
     Function(String, String, String) addItemCallback,
@@ -29,7 +30,6 @@ class IngDialog {
   static void editIng(
     //new
     BuildContext context,
-    Function(String, String, String) addItemCallback,
     int index,
     String label,
     String amount,
@@ -45,7 +45,6 @@ class IngDialog {
           backgroundColor: Colors.transparent,
           child: IngridientPopupp(
             //new
-            addItem: addItemCallback,
             title: "Edit Ingredient Details",
             labelText: "Ingredient",
             labelText2: "Quantity",

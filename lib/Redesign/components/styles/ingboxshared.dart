@@ -35,14 +35,14 @@ class Holder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return showlist ? const Listnormal() : const CreateListWithIngridients();
+    return showlist ? ingridientbox() : createingridinetbox();
   }
 
-  Widget normalbox() {
+  Widget ingridientbox() {
     return const Listnormal();
   }
 
-  Widget createbox() {
+  Widget createingridinetbox() {
     return const CreateListWithIngridients();
   }
 }
@@ -62,11 +62,11 @@ class Cardsize extends StatelessWidget {
     return showdisplayport ? normalbox(child) : createbox(child);
   }
 
-  normalbox(child) {
+  Widget normalbox(child) {
     return Heights.normalbox(child);
   }
 
-  createbox(child) {
+  Widget createbox(child) {
     return Heights.createbox(child);
   }
 }
