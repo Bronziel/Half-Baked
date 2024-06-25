@@ -1,3 +1,6 @@
+//import 'dart:ffi';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'create_image_boxes.dart';
 import 'package:image_picker/image_picker.dart';
@@ -135,3 +138,8 @@ class TestOfImageslist extends StatelessWidget {
     ));
   }
 }
+/*
+    List<Future<Uint8List>> futureBytesList = pickedFiles.map(readFileBytes).toList();
+    List<Uint8List> imageByteList = await Future.wait(futureBytesList);
+    List<Future<Uint8List>> futureBytesList = pickedFiles.map((file) => file.readAsBytes()).toList();
+*/
