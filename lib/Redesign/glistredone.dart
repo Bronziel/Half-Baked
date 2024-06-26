@@ -53,19 +53,11 @@ class _RedonePageState extends State<RedonePage> {
       uiSettings: [
         WebUiSettings(
           context: context,
-          enableZoom: true,
-          enableResize: false,
+         
+          
 
-          boundary: const CroppieBoundary(
-            height: 600,
-            width: 1085,
-          ),
-          viewPort: CroppieViewPort(
-            height: 400, // Half of your desired height
-            width: (400 * targetAspectRatio)
-                .round(), // Width calculated based on the aspect ratio
-            type: 'square',
-          ),
+        // Half of your desired height
+           
           // Add other necessary configurations here
         ),
       ],
