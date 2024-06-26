@@ -21,13 +21,7 @@ class _ImageCropperWidgetState extends State<ImageCropperWidget> {
   Future<void> cropImage() async {
     final croppedFile = await ImageCropper().cropImage(
       sourcePath: widget.image.path,
-      aspectRatioPresets: [
-        CropAspectRatioPreset.square,
-        CropAspectRatioPreset.ratio3x2,
-        CropAspectRatioPreset.original,
-        CropAspectRatioPreset.ratio4x3,
-        CropAspectRatioPreset.ratio16x9
-      ],
+
       /*
       androidUiSettings: AndroidUiSettings(
           toolbarTitle: 'Cropper',
