@@ -47,7 +47,7 @@ class LandingPage extends StatelessWidget {
           ButtonTemplate(
             landingspace: TabbedPage(),
             buttonText: "Loading",
-            buttonColor: const Color.fromARGB(255, 189, 12, 225),
+            buttonColor: Color.fromARGB(255, 246, 243, 86),
           ),
           const ButtonTemplate(
             landingspace: GlistPage(),
@@ -77,7 +77,7 @@ class LandingPage extends StatelessWidget {
           const ButtonTemplate(
             landingspace: CreateRecipesPage(),
             buttonText: "Create",
-            buttonColor: Color.fromARGB(255, 248, 208, 10),
+            buttonColor: Color.fromARGB(255, 97, 248, 10),
           )
         ],
       ),
