@@ -57,19 +57,16 @@ class _IntroductionPopuppState extends State<IntroductionPopupp> {
 
   //for saving the input
   void saveTitel() {
-    print('save titelbutton pressed');
     setState(() {
       errorText1 =
           titleController.text.isEmpty ? 'Field cannot be empty' : null;
     });
     if (errorText1 == null && widget.isEdit == false) {
-      print('title textfield not  empty');
       widget.addTitel(titleController.text);
       titleController.clear();
       Navigator.of(context).pop();
     }
     if (errorText1 == null && widget.isEdit == true) {
-      print('title textfield not  empty');
       widget.editItem!(titleController.text);
       titleController.clear();
       Navigator.of(context).pop();

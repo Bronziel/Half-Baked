@@ -44,8 +44,8 @@ class RecipeFormState extends State<RecipeForm> {
 
 // For selecting multiple images from the user's device
   Future<void> _pickImages() async {
-    final ImagePicker _picker = ImagePicker();
-    final List<XFile>? images = await _picker.pickMultiImage();
+    final ImagePicker picker = ImagePicker();
+    final List<XFile>? images = await picker.pickMultiImage();
 
     setState(() {
       _newRecipe.images = images;

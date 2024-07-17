@@ -170,7 +170,6 @@ class Dataset {
   static void grouped(List<Steps> steps) {
     // Group by 'hdid'
     var groupedByHdid = groupBy(steps, (item) => item.hdid);
-    print(groupedByHdid);
   }
 }
 

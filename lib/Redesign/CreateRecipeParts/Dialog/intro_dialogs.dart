@@ -9,7 +9,6 @@ class TitelDialog {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        print('open titel Dialog');
         return Dialog(
           backgroundColor: Colors.transparent,
           child: IntroductionPopupp(
@@ -32,7 +31,6 @@ class TitelDialog {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        print('open titel Dialog');
         return Dialog(
           backgroundColor: Colors.transparent,
           child: IntroductionPopupp(

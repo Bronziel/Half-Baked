@@ -30,7 +30,6 @@ class DescriptionDialog {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        print('new description dialog');
         return Dialog(
           backgroundColor: Colors.transparent,
           child: DescriptionPopupp(

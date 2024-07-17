@@ -88,10 +88,8 @@ class _RedonePageState extends State<RedonePage> {
           .ref(firebasePath)
           .getDownloadURL();
 
-      print('Image uploaded to Firebase Storage successfully');
       return downloadURL;
     } catch (e) {
-      print('Image upload failed with error: $e');
       return '';
     }
   }
