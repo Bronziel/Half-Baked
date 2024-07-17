@@ -83,14 +83,12 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
       errorText3 =
           dropdownController.text.isEmpty ? 'Field cannot be empty' : null;
     });
-    print('1');
 
     if (errorText1 == null &&
         errorText2 == null &&
         errorText3 == null &&
         !widget.isEdit &&
         widget.addItem != null) {
-      print('2');
       //another if statemetn if prefilled else widget.additem
       // Call the addItem callback directly with the values
       //make additem optional so i dont need to passitdown with edit item add null check.
@@ -99,18 +97,15 @@ class _IngridientPopuppState extends State<IngridientPopupp> {
         numberController.text,
         dropdownController.text,
       );
-      print('3');
 
       // Clear the text fields after adding
       clearControllerAndExit();
-      print('afterClear');
     }
     if (errorText1 == null &&
         errorText2 == null &&
         errorText3 == null &&
         widget.isEdit &&
         widget.editItem != null) {
-      print('edit mode save process');
       //another if statemetn if prefilled else widget.additem
       // Call the addItem callback directly with the values
       //Edititem.widget etc....

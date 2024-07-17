@@ -18,7 +18,6 @@ class _ListOfIngState extends State<ListOfIng> {
   void removeItem(int index) {
     setState(() {
       ingredients.removeAt(index);
-      print('fuka?');
     });
   }
 
@@ -30,9 +29,7 @@ class _ListOfIngState extends State<ListOfIng> {
         // Replace the item at the given index with a new object
         ingredients[index] =
             Ingredients(label: title, amount: amount, unit: unit);
-      } else {
-        print("Index out of bounds");
-      }
+      } else {}
     });
   }
 
