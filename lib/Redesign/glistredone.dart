@@ -22,8 +22,8 @@ class _RedonePageState extends State<RedonePage> {
   final CarouselController _controller = CarouselController();
 
   Future<void> _pickImages() async {
-    final ImagePicker _picker = ImagePicker();
-    final List<XFile>? images = await _picker.pickMultiImage();
+    final ImagePicker picker = ImagePicker();
+    final List<XFile>? images = await picker.pickMultiImage();
 
     if (images != null && images.isNotEmpty) {
       for (var image in images) {

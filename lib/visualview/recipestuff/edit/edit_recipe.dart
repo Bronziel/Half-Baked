@@ -80,8 +80,8 @@ class EditRecipeFormState extends State<EditRecipeForm> {
   }
 
   Future<void> _pickImages() async {
-    final ImagePicker _picker = ImagePicker();
-    final List<XFile>? images = await _picker.pickMultiImage();
+    final ImagePicker picker = ImagePicker();
+    final List<XFile>? images = await picker.pickMultiImage();
 
     setState(() {
       _newRecipe.images = images;
