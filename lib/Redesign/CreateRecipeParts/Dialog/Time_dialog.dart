@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Introduction/Timepop/TotalPreppTimepop.dart';
+import '../Introduction/Timepop/total_prepp_timepop.dart';
 
 class TotalTimeDialog {
   static void addTotalTime(

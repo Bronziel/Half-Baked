@@ -4,10 +4,10 @@ class ParentWidget extends StatefulWidget {
   const ParentWidget({super.key});
 
   @override
-  _ParentWidgetState createState() => _ParentWidgetState();
+  ParentWidgetState createState() => ParentWidgetState();
 }
 
-class _ParentWidgetState extends State<ParentWidget> {
+class ParentWidgetState extends State<ParentWidget> {
   List<Item> items = []; // Assuming 'Item' is your data model
 
   void addItem(Item newItem) {

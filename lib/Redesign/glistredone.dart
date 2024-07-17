@@ -335,7 +335,7 @@ class AlertDialogForBigimage extends StatelessWidget {
     return AlertDialog(
       content: Stack(
         children: <Widget>[
-          Container(
+          SizedBox(
             width: 1085,
             height: 400,
             child: ClipRRect(

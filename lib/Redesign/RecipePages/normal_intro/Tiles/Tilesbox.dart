@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'PortionsizeTile.dart';
+import 'portionsize_tile.dart';
 import '../../../components/smallicons.dart';
-import 'timecardsTile.dart';
+import 'timecards_tile.dart';
 
 class IcontilesBox extends StatelessWidget {
   const IcontilesBox({

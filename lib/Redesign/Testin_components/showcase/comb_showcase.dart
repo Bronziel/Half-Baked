@@ -1,7 +1,7 @@
 import 'package:fb2/Redesign/components/smallicons.dart';
 import 'package:flutter/material.dart';
 import '../../components/Popups/popup_boxes.dart';
-import '../../RecipePages/normal_intro/Tiles/PortionsizeTile.dart';
+import '../../RecipePages/normal_intro/Tiles/portionsize_tile.dart';
 
 class RowOfIcons80 extends StatelessWidget {
   const RowOfIcons80({
