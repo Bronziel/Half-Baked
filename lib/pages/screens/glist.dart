@@ -11,10 +11,10 @@ class GlistPage extends StatefulWidget {
   const GlistPage({super.key});
 
   @override
-  _GlistPageState createState() => _GlistPageState();
+  GlistPageState createState() => GlistPageState();
 }
 
-class _GlistPageState extends State<GlistPage> {
+class GlistPageState extends State<GlistPage> {
   List<XFile> _images = [];
   bool _displayImages = false;
   List<String> _firebaseStoragePaths = [];
@@ -22,8 +22,8 @@ class _GlistPageState extends State<GlistPage> {
   final CarouselController _controller = CarouselController();
 
   Future<void> _pickImages() async {
-    final ImagePicker _picker = ImagePicker();
-    final List<XFile>? images = await _picker.pickMultiImage();
+    final ImagePicker picker = ImagePicker();
+    final List<XFile>? images = await picker.pickMultiImage();
 
     setState(() {
       _images = images ?? [];
@@ -59,10 +59,8 @@ class _GlistPageState extends State<GlistPage> {
           .ref(firebasePath)
           .getDownloadURL();
 
-      print('Image uploaded to Firebase Storage successfully');
       return downloadURL;
     } catch (e) {
-      print('Image upload failed with error: $e');
       return '';
     }
   }

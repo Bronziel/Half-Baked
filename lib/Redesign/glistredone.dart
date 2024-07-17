@@ -22,8 +22,8 @@ class _RedonePageState extends State<RedonePage> {
   final CarouselController _controller = CarouselController();
 
   Future<void> _pickImages() async {
-    final ImagePicker _picker = ImagePicker();
-    final List<XFile>? images = await _picker.pickMultiImage();
+    final ImagePicker picker = ImagePicker();
+    final List<XFile>? images = await picker.pickMultiImage();
 
     if (images != null && images.isNotEmpty) {
       for (var image in images) {
@@ -44,7 +44,6 @@ class _RedonePageState extends State<RedonePage> {
 //cropper
   Future<CroppedFile?> _cropImage(String path) async {
     // Calculate the aspect ratio
-    const double targetAspectRatio = 1085 / 400;
 
     return await ImageCropper().cropImage(
       sourcePath: path,
@@ -53,11 +52,9 @@ class _RedonePageState extends State<RedonePage> {
       uiSettings: [
         WebUiSettings(
           context: context,
-         
-          
 
-        // Half of your desired height
-           
+          // Half of your desired height
+
           // Add other necessary configurations here
         ),
       ],
@@ -91,10 +88,8 @@ class _RedonePageState extends State<RedonePage> {
           .ref(firebasePath)
           .getDownloadURL();
 
-      print('Image uploaded to Firebase Storage successfully');
       return downloadURL;
     } catch (e) {
-      print('Image upload failed with error: $e');
       return '';
     }
   }
@@ -338,7 +333,7 @@ class AlertDialogForBigimage extends StatelessWidget {
     return AlertDialog(
       content: Stack(
         children: <Widget>[
-          Container(
+          SizedBox(
             width: 1085,
             height: 400,
             child: ClipRRect(

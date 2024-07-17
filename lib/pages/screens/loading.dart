@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import '../recipes/RecipePages/allrecipes.dart';
 
 class TabbedPage extends StatefulWidget {
+  const TabbedPage({super.key});
+
   @override
-  _TabbedPageState createState() => _TabbedPageState();
+  TabbedPageState createState() => TabbedPageState();
 }
 
-class _TabbedPageState extends State<TabbedPage>
+class TabbedPageState extends State<TabbedPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 

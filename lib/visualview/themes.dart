@@ -13,7 +13,7 @@ class AppThemes {
           TextStyle(color: Colors.white), // Set the color of the AppBar title
     ),
     // Define other properties of the default theme if needed
-    primaryColor: Color.fromARGB(255, 242, 242, 244),
+    primaryColor: const Color.fromARGB(255, 242, 242, 244),
 
     // Other theme properties...
   );

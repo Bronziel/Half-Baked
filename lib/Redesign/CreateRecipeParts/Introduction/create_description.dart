@@ -82,7 +82,7 @@ class Description extends StatelessWidget {
             right: 10,
             top: 45,
             child: Editcontainer(
-              onPressedEdit: () => DescriptionDialog.EditDescription(
+              onPressedEdit: () => DescriptionDialog.editDescription(
                 addDescription,
                 editDescription,
                 description,

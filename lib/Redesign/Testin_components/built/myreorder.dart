@@ -182,9 +182,7 @@ class Tilebbs extends StatelessWidget {
               child: ReorderableDragStartListener(
                 index: index,
                 child: IconButton(
-                  onPressed: () {
-                    print('menue clicked');
-                  },
+                  onPressed: () {},
                   icon: const Icon(
                     Icons.menu,
                     color: Color.fromARGB(255, 233, 228, 228),
@@ -230,7 +228,6 @@ class Deletecontainer extends StatelessWidget {
       color: const Color.fromARGB(255, 233, 228, 228),
       // Plus icon
       onPressed: () {
-        print('delete button');
         // Add your action for this button
       },
     );
@@ -250,7 +247,6 @@ class Editcontainer extends StatelessWidget {
       color: const Color.fromARGB(255, 233, 228, 228),
       // Plus icon
       onPressed: () {
-        print('Edit clicked');
         // Add your action for this button
       },
     );

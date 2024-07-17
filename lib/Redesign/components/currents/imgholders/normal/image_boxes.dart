@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'smallimages.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'reedoneImage.dart';
+import 'reedone_image.dart';
 
 class MainImagePlusBoxes extends StatelessWidget {
   const MainImagePlusBoxes({
@@ -48,7 +48,7 @@ class _CarousellState extends State<Carousell> {
   int currentPrimaryIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 1200,
       height: 500,
       child: Row(

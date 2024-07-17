@@ -10,10 +10,10 @@ class RecipelistPage extends StatefulWidget {
   const RecipelistPage({super.key});
 
   @override
-  _RecipelistPageState createState() => _RecipelistPageState();
+  RecipelistPageState createState() => RecipelistPageState();
 }
 
-class _RecipelistPageState extends State<RecipelistPage> {
+class RecipelistPageState extends State<RecipelistPage> {
   late Future<List<Recipe>> _futureRecipes;
   final _searchController = TextEditingController();
 

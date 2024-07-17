@@ -14,10 +14,10 @@ class EditImagePickerWidget extends StatefulWidget {
   });
 
   @override
-  _EditImagePickerWidgetState createState() => _EditImagePickerWidgetState();
+  EditImagePickerWidgetState createState() => EditImagePickerWidgetState();
 }
 
-class _EditImagePickerWidgetState extends State<EditImagePickerWidget> {
+class EditImagePickerWidgetState extends State<EditImagePickerWidget> {
   List<XFile>? _images;
 
   @override
@@ -27,8 +27,8 @@ class _EditImagePickerWidgetState extends State<EditImagePickerWidget> {
   }
 
   Future<void> _pickImages() async {
-    final ImagePicker _picker = ImagePicker();
-    final List<XFile>? images = await _picker.pickMultiImage();
+    final ImagePicker picker = ImagePicker();
+    final List<XFile>? images = await picker.pickMultiImage();
 
     setState(() {
       _images = images;

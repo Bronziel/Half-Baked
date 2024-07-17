@@ -4,7 +4,6 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path/path.dart' as Path;
 import 'package:flutter/services.dart';
-import 'package:flutter/foundation.dart';
 
 import 'box_class.dart';
 import 'image_class.dart';
@@ -29,10 +28,10 @@ class RecipeForm extends StatefulWidget {
   const RecipeForm({super.key, required this.onRecipeSaved});
 
   @override
-  _RecipeFormState createState() => _RecipeFormState();
+  RecipeFormState createState() => RecipeFormState();
 }
 
-class _RecipeFormState extends State<RecipeForm> {
+class RecipeFormState extends State<RecipeForm> {
   final _formKey = GlobalKey<FormState>();
   final _ingredientsFormKey = GlobalKey<FormState>();
   final NewRecipe _newRecipe = NewRecipe();
@@ -45,8 +44,8 @@ class _RecipeFormState extends State<RecipeForm> {
 
 // For selecting multiple images from the user's device
   Future<void> _pickImages() async {
-    final ImagePicker _picker = ImagePicker();
-    final List<XFile>? images = await _picker.pickMultiImage();
+    final ImagePicker picker = ImagePicker();
+    final List<XFile>? images = await picker.pickMultiImage();
 
     setState(() {
       _newRecipe.images = images;

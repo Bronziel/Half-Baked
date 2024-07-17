@@ -27,7 +27,6 @@ Future<void> deleteImage(String imageUrl) async {
     await firebaseStorageRef.delete();
   } catch (e) {
     // e.g, e might be that the file didn't exist, wasn't reachable, etc.
-    print(e);
   }
 }
 

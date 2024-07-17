@@ -13,12 +13,12 @@ class EditIngredientsBox extends StatefulWidget {
   });
 
   @override
-  _EditIngredientsBoxState createState() => _EditIngredientsBoxState();
+  EditIngredientsBoxState createState() => EditIngredientsBoxState();
 }
 
-class _EditIngredientsBoxState extends State<EditIngredientsBox> {
+class EditIngredientsBoxState extends State<EditIngredientsBox> {
   List<Map<String, dynamic>> _ingredients = [];
-  List<Widget> _ingredientWidgets = [];
+  final List<Widget> _ingredientWidgets = [];
 
   @override
   void initState() {

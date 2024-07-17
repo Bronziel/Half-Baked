@@ -37,7 +37,7 @@ class _CarousellState extends State<CreateCarousell> {
   int currentPrimaryIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 1200,
       height: 500,
       child: Row(

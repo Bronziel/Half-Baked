@@ -16,14 +16,12 @@ class TitelHandler extends StatefulWidget {
 class _TitelHandlerState extends State<TitelHandler> {
   String? myTitel;
   void updateTitle(String newTitle) {
-    print('titel updated?');
     setState(() {
       myTitel = newTitle;
     });
   }
 
   void editTitle(String editTitle) {
-    print('titel updated?');
     setState(() {
       myTitel = editTitle;
     });

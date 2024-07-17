@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../Dialog/Time_dialog.dart';
-import 'create_tiles/TimePrepPortion.dart';
+import '../Dialog/time_dialog.dart';
+import 'create_tiles/time_prep_portion.dart';
 
 class TimePrepTotalHandler extends StatelessWidget {
   const TimePrepTotalHandler({super.key});

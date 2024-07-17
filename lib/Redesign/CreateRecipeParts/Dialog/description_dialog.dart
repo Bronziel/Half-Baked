@@ -9,7 +9,6 @@ class DescriptionDialog {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        print('new description dialog');
         return Dialog(
           backgroundColor: Colors.transparent,
           child: DescriptionPopupp(
@@ -21,7 +20,7 @@ class DescriptionDialog {
     );
   }
 
-  static void EditDescription(
+  static void editDescription(
     final Function(String) addDescription,
     final Function(String) editDescription,
     final String initialDescription,
@@ -30,7 +29,6 @@ class DescriptionDialog {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        print('new description dialog');
         return Dialog(
           backgroundColor: Colors.transparent,
           child: DescriptionPopupp(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
-import 'dart:io';
 import 'package:cross_file/cross_file.dart';
 
 class ImageCropperWidget extends StatefulWidget {
@@ -21,7 +20,7 @@ class _ImageCropperWidgetState extends State<ImageCropperWidget> {
   Future<void> cropImage() async {
     final croppedFile = await ImageCropper().cropImage(
       sourcePath: widget.image.path,
-      
+
       /*
       androidUiSettings: AndroidUiSettings(
           toolbarTitle: 'Cropper',

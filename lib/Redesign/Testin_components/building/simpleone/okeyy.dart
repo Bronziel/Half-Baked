@@ -107,7 +107,7 @@ class _TextfinderState extends State<Textfinder> {
                   TextField(
                     decoration: InputDecoration(
                       labelText: 'Enter text',
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                       //eror text hantereat auutomatisk röd ring etc men man kan  customisa ifall man vill
                       errorText: _errorText2,
                     ),

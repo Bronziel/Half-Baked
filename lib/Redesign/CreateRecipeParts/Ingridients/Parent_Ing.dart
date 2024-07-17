@@ -17,7 +17,6 @@ class _CreateListWithIngridientsState extends State<CreateListWithIngridients> {
     setState(() {
       //parameter för sätta vilken info är vad items kräver mytext.vi säger hämta text från textfield
       ingredients.add(Ingredients(label: title, amount: amount, unit: unit));
-      print('lagt till item');
       //set new state for ing here when item added to renew list state.
     });
   }

@@ -10,7 +10,6 @@ class IngDialog {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        print('dialog open');
         return Dialog(
           backgroundColor: Colors.transparent,
           child: IngridientPopupp(
@@ -39,8 +38,6 @@ class IngDialog {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        print('dialog open edit');
-        print(index);
         return Dialog(
           backgroundColor: Colors.transparent,
           child: IngridientPopupp(

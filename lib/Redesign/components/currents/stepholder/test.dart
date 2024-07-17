@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ParentWidget extends StatefulWidget {
+  const ParentWidget({super.key});
+
   @override
-  _ParentWidgetState createState() => _ParentWidgetState();
+  ParentWidgetState createState() => ParentWidgetState();
 }
 
-class _ParentWidgetState extends State<ParentWidget> {
+class ParentWidgetState extends State<ParentWidget> {
   List<Item> items = []; // Assuming 'Item' is your data model
 
   void addItem(Item newItem) {
@@ -28,7 +30,10 @@ class _ParentWidgetState extends State<ParentWidget> {
 class ChildWidget extends StatelessWidget {
   final Function(Item) addItemCallback;
 
-  ChildWidget({required this.addItemCallback});
+  const ChildWidget({
+    required this.addItemCallback,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +43,7 @@ class ChildWidget extends StatelessWidget {
         Item newItem = Item(myName2: 'yes', myName3: 'ok', myName: 'ok');
         addItemCallback(newItem);
       },
-      child: Text('Add Item'),
+      child: const Text('Add Item'),
     );
   }
 }
