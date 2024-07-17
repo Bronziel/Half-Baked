@@ -23,7 +23,6 @@ class _ListOfIngState extends State<ListOfIng> {
 
   void replaceItem(int index, String title, String amount, String unit) {
     setState(() {
-      print('replace??');
       // Check if the index is within the bounds of the list
       if (index >= 0 && index < ingredients.length) {
         // Replace the item at the given index with a new object
