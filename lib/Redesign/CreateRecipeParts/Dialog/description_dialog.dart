@@ -21,7 +21,7 @@ class DescriptionDialog {
     );
   }
 
-  static void EditDescription(
+  static void editDescription(
     final Function(String) addDescription,
     final Function(String) editDescription,
     final String initialDescription,

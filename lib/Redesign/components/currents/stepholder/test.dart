@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ParentWidget extends StatefulWidget {
+  const ParentWidget({super.key});
+
   @override
   _ParentWidgetState createState() => _ParentWidgetState();
 }
