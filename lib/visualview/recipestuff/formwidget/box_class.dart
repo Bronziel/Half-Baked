@@ -13,12 +13,12 @@ class IngredientsBox extends StatefulWidget {
   });
 
   @override
-  _IngredientsBoxState createState() => _IngredientsBoxState();
+  IngredientsBoxState createState() => IngredientsBoxState();
 }
 
-class _IngredientsBoxState extends State<IngredientsBox> {
-  List<Map<String, dynamic>> _ingredients = [];
-  List<Widget> _ingredientWidgets = [];
+class IngredientsBoxState extends State<IngredientsBox> {
+  final List<Map<String, dynamic>> _ingredients = [];
+  final List<Widget> _ingredientWidgets = [];
 
   void _addIngredient() {
     Map<String, dynamic> newIngredient = {'name': '', 'amount': '', 'unit': ''};
@@ -306,10 +306,10 @@ class CookTimeBox extends StatefulWidget {
   });
 
   @override
-  _CookTimeBoxState createState() => _CookTimeBoxState();
+  CookTimeBoxState createState() => CookTimeBoxState();
 }
 
-class _CookTimeBoxState extends State<CookTimeBox> {
+class CookTimeBoxState extends State<CookTimeBox> {
   final TextEditingController _prepTimeController = TextEditingController();
   final TextEditingController _totalTimeController = TextEditingController();
   double _prepTime = 0.0;

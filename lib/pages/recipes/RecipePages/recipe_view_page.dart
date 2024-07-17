@@ -10,10 +10,10 @@ class RecipeDetailsPage extends StatefulWidget {
   const RecipeDetailsPage({super.key, required this.recipe});
 
   @override
-  _RecipeDetailsPageState createState() => _RecipeDetailsPageState();
+  RecipeDetailsPageState createState() => RecipeDetailsPageState();
 }
 
-class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
+class RecipeDetailsPageState extends State<RecipeDetailsPage> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
 

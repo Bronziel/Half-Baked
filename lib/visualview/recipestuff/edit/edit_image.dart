@@ -14,10 +14,10 @@ class EditImagePickerWidget extends StatefulWidget {
   });
 
   @override
-  _EditImagePickerWidgetState createState() => _EditImagePickerWidgetState();
+  EditImagePickerWidgetState createState() => EditImagePickerWidgetState();
 }
 
-class _EditImagePickerWidgetState extends State<EditImagePickerWidget> {
+class EditImagePickerWidgetState extends State<EditImagePickerWidget> {
   List<XFile>? _images;
 
   @override

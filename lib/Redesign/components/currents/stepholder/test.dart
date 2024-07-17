@@ -28,7 +28,10 @@ class _ParentWidgetState extends State<ParentWidget> {
 class ChildWidget extends StatelessWidget {
   final Function(Item) addItemCallback;
 
-  ChildWidget({required this.addItemCallback});
+  const ChildWidget({
+    required this.addItemCallback,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,7 @@ class ChildWidget extends StatelessWidget {
         Item newItem = Item(myName2: 'yes', myName3: 'ok', myName: 'ok');
         addItemCallback(newItem);
       },
-      child: Text('Add Item'),
+      child: const Text('Add Item'),
     );
   }
 }

@@ -41,7 +41,7 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Gym and Food App')),
-      body: Column(
+      body: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ButtonTemplate(
@@ -49,32 +49,32 @@ class LandingPage extends StatelessWidget {
             buttonText: "Loading",
             buttonColor: Color.fromARGB(255, 246, 243, 86),
           ),
-          const ButtonTemplate(
+          ButtonTemplate(
             landingspace: GlistPage(),
             buttonText: "Food",
             buttonColor: Colors.orange,
           ),
-          const ButtonTemplate(
+          ButtonTemplate(
             landingspace: RecipelistPage(),
             buttonText: "RecipeList",
             buttonColor: Color.fromARGB(255, 224, 17, 131),
           ),
-          const ButtonTemplate(
+          ButtonTemplate(
             landingspace: NewDesignPage(),
             buttonText: "NewDesign",
             buttonColor: Color.fromARGB(255, 72, 255, 0),
           ),
-          const ButtonTemplate(
+          ButtonTemplate(
             landingspace: BuildComponentPage(),
             buttonText: "Component",
             buttonColor: Color.fromARGB(255, 0, 30, 255),
           ),
-          const ButtonTemplate(
+          ButtonTemplate(
             landingspace: RedonePage(),
             buttonText: "Redone",
             buttonColor: Color.fromARGB(255, 255, 0, 119),
           ),
-          const ButtonTemplate(
+          ButtonTemplate(
             landingspace: CreateRecipesPage(),
             buttonText: "Create",
             buttonColor: Color.fromARGB(255, 97, 248, 10),

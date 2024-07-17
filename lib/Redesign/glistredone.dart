@@ -44,7 +44,6 @@ class _RedonePageState extends State<RedonePage> {
 //cropper
   Future<CroppedFile?> _cropImage(String path) async {
     // Calculate the aspect ratio
-    const double targetAspectRatio = 1085 / 400;
 
     return await ImageCropper().cropImage(
       sourcePath: path,
@@ -53,11 +52,9 @@ class _RedonePageState extends State<RedonePage> {
       uiSettings: [
         WebUiSettings(
           context: context,
-         
-          
 
-        // Half of your desired height
-           
+          // Half of your desired height
+
           // Add other necessary configurations here
         ),
       ],

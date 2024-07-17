@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../classIng/ing_class2.dart';
-import '../Tiles/Normaltile.dart';
+import '../Tiles/normaltile.dart';
 import '../../Dialog/ingridient_dialog.dart';
 
 class ListOfIng extends StatefulWidget {

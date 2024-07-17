@@ -37,10 +37,10 @@ class EditRecipeForm extends StatefulWidget {
   });
 
   @override
-  _EditRecipeFormState createState() => _EditRecipeFormState();
+  EditRecipeFormState createState() => EditRecipeFormState();
 }
 
-class _EditRecipeFormState extends State<EditRecipeForm> {
+class EditRecipeFormState extends State<EditRecipeForm> {
   final _formKey = GlobalKey<FormState>();
   final _ingredientsFormKey = GlobalKey<FormState>();
   final NewRecipe _newRecipe = NewRecipe();
