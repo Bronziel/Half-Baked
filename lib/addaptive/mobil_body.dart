@@ -1,3 +1,4 @@
+import 'package:fb2/Redesign/styles_test/appbar.dart';
 import 'package:flutter/material.dart';
 //anything smaller then 600
 class MobilBody extends StatelessWidget {
@@ -7,7 +8,8 @@ class MobilBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(40.0), child: NewAppbar()),
       body: SafeArea(child: childWidget,),
     );
   }

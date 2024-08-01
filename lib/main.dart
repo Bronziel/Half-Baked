@@ -60,7 +60,7 @@ class LandingPage extends StatelessWidget {
             buttonColor: Color.fromARGB(255, 224, 17, 131),
           ),
           ButtonTemplate(
-            landingspace: NewDesignPage(),
+            landingspace: RecipeBodySize(),
             buttonText: "NewDesign",
             buttonColor: Color.fromARGB(255, 72, 255, 0),
           ),
