@@ -37,10 +37,11 @@ class FirstRowWidgetMobil extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
+        Height20StandardWidget(),
+        Carousell(smallCarousellImagesBottomLeft: false,sideColumn: false,),
         Height40StandardWidget(),
         Intro(),
-        Height20StandardWidget(),
-        Carousell(smallCarousellImagesBottomLeft: false,sideColumn: false,)
+        
       ],
     );
   }
