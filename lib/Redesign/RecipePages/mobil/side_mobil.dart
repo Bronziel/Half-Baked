@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import '../../components/currents/imgholders/normal/image_boxes.dart';
 import '../../components/currents/imgholders/normal/smallimages.dart';
 
-
 class SidecolumnMobile extends StatelessWidget {
-  const SidecolumnMobile(
-      {super.key,
-      required this.imagePathlist,
-      required this.primaryCarousellController,
-      required this.current,
-      this.sideColumn=true,});
+  const SidecolumnMobile({
+    super.key,
+    required this.imagePathlist,
+    required this.primaryCarousellController,
+    required this.current,
+    this.sideColumn = true,
+  });
 
   final List<ImagePathstring> imagePathlist;
   final CarouselController primaryCarousellController;
@@ -20,13 +20,14 @@ class SidecolumnMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      return Expanded(
-        child: ListView.builder(
+    print(imagePathlist.length);
+    return Expanded(
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           final item = imagePathlist[index];
           return GestureDetector(
-            onTap: (){},
+            onTap: () {},
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: SizedBox(
@@ -36,9 +37,10 @@ class SidecolumnMobile extends StatelessWidget {
               ),
             ),
           );
-        },),
-      );
-      /*Row(
+        },
+      ),
+    );
+    /*Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: imagePathlist.asMap().entries.map((entry) {
         bool isCurrent = current == entry.key;
@@ -59,8 +61,6 @@ class SidecolumnMobile extends StatelessWidget {
     );*/
   }
 }
-
-
 
 class Decoration2 {
   static BoxDecoration purpledecoration() {
