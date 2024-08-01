@@ -1,3 +1,4 @@
+import 'package:fb2/Redesign/RecipePages/mobil/side_mobil.dart';
 import 'package:flutter/material.dart';
 import 'smallimages.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -137,7 +138,7 @@ class _CarousellState extends State<Carousell> {
           const SizedBox(
             width: 40,
           ),
-          Sidecolumn(
+          SidecolumnMobile(
             imagePathlist: imagePathlist,
             primaryCarousellController: primaryCarousellController,
             current: currentPrimaryIndex,
