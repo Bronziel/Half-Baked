@@ -30,7 +30,11 @@ class ImagePathstring {
 }
 
 class Carousell extends StatefulWidget {
-  const Carousell({super.key});
+  final double widthTotal;
+  final double heightTotal;
+  final bool smallCarousellImagesBottomLeft;
+
+  const Carousell({super.key, this.heightTotal= 500, this.widthTotal = 1200, this.smallCarousellImagesBottomLeft = true,});
 
   @override
   State<Carousell> createState() => _CarousellState();
@@ -43,16 +47,60 @@ class _CarousellState extends State<Carousell> {
     ImagePathstring(imagePath: 'images/new/kebab3.jpg'),
     ImagePathstring(imagePath: 'images/new/kebabrulle.jpg'),
   ];
+
   //adding controllers etc
   final CarouselController primaryCarousellController = CarouselController();
   int currentPrimaryIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 1200,
-      height: 500,
-      child: Row(
+      width: widget.widthTotal,
+      height: widget.heightTotal,
+      
+      child:widget.smallCarousellImagesBottomLeft ?
+       Row(
         children: [
+          //i shoudl not use .builder its bad ides since it erbuild tehsm not good
+          CarouselSlider.builder(
+            itemCount: imagePathlist.length,
+            itemBuilder: (
+              context,
+              index,
+              realIndex,
+            ) {
+              //definerar listan av imagepath så det kan användas
+              final imagePath = imagePathlist[index].imagePath;
+              //returanrar min widget som håller blikden etc
+              return BigImageBoxes1(imagePath: imagePath);
+            },
+            options: CarouselOptions(
+              autoPlay: true,
+              enlargeCenterPage: true,
+              viewportFraction: 0.8,
+              aspectRatio: 2.0,
+              initialPage: 0,
+              //adding onpagechanged to edit index when pages change
+              onPageChanged: (index, reason) {
+                setState(() {
+                  currentPrimaryIndex = index;
+                });
+              },
+            ),
+            //adding controller outisde caroseloptions  but inside builder
+            carouselController: primaryCarousellController,
+          ),
+          const SizedBox(
+            width: 40,
+          ),
+          Sidecolumn(
+            imagePathlist: imagePathlist,
+            primaryCarousellController: primaryCarousellController,
+            current: currentPrimaryIndex,
+          )
+        ],
+      ):Column(
+        children: [
+          //i shoudl not use .builder its bad ides since it erbuild tehsm not good
           CarouselSlider.builder(
             itemCount: imagePathlist.length,
             itemBuilder: (
