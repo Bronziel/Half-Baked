@@ -20,7 +20,25 @@ class SidecolumnMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      return Row(
+      return Expanded(
+        child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          final item = imagePathlist[index];
+          return GestureDetector(
+            onTap: (){},
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SizedBox(
+                child: Previewbox(
+                  imagePath: item.imagePath,
+                ),
+              ),
+            ),
+          );
+        },),
+      );
+      /*Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: imagePathlist.asMap().entries.map((entry) {
         bool isCurrent = current == entry.key;
@@ -38,7 +56,7 @@ class SidecolumnMobile extends StatelessWidget {
           ),
         );
       }).toList(),
-    );
+    );*/
   }
 }
 
