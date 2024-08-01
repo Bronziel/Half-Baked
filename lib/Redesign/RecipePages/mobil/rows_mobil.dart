@@ -40,7 +40,7 @@ class FirstRowWidgetMobil extends StatelessWidget {
         Height40StandardWidget(),
         Intro(),
         Height20StandardWidget(),
-        MainImagePlusBoxes(),
+        Carousell(smallCarousellImagesBottomLeft: false,sideColumn: false,)
       ],
     );
   }

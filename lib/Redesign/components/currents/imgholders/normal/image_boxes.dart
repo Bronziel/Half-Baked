@@ -33,8 +33,13 @@ class Carousell extends StatefulWidget {
   final double widthTotal;
   final double heightTotal;
   final bool smallCarousellImagesBottomLeft;
+  final bool sideColumn;
 
-  const Carousell({super.key, this.heightTotal= 500, this.widthTotal = 1200, this.smallCarousellImagesBottomLeft = true,});
+  const Carousell({super.key,
+  this.heightTotal= 500,
+  this.widthTotal = 1200, 
+  this.smallCarousellImagesBottomLeft = true,
+  this.sideColumn = true,});
 
   @override
   State<Carousell> createState() => _CarousellState();
@@ -136,6 +141,7 @@ class _CarousellState extends State<Carousell> {
             imagePathlist: imagePathlist,
             primaryCarousellController: primaryCarousellController,
             current: currentPrimaryIndex,
+            sideColumn: widget.sideColumn,
           )
         ],
       ),
@@ -148,15 +154,18 @@ class Sidecolumn extends StatelessWidget {
       {super.key,
       required this.imagePathlist,
       required this.primaryCarousellController,
-      required this.current});
+      required this.current,
+      this.sideColumn=true,});
 
   final List<ImagePathstring> imagePathlist;
   final CarouselController primaryCarousellController;
   final int current;
+  final bool sideColumn;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+     if(sideColumn){
+      return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: imagePathlist.asMap().entries.map((entry) {
         bool isCurrent = current == entry.key;
@@ -175,6 +184,28 @@ class Sidecolumn extends StatelessWidget {
         );
       }).toList(),
     );
+     }else{
+       return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: imagePathlist.asMap().entries.map((entry) {
+        bool isCurrent = current == entry.key;
+        return GestureDetector(
+          onTap: () => primaryCarousellController.animateToPage(entry.key),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              decoration: isCurrent ? Decoration.purpledecoration() : null,
+              margin: const EdgeInsets.symmetric(horizontal: 4.0),
+              child: Previewbox(
+                imagePath: entry.value.imagePath,
+              ),
+            ),
+          ),
+        );
+      }).toList(),
+    );
+     }
+    
   }
 }
 
