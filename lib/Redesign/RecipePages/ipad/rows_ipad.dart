@@ -18,9 +18,9 @@ class NewDesignPageIpad extends StatelessWidget {
           child: Column(
             children: [
               Height20StandardWidget(),
-              FirstRowWidget(),
+              FirstRowWidgetIpad(),
               Height20StandardWidget(),
-              SecondRowWidget(),
+              SecondRowWidgetIpad(),
             ],
           ),
         ),
@@ -57,7 +57,7 @@ class SecondRowWidgetIpad extends StatelessWidget {
     return const Row(
       children: [
         Widht40wallWidget(),
-        Expanded(child: RecipeListCard(other: true)),
+        RecipeListCard(other: true),
         Width20StandardWidget(),
         Expanded(child: BuiltbymeIpad()),
       ],
@@ -73,15 +73,19 @@ class BuiltbymeIpad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-       child:Card(
-        color: Color(0xffd9d9d9),
-        child: Column(
-          children: [
-            StepsBigtileIpad(),
-            Displaytestlist(),
-          ],
-        ),
-      ),
+      
+       child:Padding(
+         padding: EdgeInsets.all(8.0),
+         child: Card(
+          color: Color(0xffd9d9d9),
+          child: Column(
+            children: [
+              StepsBigtileIpad(),
+              Displaytestlist(),
+            ],
+          ),
+               ),
+       ),
     );
   }
 }
@@ -94,6 +98,8 @@ class StepsBigtileIpad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: 80,
+      width: double.infinity,
       child: Container(
         decoration: const BoxDecoration(
             color: Colors.black,
@@ -177,6 +183,8 @@ class _DisplaytestlistIpadState extends State<DisplaytestlistIpad> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      width: 100,
+      height: 200,
       child: ListView.builder(
         itemCount: idk.length,
         itemBuilder: (context, index) {
@@ -230,6 +238,7 @@ class _BoxwithstepsState extends State<Stepbox> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      width: 100,
       child: ListTile(
         leading: SizedBox(
           child: Text('${widget.step}:', style: Stepstyleformat.stepNumber()),
@@ -269,7 +278,7 @@ class HeaderBoxIpad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      
+      width: 100,
       child: Align(
         alignment: Alignment.centerLeft,
         child: SizedBox(
