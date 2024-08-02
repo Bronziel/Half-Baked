@@ -9,8 +9,7 @@ class IpadBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(40.0), child: NewAppbar()),
+      appBar: AppBar(title: const Text('IpadBody'),),
       body: childWidget,
     );
   }
