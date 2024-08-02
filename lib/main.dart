@@ -12,6 +12,7 @@ import 'pages/screens/loading.dart';
 import 'Redesign/glistredone.dart';
 import 'Redesign/RecipePages/create_recipes.dart';
 
+//maybe use layoutbuilder on the recipepage
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
