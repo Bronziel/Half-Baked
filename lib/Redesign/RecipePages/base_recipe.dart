@@ -4,6 +4,7 @@ import 'package:fb2/addaptive/ipad_body.dart';
 import 'package:fb2/addaptive/mobil_body.dart';
 import 'package:flutter/material.dart';
 import '../components/styles/spacing/sizedboxes.dart';
+import 'ipad/rows_ipad.dart';
 import 'normal_intro/introduction_box.dart';
 import '../components/currents/imgholders/normal/image_boxes.dart';
 import '../components/styles/ingboxshared.dart';
@@ -45,26 +46,7 @@ class NewDesignPage extends StatelessWidget {
 
 
 
-class NewDesignPageIpad extends StatelessWidget {
-  const NewDesignPageIpad({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return  const SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              Height20StandardWidget(),
-              FirstRowWidget(),
-              Height20StandardWidget(),
-              SecondRowWidget(),
-            ],
-          ),
-        ),
-      
-    );
-  }
-}
 
 class FirstRowWidget extends StatelessWidget {
   const FirstRowWidget({
