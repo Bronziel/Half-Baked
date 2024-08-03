@@ -7,7 +7,7 @@ import '../../components/styles/ingboxshared.dart';
 import '../../components/styles/spacing/sizedboxes.dart';
 import '../base_recipe.dart';
 import '../normal_intro/introduction_box.dart';
-import 'stepsIpad.dart';
+import 'steps_ipad.dart';
 
 class NewDesignPageIpad extends StatelessWidget {
   const NewDesignPageIpad({super.key});
