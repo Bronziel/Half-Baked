@@ -5,14 +5,12 @@ import '../../components/currents/imgholders/normal/reedone_image.dart';
 import '../../components/currents/imgholders/normal/smallimages.dart';
 
 class CarousellIpad extends StatefulWidget {
-  final double widthTotal;
-  final double heightTotal;
+
   final bool smallCarousellImagesBottomLeft;
   final bool sideColumn;
 
   const CarousellIpad({super.key,
-  this.heightTotal= 500,
-  this.widthTotal = 300, 
+
   this.smallCarousellImagesBottomLeft = true,
   this.sideColumn = true,});
 
@@ -37,7 +35,7 @@ class _CarousellIpadState extends State<CarousellIpad> {
      children: [
        //i shoudl not use .builder its bad ides since it erbuild tehsm not good
        ConstrainedBox(
-         constraints: const BoxConstraints(maxHeight: 600, maxWidth:600),
+         constraints: const BoxConstraints(maxHeight: 600, maxWidth:700),
          child: CarouselSlider.builder(
            itemCount: imagePathlist.length,
            itemBuilder: (
