@@ -16,7 +16,7 @@ class Displaytimesnow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 290,
+      width: 300,
       height: 50,
       child: Card(
         color: const Color(0xffd9d9d9),
