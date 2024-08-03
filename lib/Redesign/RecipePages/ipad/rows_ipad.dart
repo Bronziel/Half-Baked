@@ -1,11 +1,8 @@
-import 'package:fb2/Redesign/components/currents/stepholder/Progress.dart';
+import 'package:fb2/Redesign/RecipePages/ipad/caro_ipad.dart';
 import 'package:flutter/material.dart';
-
 import '../../components/currents/imgholders/normal/image_boxes.dart';
-import '../../components/currents/stepholder/prog_ui.dart';
 import '../../components/styles/ingboxshared.dart';
 import '../../components/styles/spacing/sizedboxes.dart';
-import '../base_recipe.dart';
 import '../normal_intro/introduction_box.dart';
 import 'steps_ipad.dart';
 
@@ -42,7 +39,7 @@ class FirstRowWidgetIpad extends StatelessWidget {
         Widht40wallWidget(),
         Intro(),
         Width20StandardWidget(),
-        MainImagePlusBoxes(),
+        CarousellIpad(),
       ],
     );
   }
