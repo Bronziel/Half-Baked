@@ -406,9 +406,7 @@ class CookTimeBoxState extends State<CookTimeBox> {
                   fillColor: Colors.white,
                 ),
                 onChanged: (value) {
-                  double newValue = (value == null || value.isEmpty)
-                      ? 0
-                      : double.parse(value);
+                  double newValue = (value.isEmpty) ? 0 : double.parse(value);
                   newValue =
                       newValue > maxSliderValue ? maxSliderValue : newValue;
                   setTime(newValue);

@@ -33,7 +33,8 @@ class CreateCarousell extends StatefulWidget {
 
 class _CarousellState extends State<CreateCarousell> {
   //adding controllers etc
-  final CarouselController primaryCarousellController = CarouselController();
+  final CarouselSliderController primaryCarousellController =
+      CarouselSliderController();
   int currentPrimaryIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -94,7 +95,7 @@ class Sidecolumn extends StatelessWidget {
   final Function(List<XFile>) onImagesSelected;
   final Function(int) deleteImage;
   final List<XFile> images; // Updated to use XFile directly
-  final CarouselController primaryCarousellController;
+  final CarouselSliderController primaryCarousellController;
   final int current;
 
   const Sidecolumn({
@@ -119,8 +120,9 @@ class Sidecolumn extends StatelessWidget {
           return Row(
             children: [
               GestureDetector(
-                onTap: () =>
-                    primaryCarousellController.animateToPage(entry.key),
+                onTap: () => primaryCarousellController.animateToPage(entry.key,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: FutureBuilder<Uint8List>(

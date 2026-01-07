@@ -15,7 +15,7 @@ class RecipeDetailsPage extends StatefulWidget {
 
 class RecipeDetailsPageState extends State<RecipeDetailsPage> {
   int _current = 0;
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
 
   void _showImageDialog(String imagePath) {
     showDialog(
@@ -94,7 +94,9 @@ class RecipeDetailsPageState extends State<RecipeDetailsPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: widget.recipe.imageUrls.asMap().entries.map((entry) {
                   return GestureDetector(
-                    onTap: () => _controller.animateToPage(entry.key),
+                    onTap: () => _controller.animateToPage(entry.key,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut),
                     child: Container(
                       width: 50.0,
                       height: 50.0,

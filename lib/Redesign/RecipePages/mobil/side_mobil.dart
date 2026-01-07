@@ -14,7 +14,7 @@ class SidecolumnMobile extends StatelessWidget {
   });
 
   final List<ImagePathstring> imagePathlist;
-  final CarouselController primaryCarousellController;
+  final CarouselSliderController primaryCarousellController;
   final int current;
   final bool sideColumn;
 

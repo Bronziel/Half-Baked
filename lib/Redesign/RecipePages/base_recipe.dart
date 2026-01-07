@@ -9,6 +9,7 @@ import 'normal_intro/introduction_box.dart';
 import '../components/currents/imgholders/normal/image_boxes.dart';
 import '../components/styles/ingboxshared.dart';
 import '../components/currents/stepholder/prog_ui.dart';
+
 class RecipeBodySize extends StatelessWidget {
   const RecipeBodySize({super.key});
 
@@ -17,36 +18,36 @@ class RecipeBodySize extends StatelessWidget {
     double sizeOfDevice = MediaQuery.sizeOf(context).width;
     bool mobilBody = sizeOfDevice < 600;
     bool ipadBody = sizeOfDevice > 600 == sizeOfDevice < 1400;
-    bool desktopBody = sizeOfDevice > 1400;
-    if(mobilBody){
+    // bool desktopBody = sizeOfDevice > 1400;
+    if (mobilBody) {
       return const MobilBody(childWidget: NewDesignPageMobil());
-    } else if (ipadBody){return const IpadBody(childWidget: NewDesignPageIpad());}else {return const DesktopBody(childWidget: NewDesignPage());}
+    } else if (ipadBody) {
+      return const IpadBody(childWidget: NewDesignPageIpad());
+    } else {
+      return const DesktopBody(childWidget: NewDesignPage());
+    }
   }
 }
+
 class NewDesignPage extends StatelessWidget {
   const NewDesignPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  const SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              Height20StandardWidget(),
-              FirstRowWidget(),
-              Height20StandardWidget(),
-              SecondRowWidget(),
-            ],
-          ),
+    return const SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: [
+            Height20StandardWidget(),
+            FirstRowWidget(),
+            Height20StandardWidget(),
+            SecondRowWidget(),
+          ],
         ),
-      
+      ),
     );
   }
 }
-
-
-
-
 
 class FirstRowWidget extends StatelessWidget {
   const FirstRowWidget({

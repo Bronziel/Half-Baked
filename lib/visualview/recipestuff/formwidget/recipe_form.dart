@@ -36,21 +36,21 @@ class RecipeFormState extends State<RecipeForm> {
   final _ingredientsFormKey = GlobalKey<FormState>();
   final NewRecipe _newRecipe = NewRecipe();
   // Dispose of the selected image
-  void _deleteImage() {
-    setState(() {
-      _newRecipe.images = null;
-    });
-  }
+  // void _deleteImage() {
+  //   setState(() {
+  //     _newRecipe.images = null;
+  //   });
+  // }
 
 // For selecting multiple images from the user's device
-  Future<void> _pickImages() async {
-    final ImagePicker picker = ImagePicker();
-    final List<XFile>? images = await picker.pickMultiImage();
+  // Future<void> _pickImages() async {
+  //   final ImagePicker picker = ImagePicker();
+  //   final List<XFile>? images = await picker.pickMultiImage();
 
-    setState(() {
-      _newRecipe.images = images;
-    });
-  }
+  //   setState(() {
+  //     _newRecipe.images = images;
+  //   });
+  // }
 
   Future<List<String>> _uploadImagesToFirebase(List<XFile> images) async {
     List<String> imageUrls = [];

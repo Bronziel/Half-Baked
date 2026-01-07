@@ -19,7 +19,7 @@ class GlistPageState extends State<GlistPage> {
   bool _displayImages = false;
   List<String> _firebaseStoragePaths = [];
   int _current = 0;
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
 
   Future<void> _pickImages() async {
     final ImagePicker picker = ImagePicker();
@@ -209,7 +209,9 @@ class GlistPageState extends State<GlistPage> {
                     children:
                         _firebaseStoragePaths.asMap().entries.map((entry) {
                       return GestureDetector(
-                        onTap: () => _controller.animateToPage(entry.key),
+                        onTap: () => _controller.animateToPage(entry.key,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeInOut),
                         child: Container(
                           width: 50.0,
                           height: 50.0,

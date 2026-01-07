@@ -36,11 +36,13 @@ class Carousell extends StatefulWidget {
   final bool smallCarousellImagesBottomLeft;
   final bool sideColumn;
 
-  const Carousell({super.key,
-  this.heightTotal= 500,
-  this.widthTotal = 1200, 
-  this.smallCarousellImagesBottomLeft = true,
-  this.sideColumn = true,});
+  const Carousell({
+    super.key,
+    this.heightTotal = 500,
+    this.widthTotal = 1200,
+    this.smallCarousellImagesBottomLeft = true,
+    this.sideColumn = true,
+  });
 
   @override
   State<Carousell> createState() => _CarousellState();
@@ -55,158 +57,163 @@ class _CarousellState extends State<Carousell> {
   ];
 
   //adding controllers etc
-  final CarouselController primaryCarousellController = CarouselController();
+  final CarouselSliderController primaryCarousellController =
+      CarouselSliderController();
   int currentPrimaryIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: widget.widthTotal,
       height: widget.heightTotal,
-      
-      child:widget.smallCarousellImagesBottomLeft ?
-       Row(
-        children: [
-          //i shoudl not use .builder its bad ides since it erbuild tehsm not good
-          CarouselSlider.builder(
-            itemCount: imagePathlist.length,
-            itemBuilder: (
-              context,
-              index,
-              realIndex,
-            ) {
-              //definerar listan av imagepath så det kan användas
-              final imagePath = imagePathlist[index].imagePath;
-              //returanrar min widget som håller blikden etc
-              return BigImageBoxes1(imagePath: imagePath);
-            },
-            options: CarouselOptions(
-              autoPlay: true,
-              enlargeCenterPage: true,
-              viewportFraction: 0.8,
-              aspectRatio: 2.0,
-              initialPage: 0,
-              //adding onpagechanged to edit index when pages change
-              onPageChanged: (index, reason) {
-                setState(() {
-                  currentPrimaryIndex = index;
-                });
-              },
+      child: widget.smallCarousellImagesBottomLeft
+          ? Row(
+              children: [
+                //i shoudl not use .builder its bad ides since it erbuild tehsm not good
+                CarouselSlider.builder(
+                  itemCount: imagePathlist.length,
+                  itemBuilder: (
+                    context,
+                    index,
+                    realIndex,
+                  ) {
+                    //definerar listan av imagepath så det kan användas
+                    final imagePath = imagePathlist[index].imagePath;
+                    //returanrar min widget som håller blikden etc
+                    return BigImageBoxes1(imagePath: imagePath);
+                  },
+                  options: CarouselOptions(
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    viewportFraction: 0.8,
+                    aspectRatio: 2.0,
+                    initialPage: 0,
+                    //adding onpagechanged to edit index when pages change
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        currentPrimaryIndex = index;
+                      });
+                    },
+                  ),
+                  //adding controller outisde caroseloptions  but inside builder
+                  carouselController: primaryCarousellController,
+                ),
+                const SizedBox(
+                  width: 40,
+                ),
+                Sidecolumn(
+                  imagePathlist: imagePathlist,
+                  primaryCarousellController: primaryCarousellController,
+                  current: currentPrimaryIndex,
+                )
+              ],
+            )
+          : Column(
+              children: [
+                //i shoudl not use .builder its bad ides since it erbuild tehsm not good
+                CarouselSlider.builder(
+                  itemCount: imagePathlist.length,
+                  itemBuilder: (
+                    context,
+                    index,
+                    realIndex,
+                  ) {
+                    //definerar listan av imagepath så det kan användas
+                    final imagePath = imagePathlist[index].imagePath;
+                    //returanrar min widget som håller blikden etc
+                    return BigImageBoxes1(imagePath: imagePath);
+                  },
+                  options: CarouselOptions(
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    viewportFraction: 0.8,
+                    aspectRatio: 2.0,
+                    initialPage: 0,
+                    //adding onpagechanged to edit index when pages change
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        currentPrimaryIndex = index;
+                      });
+                    },
+                  ),
+                  //adding controller outisde caroseloptions  but inside builder
+                  carouselController: primaryCarousellController,
+                ),
+                const SizedBox(
+                  width: 40,
+                ),
+                SidecolumnMobile(
+                  imagePathlist: imagePathlist,
+                  primaryCarousellController: primaryCarousellController,
+                  current: currentPrimaryIndex,
+                  sideColumn: widget.sideColumn,
+                )
+              ],
             ),
-            //adding controller outisde caroseloptions  but inside builder
-            carouselController: primaryCarousellController,
-          ),
-          const SizedBox(
-            width: 40,
-          ),
-          Sidecolumn(
-            imagePathlist: imagePathlist,
-            primaryCarousellController: primaryCarousellController,
-            current: currentPrimaryIndex,
-          )
-        ],
-      ):Column(
-        children: [
-          //i shoudl not use .builder its bad ides since it erbuild tehsm not good
-          CarouselSlider.builder(
-            itemCount: imagePathlist.length,
-            itemBuilder: (
-              context,
-              index,
-              realIndex,
-            ) {
-              //definerar listan av imagepath så det kan användas
-              final imagePath = imagePathlist[index].imagePath;
-              //returanrar min widget som håller blikden etc
-              return BigImageBoxes1(imagePath: imagePath);
-            },
-            options: CarouselOptions(
-              autoPlay: true,
-              enlargeCenterPage: true,
-              viewportFraction: 0.8,
-              aspectRatio: 2.0,
-              initialPage: 0,
-              //adding onpagechanged to edit index when pages change
-              onPageChanged: (index, reason) {
-                setState(() {
-                  currentPrimaryIndex = index;
-                });
-              },
-            ),
-            //adding controller outisde caroseloptions  but inside builder
-            carouselController: primaryCarousellController,
-          ),
-          const SizedBox(
-            width: 40,
-          ),
-          SidecolumnMobile(
-            imagePathlist: imagePathlist,
-            primaryCarousellController: primaryCarousellController,
-            current: currentPrimaryIndex,
-            sideColumn: widget.sideColumn,
-          )
-        ],
-      ),
     );
   }
 }
 
 class Sidecolumn extends StatelessWidget {
-  const Sidecolumn(
-      {super.key,
-      required this.imagePathlist,
-      required this.primaryCarousellController,
-      required this.current,
-      this.sideColumn=true,});
+  const Sidecolumn({
+    super.key,
+    required this.imagePathlist,
+    required this.primaryCarousellController,
+    required this.current,
+    this.sideColumn = true,
+  });
 
   final List<ImagePathstring> imagePathlist;
-  final CarouselController primaryCarousellController;
+  final CarouselSliderController primaryCarousellController;
   final int current;
   final bool sideColumn;
 
   @override
   Widget build(BuildContext context) {
-     if(sideColumn){
+    if (sideColumn) {
       return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: imagePathlist.asMap().entries.map((entry) {
-        bool isCurrent = current == entry.key;
-        return GestureDetector(
-          onTap: () => primaryCarousellController.animateToPage(entry.key),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              decoration: isCurrent ? Decoration.purpledecoration() : null,
-              margin: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: Previewbox(
-                imagePath: entry.value.imagePath,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: imagePathlist.asMap().entries.map((entry) {
+          bool isCurrent = current == entry.key;
+          return GestureDetector(
+            onTap: () => primaryCarousellController.animateToPage(entry.key,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                decoration: isCurrent ? Decoration.purpledecoration() : null,
+                margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: Previewbox(
+                  imagePath: entry.value.imagePath,
+                ),
               ),
             ),
-          ),
-        );
-      }).toList(),
-    );
-     }else{
-       return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: imagePathlist.asMap().entries.map((entry) {
-        bool isCurrent = current == entry.key;
-        return GestureDetector(
-          onTap: () => primaryCarousellController.animateToPage(entry.key),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              decoration: isCurrent ? Decoration.purpledecoration() : null,
-              margin: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: Previewbox(
-                imagePath: entry.value.imagePath,
+          );
+        }).toList(),
+      );
+    } else {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: imagePathlist.asMap().entries.map((entry) {
+          bool isCurrent = current == entry.key;
+          return GestureDetector(
+            onTap: () => primaryCarousellController.animateToPage(entry.key,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                decoration: isCurrent ? Decoration.purpledecoration() : null,
+                margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: Previewbox(
+                  imagePath: entry.value.imagePath,
+                ),
               ),
             ),
-          ),
-        );
-      }).toList(),
-    );
-     }
-    
+          );
+        }).toList(),
+      );
+    }
   }
 }
 

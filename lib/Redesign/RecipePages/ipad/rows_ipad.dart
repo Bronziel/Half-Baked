@@ -1,6 +1,5 @@
 import 'package:fb2/Redesign/RecipePages/ipad/caro_ipad.dart';
 import 'package:flutter/material.dart';
-import '../../components/currents/imgholders/normal/image_boxes.dart';
 import '../../components/styles/ingboxshared.dart';
 import '../../components/styles/spacing/sizedboxes.dart';
 import '../normal_intro/introduction_box.dart';
@@ -11,18 +10,17 @@ class NewDesignPageIpad extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              Height20StandardWidget(),
-              FirstRowWidgetIpad(),
-              Height20StandardWidget(),
-              SecondRowWidgetIpad(),
-            ],
-          ),
+    return const SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: [
+            Height20StandardWidget(),
+            FirstRowWidgetIpad(),
+            Height20StandardWidget(),
+            SecondRowWidgetIpad(),
+          ],
         ),
-      
+      ),
     );
   }
 }

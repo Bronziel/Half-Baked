@@ -1,7 +1,4 @@
 import 'dart:convert';
-//import 'package:fb2/Redesign/Testin_components/building/learn_json%20togheter.txt';
-
-import 'package:collection/collection.dart';
 
 //not used yet
 class Head {
@@ -169,7 +166,7 @@ class Dataset {
 
   static void grouped(List<Steps> steps) {
     // Group by 'hdid'
-    var groupedByHdid = groupBy(steps, (item) => item.hdid);
+    // var groupedByHdid = groupBy(steps, (item) => item.hdid);
   }
 }
 

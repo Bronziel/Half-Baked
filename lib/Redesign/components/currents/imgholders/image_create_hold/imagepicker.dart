@@ -95,7 +95,7 @@ class TestOfImages extends StatelessWidget {
         maxHeight: 500,
         maxWidth: 1000,
       ),
-      child: Image.network(images!.path),
+      child: Image.network(images.path),
     ));
   }
 }

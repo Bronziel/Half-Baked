@@ -19,7 +19,7 @@ class _RedonePageState extends State<RedonePage> {
   bool _displayImages = false;
   List<String> _firebaseStoragePaths = [];
   int _current = 0;
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
 
   Future<void> _pickImages() async {
     final ImagePicker picker = ImagePicker();
@@ -273,7 +273,9 @@ class _RedonePageState extends State<RedonePage> {
                           bool isCurrent = _current == entry.key;
                           //for selecting small box when pressed go to that ones
                           return GestureDetector(
-                            onTap: () => _controller.animateToPage(entry.key),
+                            onTap: () => _controller.animateToPage(entry.key,
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeInOut),
                             child: Container(
                               width: 70.0,
                               height: 70.0,

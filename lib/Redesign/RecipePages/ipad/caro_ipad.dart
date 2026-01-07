@@ -5,14 +5,14 @@ import '../../components/currents/imgholders/normal/reedone_image.dart';
 import '../../components/currents/imgholders/normal/smallimages.dart';
 
 class CarousellIpad extends StatefulWidget {
-
   final bool smallCarousellImagesBottomLeft;
   final bool sideColumn;
 
-  const CarousellIpad({super.key,
-
-  this.smallCarousellImagesBottomLeft = true,
-  this.sideColumn = true,});
+  const CarousellIpad({
+    super.key,
+    this.smallCarousellImagesBottomLeft = true,
+    this.sideColumn = true,
+  });
 
   @override
   State<CarousellIpad> createState() => _CarousellIpadState();
@@ -27,75 +27,79 @@ class _CarousellIpadState extends State<CarousellIpad> {
   ];
 
   //adding controllers etc
-  final CarouselController primaryCarousellController = CarouselController();
+  final CarouselSliderController primaryCarousellController =
+      CarouselSliderController();
   int currentPrimaryIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Row(
-     children: [
-       //i shoudl not use .builder its bad ides since it erbuild tehsm not good
-       ConstrainedBox(
-         constraints: const BoxConstraints(maxHeight: 600, maxWidth:700),
-         child: CarouselSlider.builder(
-           itemCount: imagePathlist.length,
-           itemBuilder: (
-             context,
-             index,
-             realIndex,
-           ) {
-             //definerar listan av imagepath så det kan användas
-             final imagePath = imagePathlist[index].imagePath;
-             //returanrar min widget som håller blikden etc
-             return HeadlinerImage(imagePath: imagePath);
-           },
-           options: CarouselOptions(
-             autoPlay: true,       
-             initialPage: 0,
-             //adding onpagechanged to edit index when pages change
-             onPageChanged: (index, reason) {
-               setState(() {
-                 currentPrimaryIndex = index;
-               });
-             },
-           ),
-           //adding controller outisde caroseloptions  but inside builder
-           carouselController: primaryCarousellController,
-         ),
-       ),
-       const SizedBox(
-         width: 40,
-       ),
-       Sidecolumn(
-         imagePathlist: imagePathlist,
-         primaryCarousellController: primaryCarousellController,
-         current: currentPrimaryIndex,
-       )
-     ],);
+      children: [
+        //i shoudl not use .builder its bad ides since it erbuild tehsm not good
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxHeight: 600, maxWidth: 700),
+          child: CarouselSlider.builder(
+            itemCount: imagePathlist.length,
+            itemBuilder: (
+              context,
+              index,
+              realIndex,
+            ) {
+              //definerar listan av imagepath så det kan användas
+              final imagePath = imagePathlist[index].imagePath;
+              //returanrar min widget som håller blikden etc
+              return HeadlinerImage(imagePath: imagePath);
+            },
+            options: CarouselOptions(
+              autoPlay: true,
+              initialPage: 0,
+              //adding onpagechanged to edit index when pages change
+              onPageChanged: (index, reason) {
+                setState(() {
+                  currentPrimaryIndex = index;
+                });
+              },
+            ),
+            //adding controller outisde caroseloptions  but inside builder
+            carouselController: primaryCarousellController,
+          ),
+        ),
+        const SizedBox(
+          width: 40,
+        ),
+        Sidecolumn(
+          imagePathlist: imagePathlist,
+          primaryCarousellController: primaryCarousellController,
+          current: currentPrimaryIndex,
+        )
+      ],
+    );
   }
 }
 
 class SidecolumnIpad extends StatelessWidget {
-  const SidecolumnIpad(
-      {super.key,
-      required this.imagePathlist,
-      required this.primaryCarousellController,
-      required this.current,
-      this.sideColumn=true,});
+  const SidecolumnIpad({
+    super.key,
+    required this.imagePathlist,
+    required this.primaryCarousellController,
+    required this.current,
+    this.sideColumn = true,
+  });
 
   final List<ImagePathstring> imagePathlist;
-  final CarouselController primaryCarousellController;
+  final CarouselSliderController primaryCarousellController;
   final int current;
   final bool sideColumn;
 
   @override
   Widget build(BuildContext context) {
-    
-      return Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: imagePathlist.asMap().entries.map((entry) {
         bool isCurrent = current == entry.key;
         return GestureDetector(
-          onTap: () => primaryCarousellController.animateToPage(entry.key),
+          onTap: () => primaryCarousellController.animateToPage(entry.key,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Container(
@@ -109,12 +113,8 @@ class SidecolumnIpad extends StatelessWidget {
         );
       }).toList(),
     );
-   
-     }
-    
-  
+  }
 }
-
 
 class DecorationIpad {
   static BoxDecoration purpledecoration() {
@@ -126,8 +126,6 @@ class DecorationIpad {
   }
 }
 
-
-
 class HeadlinerImageIpad extends StatelessWidget {
   const HeadlinerImageIpad({
     super.key,
@@ -138,7 +136,7 @@ class HeadlinerImageIpad extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(  
+    return SizedBox(
       child: Card(
         child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
